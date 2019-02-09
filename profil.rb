@@ -33,20 +33,33 @@ end
 
 def chercherIDUnique(bdd)
 # Cette méthode cherche le nombre de joueur enregistré et renvoie la valeur suppérieure
-	id = bdd.execute("SELECT COUNT( idJoueur) FROM profil") 
-	tmp = id.shift.shift
-	#p tmp.respond_to?(:to_i)
+	id = bdd.execute("SELECT MAX( idJoueur) FROM profil")
+	tmp = id.shift.shift.to_i
+	#puts tmp.class
 	return (tmp+1)
 
 end
 
 
+# Ajouter et supprimer un utilisateur
+
 def ajouterUtilisateur(pseudo, mdp, rep)
 #Insérer des informations dans la base de données
 	bdd = ouvrirBDD()
-	if (!pseudoDejaPris(pseudo))
+	if !(pseudoDejaPris(pseudo)) then
 		id = chercherIDUnique(bdd)
 		bdd.execute("INSERT INTO profil (idJoueur, pseudo, password, repSecret, scoreGlobal, scoreFacile, scoreMoyen, scoreDifficile, nbPartiesJouees, nbPartiesFinitSansAides, niveau, tableau) VALUES ( #{id}, '#{pseudo}', '#{mdp}', '#{rep}', 0, 0, 0, 0, 0, 0, 0, 0 )")
+		return true
+	else
+		return false
+	end
+end
+
+def supprimerUtilisateur(pseudo)
+#Supprimer des informations dans la base de données
+	bdd = ouvrirBDD()
+	if (pseudoDejaPris(pseudo)) then
+		bdd.execute("DELETE FROM profil WHERE pseudo = '#{pseudo}'")
 		return true
 	else
 		return false
@@ -64,8 +77,12 @@ end
 def pseudoDejaPris(unPseudo)
 #Vérifier si un pseudo est déjà présent dans la base de données
 	bdd = ouvrirBDD()
-	nbPseudo = bdd.execute("SELECT COUNT(pseudo) FROM profil WHERE EXISTS (SELECT pseudo FROM profil WHERE pseudo = '#{unPseudo}')").shift.shift
-	return nbPseudo
+	nbPseudo = bdd.execute("SELECT COUNT(idJoueur) FROM profil WHERE EXISTS (SELECT pseudo FROM profil WHERE pseudo = '#{unPseudo}')").shift.shift
+	if nbPseudo == 0
+		return false
+	else
+		return true
+	end
 end
 
 

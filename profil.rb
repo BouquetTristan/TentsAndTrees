@@ -49,17 +49,17 @@ def ajouterUtilisateur(pseudo, mdp, rep)
 	if !(pseudoDejaPris(pseudo)) then
 		id = chercherIDUnique(bdd)
 		bdd.execute("INSERT INTO profil (idJoueur, pseudo, password, repSecret, scoreGlobal, scoreFacile, scoreMoyen, scoreDifficile, nbPartiesJouees, nbPartiesFinitSansAides, niveau, tableau) VALUES ( #{id}, '#{pseudo}', '#{mdp}', '#{rep}', 0, 0, 0, 0, 0, 0, 0, 0 )")
-		return true
+		return id
 	else
-		return false
+		return 0
 	end
 end
 
-def supprimerUtilisateur(pseudo)
+def supprimerUtilisateur(unID)
 #Supprimer des informations dans la base de données
 	bdd = ouvrirBDD()
-	if (pseudoDejaPris(pseudo)) then
-		bdd.execute("DELETE FROM profil WHERE pseudo = '#{pseudo}'")
+	if (utilisateurExistant(unID)) then
+		bdd.execute("DELETE FROM profil WHERE idJoueur = '#{unID}'")
 		return true
 	else
 		return false
@@ -71,6 +71,15 @@ def voirLesUtilisateurs()
 	bdd = ouvrirBDD()
 	bdd.execute 'SELECT * FROM profil' do |ligne|
 		p ligne
+	end
+end
+
+def utilisateurExistant(unID)
+	bdd = ouvrirBDD()
+	if bdd.execute("SELECT COUNT(idJoueur) FROM profil WHERE idJoueur = '#{unID}'").shift.shift > 0
+		return true
+	else
+		return false
 	end
 end
 
@@ -88,50 +97,50 @@ end
 
 ## Méthodes pour modifier les scores, le nombre de partie jouée et terminée et la progression du mode aventure
 
-def augmenterScoreGlobal(unPseudo, uneValeur)
+def augmenterScoreGlobal(unID, uneValeur)
 #Augmenter le score global d'un joueur
 	bdd = ouvrirBDD()
-	ancienneValeur = bdd.execute("SELECT scoreGlobal FROM profil WHERE pseudo = '#{unPseudo}'").shift.shift
+	ancienneValeur = bdd.execute("SELECT scoreGlobal FROM profil WHERE idJoueur = '#{unID}'").shift.shift
 	valeur = ancienneValeur + uneValeur
 	bdd.execute("UPDATE profil SET scoreGlobal = #{valeur} ")
 end
 
-def augmenterScoreFacile(unPseudo, uneValeur)
+def augmenterScoreFacile(unID, uneValeur)
 #Augmenter le score global d'un joueur
 	bdd = ouvrirBDD()
-	ancienneValeur = bdd.execute("SELECT scoreFacile FROM profil WHERE pseudo = '#{unPseudo}'").shift.shift
+	ancienneValeur = bdd.execute("SELECT scoreFacile FROM profil WHERE idJoueur = '#{unID}'").shift.shift
 	valeur = ancienneValeur + uneValeur
-	bdd.execute("UPDATE profil SET scoreFacile = #{valeur} WHERE pseudo = '#{unPseudo}' ")
+	bdd.execute("UPDATE profil SET scoreFacile = #{valeur} WHERE idJoueur = '#{unID}' ")
 end
 
-def augmenterScoreMoyen(unPseudo, uneValeur)
+def augmenterScoreMoyen(unID, uneValeur)
 #Augmenter le score global d'un joueur
 	bdd = ouvrirBDD()
-	ancienneValeur = bdd.execute("SELECT scoreMoyen FROM profil WHERE pseudo = '#{unPseudo}'").shift.shift
+	ancienneValeur = bdd.execute("SELECT scoreMoyen FROM profil WHERE idJoueur = '#{unID}'").shift.shift
 	valeur = ancienneValeur + uneValeur
-	bdd.execute("UPDATE profil SET scoreMoyen = #{valeur} WHERE pseudo = '#{unPseudo}' ")
+	bdd.execute("UPDATE profil SET scoreMoyen = #{valeur} WHERE idJoueur = '#{unID}' ")
 end
 
-def augmenterScoreDifficile(unPseudo, uneValeur)
+def augmenterScoreDifficile(unID, uneValeur)
 #Augmenter le score global d'un joueur
 	bdd = ouvrirBDD()
-	ancienneValeur = bdd.execute("SELECT scoreDifficile FROM profil WHERE pseudo = '#{unPseudo}'").shift.shift
+	ancienneValeur = bdd.execute("SELECT scoreDifficile FROM profil WHERE idJoueur = '#{unID}'").shift.shift
 	valeur = ancienneValeur + uneValeur
-	bdd.execute("UPDATE profil SET scoreDifficile = #{valeur} WHERE pseudo = '#{unPseudo}' ")
+	bdd.execute("UPDATE profil SET scoreDifficile = #{valeur} WHERE idJoueur = '#{unID}' ")
 end
 
-def augmenterNbPartiesJouees(unPseudo)
+def augmenterNbPartiesJouees(unID)
 #Augmenter le score global d'un joueur
 	bdd = ouvrirBDD()
-	valeur = bdd.execute("SELECT nbPartiesJouees FROM profil WHERE pseudo = '#{unPseudo}'").shift.shift + 1
-	bdd.execute("UPDATE profil SET nbPartiesJouees = #{valeur} WHERE pseudo = '#{unPseudo}' ")
+	valeur = bdd.execute("SELECT nbPartiesJouees FROM profil WHERE idJoueur = '#{unID}'").shift.shift + 1
+	bdd.execute("UPDATE profil SET nbPartiesJouees = #{valeur} WHERE idJoueur = '#{unID}' ")
 end
 
-def augmenterNbPartiesTermineesSansAides(unPseudo)
+def augmenterNbPartiesTermineesSansAides(unID)
 #Augmenter le score global d'un joueur
 	bdd = ouvrirBDD()
-	valeur = bdd.execute("SELECT nbPartiesFinitSansAides FROM profil WHERE pseudo = '#{unPseudo}'").shift.shift + 1
-	bdd.execute("UPDATE profil SET nbPartiesFinitSansAides = #{valeur} WHERE pseudo = '#{unPseudo}' ")
+	valeur = bdd.execute("SELECT nbPartiesFinitSansAides FROM profil WHERE idJoueur = '#{unID}'").shift.shift + 1
+	bdd.execute("UPDATE profil SET nbPartiesFinitSansAides = #{valeur} WHERE idJoueur = '#{unID}' ")
 end
 
 ############
@@ -139,34 +148,34 @@ end
 
 ## Méthodes pour intérargir avec le mode aventure
 
-def augmenterNiveau(unPseudo)
+def augmenterNiveau(unID)
 #Augmenter le score global d'un joueur
 	bdd = ouvrirBDD()
-	valeur = bdd.execute("SELECT niveau FROM profil WHERE pseudo = '#{unPseudo}'").shift.shift + 1
-	bdd.execute("UPDATE profil SET niveau = #{valeur} WHERE pseudo = '#{unPseudo}' ")
+	valeur = bdd.execute("SELECT niveau FROM profil WHERE idJoueur = '#{unID}'").shift.shift + 1
+	bdd.execute("UPDATE profil SET niveau = #{valeur} WHERE idJoueur = '#{unID}' ")
 end
 
-def augmenterTableau(unPseudo)
+def augmenterTableau(unID)
 #Augmenter le score global d'un joueur
 	bdd = ouvrirBDD()
-	valeur = bdd.execute("SELECT tableau FROM profil WHERE pseudo = '#{unPseudo}'").shift.shift + 1
-	bdd.execute("UPDATE profil SET tableau = #{valeur} WHERE pseudo = '#{unPseudo}' ")
+	valeur = bdd.execute("SELECT tableau FROM profil WHERE idJoueur = '#{unID}'").shift.shift + 1
+	bdd.execute("UPDATE profil SET tableau = #{valeur} WHERE idJoueur = '#{unID}' ")
 end
 
-def razTableau(unPseudo)
+def razTableau(unID)
 #Remise à zéro du compteur de tableau
 	bdd = ouvrirBDD()
-	bdd.execute("UPDATE profil SET tableau = 1 WHERE pseudo = '#{unPseudo}' ")
+	bdd.execute("UPDATE profil SET tableau = 1 WHERE idJoueur = '#{unID}' ")
 end
 
 ############
 
-## Méthode de recherche du mot de passe par le pseudo
-def connexion(unPseudo, unMotDePasse)
+## Méthode de recherche du mot de passe par le id
+def connexion(unID, unMotDePasse)
 # Recherche si les deux éléments passés en paramètre appartiennent à un même compte
 	bdd = ouvrirBDD()
-	motDePassePseudo = bdd.execute("SELECT password FROM profil WHERE pseudo = '#{unPseudo}'").to_s
-	if unMotDePasse = motDePassePseudo then
+	motDePasseid = bdd.execute("SELECT password FROM profil WHERE idJoueur = '#{unID}'").to_s
+	if unMotDePasse = motDePasseid then
 		return true
 	else
 		return false
@@ -176,13 +185,41 @@ end
 ############
 
 ## Méthode de changement de mot de passe
-def nouveauMotDePasse(unPseudo, uneReponse, unMotDePasse)
-# Change le mot de passe d'un pseudo si la réponse secrète est exacte
+def nouveauMotDePasse(unID, uneReponse, unMotDePasse)
+# Change le mot de passe d'un id si la réponse secrète est exacte
 	bdd = ouvrirBDD()
-	reponseSecrete = bdd.execute("SELECT repSecret FROM profil WHERE pseudo = '#{unPseudo}'").to_s
+	reponseSecrete = bdd.execute("SELECT repSecret FROM profil WHERE idJoueur = '#{unID}'").to_s
 	if uneReponse = reponseSecrete then
-		bdd.execute("UPDATE profil SET password = '#{unMotDePasse}' WHERE pseudo = '#{unPseudo}'")
+		bdd.execute("UPDATE profil SET password = '#{unMotDePasse}' WHERE idJoueur = '#{unID}'")
 		return true
+	else
+		return false
+	end
+end
+
+###########
+
+## Méthodes pour voir les différentes informations d'un compte en utilisant l'id
+def voirLesInformations(unID, iterateur)
+# Envoie les informations d'un compte en utilisant l'id. L'itérateur permet de choisir l'information
+	bdd = ouvrirBDD()
+	case iterateur
+	when 1 # Renvoie le pseudo
+		return bdd.execute("SELECT pseudo FROM profil WHERE idJoueur = #{unID}").to_s
+	when 2 # Renvoie le score global
+		return bdd.execute("SELECT scoreGlobal FROM profil WHERE idJoueur = #{unID}").shift.shift
+	when 3 # Renvoie le score facile
+		return bdd.execute("SELECT scoreFacile FROM profil WHERE idJoueur = #{unID}").shift.shift
+	when 4 # Renvoie le score moyen
+		return bdd.execute("SELECT scoreMoyen FROM profil WHERE idJoueur = #{unID}").shift.shift
+	when 5 # Renvoie le score difficile
+		return bdd.execute("SELECT scoreDifficile FROM profil WHERE idJoueur = #{unID}").shift.shift
+	when 6 # Renvoie le nombre de partie jouée
+		return bdd.execute("SELECT nbPartiesJouees FROM profil WHERE idJoueur = #{unID}").shift.shift
+	when 7 # Renvoie le nombre de partie terminée sans aide
+		return bdd.execute("SELECT nbPartiesFinitSansAides FROM profil WHERE idJoueur = #{unID}").shift.shift
+	when 8 # Renvoie le niveau de progression dans l'histoire
+
 	else
 		return false
 	end

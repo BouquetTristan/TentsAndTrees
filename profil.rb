@@ -1,5 +1,6 @@
 
 require 'sqlite3'
+require 'digest'
 
 # Ouverture de la base de donnée SQLite 3
 bdd = SQLite3::Database.new 'profil.db'
@@ -48,7 +49,7 @@ def ajouterUtilisateur(pseudo, mdp, rep)
 	bdd = ouvrirBDD()
 	if !(pseudoDejaPris(pseudo)) then
 		id = chercherIDUnique(bdd)
-		bdd.execute("INSERT INTO profil (idJoueur, pseudo, password, repSecret, scoreGlobal, scoreFacile, scoreMoyen, scoreDifficile, nbPartiesJouees, nbPartiesFinitSansAides, niveau, tableau) VALUES ( #{id}, '#{pseudo}', '#{mdp}', '#{rep}', 0, 0, 0, 0, 0, 0, 0, 0 )")
+		bdd.execute("INSERT INTO profil (idJoueur, pseudo, password, repSecret, scoreGlobal, scoreFacile, scoreMoyen, scoreDifficile, nbPartiesJouees, nbPartiesFinitSansAides, niveau, tableau) VALUES ( #{id}, '#{pseudo}', '#{Digest::SHA256.hexdigest(mdp)[0..20]}', '#{Digest::SHA256.hexdigest(rep)[0..20]}', 0, 0, 0, 0, 0, 0, 0, 0 )")
 		return id
 	else
 		return 0
@@ -175,7 +176,7 @@ def connexion(unID, unMotDePasse)
 # Recherche si les deux éléments passés en paramètre appartiennent à un même compte
 	bdd = ouvrirBDD()
 	motDePasseid = bdd.execute("SELECT password FROM profil WHERE idJoueur = '#{unID}'").to_s
-	if unMotDePasse = motDePasseid then
+	if Digest::SHA256.hexdigest(unMotDePasse)[0..20] = motDePasseid then
 		return true
 	else
 		return false
@@ -189,8 +190,8 @@ def nouveauMotDePasse(unID, uneReponse, unMotDePasse)
 # Change le mot de passe d'un id si la réponse secrète est exacte
 	bdd = ouvrirBDD()
 	reponseSecrete = bdd.execute("SELECT repSecret FROM profil WHERE idJoueur = '#{unID}'").to_s
-	if uneReponse = reponseSecrete then
-		bdd.execute("UPDATE profil SET password = '#{unMotDePasse}' WHERE idJoueur = '#{unID}'")
+	if Digest::SHA256.hexdigest(uneReponse)[0..20] = reponseSecrete then
+		bdd.execute("UPDATE profil SET password = '#{Digest::SHA256.hexdigest(unMotDePasse)[0..20] }' WHERE idJoueur = '#{unID}'")
 		return true
 	else
 		return false

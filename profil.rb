@@ -15,16 +15,16 @@ resultat = bdd.execute <<-SQL
 		password VARCHAR(50),
 		repSecret VARCHAR(50),
 
-		scoreGlobal INT,
-		scoreFacile INT,
-		scoreMoyen INT,
-		scoreDifficile INT,
+		scoreGlobal INT DEFAULT 0,
+		scoreFacile INT DEFAULT 0,
+		scoreMoyen INT DEFAULT 0,
+		scoreDifficile INT DEFAULT 0,
 
-		nbPartiesJouees INT,
-		nbPartiesFinitSansAides INT,
+		nbPartiesJouees INT DEFAULT 0,
+		nbPartiesFinitSansAides INT DEFAULT 0,
 
-		niveau INT,
-		tableau INT
+		niveau INT DEFAULT 0,
+		tableau INT DEFAULT 0
 	);
 SQL
 
@@ -171,12 +171,12 @@ end
 
 ############
 
-## Méthode de recherche du mot de passe par le id
-def connexion(unID, unMotDePasse)
+## Méthode de recherche du mot de passe par le pseudo
+def connexion(unPseudo, unMotDePasse)
 # Recherche si les deux éléments passés en paramètre appartiennent à un même compte
 	bdd = ouvrirBDD()
-	motDePasseid = bdd.execute("SELECT password FROM profil WHERE idJoueur = '#{unID}'").to_s
-	if Digest::SHA256.hexdigest(unMotDePasse)[0..20] = motDePasseid then
+	motDePasseid = bdd.execute("SELECT password FROM profil WHERE pseudo = '#{unPseudo}'").shift.shift
+	if Digest::SHA256.hexdigest(unMotDePasse)[0..20] == motDePasseid then
 		return true
 	else
 		return false
@@ -190,7 +190,7 @@ def nouveauMotDePasse(unID, uneReponse, unMotDePasse)
 # Change le mot de passe d'un id si la réponse secrète est exacte
 	bdd = ouvrirBDD()
 	reponseSecrete = bdd.execute("SELECT repSecret FROM profil WHERE idJoueur = '#{unID}'").to_s
-	if Digest::SHA256.hexdigest(uneReponse)[0..20] = reponseSecrete then
+	if Digest::SHA256.hexdigest(uneReponse)[0..20] == reponseSecrete then
 		bdd.execute("UPDATE profil SET password = '#{Digest::SHA256.hexdigest(unMotDePasse)[0..20] }' WHERE idJoueur = '#{unID}'")
 		return true
 	else
@@ -201,7 +201,7 @@ end
 ###########
 
 ## Méthodes pour voir les différentes informations d'un compte en utilisant l'id
-def voirLesInformations(unID, iterateur)
+def recupererInformation(unID, iterateur)
 # Envoie les informations d'un compte en utilisant l'id. L'itérateur permet de choisir l'information
 	bdd = ouvrirBDD()
 	case iterateur
@@ -220,6 +220,9 @@ def voirLesInformations(unID, iterateur)
 	when 7 # Renvoie le nombre de partie terminée sans aide
 		return bdd.execute("SELECT nbPartiesFinitSansAides FROM profil WHERE idJoueur = #{unID}").shift.shift
 	when 8 # Renvoie le niveau de progression dans l'histoire
+		return bdd.execute("SELECT niveau FROM profil WHERE idJoueur = #{unID}").shift.shift
+	when 9 # Renvoie le niveau de progression dans l'histoire
+		return bdd.execute("SELECT tableau FROM profil WHERE idJoueur = #{unID}").shift.shift
 
 	else
 		return false

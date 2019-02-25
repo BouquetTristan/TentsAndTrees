@@ -16,3 +16,7 @@ j3.inscrire()
 
 
 j2.desinscrire()
+
+#j2.connecter()
+j1.connecter()
+j1.afficherStatistiques()

@@ -54,9 +54,11 @@ class Joueur
 
 	def connecter()
 		puts "Connexion en cours....\n"
-		if connexion(@pseudo, @mdp) == true then
+		id = connexion(@pseudo, @mdp)
+		if id != nil then
 			puts "   Authentification en cours....\n"
 			puts "   Récupération des informations....\n"
+				@id = id
 				@scoreGlobal = recupererInformation(@id, 2)
 				@scoreFacile = recupererInformation(@id, 3)
 				@scoreMoyen = recupererInformation(@id, 4)

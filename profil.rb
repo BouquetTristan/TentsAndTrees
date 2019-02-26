@@ -44,12 +44,12 @@ end
 
 # Ajouter et supprimer un utilisateur
 
-def ajouterUtilisateur(pseudo, mdp, rep)
+def ajouterUtilisateur(unPseudo, unMDP, uneReponse)
 #Insérer des informations dans la base de données
 	bdd = ouvrirBDD()
-	if !(pseudoDejaPris(pseudo)) then
+	if !(pseudoDejaPris(unPseudo)) then
 		id = chercherIDUnique(bdd)
-		bdd.execute("INSERT INTO profil (idJoueur, pseudo, password, repSecret, scoreGlobal, scoreFacile, scoreMoyen, scoreDifficile, nbPartiesJouees, nbPartiesFinitSansAides, niveau, tableau) VALUES ( #{id}, '#{pseudo}', '#{Digest::SHA256.hexdigest(mdp)[0..20]}', '#{Digest::SHA256.hexdigest(rep)[0..20]}', 0, 0, 0, 0, 0, 0, 0, 0 )")
+		bdd.execute("INSERT INTO profil (idJoueur, pseudo, password, repSecret, scoreGlobal, scoreFacile, scoreMoyen, scoreDifficile, nbPartiesJouees, nbPartiesFinitSansAides, niveau, tableau) VALUES ( #{id}, '#{unPseudo}', '#{Digest::SHA256.hexdigest(unMDP)[0..20]}', '#{Digest::SHA256.hexdigest(uneReponse)[0..20]}', 0, 0, 0, 0, 0, 0, 0, 0 )")
 		return id
 	else
 		return 0
@@ -77,7 +77,7 @@ end
 
 def utilisateurExistant(unID)
 	bdd = ouvrirBDD()
-	if bdd.execute("SELECT COUNT(idJoueur) FROM profil WHERE idJoueur = '#{unID}'").shift.shift > 0
+	if bdd.execute("SELECT idJoueur FROM profil WHERE idJoueur = '#{unID}'").shift.shift != nil
 		return true
 	else
 		return false
@@ -94,6 +94,37 @@ def pseudoDejaPris(unPseudo)
 		return true
 	end
 end
+
+############
+
+## Méthode de recherche du mot de passe par le pseudo
+def connexion(unPseudo, unMDP)
+# Recherche si les deux éléments passés en paramètre appartiennent à un même compte
+	bdd = ouvrirBDD()
+	motDePasseid = bdd.execute("SELECT password FROM profil WHERE pseudo = '#{unPseudo}'").shift.shift
+	if Digest::SHA256.hexdigest(unMDP)[0..20] == motDePasseid then
+		return bdd.execute("SELECT idJoueur FROM profil WHERE pseudo = '#{unPseudo}'").shift.shift
+	else
+		return false
+	end
+end
+
+############
+
+## Méthode de changement de mot de passe
+def nouveauMotDePasse(unID, uneReponse, unMDP)
+# Change le mot de passe d'un id si la réponse secrète est exacte
+	bdd = ouvrirBDD()
+	reponseSecrete = bdd.execute("SELECT repSecret FROM profil WHERE idJoueur = '#{unID}'").to_s
+	if Digest::SHA256.hexdigest(uneReponse)[0..20] == reponseSecrete then
+		bdd.execute("UPDATE profil SET password = '#{Digest::SHA256.hexdigest(unMDP)[0..20] }' WHERE idJoueur = '#{unID}'")
+		return true
+	else
+		return false
+	end
+end
+
+###########
 
 
 ## Méthodes pour modifier les scores, le nombre de partie jouée et terminée et la progression du mode aventure
@@ -169,36 +200,7 @@ def razTableau(unID)
 	bdd.execute("UPDATE profil SET tableau = 1 WHERE idJoueur = '#{unID}' ")
 end
 
-############
-
-## Méthode de recherche du mot de passe par le pseudo
-def connexion(unPseudo, unMotDePasse)
-# Recherche si les deux éléments passés en paramètre appartiennent à un même compte
-	bdd = ouvrirBDD()
-	motDePasseid = bdd.execute("SELECT password FROM profil WHERE pseudo = '#{unPseudo}'").shift.shift
-	if Digest::SHA256.hexdigest(unMotDePasse)[0..20] == motDePasseid then
-		return true
-	else
-		return false
-	end
-end
-
-############
-
-## Méthode de changement de mot de passe
-def nouveauMotDePasse(unID, uneReponse, unMotDePasse)
-# Change le mot de passe d'un id si la réponse secrète est exacte
-	bdd = ouvrirBDD()
-	reponseSecrete = bdd.execute("SELECT repSecret FROM profil WHERE idJoueur = '#{unID}'").to_s
-	if Digest::SHA256.hexdigest(uneReponse)[0..20] == reponseSecrete then
-		bdd.execute("UPDATE profil SET password = '#{Digest::SHA256.hexdigest(unMotDePasse)[0..20] }' WHERE idJoueur = '#{unID}'")
-		return true
-	else
-		return false
-	end
-end
-
-###########
+################
 
 ## Méthodes pour voir les différentes informations d'un compte en utilisant l'id
 def recupererInformation(unID, iterateur)
@@ -221,7 +223,7 @@ def recupererInformation(unID, iterateur)
 		return bdd.execute("SELECT nbPartiesFinitSansAides FROM profil WHERE idJoueur = #{unID}").shift.shift
 	when 8 # Renvoie le niveau de progression dans l'histoire
 		return bdd.execute("SELECT niveau FROM profil WHERE idJoueur = #{unID}").shift.shift
-	when 9 # Renvoie le niveau de progression dans l'histoire
+	when 9 # Renvoie le tableau de progression dans l'histoire
 		return bdd.execute("SELECT tableau FROM profil WHERE idJoueur = #{unID}").shift.shift
 
 	else

@@ -101,12 +101,15 @@ end
 def connexion(unPseudo, unMDP)
 # Recherche si les deux éléments passés en paramètre appartiennent à un même compte
 	bdd = ouvrirBDD()
-	motDePasseid = bdd.execute("SELECT password FROM profil WHERE pseudo = '#{unPseudo}'").shift.shift
-	if Digest::SHA256.hexdigest(unMDP)[0..20] == motDePasseid then
-		return bdd.execute("SELECT idJoueur FROM profil WHERE pseudo = '#{unPseudo}'").shift.shift
-	else
-		return false
+	if bdd.execute("SELECT password FROM profil WHERE pseudo = '#{unPseudo}'").shift != nil then
+		motDePasse = bdd.execute("SELECT password FROM profil WHERE pseudo = '#{unPseudo}'").shift.shift
+		if Digest::SHA256.hexdigest(unMDP)[0..20] == motDePasse then
+			return bdd.execute("SELECT idJoueur FROM profil WHERE pseudo = '#{unPseudo}'").shift.shift
+		end
+	
+		return nil
 	end
+
 end
 
 ############

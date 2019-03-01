@@ -59,6 +59,7 @@ class Joueur
 			puts "   Authentification en cours....\n"
 			puts "   Récupération des informations....\n"
 				@id = id
+				@rep = recupererInformation(@id, 1)
 				@scoreGlobal = recupererInformation(@id, 2)
 				@scoreFacile = recupererInformation(@id, 3)
 				@scoreMoyen = recupererInformation(@id, 4)
@@ -73,6 +74,8 @@ class Joueur
 		else
 			puts "Connexion échouée\n"
 		end
+
+		return id
 	end
 
 	def afficherStatistiques()

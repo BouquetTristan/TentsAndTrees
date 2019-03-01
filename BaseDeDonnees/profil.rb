@@ -213,7 +213,7 @@ def recupererInformation(unID, iterateur)
 	bdd = ouvrirBDD()
 	case iterateur
 	when 1 # Renvoie le pseudo
-		return bdd.execute("SELECT pseudo FROM profil WHERE idJoueur = #{unID}").to_s
+		return bdd.execute("SELECT repSecret FROM profil WHERE idJoueur = #{unID}").to_s
 	when 2 # Renvoie le score global
 		return bdd.execute("SELECT scoreGlobal FROM profil WHERE idJoueur = #{unID}").shift.shift
 	when 3 # Renvoie le score facile

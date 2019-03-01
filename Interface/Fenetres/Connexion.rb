@@ -1,9 +1,9 @@
 require 'gtk3'
-require './Menu.rb'
+#require './Menu.rb'
 require './CreateCount.rb'
 require './ForgetPW.rb'
 
-require './GameMode.rb'
+#require './GameMode.rb'
 
 class Connexion < Gtk::Builder
 
@@ -28,8 +28,8 @@ class Connexion < Gtk::Builder
 				@connexionError.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 10\">/!\\ Erreur mot de passe ou identifiant</span>\n")
 			else 
 				
-				@pSuivant = Menu.new
-				puts("coucou")
+				#@pSuivant = Menu.new
+				#puts("coucou")
 				#@fConnexion.destroy	
 			end	
 		}

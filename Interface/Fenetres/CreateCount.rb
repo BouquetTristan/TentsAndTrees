@@ -51,5 +51,5 @@ class CreateCount < Gtk::Builder
 		
 end
 
-builder = CreateCount.new
-Gtk.main
+#builder = CreateCount.new
+#Gtk.main

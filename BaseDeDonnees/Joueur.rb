@@ -78,6 +78,16 @@ class Joueur
 		return id
 	end
 
+	def motDePasseOublier(nouveauMDP)
+		if nouveauMotDePasse(@pseudo, @rep, nouveauMDP) == true then
+			puts "   Le mot de passe a bien été modifié\n"
+			return true
+		else
+			puts "   La réponse secrète est incorrecte\n"
+			return false
+		end
+	end
+
 	def afficherStatistiques()
 		if @scoreGlobal != nil then
 			puts "Joueur : #{@pseudo}##{@id}\n"

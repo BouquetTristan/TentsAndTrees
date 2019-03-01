@@ -119,9 +119,9 @@ def nouveauMotDePasse(unPseudo, uneReponse, unMDP)
 # Change le mot de passe d'un profil si la réponse secrète est exacte
 	bdd = ouvrirBDD()
 	if bdd.execute("SELECT repSecret FROM profil WHERE pseudo = '#{unPseudo}'").shift != nil then
-		reponseSecrete = bdd.execute("SELECT repSecret FROM profil WHERE idJoueur = '#{unID}'").shift.shift
+		reponseSecrete = bdd.execute("SELECT repSecret FROM profil WHERE pseudo = '#{unPseudo}'").shift.shift
 		if Digest::SHA256.hexdigest(uneReponse)[0..20] == reponseSecrete then
-			bdd.execute("UPDATE profil SET password = '#{Digest::SHA256.hexdigest(unMDP)[0..20] }' WHERE idJoueur = '#{unID}'")
+			bdd.execute("UPDATE profil SET password = '#{Digest::SHA256.hexdigest(unMDP)[0..20] }' WHERE pseudo = '#{unPseudo}'")
 			return true
 		end
 	else

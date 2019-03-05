@@ -1,6 +1,6 @@
 require 'gtk3'
 require './GameMode.rb'
-#require './grille/grille.rb'
+require './grille/grille.rb'
 
 class Game < Gtk::Builder
 

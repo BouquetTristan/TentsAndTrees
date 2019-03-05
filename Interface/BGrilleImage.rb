@@ -28,16 +28,16 @@ class BoutonGrille
 	def chgEtat(etat)
 		if etat == 0
 			#@image.set_from_file('./image/rien.png')
-			Gtk::Button.set_image(self, @rien)
+			self.set_image(Gtk::Image.new :file=> './image/rien.png')
 		end
 		if etat == 1
-			self.mBouton(@herbe)
+			self.set_image(Gtk::Image.new :file=> './image/herbe.png')
 		end
 		if etat == 2
-			self.mBouton(@arbre)
+			self.set_image(Gtk::Image.new :file=> './image/Arbre.png')
 		end
 		if etat == 3
-			self.mBouton(@tente)
+			self.set_image(Gtk::Image.new :file=> './image/Tente.png')
 		end
 	end
 

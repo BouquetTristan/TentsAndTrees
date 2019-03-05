@@ -2,9 +2,8 @@ require 'gtk3'
 #require './Menu.rb'
 require './CreateCount.rb'
 require './ForgetPW.rb'
-require '../../BaseDeDonnees/Joueur.rb'
 
-#require './GameMode.rb'
+
 
 class Connexion < Gtk::Builder
 
@@ -25,12 +24,8 @@ class Connexion < Gtk::Builder
 			
 		
 		@bConnexion.signal_connect('clicked') {
-			joueur = Joueur.new(@ePseudo.text, @ePassword.text, nil)
-			if joueur.connecter() == nil then
-				@ePassword.text = ''
-			end
 			if @ePseudo.text == '' || @ePassword.text == ''
-				@connexionError.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 10\">/!\\ Erreur mot de passe ou identifiant incorrect</span>\n")
+				@connexionError.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 10\">/!\\ Erreur mot de passe ou identifiant</span>\n")
 			else 
 				
 				#@pSuivant = Menu.new

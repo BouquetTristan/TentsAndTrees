@@ -1,13 +1,16 @@
-require 'gtk2'
+
+require 'gtk3'
 
 class BoutonGrille
 
 	# @bouton
 	# @coordI, @coordJ
-	# @image
 
 	def initialize()
-		@bouton = Gtk::Button.new("")
+		@box = Gtk::EventBox.new
+		@bouton = Gtk::Button.new
+		
+		
 	end
 
 	def mCoord(i,j)
@@ -16,21 +19,29 @@ class BoutonGrille
 	end
 
 	def mBouton(valeur)
-		@bouton.set_label(valeur.to_s)
+		@box.set_label(valeur.to_s)
 	end
 
 	def chgEtat(etat)
 		if etat == 0
-			self.mBouton(0)
+			@image=(Gtk::Image.new(:file =>"./image/rien.png", :size => :dialog))
+			@bouton.set_image(@image)
+			focus_hadjustment=(:start)
 		end
 		if etat == 1
-			self.mBouton(1)
+			@image=(Gtk::Image.new(:file =>"./image/herbe.png", :size => :dialog))
+			@bouton.set_image(@image)
+			focus_hadjustment=(:start)
 		end
 		if etat == 2
-			self.mBouton(2)
+			@image=(Gtk::Image.new(:file =>"./image/arbre.png",:size => :dialog))
+			@bouton.set_image(@image)
+			focus_hadjustment=(:start)
 		end
 		if etat == 3
-			self.mBouton(3)
+			@image=(Gtk::Image.new(:file =>"./image/tente.png",:size => :dialog))
+			@bouton.set_image(@image)
+			focus_hadjustment=(:start)
 		end
 	end
 
@@ -39,3 +50,7 @@ class BoutonGrille
 	attr_writer :bouton
 
 end
+
+
+
+

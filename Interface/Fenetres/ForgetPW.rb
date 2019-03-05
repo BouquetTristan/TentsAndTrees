@@ -1,6 +1,5 @@
 require 'gtk3'
 require './Connexion.rb'
-require '../../BaseDeDonnees/Joueur.rb'
 
 
 class ForgetPW < Gtk::Builder
@@ -17,10 +16,6 @@ class ForgetPW < Gtk::Builder
 		@fPassword.show_all
 
 		@bValid.signal_connect('clicked') {
-			joueur = Joueur.new(@ePseudo.text, nil, @eSecret.text)
-			if joueur.motDePasseOublier(@ePassword.text) == nil then
-				@eSecret.text = ''
-			end
 			if @ePseudo.text == '' 
 				@tErrorP.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 10\">/!\\ Pseudo incorrect !</span>\n")
 			else 
@@ -43,7 +38,3 @@ class ForgetPW < Gtk::Builder
 			
 	end
 end
-
-# On lance l'application
-builder = ForgetPW.new()
-Gtk.main

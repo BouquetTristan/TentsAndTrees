@@ -1,0 +1,25 @@
+﻿http://ruby-gnome2.osdn.jp/hiki.cgi?Gtk%3A%3AImage
+https://www.rubydoc.info/gems/gtk3/Gtk/Image
+
+s
+Test page choix de la difficulté:
+	+3 boutons
+
+	+Ouverture de la grille en fonction de la difficulté.
+		+Modifier Les initialize pour prendre la taille en paramêtre.
+
+	+Modifier IGrille.rb pour afficher les tente attendu sur chaque lignes et colones.
+
+Travailler sur le bug d'ouverture des pages...
+Travailler sur l'affichage des images: 
+	+ Passer par les "pixbofs" apparemetn plus simple
+
+Rechercher le CSS en version XML.
+Voir pour le Timer
+
+AIDE -> Popup avec 5 boutons
+
+
+event_box.signal_connect("button_press_event") do
+  puts "Clicked."
+end

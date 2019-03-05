@@ -15,6 +15,8 @@ class Grille
   attr_accessor:grille
   attr_accessor:fich
   attr_accessor:temp
+  attr_accessor:tentesL
+  attr_accessor:tentesC
 
   private_class_method:new
   #methode de classe pour creer des objets case
@@ -28,6 +30,8 @@ class Grille
     @grille=[[]]
     @temp = 0
     @fich=fich
+    @tentesL = []
+    @tentesC = []
 
     for i in (0..@taille)
       temp=[]
@@ -39,6 +43,8 @@ class Grille
 
 
       fichTogrille()
+      nbTentesLigne()
+      nbTentesColonne()
 
   end #end of initialize
 
@@ -110,4 +116,37 @@ class Grille
    end#end raz
 
 end #end of the class Grille
+
+def nbTentesLigne ()
+	@grille.each do |ligne|
+		nbTentes = 0
+		ligne.each do |uneCase|
+			if uneCase.etat == 1 then
+				nbTentes += 1
+			end
+		end
+		@tentesL.push(nbTentes)
+	end
+end
+
+def nbTentesColonne ()
+	for j in (0..@taille)
+		nbTentes = 0
+		for i in (0..@taille)
+			if @grille[i][j].etat == 1 then
+				nbTentes += 1
+			end
+		end
+		@tentesC.push(nbTentes)
+	end
+end
+
+
+#grilleJ = Grille.creer(6, "GrilleJ.txt")
+#grilleF = Grille.creer(6, "GrilleF.txt")
+
+#print grilleF.tentesL
+#print grilleF.tentesC
+
+
 

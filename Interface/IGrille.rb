@@ -11,14 +11,15 @@ class IGrille
 
 	def initialize(taille, grille)
 
-		grillej = Grille.creer(taille,"grille.txt")
+		grilleJ = Grille.creer(taille, "./grille/GrilleJ.txt")
+		grilleF = Grille.creer(taille, "./grille/GrilleF.txt")
 		
 		@boutonGrille = [[]]
 
 		for i in (0..taille-1)
 			temp=[]
 			for j in (0..taille-1)
-					vEtat = grillej.grille[i][j].etat
+					vEtat = grilleJ.grille[i][j].etat
 					temp[j] = BoutonGrille.new
 					temp[j].mCoord(i,j)
 					temp[j].chgEtat(vEtat)
@@ -29,9 +30,9 @@ class IGrille
 		@boutonGrille.each{|k| 
 			k.each{|l|
 				l.bouton.signal_connect("button_press_event"){
-		        	grillej.grille[l.coordI][l.coordJ].jouerCase()
-					@boutonGrille[l.coordI][l.coordJ].chgEtat(grillej.grille[l.coordI][l.coordJ].etat)
-					grillej.grilleTofich()	
+		        	grilleJ.grille[l.coordI][l.coordJ].jouerCase()
+					@boutonGrille[l.coordI][l.coordJ].chgEtat(grilleJ.grille[l.coordI][l.coordJ].etat)
+					grilleJ.grilleTofich()	
 				}
 			}
 		}

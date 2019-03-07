@@ -1,27 +1,19 @@
 require 'gtk3'
 require './IGrille.rb'
 require './gHelp.rb'
+#require './Page.rb'
 
 
+class FPlay# Page
 
-class FPlay < Gtk::Builder
-
-	def FPlay.construire(taille)
-		new(taille)
+	def FPlay.construire(fenetre, taille)
+		new(fenetre, taille)
 	end
 
-	def initialize(taille)
-
-		@fPlay = Gtk::Window.new
-		@fPlay.set_default_size(600,400)
-		@fPlay.border_width=5
-		#fenetre.set_window_position(Gtk::Window::CENTER)
+	def initialize(fenetre, taille)
 		
 		@gPlay=Gtk::Table.new(1,3, false)
-		#@gHelp
-		@fPlay.add(@gPlay)
-
-		#@separator=Gtk::Separator.new()
+		fenetre.add(@gPlay)
 		
 		@grille=Gtk::Table.new(taille,taille, false)
 		@gHelp=Gtk::Table.new(3,1, false)
@@ -32,9 +24,9 @@ class FPlay < Gtk::Builder
 		@grille = IGrille.new(taille, @grille)
 		@gHelp = GHelp.new(@gHelp)
 
-		@fPlay.show_all()
+		@fenetre.show_all()
 		#destruction fenetre quand "quitter"
-		@fPlay.signal_connect('destroy') {onDestroy}
+		#@fPlay.signal_connect('destroy') {onDestroy}
 	end	
 end
 

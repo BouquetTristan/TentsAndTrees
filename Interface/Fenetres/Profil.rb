@@ -1,7 +1,8 @@
 require 'gtk3'
 
 require './ModifCount.rb'
-require './Menu.rb'
+#require './Menu.rb'
+require '../../BaseDeDonnees/Joueur.rb'
 
 
 class Profil < Gtk::Builder
@@ -37,3 +38,6 @@ class Profil < Gtk::Builder
 			
 	end
 end
+# On lance l'application
+builder = Connexion.new()
+Gtk.main	

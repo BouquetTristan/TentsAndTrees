@@ -1,4 +1,9 @@
 
+##
+# BOUQUET Tristan
+# 
+# Méthodes pour créer et modifier une base de données
+
 require 'sqlite3'
 require 'digest'
 

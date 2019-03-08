@@ -1,4 +1,6 @@
-
+##
+# BOUQUET Tristan
+#
 # Ce programme a pour but d'interagir avec la base de données des profils des utilisateurs
 # Ce programme possède des méthodes pour lire, écrire et trouver des informations qui seront envoyés par le biais de 'profil.rb'
 

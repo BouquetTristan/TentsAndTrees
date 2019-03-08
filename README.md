@@ -14,8 +14,9 @@ Des arbres et des tentes est un jeu où le joueur doit compléter une grille en 
 
 ### Description de notre jeu
 Nous avons décidé de créer un jeu familial et détente. <br/>
-- C'est pour cela, nous n'avons qu'un seul mode de jeu qui permet de jouer avec un chrono et un score de jeu. Il s'agit du mode classé qui sauvegarde le score par niveau de difficulté.<br/><br/>
-- Nous avons développé deux modes de jeu qui sont axés sur l'amusement, le mod classic qui permet au joueur de jouer sans le chrono et n'attribut aucun point, et le mode aventure qui permet de résoudre des grilles dans un temps donné pour découvrir l'histoire.<br/>
+- Le premier mode de jeu est nommé "Classic" et permet au joueur de jouer sur une grille de niveau aléatoire pour son simple plaisir<br/>
+- Le deuxième mode est le mode "Aventure" qui demande au joueur de réussir des grilles dans un temps impartit pour continuer à avancer dans ce mode de jeu. Cependant, le joueur ne subit aucun malus s'il ne réussit pas à terminer la grille à temps sauf celui de devoir la recommencer.<br/>
+- Enfin, le troisième et dernier mode de jeu est nommé "Classé" qui donne la possibilité au joueur de choisir un niveau de difficulté parmis trois (Facile, Moyen, Difficile) et doit le réussir le plus vite possible et avec le minimum d'aide. Un score est calculé à la fin et les meilleurs scores sont affichés dans une page de l'accueil.<br/>
 
 ### L'histoire de notre jeu
 Nous avons créé une petite histoire pour le mode aventure afin de donner une meilleure expérience de jeu à l'utilisateur. Ce mode aventure est divisé en 4 niveaux de 30 tableaux chacun. Chaque niveau représente une saison (Printemps, Eté, Automne, Hiver) et à le dernier tableau est une grille très difficile permettant aux joueurs d'avoir un sentiment s'accomplissement après l'avoir fini.<br/><br/>

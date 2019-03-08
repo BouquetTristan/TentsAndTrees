@@ -1,5 +1,12 @@
-require 'gtk2'
-#require './fGameMode.rb'
+require 'gtk3'
+require './fGameMode.rb'
+
+# Fichier: fDiff.rb
+# Auteur: Marchand Killian
+# Description: 
+# => Menu des difficultés
+# => C'est ici qu'est regroupé les composants du menu des difficultés
+# => Ici nous gerons ainsi les évenements lié aux boutons, qui permet d'appeler la page suivante ou bien précédente ainsi que la construction de la page
 
 class FMenu < Gtk::Builder
 
@@ -12,13 +19,13 @@ class FMenu < Gtk::Builder
 		@gMenu = Gtk::Table.new(5,1, false)
 		@fMenu.add(@gMenu)
 
-		@ghead = Gtk::Table.new(3,1, false)
-			@titre =  Gtk::Label.new('Tent''s & trees')
-			@option = Gtk::Button.new("")
-			@profil = Gtk::Button.new("Profil")
-			@ghead.attach(@option, 0,1,0,1)
-			@ghead.attach(@titre, 1,2,0,1)
-			@ghead.attach(@profil, 2,3,0,1)
+					@ghead = Gtk::Table.new(3,1, false)
+					@titre =  Gtk::Label.new('Tent''s & trees')
+					@option = Gtk::Button.new("")
+					@profil = Gtk::Button.new("Profil")
+					@ghead.attach(@option, 0,1,0,1)
+					@ghead.attach(@titre, 1,2,0,1)
+					@ghead.attach(@profil, 2,3,0,1)
 		
 		@play = Gtk::Button.new("Jouer")
 		@didac = Gtk::Button.new("Didactitiel")

@@ -68,9 +68,11 @@ class Grille
 			ligne.each_char do |c|
 				ligneCasesF << Case.creer(i, j, c == "_" ? "H": c)
 				ligneCasesJ << Case.creer(i, j, c == "A" ? "A": "V")
+				j += 1
 			end
 			@grilleF<<ligneCasesF
 			@grilleJ<<ligneCasesJ
+			i += 1
 	 	end
 	end
 
@@ -143,8 +145,10 @@ class Grille
   		ligneCasesJ = []
   		ligne.each_char do |c|
   			ligneCasesJ << Case.creer(i, j, c )
+  			j += 1
   		end
   		grille.grilleJ<<ligneCasesJ
+  		i += 1
   	end
 
   	return grille

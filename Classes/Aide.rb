@@ -62,4 +62,25 @@ class Aide
 		end
 		return nil
 	end
+
+	#Pb : Renvoie la dernière tente car a boucle ne s'arrête pas parce que c'est fait avc un yield -> un moyen de stopper la boucle ?
+	#Vérifie si les cases autour des tentes sont complétées
+	#Retourne la dernière tente rencontrée avec ses alentours non complétés
+	#Retourne nil si tous les alentours de chaque tente ont étés complétés 
+	def Aide.tenteContourCompleter(grille)
+		caseTrouvee = nil
+		grille.parcourirH(grille.grilleJ) { |uneCase|
+			if uneCase.etat == 1 then
+				casesVoisines = uneCase.casesVoisinesComplet(grille)
+				casesVoisines.each do |c|
+					if c.etat == 0 then
+						caseTrouvee = uneCase
+						
+					end
+				end
+			end
+			
+		}
+		return caseTrouvee
+	end
 end

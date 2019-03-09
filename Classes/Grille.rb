@@ -155,6 +155,7 @@ class Grille
   	return grille
   end
 
+  #Parcours horizontal de la grille
   def parcourirH (grille)
   	grille.each do |ligne|
   		ligne.each do |uneCase|

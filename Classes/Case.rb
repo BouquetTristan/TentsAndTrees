@@ -55,7 +55,7 @@ class Case
     return @etat.to_s
   end
 
-  #Renvoie un tableau contenant les cases voisines de la case
+  #Renvoie un tableau contenant les cases adjacentes de la case
   def casesVoisines (grille)
   
     tab = []
@@ -64,7 +64,7 @@ class Case
     if i - 1 >= 0 then
       tab<<(grille.grilleJ[i-1][j])
     end
-    
+
     #case en bas
     if i + 1 < grille.taille then
       tab<<(grille.grilleJ[i+1][j])
@@ -83,6 +83,32 @@ class Case
     return tab
   end
 
-  #Temporaire
+  #Renvoie un tableau contenant les cases voisines de la case
+  def casesVoisinesComplet (grille)
+    tab = self.casesVoisines(grille)
+
+     #case en haut à gauche
+    if i - 1 >= 0 && j - 1 >= 0 then
+      tab<<(grille.grilleJ[i-1][j-1])
+    end
+    
+    #case en haut à droite
+    if i - 1 >= 0 && j + 1 < grille.taille then
+      tab<<(grille.grilleJ[i-1][j+1])
+    end 
+
+    #case en bas à gauche
+    if i + 1 < grille.taille && j - 1 >= 0 then
+      tab<<(grille.grilleJ[i+1][j-1])
+    end
+
+    #case en bas à droite
+    if i + 1 < grille.taille && j + 1 < grille.taille then
+      tab<<(grille.grilleJ[i+1][j+1])
+    end 
+
+    return tab
+  end
+ 
 #fin de la classe Case
 end

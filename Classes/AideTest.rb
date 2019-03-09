@@ -44,3 +44,13 @@ print aide != nil ? "\nL'arbre en #{aide.i} #{aide.j} possède une seule possibl
 
 aide = Aide.arbreAngleHerbe(grille)
 print aide != nil ? "\nL'arbre en #{aide.i} #{aide.j} possède un coin qui est obligatoirement de l'herbe": "\nIl n'y a pas d'arbre avec un coin à compléter"
+
+print "\n\nGrille pour le déplacement vertical"
+
+grille.parcourirC() { |ligne|
+	print "\n"
+	ligne.each do |c|
+		print c
+	end
+	print "\n"
+}

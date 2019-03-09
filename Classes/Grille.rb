@@ -155,12 +155,36 @@ class Grille
   	return grille
   end
 
-  #Parcours horizontal de la grille
-  def parcourirH (grille)
-  	grille.each do |ligne|
+  #Parcours horizontal par case de la grille
+  def parcourirH ()
+  	self.parcourirL {|ligne|
   		ligne.each do |uneCase|
   			yield uneCase
   		end
+  	}
+  end
+
+  #Parcours par ligne de la grille
+  def parcourirL ()
+  	@grilleJ.each do |ligne|	
+  			yield ligne
+  	end
+  end
+
+  #Parcours par colonne de la grille
+  def parcourirC ()
+  	grilleTournee = []
+
+  	for i in 0..(@taille-1)
+  		colonne = []
+  		for j in 0..(@taille-1)
+  			colonne<<@grilleJ[j][i]
+  		end
+  		grilleTournee<<colonne
+  	end
+
+  	grilleTournee.each do |ligne|
+  		yield ligne
   	end
   end
 end

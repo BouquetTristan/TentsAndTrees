@@ -10,7 +10,7 @@ print "\nGrille finale : "
 grille.afficherGrille(grille.grilleF)
 
 #Test du parcours horizontal de la grille
-grille.parcourirH (grille.grilleJ) {|c| c.jouerCase()}
+grille.parcourirH  {|c| c.jouerCase()}
 print "\nGrille du joueur après avoir joué chaque case 1 fois : "
 grille.afficherGrille(grille.grilleJ)
 

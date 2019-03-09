@@ -25,7 +25,7 @@ class Aide
 	def Aide.ligneCompleterHerbes(grille)
 
 		i = 0
-		grille.grilleJ.each do |ligne|
+		grille.parcourirL { |ligne|
 			nbTentesMax = grille.nbTentesLigne[i]
 			nbTentes = 0
 			ligne.each do |c|
@@ -37,7 +37,7 @@ class Aide
 				return i
 			end
 			i += 1
-		end
+		}
 		return nil
 	end
 
@@ -46,11 +46,11 @@ class Aide
 	#Renvoie nil si aucune des colonnes de la grille ne peut être complétée
 	def Aide.colonneCompleterHerbes(grille)
 
-		for i in 0..(grille.taille-1)
+		i = 0
+		grille.parcourirC { |ligne|
 			nbTentesMax = grille.nbTentesColonne[i]
 			nbTentes = 0
-			for j in 0..(grille.taille-1)
-				c = grille.grilleJ[j][i]
+			ligne.each do |c|
 				if c.etat == 1 then
 					nbTentes += 1
 				end
@@ -59,7 +59,7 @@ class Aide
 				return i
 			end
 			i += 1
-		end
+		}
 		return nil
 	end
 
@@ -69,7 +69,7 @@ class Aide
 	#Retourne nil si tous les alentours de chaque tente ont étés complétés 
 	def Aide.tenteContourCompleter(grille)
 		caseTrouvee = nil
-		grille.parcourirH(grille.grilleJ) { |uneCase|
+		grille.parcourirH() { |uneCase|
 			if uneCase.etat == 1 then
 				casesVoisines = uneCase.casesVoisinesComplet(grille)
 				casesVoisines.each do |c|
@@ -91,7 +91,7 @@ class Aide
 	#Retourne nil si il n'y a aucun arbre avec un seul choix possible
 	def Aide.arbreTentePlacer(grille)
 		arbreTrouve = nil
-		grille.parcourirH(grille.grilleJ) { |uneCase|
+		grille.parcourirH() { |uneCase|
 			if uneCase.etat == 2 then
 				nbCasesVides = 0
 				tentes = false
@@ -120,7 +120,7 @@ class Aide
 	#Retourne nil sinon
 	def Aide.arbreAngleHerbe(grille)
 		arbreTrouve = nil
-		grille.parcourirH(grille.grilleJ) { |uneCase|
+		grille.parcourirH() { |uneCase|
 			if uneCase.etat == 2 then
 				cGE, cDE, cHE, cBE, cGHE, cGBE, cDHE, cDBE = nil #Toutes les variables à nil (l'affectation se fait pour la première, les autres sont automatiquement misent à nil)
 				casesVoisines = uneCase.casesVoisinesComplet(grille)
@@ -160,4 +160,5 @@ class Aide
 		}
 		return arbreTrouve
 	end
+
 end

@@ -83,4 +83,78 @@ class Aide
 		}
 		return caseTrouvee
 	end
+
+
+	#Vérifie pour chaque arbre si il ne reste qu'une possibilité pour placer une tente
+	#Retourne le premier arbre rencontré qui ne possède pas de tente et un seul choix restant pour la placer
+	#Retourne nil si il n'y a aucun arbre avec un seul choix possible
+	def Aide.arbreTentePlacer(grille)
+		arbreTrouve = nil
+		grille.parcourirH(grille.grilleJ) { |uneCase|
+			if uneCase.etat == 2 then
+				nbCasesVides = 0
+				tentes = false
+				casesVoisines = uneCase.casesVoisines(grille)
+
+				casesVoisines.each do |c|
+					if c.etat == 0 then
+						nbCasesVides +=1
+					elsif c.etat == 1 then
+						tentes = true
+					end
+				end
+
+				if !tentes && nbCasesVides == 1 then
+					arbreTrouve = uneCase
+				end 
+			end
+		}
+		return arbreTrouve
+	end
+
+
+	#Vérifie si un des angles de chaque arbre est obligatoirement de l'herbe
+	#Retourne le premier arbre rencontré avec un angle contenant forcément de l'herbe
+	#Retourne nil sinon
+	def Aide.arbreAngleHerbe(grille)
+		arbreTrouve = nil
+		grille.parcourirH(grille.grilleJ) { |uneCase|
+			if uneCase.etat == 2 then
+				cGE, cDE, cHE, cBE, cGHE, cGBE, cDHE, cDBE = nil #Toutes les variables à nil (l'affectation se fait pour la première, les autres sont automatiquement misent à nil)
+				casesVoisines = uneCase.casesVoisinesComplet(grille)
+
+				casesVoisines.each do |c|
+	
+					if c.i < uneCase.i then
+						if c.j < uneCase.j then
+							cGHE = c.etat
+						elsif c.j == uneCase.j then
+							cHE = c.etat
+						else
+							cDHE = c.etat
+						end
+					elsif c.i == uneCase.i then
+						if c.j < uneCase.j then
+							cGE = c.etat
+						else
+							cDE = c.etat
+						end
+					else
+						if c.j < uneCase.j then
+							cGBE = c.etat
+						elsif c.j == uneCase.j then
+							cBE = c.etat
+						else
+							cDBE = c.etat
+						end
+					end					
+				end
+	
+				if ((cGE != 0 || cGE == nil) && (cHE != 0 || cHE == nil) && cDBE == 0) ||  ((cGE != 0 || cGE == nil) && (cBE != 0 || cBE == nil) && cDHE == 0) || ((cDE != 0|| cDE == nil) && (cHE != 0 || cHE == nil) && cGBE == 0) || ((cDE != 0 || cDE == nil) && (cBE != 0 || cBE == nil) && cGHE == 0) then
+					arbreTrouve = uneCase
+				end
+			end
+		}
+		return arbreTrouve
+	end
 end

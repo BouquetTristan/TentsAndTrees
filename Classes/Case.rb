@@ -25,7 +25,7 @@ class Case
       @j=y
       case etat
         when "V" then
-          @etat=0
+          @etat= 0
         when "T" then
           @etat = 1
         when "A" then
@@ -53,6 +53,34 @@ class Case
   #methode pour retourner une case pour moi retourner une case est retourner son etat
   def to_s()
     return @etat.to_s
+  end
+
+  #Renvoie un tableau contenant les cases voisines de la case
+  def casesVoisines (grille)
+  
+    tab = []
+
+    #case en haut
+    if i - 1 >= 0 then
+      tab<<(grille.grilleJ[i-1][j])
+    end
+    
+    #case en bas
+    if i + 1 < grille.taille then
+      tab<<(grille.grilleJ[i+1][j])
+    end 
+
+    #case à gauche
+    if j - 1 >= 0 then
+      tab<<(grille.grilleJ[i][j-1])
+    end
+
+    #case à droite
+    if j + 1 < grille.taille then
+      tab<<(grille.grilleJ[i][j+1])
+    end 
+
+    return tab
   end
 
   #Temporaire

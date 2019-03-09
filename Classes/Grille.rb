@@ -1,6 +1,7 @@
 require_relative 'Case.rb'
 
 
+
 #La classe grille contient des informations relatives à une grille, ainsi qu'une grille actuelle et la grille correspondante finale
 class Grille
 
@@ -31,11 +32,11 @@ class Grille
 		#Récupération de la grille à partir du fichier
 		case   @difficulte
 		when "Facile" then
-			ligneGrille = IO.readlines("../Ressources/GrillesFaciles.txt")[@numero + 1]
+			ligneGrille = IO.readlines("../Ressources/GrillesFaciles.txt")[@numero - 1]
 		when "Moyenne" then
-			ligneGrille = IO.readlines("../Ressources/GrillesMoyennes.txt")[@numero + 1]
+			ligneGrille = IO.readlines("../Ressources/GrillesMoyennes.txt")[@numero - 1]
 		when "Difficile" then
-			ligneGrille = IO.readlines("../Ressources/GrillesDifficiles.txt")[@numero + 1]
+			ligneGrille = IO.readlines("../Ressources/GrillesDifficiles.txt")[@numero - 1]
 		end
 
 		#Séparation des éléments de la grille dans un tableau
@@ -66,8 +67,8 @@ class Grille
 
 			j = 0
 			ligne.each_char do |c|
-				ligneCasesF << Case.creer(i, j, c == "_" ? "H": c)
-				ligneCasesJ << Case.creer(i, j, c == "A" ? "A": "V")
+				ligneCasesF << Case.creer(i, j, c == '_' ? 'H': c)
+				ligneCasesJ << Case.creer(i, j, c == 'A' ? 'A': 'V')
 				j += 1
 			end
 			@grilleF<<ligneCasesF
@@ -154,4 +155,11 @@ class Grille
   	return grille
   end
 
+  def parcourirH (grille)
+  	grille.each do |ligne|
+  		ligne.each do |uneCase|
+  			yield uneCase
+  		end
+  	end
+  end
 end

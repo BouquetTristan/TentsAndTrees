@@ -47,6 +47,7 @@ print aide != nil ? "\nL'arbre en #{aide.i} #{aide.j} possède un coin qui est o
 
 print "\n\nGrille pour le déplacement vertical"
 
+#Bah super
 grille.parcourirC() { |ligne|
 	print "\n"
 	ligne.each do |c|

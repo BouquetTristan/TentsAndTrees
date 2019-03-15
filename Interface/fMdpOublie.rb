@@ -1,20 +1,20 @@
 require 'gtk3'
 #require './fGameMode.rb'
 require './TexteEntree'
+require './Page.rb'
+require './fMenu.rb'
 
-class FMdpOublie < Gtk::Builder
+class FMdpOublie < Page
 
-	def initialize
+     def initialize(monApp, header, anciennePage)
 
-		fenetre = Gtk::Window.new
-		fenetre.set_default_size(600,400)
-		fenetre.border_width=5
+         super("Mode de Jeu", monApp, :vertical, header,  anciennePage)
+         self.hautPage.spacing = 220
 
 		@gMdpOublie = Gtk::Table.new(7,1, false)
-		fenetre.add(@gMdpOublie)
 
 
-		titre =  Gtk::Label.new('Mot de passe oublié')
+
 		@pseudo = TexteEntree.creer('Pseudo : ', true).gTexteEntree
           @newMdp = TexteEntree.creer('Nouveau mot de passe : ', false).gTexteEntree
           @question =  Gtk::Label.new('Quel est votrelieux de vacance préféré?')
@@ -22,9 +22,6 @@ class FMdpOublie < Gtk::Builder
           @connexion = Gtk::Button.new(:label => 'Connexion', :use_underline => nil, :stock_id => nil)
 		@quit = Gtk::Button.new(:label => 'Quitter', :use_underline => nil, :stock_id => nil)
 
-		puts(@pseudo.class)
-
-		@gMdpOublie.attach(titre, 0,1,0,1)
 		@gMdpOublie.attach(@pseudo, 0,1,1,2)
 
 		@gMdpOublie.attach(@question, 0,1,2,3)
@@ -36,26 +33,18 @@ class FMdpOublie < Gtk::Builder
 
 
 		@connexion.signal_connect('clicked') {
+               self.supprimeMoi
+               suivant = FMenu.new(@window, header, self)
+               suivant.ajouteMoi
+               @window.show_all          
+          }
 
-			#ouvir menu
-			#@gConnexion.destroy
-
-
-		}
-
-		@quit.signal_connect('clicked') {
-
-			#detruit tout
-			fenetre.destroy
-
-		}
-		fenetre.show_all()
-
-		end
+        @quit.signal_connect('clicked') {        
+          }
+         
+        self.add(@gMdpOublie)
 
 	end
 
+end
 
-
-builder = FMdpOublie.new
-Gtk.main

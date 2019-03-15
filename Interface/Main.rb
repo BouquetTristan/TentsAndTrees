@@ -5,7 +5,7 @@ end
 
 require 'gtk3'
 
-require './fGameMode.rb'
+require './fConnexion.rb'
 require './Header.rb'
 
 #Gtk.init
@@ -31,7 +31,7 @@ def configureMonApp(uneApp)
 end
 
 if ARGV.size.eql?(0) then
-	
+
 	  monApp = Gtk::Window.new
 	  configureMonApp(monApp)
 
@@ -40,7 +40,7 @@ if ARGV.size.eql?(0) then
 
 	  ##
 	  # Box principale
-	  page = FGM.new(monApp, header, nil)
+	  page = FConnexion.new(monApp, header, nil)
 
 	  page.ajouteMoi
 

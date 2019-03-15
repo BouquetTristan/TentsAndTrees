@@ -2,33 +2,59 @@ require "gtk3"
 
 # Classe représentant une page
 
-class Page
+class Page < Gtk::Box
 
-	def initialize
+  attr_reader :hautPage, :btnRetour, :btnHome, :btnCompte, :enciennePage, :hautPage, :label , :couleur
 
-		fenetre = Gtk::Window.new
-		fenetre.set_default_size(700,400)
-		fenetre.border_width=5
-		fenetre.set_resizable(true)
-		fenetre.set_window_position(Gtk::Window::POS_CENTER_ALWAYS)
+  def initialize(unTitre, monApp, sens, unHeader, anciennePage)
 
-		#Creation table
-		table = Gtk::Table.new(2,1, FALSE)
-		fenetre.add(table)
+    ##
+    # Creation de la Gtk::Box
+    super(sens)
 
-		image = Gtk::Image.new(:file => "Images/Picross_logo.png", :size => :dialog)
+    @hautPage = Gtk::Box.new(:horizontal)
 
-		table.attach_defaults(image, 0,1,0,1)
+    @label =  Gtk::Label.new(unTitre.to_s)
+    @hautPage.add(@label, :expand => true, :fill => true)
 
-	end
+    self.pack_start(@hautPage, :expand => false, :fill => true)
 
-	def ajouter
-		table.attach_defaults(self, 1,2,0,1)
-	end
+    self.spacing = 100
 
-	def onDestroy
-		puts "L'application est fermé !"
-		Gtk.main_quit
-	end
+    @window = monApp
+    @header = unHeader
+    @enciennePage = enciennePage
+
+    @header.btnRetour.signal_connect('clicked') {
+      if (!anciennePage.eql?(nil)) then
+        self.supprimeMoi
+        anciennePage.ajouteMoi
+        @window.show_all
+      end
+    }
+
+  end
+
+  ##
+  # Methode pour ajouter l'objet actuelle a la fenetre
+  def ajouteMoi
+    @window << self
+  end
+
+  def supprimeMoi
+    @window.each{ |children|
+      unless children.class.eql?(Header) then
+        @window.remove(children)
+      end
+    }
+  end
+
+  def detruitMoi
+    @window.each{ |children|
+      unless children.class.eql?(Header) then
+        children.destroy
+      end
+    }
+  end
 
 end

@@ -11,50 +11,42 @@ require './Page.rb'
 # => Ici nous gerons ainsi les évenements lié aux boutons, qui permet d'appeler la page suivante ou bien précédente ainsi que la construction de la page
 
 
-class FDiff
+class FDiff < Page
 
-	def FDiff.construire(fenetre)
-		new(fenetre)
-	end
+	def initialize(monApp, header, anciennePage)
 
-	def initialize
+		super("Mode de Jeu", monApp, :vertical, header,  anciennePage)
+		self.hautPage.spacing = 220
 
-		@gDiff = Gtk::Table.new(5,1, false)
-		fenetre.add(@gDiff)
+		@butons = Gtk::ButtonBox.new(:horizontal)
+    	@butons.layout = :spread
 
-		titre =  Gtk::Label.new('Choix de la difficulté')
 		@easy = Gtk::Button.new(:label => 'Facile', :use_underline => nil, :stock_id => nil)
 		@medium = Gtk::Button.new(:label => 'Moyen', :use_underline => nil, :stock_id => nil)
 		@hard = Gtk::Button.new(:label => 'Diffice', :use_underline => nil, :stock_id => nil)
-		@back = Gtk::Button.new(:label => 'Retour', :use_underline => nil, :stock_id => nil)
 
-		@gDiff.attach(titre, 0,1,0,1)
-		@gDiff.attach(@easy, 0,1,1,2)
-		@gDiff.attach(@medium, 0,1,2,3)
-		@gDiff.attach(@hard, 0,1,3,4)
-		@gDiff.attach(@back, 0,1,4,5)
+
+		@butons.add(@easy, :expand => true, :fill => false)
+		@butons.add(@medium, :expand => true, :fill => false)
+		@butons.add(@hard, :expand => true, :fill => false)
+
 
 		@easy.signal_connect('clicked') {
-			@gDiff.destroy
+			self.supprimeMoi
 			FPlay.construire(fenetre, 8)
-					
+			@window.show_all		
 		}
 		@medium.signal_connect('clicked') {
-			@gDiff.destroy
+			self.supprimeMoi
 			FPlay.construire(fenetre, 12)
-			
+			@window.show_all
 		}
 		@hard.signal_connect('clicked') {
-			fenetre.remove(@gDiff)
+			self.supprimeMoi
 			FPlay.construire(fenetre, 16)
+			@window.show_all
 		}
 
-		@back.signal_connect('clicked') {
-			fenetre.remove(@gDiff)
-			FGM.new
-			
-		}
-
-		fenetre.show_all()
+		self.add(@butons)
 	end	
 end

@@ -20,6 +20,8 @@ class Joueur
 		@mdp = unMDP
 		@rep = uneRepSec
 
+		@nbAides = nil
+
 		@scoreGlobal = nil
 		@scoreFacile = nil
 		@scoreMoyen = nil
@@ -62,6 +64,9 @@ class Joueur
 			puts "   Récupération des informations....\n"
 				@id = id
 				@rep = recupererInformation(@id, 1)
+				
+				@nbAides = recupererInformation(@id, 10)
+
 				@scoreGlobal = recupererInformation(@id, 2)
 				@scoreFacile = recupererInformation(@id, 3)
 				@scoreMoyen = recupererInformation(@id, 4)

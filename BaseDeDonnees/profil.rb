@@ -20,6 +20,8 @@ resultat = bdd.execute <<-SQL
 		password VARCHAR(50),
 		repSecret VARCHAR(50),
 
+		nbAides INT DEFAULT 10,
+
 		scoreGlobal INT DEFAULT 0,
 		scoreFacile INT DEFAULT 0,
 		scoreMoyen INT DEFAULT 0,
@@ -185,6 +187,13 @@ def augmenterNbPartiesTermineesSansAides(unID)
 	bdd.execute("UPDATE profil SET nbPartiesFinitSansAides = #{valeur} WHERE idJoueur = '#{unID}' ")
 end
 
+def augmenterNbAides(unID)
+#Augmenter le nombre d'aide disponible par partie d'un joueur
+	bdd = ouvrirBDD()
+	valeur = bdd.execute("SELECT nbAides FROM profil WHERE idJoueur = '#{unID}'").shift.shift + 1
+	bdd.execute("UPDATE profil SET nbAides = #{valeur} WHERE idJoueur = '#{unID}' ")
+end
+
 ############
 
 
@@ -235,6 +244,8 @@ def recupererInformation(unID, iterateur)
 		return bdd.execute("SELECT niveau FROM profil WHERE idJoueur = #{unID}").shift.shift
 	when 9 # Renvoie le tableau de progression dans l'histoire
 		return bdd.execute("SELECT tableau FROM profil WHERE idJoueur = #{unID}").shift.shift
+	when 10 # Renvoie le nombre d'aide disponible par partie
+		return bdd.execute("SELECT nbAides FROM profil WHERE idJoueur = #{unID}").shift.shift
 
 	else
 		return false

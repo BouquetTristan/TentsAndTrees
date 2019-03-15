@@ -113,4 +113,36 @@ class Joueur
 			puts "Erreur, aucune information présente. Veuillez vous identifiez avant\n"
 		end
 	end
+
+
+	def modifierInformationsFinDePartie(unScore, uneDifficulte, nbAidesUtilises)
+		if uneDifficulte == 1 && unScore > @scoreFacile then
+			@scoreFacile = unScore
+			augmenterScoreFacile(@id, @scoreFacile)
+		end
+
+		if uneDifficulte == 2 && unScore > @scoreMoyen then
+			@scoreMoyen = unScore
+			augmenterScoreMoyen(@id, @scoreMoyen)
+		end
+
+		if uneDifficulte == 3 && unScore > @scoreDifficile then
+			@scoreDifficile = unScore
+			augmenterScoreDifficile(@id, @scoreDifficile)
+		end
+
+		augmenterNbPartiesJouees(@id)
+
+		if nbAidesUtilises == 0 then
+			augmenterNbPartiesTermineesSansAides(@id)	
+		end
+
+		@scoreGlobal = (@scoreFacile + @scoreMoyen + @scoreDifficile)/3
+		augmenterScoreGlobal(@id, @scoreGlobal)
+
+		@nbPartiesJouees = recupererInformation(@id, 6)
+		@nbPartiesFinitSansAides = recupererInformation(@id, 7)
+
+	end
+
 end

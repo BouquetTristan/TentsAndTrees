@@ -1,4 +1,12 @@
 class ChronoInverse
+	#@initialize	: mémorise le temps de départ du chrono.
+	#@initial 		: mémorise le temps de départ obtenu avec Time.now.to_i pour pouvoir le soustraire plus tard
+	#@start 		: boolean en false au lancement du chrono et passe en true lors du premier tosu de boucle.
+	#@pause			: boolean met en pause le chrono
+	#@chrono		: variable qui stockera le nombre de seconde actuel et qui servira à afficher.
+	#@fin 			: boolean ture pour arrêter le chrono.
+	#@compteur 		: variable qui va compter le temps passer et le soustraire au chrono
+
 
 	attr_accessor :chrono
 
@@ -96,5 +104,4 @@ c.pause()
 sleep(3)
 c.raz()
 sleep(5)
-
 

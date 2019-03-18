@@ -12,11 +12,15 @@ class FConnexion < Page
 
      def initialize(monApp, header, anciennePage)
 
-          super("Mode de Jeu", monApp, :vertical, header,  anciennePage)
+          super("Connexion", monApp, :vertical, header,  anciennePage)
           self.hautPage.spacing = 220
           
 
-		@gConnexion = Gtk::Table.new(6,1, false)
+		@gConnexion = Gtk::ButtonBox.new(:vertical)
+          @gConnexion.layout = :spread
+          @gConnexion.spacing = 30
+          @gC2 = Gtk::ButtonBox.new(:horizontal)
+
           @pseudo = TexteEntree.creer('Pseudo : ',true).gTexteEntree
           @mdp = TexteEntree.creer('Mot de passe : ',true).gTexteEntree
           @creaC = Gtk::Button.new(:label => 'Creer un compte', :use_underline => nil, :stock_id => nil)
@@ -24,12 +28,14 @@ class FConnexion < Page
           @mdpO = Gtk::Button.new(:label => 'Mot de passe oublié', :use_underline => nil, :stock_id => nil)
 		@quit = Gtk::Button.new(:label => 'Quitter', :use_underline => nil, :stock_id => nil)
 
-          @gConnexion.attach(@pseudo, 0,1,0,1)
-          @gConnexion.attach(@mdp, 0,1,1,2)
-          @gConnexion.attach(@connexion, 0,1,2,3)
-          @gConnexion.attach(@creaC, 0,1,3,4)
-          @gConnexion.attach(@mdpO, 0,1,4,5)
-          @gConnexion.attach(@quit, 0,1,5,6)
+          @gConnexion.add(@pseudo, :expand => true, :fill => false)
+          @gConnexion.add(@mdp, :expand => true, :fill => false)
+          @gConnexion.add(@connexion, :expand => true, :fill => false)
+          @gConnexion.add(@quit, :expand => true, :fill => false)
+          
+          @gConnexion.add(@gC2)
+          @gC2.add(@creaC, :expand => true, :fill => false)
+          @gC2.add(@mdpO, :expand => true, :fill => false)
 
 
           @connexion.signal_connect('clicked') {

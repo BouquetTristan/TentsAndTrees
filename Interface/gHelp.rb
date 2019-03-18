@@ -3,7 +3,7 @@ require 'gtk3'
 
 class GHelp
 
-	def GHelp.constuire(grille)
+	def GHelp.construire(grille)
 		new(grille)
 	end
 

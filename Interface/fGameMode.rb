@@ -40,15 +40,15 @@ class FGM < Page
 		}
 
 		@adven.signal_connect('clicked') {
-			self.supprimeMoi
-			suivant = FDiff.new(@window, header, self)
-			suivant.ajouteMoi
-      		@window.show_all
+			#self.supprimeMoi
+			#suivant = FDiff.new(@window, header, self)
+			#suivant.ajouteMoi
+      		#@window.show_all
 		}
 
 		@comp.signal_connect('clicked') {
 			self.supprimeMoi
-			suivant = FDiff.new(@window, header, self)
+			suivant = FPlay.new(@window, header, self, 16)
 			suivant.ajouteMoi
       		@window.show_all
 		}

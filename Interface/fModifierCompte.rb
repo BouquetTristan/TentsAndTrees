@@ -1,5 +1,4 @@
 require 'gtk3'
-#require './fGameMode.rb'
 require './TexteEntree'
 require './Page.rb'
 
@@ -7,36 +6,26 @@ class FModifC < Page
 
 	def initialize(monApp, header, anciennePage)
 
-		super("Mode de Jeu", monApp, :vertical, header,  anciennePage)
+		super("Modifier votre compte", monApp, :vertical, header,  anciennePage)
 		self.hautPage.spacing = 220
 
 
-		@gMdpOublie = Gtk::Table.new(7,1, false)
+		@gModifC = Gtk::ButtonBox.new(:vertical)
+		@gModifC.spacing = 30
 
 
 		@pseudo = TexteEntree.creer('Pseudo : ', true).gTexteEntree
-          @newMdp = TexteEntree.creer('Mot de passe : ', false).gTexteEntree
-          @question =  Gtk::Label.new('Quel est votrelieux de vacance préféré?')
-          @reponse = TexteEntree.creer('Reponse : ', false).gTexteEntree
-          @connexion = Gtk::Button.new(:label => 'Connexion', :use_underline => nil, :stock_id => nil)
+        @mdp = TexteEntree.creer('Mot de passe : ', false).gTexteEntree
+        @question =  Gtk::Label.new('Quel est votre lieux de vacance préféré?')
+        @reponse = TexteEntree.creer('Reponse : ', false).gTexteEntree
 
 
-		@gMdpOublie.attach(@pseudo, 0,1,1,2)
-		@gMdpOublie.attach(@newMdp, 0,1,2,3)
-        @gMdpOublie.attach(@question, 0,1,3,4)
-		@gMdpOublie.attach(@reponse, 0,1,4,5)
-		@gMdpOublie.attach(@connexion, 0,1,5,6)
+		@gModifC.add(@pseudo, :expand => true, :fill => false)
+        @gModifC.add(@mdp, :expand => true, :fill => false)
+        @gModifC.add(@question, :expand => true, :fill => false)
+        @gModifC.add(@reponse, :expand => true, :fill => false)
 
-
-
-		@connexion.signal_connect('clicked') {
-			self.supprimeMoi
-			FPlay.construire(fenetre, 8)
-			@window.show_all		
-		}
-
-
-		self.add(@gMdpOublie)
+		self.add(@gModifC)
 
 	end
 

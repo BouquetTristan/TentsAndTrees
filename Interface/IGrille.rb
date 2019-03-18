@@ -12,10 +12,6 @@ require './boutonGrille.rb'
 
 class IGrille
 
-	def IGrille.constuire(taille, grille)
-		new(taille, grille)
-	end
-
 	def initialize(taille, grille)
 
 		grilleJ = Grille.creer(taille, "./grille/GrilleJ.txt")
@@ -60,5 +56,7 @@ class IGrille
 				}
 			}
 		}
+
+		return grille
 	end	
 end

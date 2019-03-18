@@ -7,10 +7,7 @@ class BoutonGrille
 	# @coordI, @coordJ
 
 	def initialize()
-		@box = Gtk::EventBox.new
-		@bouton = Gtk::Button.new
-		
-		
+		@bouton = Gtk::Button.new	
 	end
 
 	def mCoord(i,j)

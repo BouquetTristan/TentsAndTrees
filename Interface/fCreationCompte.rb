@@ -10,27 +10,24 @@ class FCreationCompte < Page
 
      def initialize(monApp, header, anciennePage)
 
-          super("Mode de Jeu", monApp, :vertical, header,  anciennePage)
+          super("Création du compte", monApp, :vertical, header,  anciennePage)
           self.hautPage.spacing = 220
 
-		@gCC = Gtk::Table.new(7,1, false)
+		@gCC = Gtk::ButtonBox.new(:vertical)
+          @gCC.spacing = 30
 
           @pseudo = TexteEntree.creer('Pseudo : ', true).gTexteEntree
           @mdp = TexteEntree.creer('Mot de passe : ', true).gTexteEntree
           @question =  Gtk::Label.new('Quel est votre lieux de vacance préféré?')
           @reponse = TexteEntree.creer('Reponse : ', false).gTexteEntree
           @connexion = Gtk::Button.new(:label => 'Connexion', :use_underline => nil, :stock_id => nil)
-		#@quit = Gtk::Button.new(:label => 'Quitter', :use_underline => nil, :stock_id => nil)
-
-
-          @gCC.attach(@pseudo, 0,1,1,2)
-          @gCC.attach(@mdp, 0,1,2,3)
-          @gCC.attach(@question, 0,1,3,4)
-          @gCC.attach(@reponse, 0,1,4,5)
-          @gCC.attach(@connexion, 0,1,5,6)
-          #@gCC.attach(@quit, 0,1,6,7)
-
-
+		
+          @gCC.add(@pseudo, :expand => true, :fill => false)
+          @gCC.add(@mdp, :expand => true, :fill => false)
+          @gCC.add(@question, :expand => true, :fill => false)
+          @gCC.add(@reponse, :expand => true, :fill => false)
+          @gCC.add(@connexion, :expand => true, :fill => false)
+          
 
           @connexion.signal_connect('clicked') {
                self.supprimeMoi

@@ -2,16 +2,15 @@ require 'gtk3'
 #require './fGameMode.rb'
 #require './TexteEntree'
 
-class FDidact < Gtk::Builder
+class FDidact < Page
 
 	def initialize
 
-		fenetre = Gtk::Window.new
-		fenetre.set_default_size(600,400)
-		fenetre.border_width=5
+		super("", monApp, :vertical, header,  anciennePage)
+		self.hautPage.spacing = 220
 
-		@gDidact = Gtk::Table.new(2,3, false)
-		fenetre.add(@gDidact)
+		@gDida = Gtk::Table.new(1,2, false)
+
+		
 
 
-          titre =  Gtk::Label.new('Modification de compte')

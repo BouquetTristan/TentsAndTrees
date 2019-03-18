@@ -9,28 +9,28 @@ class FMenu < Page
 
      def initialize(monApp, header, anciennePage)
 
-     	super("Mode de Jeu", monApp, :vertical, header,  anciennePage)
+     	super("Tents & Trees", monApp, :vertical, header,  anciennePage)
         self.hautPage.spacing = 220
 
-		@gMenu = Gtk::Table.new(5,1, false)
+		@gMenu = Gtk::ButtonBox.new(:vertical)
+    @gMenu.spacing = 30
 
-		@ghead = Gtk::Table.new(3,1, false)
-			#@titre =  Gtk::Label.new('Tent''s & trees')
+		@ghead = Gtk::ButtonBox.new(:horizontal)
+    @ghead.spacing = 500
 			@option = Gtk::Button.new(:label => 'Option', :use_underline => nil, :stock_id => nil)
 			@profil = Gtk::Button.new(:label => 'Profil', :use_underline => nil, :stock_id => nil)
-			@ghead.attach(@option, 0,1,0,1)
-			#@ghead.attach(@titre, 1,2,0,1)
-			@ghead.attach(@profil, 2,3,0,1)
+			@ghead.add(@option, :expand => true, :fill => false)
+			@ghead.add(@profil, :expand => true, :fill => false)
+    @gMenu.add(@ghead)
 
 		@play = Gtk::Button.new(:label => 'Jouer', :use_underline => nil, :stock_id => nil)
 		@didac = Gtk::Button.new(:label => 'Didacticiel', :use_underline => nil, :stock_id => nil)
 		@score = Gtk::Button.new(:label => 'Classement', :use_underline => nil, :stock_id => nil)
 		
 
-		@gMenu.attach(@ghead, 0,1,0,1)
-		@gMenu.attach(@play, 0,1,1,2)
-		@gMenu.attach(@didac, 0,1,2,3)
-		@gMenu.attach(@score, 0,1,3,4)
+		@gMenu.add(@play, :expand => true, :fill => false)
+		@gMenu.add(@didac, :expand => true, :fill => false)
+		@gMenu.add(@score, :expand => true, :fill => false)
 	
 
 

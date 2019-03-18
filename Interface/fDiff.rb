@@ -21,7 +21,7 @@ class FDiff < Page
 		@butons = Gtk::ButtonBox.new(:horizontal)
     	@butons.layout = :spread
 
-		@easy = Gtk::Button.new(:label => 'Facile', :use_underline => nil, :stock_id => nil)
+		@easy = Gtk::Button.new
 		@medium = Gtk::Button.new(:label => 'Moyen', :use_underline => nil, :stock_id => nil)
 		@hard = Gtk::Button.new(:label => 'Difficil', :use_underline => nil, :stock_id => nil)
 
@@ -33,17 +33,20 @@ class FDiff < Page
 
 		@easy.signal_connect('clicked') {
 			self.supprimeMoi
-			FPlay.new(@window, header, self, 8)
+			suivant=FPlay.new(@window, header, self,8)
+			suivant.ajouteMoi
 			@window.show_all		
 		}
 		@medium.signal_connect('clicked') {
 			self.supprimeMoi
-			FPlay.new(@window, header, self, 12)
+			suivant=FPlay.new(@window, header, self,12)
+			suivant.ajouteMoi
 			@window.show_all
 		}
 		@hard.signal_connect('clicked') {
 			self.supprimeMoi
-			FPlay.new(@window, header, self, 16)
+			suivant=FPlay.new(@window, header, self,16)
+			suivant.ajouteMoi
 			@window.show_all
 		}
 

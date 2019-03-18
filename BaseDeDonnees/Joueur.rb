@@ -36,7 +36,7 @@ class Joueur
 	end
 
 	def inscrire()
-		
+
 		puts "Ajout de l'utilisateur #{@pseudo}\n"
 		@id = ajouterUtilisateur( @pseudo, @mdp, @rep)
 		if  @id != 0 then
@@ -64,8 +64,8 @@ class Joueur
 			puts "   Récupération des informations....\n"
 				@id = id
 				@rep = recupererInformation(@id, 1)
-				
-				@nbAides = recupererInformation(@id, 10)
+
+				#@nbAides = recupererInformation(@id, 10)
 
 				@scoreGlobal = recupererInformation(@id, 2)
 				@scoreFacile = recupererInformation(@id, 3)
@@ -134,7 +134,7 @@ class Joueur
 		augmenterNbPartiesJouees(@id)
 
 		if nbAidesUtilises == 0 then
-			augmenterNbPartiesTermineesSansAides(@id)	
+			augmenterNbPartiesTermineesSansAides(@id)
 		end
 
 		@scoreGlobal = (@scoreFacile + @scoreMoyen + @scoreDifficile)/3

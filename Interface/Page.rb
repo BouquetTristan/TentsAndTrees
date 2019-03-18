@@ -2,7 +2,7 @@ require "gtk3"
 
 # Classe représentant une page
 
-class Page < Gtk::Box
+class Page <  Gtk::Box 
 
   attr_reader :hautPage, :btnRetour, :btnHome, :btnCompte, :enciennePage, :hautPage, :label , :couleur
 

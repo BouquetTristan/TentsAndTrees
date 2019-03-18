@@ -12,7 +12,7 @@ require './boutonGrille.rb'
 
 class IGrille
 
-	def initialize(taille, grille)
+	def initialize(taille)
 
 		grilleJ = Grille.creer(taille, "./grille/GrilleJ.txt")
 		grilleF = Grille.creer(taille, "./grille/GrilleF.txt")
@@ -24,10 +24,10 @@ class IGrille
 		for i in (0..taille-1)
 			for j in (0..taille-1)
 				lId = Gtk::Label.new(grilleF.tentesL[j].to_s)
-				grille.attach(lId, j+1,j+2, 0,1)
+				@grille.attach(lId, j+1,j+2, 0,1)
 			end
 			lId2 = Gtk::Label.new(grilleF.tentesC[i].to_s)
-			grille.attach(lId2,0,1, i+1,i+2)			
+			@grille.attach(lId2,0,1, i+1,i+2)			
 		end 
 
 	# Cration de la grille de jeu.
@@ -40,7 +40,7 @@ class IGrille
 					temp[j] = BoutonGrille.new
 					temp[j].mCoord(i,j)
 					temp[j].chgEtat(vEtat)
-					grille.attach(temp[j].bouton, i+1, i+2, j+1,j+2)
+					@grille.attach(temp[j].bouton, i+1, i+2, j+1,j+2)
 			end
 			@boutonGrille[i] = temp
 		end 
@@ -56,7 +56,5 @@ class IGrille
 				}
 			}
 		}
-
-		return grille
 	end	
 end

@@ -23,7 +23,7 @@ class Score
 		when "Moyenne" then
 			@scoreInitial = 360
 		when "Difficile" then
-			@scoreInitial = 600
+			@scoreInitial = 720
 		end
 		@nbFeuilles = nbF
 	end

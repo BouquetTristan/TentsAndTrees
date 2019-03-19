@@ -14,5 +14,6 @@ class TexteAfficher
           @gTexteAfficher.attach(@renvoie, 1,2,0,1)
      end
      attr_accessor :gTexteAfficher
+     attr_accessor :renvoie
 
 end

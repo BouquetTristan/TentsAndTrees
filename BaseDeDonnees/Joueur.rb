@@ -35,6 +35,14 @@ class Joueur
 
 	end
 
+	attr_reader :pseudo
+	attr_reader :scoreGlobal
+	attr_reader :scoreFacile
+	attr_reader :scoreMoyen
+	attr_reader :scoreDifficile
+	attr_reader :nbPartiesJouees
+	attr_reader :nbAides
+
 	def inscrire()
 
 		puts "Ajout de l'utilisateur #{@pseudo}\n"

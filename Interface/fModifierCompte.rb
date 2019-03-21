@@ -6,8 +6,9 @@ class FModifC < Page
 
 	def initialize(monApp, header, anciennePage)
 
-		super("Modifier votre compte", monApp, :vertical, header,  anciennePage)
-		self.hautPage.spacing = 220
+		super(monApp, :vertical, header,  anciennePage)
+
+		@frame = Gtk::Table.new(1,1,false)
 
 		@gModifC = Gtk::ButtonBox.new(:vertical)
           @gModifC.spacing = 30
@@ -24,7 +25,7 @@ class FModifC < Page
           @gModifC.add(@reponse.gTexteEntree, :expand => true, :fill => false)
           @gModifC.add(@valider, :expand => true, :fill => false)
 
-		@pseudo.entree.text = 
+		
 
 		@valider.signal_connect('clicked') {
 
@@ -55,7 +56,20 @@ class FModifC < Page
 			end
 		}
 
-		self.add(@gModifC)
+
+		@header.btnMenu.signal_connect('clicked') {
+	        self.supprimeMoi
+	        menu = FMenu.new(@window, @header, self)
+	        menu.ajouteMoi
+	        @window.show_all
+	    }
+
+	    @frame.attach(@gModifC,0,1,0,1)
+
+		@bg=(Gtk::Image.new(:file =>"../Assets/ImgPresentation2.jpg"))
+        @frame.attach(@bg,0,1,0,1)
+
+        self.add(@frame)
 
 	end
 

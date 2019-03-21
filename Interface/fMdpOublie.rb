@@ -8,8 +8,9 @@ class FMdpOublie < Page
 
      def initialize(monApp, header, anciennePage)
 
-        super("Mot de passe oublié", monApp, :vertical, header,  anciennePage)
-        self.hautPage.spacing = 220
+        super(monApp, :vertical, header,  anciennePage)
+
+        @frame = Gtk::Table.new(1,1,false)
 
     	@gMdpOublie = Gtk::ButtonBox.new(:vertical)
         @gMdpOublie.spacing = 30
@@ -32,8 +33,13 @@ class FMdpOublie < Page
             suivant.ajouteMoi
             @window.show_all          
         }
-             
-        self.add(@gMdpOublie)
+
+        @frame.attach(@gMdpOublie,0,1,0,1)
+
+        @bg=(Gtk::Image.new(:file =>"../Assets/ImgPresentation2.jpg"))
+        @frame.attach(@bg,0,1,0,1)
+
+        self.add(@frame)
 
 	end
 

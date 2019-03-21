@@ -13,9 +13,10 @@ class FConnexion < Page
 
      def initialize(monApp, header, anciennePage)
 
-          super("Connexion", monApp, :vertical, header,  anciennePage)
-          self.hautPage.spacing = 220
+          super(monApp, :vertical, header,  anciennePage)
 
+          @frame = Gtk::Table.new(1,1,false)
+          super(monApp, :vertical, header,  anciennePage)
 
 		@gConnexion = Gtk::ButtonBox.new(:vertical)
           @gConnexion.layout = :spread
@@ -37,6 +38,7 @@ class FConnexion < Page
           @gConnexion.add(@gC2)
           @gC2.add(@creaC, :expand => true, :fill => false)
           @gC2.add(@mdpO, :expand => true, :fill => false)
+
 
 
           @connexion.signal_connect('clicked') {
@@ -82,8 +84,14 @@ class FConnexion < Page
           @quit.signal_connect('clicked') {
           }
 
+          @frame.attach(@gConnexion, 0,1,0,1)
 
-          self.add(@gConnexion)
+          @bg = (Gtk::Image.new(:file=>"../Assets/ImgPresentation2.jpg"))
+
+          @frame.attach(@bg, 0,1,0,1)
+
+          self.add(@frame)
+
 
      end
 

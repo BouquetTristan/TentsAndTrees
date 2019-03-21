@@ -10,8 +10,9 @@ class FCreationCompte < Page
 
      def initialize(monApp, header, anciennePage)
 
-          super("Création du compte", monApp, :vertical, header,  anciennePage)
-          self.hautPage.spacing = 220
+          super(monApp, :vertical, header,  anciennePage)
+
+          @frame = Gtk::Table.new(1,1,false)
 
 		@gCC = Gtk::ButtonBox.new(:vertical)
           @gCC.spacing = 30
@@ -30,35 +31,48 @@ class FCreationCompte < Page
 
 
           @connexion.signal_connect('clicked') {
+               self.supprimeMoi
+               suivant = FMenu.new(@window, header, self)
+               suivant.ajouteMoi
+               @window.show_all
+          }
 
 
-			joueur = Joueur.new(@pseudo.entree.text, @mdp.entree.text, @reponse.entree.text)
 
-               puts("OK nouveau joueur\n")
-               if (@pseudo.entree.text == '' || @mdp.entree.text == '')
-				#@pseudo.erreur.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 10\">/!\\ Erreur entrer un pseudo et un mot de passe</span>\n")
-                    @mdp.erreur.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 10\">Erreur entrer un pseudo et un mot de passe</span>\n")
-               end
-               if (@reponse.entree.text =='')
-				#@pseudo.erreur.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 10\">/!\\ Erreur entrer un pseudo et un mot de passe</span>\n")
-                    @reponse.erreur.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 10\">Répondez a la question</span>\n")
-
-			elsif joueur.inscrire() == 0 then
-                    puts("Joueur\n")
-				@mdp.entree.text = ''
-                    puts("mdp sans rien\n")
-                    @mdp.erreur.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 10\">Erreur L'utilisateur est déjà enregistré</span>\n")
+          @connexion.signal_connect('clicked') {
 
 
-               else
-                    self.supprimeMoi
-                    suivant = FMenu.new(@window, header, self)
-                    suivant.ajouteMoi
-                    @window.show_all
-               end
-         }
+ 			joueur = Joueur.new(@pseudo.entree.text, @mdp.entree.text, @reponse.entree.text)
 
-        self.add(@gCC)
+                puts("OK nouveau joueur\n")
+                if (@pseudo.entree.text == '' || @mdp.entree.text == '')
+ 				#@pseudo.erreur.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 10\">/!\\ Erreur entrer un pseudo et un mot de passe</span>\n")
+                     @mdp.erreur.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 10\">Erreur entrer un pseudo et un mot de passe</span>\n")
+                end
+                if (@reponse.entree.text =='')
+ 				#@pseudo.erreur.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 10\">/!\\ Erreur entrer un pseudo et un mot de passe</span>\n")
+                     @reponse.erreur.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 10\">Répondez a la question</span>\n")
+
+ 			elsif joueur.inscrire() == 0 then
+                     puts("Joueur\n")
+ 				@mdp.entree.text = ''
+                     puts("mdp sans rien\n")
+                     @mdp.erreur.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 10\">Erreur L'utilisateur est déjà enregistré</span>\n")
+
+
+                else
+                     self.supprimeMoi
+                     suivant = FMenu.new(@window, header, self)
+                     suivant.ajouteMoi
+                     @window.show_all
+                end
+          }
+
+          @frame.attach(@gCC,0,1,0,1)
+
+          @bg=(Gtk::Image.new(:file =>"../Assets/ImgPresentation2.jpg"))
+          @frame.attach(@bg,0,1,0,1)
+          self.add(@frame)
 
      end
 

@@ -12,9 +12,9 @@ class FProfil < Page
 
 	def initialize(monApp, header, anciennePage)
 
-		super("Profil", monApp, :vertical, header,  anciennePage)
-		self.hautPage.spacing = 220
+		super(monApp, :vertical, header,  anciennePage)
 
+		@frame = Gtk::Table.new(1,1,false)
 
 		@gProfil = Gtk::ButtonBox.new(:vertical)
 		@gProfil.spacing = 30
@@ -42,8 +42,15 @@ class FProfil < Page
 		@gProfil.add(@gProfil2)
 		@gProfil2.add(@modif, :expand => true, :fill => false)
 		@gProfil2.add(@menu, :expand => true, :fill => false)
+        @gProfil2.add(@deco, :expand => true, :fill => false)
+        
+        @header.btnMenu.signal_connect('clicked') {
+	        self.supprimeMoi
+	        menu = FMenu.new(@window, @header, self)
+	        menu.ajouteMoi
+	        @window.show_all
+	    }
 		@gProfil2.add(@deco, :expand => true, :fill => false)
-
 
 
 		@modif.signal_connect('clicked') {
@@ -62,8 +69,12 @@ class FProfil < Page
 
 		@deco.signal_connect('clicked') {}
 
+		@frame.attach(@gProfil,0,1,0,1)
 
-		self.add(@gProfil)
+		@bg=(Gtk::Image.new(:file =>"../Assets/ImgPresentation2.jpg"))
+        @frame.attach(@bg,0,1,0,1)
+
+        self.add(@frame)
 
 	end
 end

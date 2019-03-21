@@ -11,6 +11,12 @@ class FDidact < Page
 
 		@gDida = Gtk::Table.new(1,2, false)
 
+		@header.btnMenu.signal_connect('clicked') {
+        	self.supprimeMoi
+        	menu = FMenu.new(@window, @header, self)
+        	menu.ajouteMoi
+        	@window.show_all
+    	}
 		
 
 

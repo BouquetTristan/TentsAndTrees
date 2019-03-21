@@ -4,6 +4,7 @@ require './fDiff.rb'
 #require '../Interface/fMenu.rb'
 require './fPlay.rb'
 require './Page.rb'
+require './fAventure.rb'
 
 
 # Fichier: fGameMode.rb
@@ -17,8 +18,9 @@ class FGM < Page
 
 	def initialize(monApp, header, anciennePage)
 
-		super("Mode de Jeu", monApp, :vertical, header,  anciennePage)
-		self.hautPage.spacing = 220
+		super(monApp, :vertical, header,  anciennePage)
+
+		@frame = Gtk::Table.new(1,1,false)
 
 		@butons = Gtk::ButtonBox.new(:horizontal)
     	@butons.layout = :spread
@@ -31,6 +33,12 @@ class FGM < Page
 		@butons.add(@adven, :expand => true, :fill => false)
 		@butons.add(@comp, :expand => true, :fill => false)
 
+			@header.btnMenu.signal_connect('clicked') {
+		        self.supprimeMoi
+		        menu = FMenu.new(@window, @header, self)
+		        menu.ajouteMoi
+		        @window.show_all
+		    }
 		
 		@classic.signal_connect('clicked') {
 			self.supprimeMoi
@@ -40,10 +48,10 @@ class FGM < Page
 		}
 
 		@adven.signal_connect('clicked') {
-			#self.supprimeMoi
-			#suivant = FDiff.new(@window, header, self)
-			#suivant.ajouteMoi
-      		#@window.show_all
+			self.supprimeMoi
+			suivant = FAventure.new(@window, header, self)
+			suivant.ajouteMoi
+      		@window.show_all
 		}
 
 		@comp.signal_connect('clicked') {
@@ -52,8 +60,12 @@ class FGM < Page
 			suivant.ajouteMoi
       		@window.show_all
 		}
+		@frame.attach(@butons,0,1,0,1)
 
-		self.add(@butons)
+		@bg=(Gtk::Image.new(:file =>"../Assets/ImgPresentation2.jpg"))
+        @frame.attach(@bg,0,1,0,1)
+
+        self.add(@frame)
 	end	
 end
 

@@ -1,14 +1,14 @@
 
 ##
 # BOUQUET Tristan
-# 
+#
 # Méthodes pour créer et modifier une base de données
 
 require 'sqlite3'
 require 'digest'
 
 # Ouverture de la base de donnée SQLite 3
-bdd = SQLite3::Database.new '../../BaseDeDonnees/profil.db'
+bdd = SQLite3::Database.new '../BaseDeDonnees/profil.db'
 
 
 # Créer la table si elle n'existe pas
@@ -36,7 +36,7 @@ resultat = bdd.execute <<-SQL
 SQL
 
 def ouvrirBDD()
-	return SQLite3::Database.new '../../BaseDeDonnees/profil.db'
+	return SQLite3::Database.new '../BaseDeDonnees/profil.db'
 end
 
 def chercherIDUnique(bdd)
@@ -113,7 +113,7 @@ def connexion(unPseudo, unMDP)
 		if Digest::SHA256.hexdigest(unMDP)[0..20] == motDePasse then
 			return bdd.execute("SELECT idJoueur FROM profil WHERE pseudo = '#{unPseudo}'").shift.shift
 		end
-	
+
 		return nil
 	end
 

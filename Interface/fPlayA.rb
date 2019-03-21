@@ -4,9 +4,9 @@ require './Page.rb'
 require './grille/grille.rb'
 require './boutonGrille.rb'
 
-class FPlay < Page
+class FPlayA < Page
 
-	def initialize(monApp, header, anciennePage, taille)
+	def initialize(monApp, header, anciennePage, taille, chemin)
 
 		super(monApp, :vertical, header,  anciennePage)
 
@@ -39,7 +39,7 @@ class FPlay < Page
 			temp=[]
 			for j in (0..taille-1)
 					vEtat = grilleJ.grille[i][j].etat
-					temp[j] = BoutonGrille.new
+					temp[j] = BoutonGrille.new(chemin)
 					temp[j].mCoord(i,j)
 					temp[j].chgEtat(vEtat)
 					@grille.attach(temp[j].bouton, i+1, i+2, j+1,j+2)
@@ -78,7 +78,7 @@ class FPlay < Page
 
 		@box.add(@grille)
 		@box.add(@gHelp)
-
+		
 		@frame.attach(@box,0,1,0,1)
 
 		@bg=(Gtk::Image.new(:file =>"../Assets/ImgPresentation2.jpg"))

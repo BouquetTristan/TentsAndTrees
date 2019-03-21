@@ -21,22 +21,22 @@ class BoutonGrille
 
 	def chgEtat(etat)
 		if etat == 0
-			@image=(Gtk::Image.new(:file =>"./image/rien.png", :size => :dialog))
+			@image=(Gtk::Image.new(:file =>"./image/Printemps/terre.png", :size => :dialog))
 			@bouton.set_image(@image)
 			focus_hadjustment=(:start)
 		end
 		if etat == 1
-			@image=(Gtk::Image.new(:file =>"./image/herbe.png", :size => :dialog))
+			@image=(Gtk::Image.new(:file =>"./image/Printemps/herbe.png", :size => :dialog))
 			@bouton.set_image(@image)
 			focus_hadjustment=(:start)
 		end
 		if etat == 2
-			@image=(Gtk::Image.new(:file =>"./image/arbre.png",:size => :dialog))
+			@image=(Gtk::Image.new(:file =>"./image/Printemps/arbre.png",:size => :dialog))
 			@bouton.set_image(@image)
 			focus_hadjustment=(:start)
 		end
 		if etat == 3
-			@image=(Gtk::Image.new(:file =>"./image/tente.png",:size => :dialog))
+			@image=(Gtk::Image.new(:file =>"./image/Printemps/tente.png",:size => :dialog))
 			@bouton.set_image(@image)
 			focus_hadjustment=(:start)
 		end

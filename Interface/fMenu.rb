@@ -62,7 +62,7 @@ class FMenu < Page
         }
         @didac.signal_connect('clicked') {
               self.supprimeMoi
-              suivant = FDidac.new(@window, header, self)
+              suivant = FDidac.new(@window, header, self, unJoueur)
               suivant.ajouteMoi
               @window.show_all  
         }

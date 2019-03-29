@@ -11,13 +11,10 @@ require './fTuto5.rb'
 class FDidac < Page
 
 
-     def initialize(monApp, header, anciennePage)
+     def initialize(monApp, header, anciennePage, unJoueur)
 
-		super("", monApp, :vertical, header,  anciennePage, unJoueur)
-		self.hautPage.spacing = 220
-
-     	super(monApp, :vertical, header,  anciennePage)
-
+		super(monApp, :vertical, header,  anciennePage, unJoueur)
+	
 
         @frame = Gtk::Table.new(1,1,false)
     		@gMain = Gtk::ButtonBox.new(:vertical)
@@ -55,31 +52,31 @@ class FDidac < Page
       
         @tuto1.signal_connect('clicked') {
                self.supprimeMoi
-               suivant = Ftuto1.new(@window, header, self)
+               suivant = Ftuto1.new(@window, header, self, unJoueur)
                suivant.ajouteMoi
                @window.show_all          
         }
         @tuto2.signal_connect('clicked') {
                self.supprimeMoi
-               suivant = Ftuto2.new(@window, header, self)
+               suivant = Ftuto2.new(@window, header, self, unJoueur)
                suivant.ajouteMoi
                @window.show_all  
         }
         @tuto3.signal_connect('clicked') {
                self.supprimeMoi
-               suivant = Ftuto3.new(@window, header, self)
+               suivant = Ftuto3.new(@window, header, self, unJoueur)
                suivant.ajouteMoi
                @window.show_all  
         }
         @tuto4.signal_connect('clicked') {
                self.supprimeMoi
-               suivant = Ftuto4.new(@window, header, self)
+               suivant = Ftuto4.new(@window, header, self, unJoueur)
                suivant.ajouteMoi
                @window.show_all  
         }
         @tuto5.signal_connect('clicked') {
                self.supprimeMoi
-               suivant = Ftuto5.new(@window, header, self)
+               suivant = Ftuto5.new(@window, header, self, unJoueur)
                suivant.ajouteMoi
                @window.show_all  
         }

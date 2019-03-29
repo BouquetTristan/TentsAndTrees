@@ -6,9 +6,9 @@ require './fDidact.rb'
 
 class Ftuto5 < Page
 
-     def initialize(monApp, header, anciennePage)
+     def initialize(monApp, header, anciennePage, unJoueur)
 
-     	super(monApp, :vertical, header,  anciennePage)
+     	super(monApp, :vertical, header,  anciennePage, unJoueur)
 
         @frame = Gtk::Table.new(1,1,false)
     		@gImage = Gtk::ButtonBox.new(:vertical)
@@ -22,7 +22,7 @@ class Ftuto5 < Page
 
         @back.signal_connect('clicked') {
                self.supprimeMoi
-               suivant = FDidac.new(@window, header, self)
+               suivant = FDidac.new(@window, header, self, unJoueur)
                suivant.ajouteMoi
                @window.show_all          
         }

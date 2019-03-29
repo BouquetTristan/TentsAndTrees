@@ -1,5 +1,6 @@
 require 'gtk3'
-#require './fGameMode.rb'
+
+require './fDidact.rb'
 require './Page.rb'
 require './fProfil.rb'
 require './fGameMode.rb'
@@ -60,6 +61,10 @@ class FMenu < Page
                @window.show_all
         }
         @didac.signal_connect('clicked') {
+              self.supprimeMoi
+              suivant = FDidac.new(@window, header, self)
+              suivant.ajouteMoi
+              @window.show_all  
         }
         @score.signal_connect('clicked') {
         }

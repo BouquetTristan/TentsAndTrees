@@ -10,9 +10,9 @@ require './fModifierCompte.rb'
 
 class FProfil < Page
 
-	def initialize(monApp, header, anciennePage)
+	def initialize(monApp, header, anciennePage, unJoueur)
 
-		super(monApp, :vertical, header,  anciennePage)
+		super(monApp, :vertical, header,  anciennePage, unJoueur)
 
 		@frame = Gtk::Table.new(1,1,false)
 
@@ -22,12 +22,12 @@ class FProfil < Page
 		@gProfil2 = Gtk::ButtonBox.new(:horizontal)
 		@gProfil2.spacing = 100
 
-		@pseudo = TexteAfficher.creer('Pseudo : ')
-		@scoreGlobal = TexteAfficher.creer('Score Global : ')
-		@scoreFacile = TexteAfficher.creer('Score Facile : ')
-		@scoreMoyen = TexteAfficher.creer('Score Moyen : ')
-		@scoreDifficile = TexteAfficher.creer('Score Difficile : ')
-		@nbParties = TexteAfficher.creer('Nombre de parties jouées : ')
+		@pseudo = TexteAfficher.creer('Pseudo : ', unJoueur.pseudo)
+		@scoreGlobal = TexteAfficher.creer('Score Global : ', unJoueur.scoreGlobal.to_s)
+		@scoreFacile = TexteAfficher.creer('Score Facile : ', unJoueur.scoreFacile.to_s)
+		@scoreMoyen = TexteAfficher.creer('Score Moyen : ', unJoueur.scoreMoyen.to_s)
+		@scoreDifficile = TexteAfficher.creer('Score Difficile : ', unJoueur.scoreDifficile.to_s)
+		@nbParties = TexteAfficher.creer('Nombre de parties jouées : ', unJoueur.nbPartiesJouees.to_s)
 		@modif =Gtk::Button.new(:label => 'Modifier mes informations', :use_underline => nil, :stock_id => nil)
 		@deco = Gtk::Button.new(:label => 'Deconnexion', :use_underline => nil, :stock_id => nil)
 		@menu = Gtk::Button.new(:label => 'Menu', :use_underline => nil, :stock_id => nil)
@@ -43,10 +43,10 @@ class FProfil < Page
 		@gProfil2.add(@modif, :expand => true, :fill => false)
 		@gProfil2.add(@menu, :expand => true, :fill => false)
         @gProfil2.add(@deco, :expand => true, :fill => false)
-        
+
         @header.btnMenu.signal_connect('clicked') {
 	        self.supprimeMoi
-	        menu = FMenu.new(@window, @header, self)
+	        menu = FMenu.new(@window, @header, self, unJoueur)
 	        menu.ajouteMoi
 	        @window.show_all
 	    }
@@ -55,14 +55,14 @@ class FProfil < Page
 
 		@modif.signal_connect('clicked') {
 			self.supprimeMoi
-            suivant = FModifC.new(@window, header, self)
+            suivant = FModifC.new(@window, header, self, unJoueur)
             suivant.ajouteMoi
             @window.show_all
 		}
 
 		@menu.signal_connect('clicked') {
 			self.supprimeMoi
-            suivant = FMenu.new(@window, header, self)
+            suivant = FMenu.new(@window, header, self, unJoueur)
             suivant.ajouteMoi
             @window.show_all
 		}

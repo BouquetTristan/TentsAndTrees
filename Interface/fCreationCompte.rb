@@ -8,9 +8,9 @@ require './fMenu.rb'
 
 class FCreationCompte < Page
 
-     def initialize(monApp, header, anciennePage)
+     def initialize(monApp, header, anciennePage, unJoueur)
 
-          super(monApp, :vertical, header,  anciennePage)
+          super(monApp, :vertical, header,  anciennePage, unJoueur)
 
           @frame = Gtk::Table.new(1,1,false)
 
@@ -28,15 +28,6 @@ class FCreationCompte < Page
           @gCC.add(@question, :expand => true, :fill => false)
           @gCC.add(@reponse.gTexteEntree, :expand => true, :fill => false)
           @gCC.add(@connexion, :expand => true, :fill => false)
-
-
-          @connexion.signal_connect('clicked') {
-               self.supprimeMoi
-               suivant = FMenu.new(@window, header, self)
-               suivant.ajouteMoi
-               @window.show_all
-          }
-
 
 
           @connexion.signal_connect('clicked') {
@@ -62,7 +53,7 @@ class FCreationCompte < Page
 
                 else
                      self.supprimeMoi
-                     suivant = FMenu.new(@window, header, self)
+                     suivant = FMenu.new(@window, header, self, joueur)
                      suivant.ajouteMoi
                      @window.show_all
                 end

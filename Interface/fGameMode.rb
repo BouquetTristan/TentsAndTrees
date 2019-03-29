@@ -9,16 +9,16 @@ require './fAventure.rb'
 
 # Fichier: fGameMode.rb
 # Auteur: Marchand Killian
-# Description: 
+# Description:
 # => Menu des modes de jeu
 # => C'est ici qu'est regroupé les composants du menu des modes de jeu
 # => Ici nous gerons ainsi les évenements lié aux boutons, qui permet d'appeler la page suivante ou bien précédente ainsi que la construction la page.
 
 class FGM < Page
 
-	def initialize(monApp, header, anciennePage)
+	def initialize(monApp, header, anciennePage, unJoueur)
 
-		super(monApp, :vertical, header,  anciennePage)
+		super(monApp, :vertical, header,  anciennePage, unJoueur)
 
 		@frame = Gtk::Table.new(1,1,false)
 
@@ -35,28 +35,28 @@ class FGM < Page
 
 			@header.btnMenu.signal_connect('clicked') {
 		        self.supprimeMoi
-		        menu = FMenu.new(@window, @header, self)
+		        menu = FMenu.new(@window, @header, self, unJoueur)
 		        menu.ajouteMoi
 		        @window.show_all
 		    }
-		
+
 		@classic.signal_connect('clicked') {
 			self.supprimeMoi
-			suivant = FDiff.new(@window, header, self)
+			suivant = FDiff.new(@window, header, self, unJoueur)
 			suivant.ajouteMoi
       		@window.show_all
 		}
 
 		@adven.signal_connect('clicked') {
 			self.supprimeMoi
-			suivant = FAventure.new(@window, header, self)
+			suivant = FAventure.new(@window, header, self, unJoueur)
 			suivant.ajouteMoi
       		@window.show_all
 		}
 
 		@comp.signal_connect('clicked') {
 			self.supprimeMoi
-			suivant = FPlay.new(@window, header, self, 16)
+			suivant = FPlay.new(@window, header, self, unJoueur, 16)
 			suivant.ajouteMoi
       		@window.show_all
 		}
@@ -66,6 +66,5 @@ class FGM < Page
         @frame.attach(@bg,0,1,0,1)
 
         self.add(@frame)
-	end	
+	end
 end
-

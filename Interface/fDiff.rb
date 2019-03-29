@@ -5,7 +5,7 @@ require './Page.rb'
 
 # Fichier: fDiff.rb
 # Auteur: Marchand Killian
-# Description: 
+# Description:
 # => Menu des difficultés
 # => C'est ici qu'est regroupé les composants du menu des difficultés
 # => Ici nous gerons ainsi les évenements lié aux boutons, qui permet d'appeler la page suivante ou bien précédente ainsi que la construction de la page
@@ -13,9 +13,9 @@ require './Page.rb'
 
 class FDiff < Page
 
-	def initialize(monApp, header, anciennePage)
+	def initialize(monApp, header, anciennePage, unJoueur)
 
-		super(monApp, :vertical, header,  anciennePage)
+		super(monApp, :vertical, header,  anciennePage, unJoueur)
 
 		@frame = Gtk::Table.new(1,1,false)
 
@@ -33,26 +33,26 @@ class FDiff < Page
 
 		@header.btnMenu.signal_connect('clicked') {
 	        self.supprimeMoi
-	        menu = FMenu.new(@window, @header, self)
+	        menu = FMenu.new(@window, @header, self, unJoueur)
 	        menu.ajouteMoi
 	        @window.show_all
     	}
 
 		@easy.signal_connect('clicked') {
 			self.supprimeMoi
-			suivant=FPlay.new(@window, header, self,8)
+			suivant=FPlay.new(@window, header, self, unJoueur, 8)
 			suivant.ajouteMoi
-			@window.show_all		
+			@window.show_all
 		}
 		@medium.signal_connect('clicked') {
 			self.supprimeMoi
-			suivant=FPlay.new(@window, header, self,12)
+			suivant=FPlay.new(@window, header, self, unJoueur, 12)
 			suivant.ajouteMoi
 			@window.show_all
 		}
 		@hard.signal_connect('clicked') {
 			self.supprimeMoi
-			suivant=FPlay.new(@window, header, self,16)
+			suivant=FPlay.new(@window, header, self, unJoueur, 16)
 			suivant.ajouteMoi
 			@window.show_all
 		}
@@ -62,5 +62,5 @@ class FDiff < Page
         @frame.attach(@bg,0,1,0,1)
 
         self.add(@frame)
-	end	
+	end
 end

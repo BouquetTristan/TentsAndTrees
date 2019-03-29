@@ -6,9 +6,9 @@ require './boutonGrille.rb'
 
 class FPlayA < Page
 
-	def initialize(monApp, header, anciennePage, taille, chemin)
+	def initialize(monApp, header, anciennePage, unJoueur, taille, chemin)
 
-		super(monApp, :vertical, header,  anciennePage)
+		super(monApp, :vertical, header,  anciennePage, unJoueur)
 
         @frame = Gtk::Table.new(1,1,false)
 
@@ -18,7 +18,7 @@ class FPlayA < Page
 
         grilleJ = Grille.creer(taille, "./grille/GrilleJ.txt")
 		grilleF = Grille.creer(taille, "./grille/GrilleF.txt")
-		
+
 		@boutonGrille = [[]]
 
 	# Mise en place des indicateurs de la grille de jeu
@@ -29,8 +29,8 @@ class FPlayA < Page
 				@grille.attach(lId, j+1,j+2, 0,1)
 			end
 			lId2 = Gtk::Label.new(grilleF.tentesC[i].to_s)
-			@grille.attach(lId2,0,1, i+1,i+2)			
-		end 
+			@grille.attach(lId2,0,1, i+1,i+2)
+		end
 
 	# Cration de la grille de jeu.
 	# Mise en place d'une matrice composant tous les boutons
@@ -45,16 +45,16 @@ class FPlayA < Page
 					@grille.attach(temp[j].bouton, i+1, i+2, j+1,j+2)
 			end
 			@boutonGrille[i] = temp
-		end 
+		end
 
 	# Appel de l'evenement bouton "cliqué", et modification du bouton cliqué
 
-		@boutonGrille.each{|k| 
+		@boutonGrille.each{|k|
 			k.each{|l|
 				l.bouton.signal_connect("clicked"){
 		        	grilleJ.grille[l.coordI][l.coordJ].jouerCase()
 					@boutonGrille[l.coordI][l.coordJ].chgEtat(grilleJ.grille[l.coordI][l.coordJ].etat)
-					grilleJ.grilleTofich()	
+					grilleJ.grilleTofich()
 				}
 			}
 		}
@@ -78,7 +78,7 @@ class FPlayA < Page
 
 		@box.add(@grille)
 		@box.add(@gHelp)
-		
+
 		@frame.attach(@box,0,1,0,1)
 
 		@bg=(Gtk::Image.new(:file =>"../Assets/ImgPresentation2.jpg"))

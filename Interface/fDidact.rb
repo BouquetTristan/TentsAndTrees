@@ -44,7 +44,7 @@ class FDidac < Page
 
     	@header.btnMenu.signal_connect('clicked') {
 	        self.supprimeMoi
-	        menu = FMenu.new(@window, @header, self)
+	        menu = FMenu.new(@window, @header, self, unJoueur)
 	        menu.ajouteMoi
 	        @window.show_all
     	}

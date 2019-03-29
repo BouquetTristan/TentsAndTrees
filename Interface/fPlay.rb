@@ -1,12 +1,12 @@
 require 'gtk3'
 require './Page.rb'
 
-require './grille/grille.rb'
+require '../Classes/Grille.rb'
 require './boutonGrille.rb'
 
 class FPlay < Page
 
-	def initialize(monApp, header, anciennePage, unJoueur, taille)
+	def initialize(monApp, header, anciennePage, unJoueur, difficulte)
 
 		super(monApp, :vertical, header,  anciennePage, unJoueur)
 
@@ -14,10 +14,13 @@ class FPlay < Page
 
         @box = Gtk::ButtonBox.new(:horizontal)
 
+	   grilleDeJeu = Grille.creerD(difficulte)
+
+	   taille = grilleDeJeu.taille()
+
         @grille = Gtk::Table.new(taille, taille, false)
 
-        grilleJ = Grille.creer(taille, "./grille/GrilleJ.txt")
-		grilleF = Grille.creer(taille, "./grille/GrilleF.txt")
+
 
 		@boutonGrille = [[]]
 
@@ -25,20 +28,20 @@ class FPlay < Page
 
 		for i in (0..taille-1)
 			for j in (0..taille-1)
-				lId = Gtk::Label.new(grilleF.tentesL[j].to_s)
+				lId = Gtk::Label.new(grilleDeJeu.nbTentesLigne[j].to_s)
 				@grille.attach(lId, j+1,j+2, 0,1)
 			end
-			lId2 = Gtk::Label.new(grilleF.tentesC[i].to_s)
+			lId2 = Gtk::Label.new(grilleDeJeu.nbTentesColonne[i].to_s)
 			@grille.attach(lId2,0,1, i+1,i+2)
 		end
 
-	# Cration de la grille de jeu.
+	# Création de la grille de jeu.
 	# Mise en place d'une matrice composant tous les boutons
 
 		for i in (0..taille-1)
 			temp=[]
 			for j in (0..taille-1)
-					vEtat = grilleJ.grille[i][j].etat
+					vEtat = grilleDeJeu.grilleJ[i][j].etat
 					temp[j] = BoutonGrille.new
 					temp[j].mCoord(i,j)
 					temp[j].chgEtat(vEtat)
@@ -52,9 +55,18 @@ class FPlay < Page
 		@boutonGrille.each{|k|
 			k.each{|l|
 				l.bouton.signal_connect("clicked"){
-		        	grilleJ.grille[l.coordI][l.coordJ].jouerCase()
-					@boutonGrille[l.coordI][l.coordJ].chgEtat(grilleJ.grille[l.coordI][l.coordJ].etat)
-					grilleJ.grilleTofich()
+		        	grilleDeJeu.grilleJ[l.coordI][l.coordJ].jouerCase()
+					@boutonGrille[l.coordI][l.coordJ].chgEtat(grilleDeJeu.grilleJ[l.coordI][l.coordJ].etat)
+					grilleDeJeu.enregistrerFichier()
+					if (grilleDeJeu.observateur())
+						#puts("gagné")
+						#timer stop + affichage "gagné"
+						self.supprimeMoi
+			  	        	menu = FMenu.new(@window, @header, self, unJoueur)
+			  	        	menu.ajouteMoi
+			  	        	@window.show_all
+					end
+
 				}
 			}
 		}

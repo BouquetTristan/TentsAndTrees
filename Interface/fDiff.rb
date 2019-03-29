@@ -40,19 +40,19 @@ class FDiff < Page
 
 		@easy.signal_connect('clicked') {
 			self.supprimeMoi
-			suivant=FPlay.new(@window, header, self, unJoueur, 8)
+			suivant=FPlay.new(@window, header, self, unJoueur, "Facile")
 			suivant.ajouteMoi
 			@window.show_all
 		}
 		@medium.signal_connect('clicked') {
 			self.supprimeMoi
-			suivant=FPlay.new(@window, header, self, unJoueur, 12)
+			suivant=FPlay.new(@window, header, self, unJoueur, "Moyenne")
 			suivant.ajouteMoi
 			@window.show_all
 		}
 		@hard.signal_connect('clicked') {
 			self.supprimeMoi
-			suivant=FPlay.new(@window, header, self, unJoueur, 16)
+			suivant=FPlay.new(@window, header, self, unJoueur, "Difficile")
 			suivant.ajouteMoi
 			@window.show_all
 		}

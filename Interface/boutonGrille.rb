@@ -26,7 +26,7 @@ class BoutonGrille
 			focus_hadjustment=(:start)
 		end
 		if etat == 1
-			@image=(Gtk::Image.new(:file =>"./image/Printemps/herbe.png", :size => :dialog))
+			@image=(Gtk::Image.new(:file =>"./image/Printemps/tente.png", :size => :dialog))
 			@bouton.set_image(@image)
 			focus_hadjustment=(:start)
 		end
@@ -36,7 +36,7 @@ class BoutonGrille
 			focus_hadjustment=(:start)
 		end
 		if etat == 3
-			@image=(Gtk::Image.new(:file =>"./image/Printemps/tente.png",:size => :dialog))
+			@image=(Gtk::Image.new(:file =>"./image/Printemps/herbe.png",:size => :dialog))
 			@bouton.set_image(@image)
 			focus_hadjustment=(:start)
 		end
@@ -47,7 +47,3 @@ class BoutonGrille
 	attr_writer :bouton
 
 end
-
-
-
-

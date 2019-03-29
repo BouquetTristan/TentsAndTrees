@@ -8,11 +8,14 @@ require 'sqlite3'
 require 'digest'
 
 # Ouverture de la base de donnée SQLite 3
-bdd = SQLite3::Database.new '../../BaseDeDonnees/profil.db'
+bddP = SQLite3::Database.new '../../BaseDeDonnees/profil.db'
+bddN = SQLite3::Database.new '../../BaseDeDonnees/niveau.db'
+bddA = SQLite3::Database.new '../../BaseDeDonnees/aventure.db'
+bddG = SQLite3::Database.new '../../BaseDeDonnees/grille.db'
 
 
-# Créer la table si elle n'existe pas
-resultat = bdd.execute <<-SQL
+# Créer la table du profil si elle n'existe pas
+resultat = bddP.execute <<-SQL
 	CREATE TABLE IF NOT EXISTS profil
 	(
 		idJoueur INT PRIMARY KEY,
@@ -20,8 +23,7 @@ resultat = bdd.execute <<-SQL
 		password VARCHAR(50),
 		repSecret VARCHAR(50),
 
-		nbAides INT DEFAULT 10,
-
+		#Statistiques
 		scoreGlobal INT DEFAULT 0,
 		scoreFacile INT DEFAULT 0,
 		scoreMoyen INT DEFAULT 0,
@@ -29,13 +31,65 @@ resultat = bdd.execute <<-SQL
 
 		nbPartiesJouees INT DEFAULT 0,
 		nbPartiesFinitSansAides INT DEFAULT 0,
+		nbAides INT DEFAULT 10,
+		nbArgent INT DEFAULT 0,
 
-		niveau INT DEFAULT 0,
-		tableau INT DEFAULT 0
+		#Aventure
+		idAventure INT
 	);
 SQL
 
-def ouvrirBDD()
+# Créer la table des niveaux si elle n'existe pas
+resutlatNiveau = bddN.execute <<-SQL
+	CREATE TABLE IF NOT EXISTS niveau
+	(
+		idNiveau INT PRIMARY KEY,
+		statut BOOLEAN,
+		cout INT
+	);
+SQL
+
+# Créer la table du mode aventure si elle n'existe pas
+resultatAventure = bddA.execute <<-SQL
+	CREATE TABLE IF NOT EXISTS aventure
+	(
+		idAventure INT PRIMARY KEY,
+		idPrintemps INT,
+		idEte INT,
+		idAutomne INT,
+		idHivers INT,
+
+		FOREIGN KEY(idAventure) REFERENCES profil(idJoueur),
+		FOREIGN KEY(idPrintemps) REFERENCES niveau(idNiveau),
+		FOREIGN KEY(idEte) REFERENCES niveau(idNiveau),
+		FOREIGN KEY(idAutomne) REFERENCES niveau(idNiveau),
+		FOREIGN KEY(idHivers) REFERENCES niveau(idNiveau)
+	
+	);
+SQL
+
+
+# Créer la table d'une grille si elle n'existe pas
+resultatGrille = bddG.execute <<-SQL
+	CREATE TABLE IF NOT EXISTS grille
+	(
+		niveauDifficulte VARCHAR PRIMARY KEY,
+		numeroLigne INT PRIMARY KEY,
+		idNiveau INT,
+
+		pointGagnable INT,
+		statut BOOLEAN,
+
+		FOREIGN KEY(idNiveau) REFERENCES niveau(idNiveau)
+	);
+SQL
+
+#########################################################
+###Méthodes pour modifier la base de données du profil###
+
+
+
+def ouvrirBDDP()
 	return SQLite3::Database.new '../../BaseDeDonnees/profil.db'
 end
 
@@ -53,7 +107,7 @@ end
 
 def ajouterUtilisateur(unPseudo, unMDP, uneReponse)
 #Insérer des informations dans la base de données
-	bdd = ouvrirBDD()
+	bdd = ouvrirBDDP()
 	if !(pseudoDejaPris(unPseudo)) then
 		id = chercherIDUnique(bdd)
 		bdd.execute("INSERT INTO profil (idJoueur, pseudo, password, repSecret, scoreGlobal, scoreFacile, scoreMoyen, scoreDifficile, nbPartiesJouees, nbPartiesFinitSansAides, niveau, tableau) VALUES ( #{id}, '#{unPseudo}', '#{Digest::SHA256.hexdigest(unMDP)[0..20]}', '#{Digest::SHA256.hexdigest(uneReponse)[0..20]}', 0, 0, 0, 0, 0, 0, 0, 0 )")
@@ -65,7 +119,7 @@ end
 
 def supprimerUtilisateur(unID)
 #Supprimer des informations dans la base de données
-	bdd = ouvrirBDD()
+	bdd = ouvrirBDDP()
 	if (utilisateurExistant(unID)) then
 		bdd.execute("DELETE FROM profil WHERE idJoueur = '#{unID}'")
 		return true
@@ -76,14 +130,14 @@ end
 
 def voirLesUtilisateurs()
 #Trouver des informations
-	bdd = ouvrirBDD()
+	bdd = ouvrirBDDP()
 	bdd.execute 'SELECT * FROM profil' do |ligne|
 		p ligne
 	end
 end
 
 def utilisateurExistant(unID)
-	bdd = ouvrirBDD()
+	bdd = ouvrirBDDP()
 	if bdd.execute("SELECT idJoueur FROM profil WHERE idJoueur = '#{unID}'").shift.shift != nil
 		return true
 	else
@@ -93,7 +147,7 @@ end
 
 def pseudoDejaPris(unPseudo)
 #Vérifier si un pseudo est déjà présent dans la base de données
-	bdd = ouvrirBDD()
+	bdd = ouvrirBDDP()
 	nbPseudo = bdd.execute("SELECT COUNT(idJoueur) FROM profil WHERE EXISTS (SELECT pseudo FROM profil WHERE pseudo = '#{unPseudo}')").shift.shift
 	if nbPseudo == 0
 		return false
@@ -107,16 +161,14 @@ end
 ## Méthode de recherche du mot de passe par le pseudo
 def connexion(unPseudo, unMDP)
 # Recherche si les deux éléments passés en paramètre appartiennent à un même compte
-	bdd = ouvrirBDD()
+	bdd = ouvrirBDDP()
 	if bdd.execute("SELECT password FROM profil WHERE pseudo = '#{unPseudo}'").shift != nil then
 		motDePasse = bdd.execute("SELECT password FROM profil WHERE pseudo = '#{unPseudo}'").shift.shift
 		if Digest::SHA256.hexdigest(unMDP)[0..20] == motDePasse then
 			return bdd.execute("SELECT idJoueur FROM profil WHERE pseudo = '#{unPseudo}'").shift.shift
 		end
-	
-		return nil
 	end
-
+	return nil
 end
 
 ############
@@ -124,7 +176,7 @@ end
 ## Méthode de changement de mot de passe
 def nouveauMotDePasse(unPseudo, uneReponse, unMDP)
 # Change le mot de passe d'un profil si la réponse secrète est exacte
-	bdd = ouvrirBDD()
+	bdd = ouvrirBDDP()
 	if bdd.execute("SELECT repSecret FROM profil WHERE pseudo = '#{unPseudo}'").shift != nil then
 		reponseSecrete = bdd.execute("SELECT repSecret FROM profil WHERE pseudo = '#{unPseudo}'").shift.shift
 		if Digest::SHA256.hexdigest(uneReponse)[0..20] == reponseSecrete then
@@ -143,7 +195,7 @@ end
 
 def augmenterScoreGlobal(unID, uneValeur)
 #Augmenter le score global d'un joueur
-	bdd = ouvrirBDD()
+	bdd = ouvrirBDDP()
 	ancienneValeur = bdd.execute("SELECT scoreGlobal FROM profil WHERE idJoueur = '#{unID}'").shift.shift
 	valeur = ancienneValeur + uneValeur
 	bdd.execute("UPDATE profil SET scoreGlobal = #{valeur} ")
@@ -151,7 +203,7 @@ end
 
 def augmenterScoreFacile(unID, uneValeur)
 #Augmenter le score global d'un joueur
-	bdd = ouvrirBDD()
+	bdd = ouvrirBDDP()
 	ancienneValeur = bdd.execute("SELECT scoreFacile FROM profil WHERE idJoueur = '#{unID}'").shift.shift
 	valeur = ancienneValeur + uneValeur
 	bdd.execute("UPDATE profil SET scoreFacile = #{valeur} WHERE idJoueur = '#{unID}' ")
@@ -159,7 +211,7 @@ end
 
 def augmenterScoreMoyen(unID, uneValeur)
 #Augmenter le score global d'un joueur
-	bdd = ouvrirBDD()
+	bdd = ouvrirBDDP()
 	ancienneValeur = bdd.execute("SELECT scoreMoyen FROM profil WHERE idJoueur = '#{unID}'").shift.shift
 	valeur = ancienneValeur + uneValeur
 	bdd.execute("UPDATE profil SET scoreMoyen = #{valeur} WHERE idJoueur = '#{unID}' ")
@@ -167,7 +219,7 @@ end
 
 def augmenterScoreDifficile(unID, uneValeur)
 #Augmenter le score global d'un joueur
-	bdd = ouvrirBDD()
+	bdd = ouvrirBDDP()
 	ancienneValeur = bdd.execute("SELECT scoreDifficile FROM profil WHERE idJoueur = '#{unID}'").shift.shift
 	valeur = ancienneValeur + uneValeur
 	bdd.execute("UPDATE profil SET scoreDifficile = #{valeur} WHERE idJoueur = '#{unID}' ")
@@ -175,21 +227,21 @@ end
 
 def augmenterNbPartiesJouees(unID)
 #Augmenter le score global d'un joueur
-	bdd = ouvrirBDD()
+	bdd = ouvrirBDDP()
 	valeur = bdd.execute("SELECT nbPartiesJouees FROM profil WHERE idJoueur = '#{unID}'").shift.shift + 1
 	bdd.execute("UPDATE profil SET nbPartiesJouees = #{valeur} WHERE idJoueur = '#{unID}' ")
 end
 
 def augmenterNbPartiesTermineesSansAides(unID)
 #Augmenter le score global d'un joueur
-	bdd = ouvrirBDD()
+	bdd = ouvrirBDDP()
 	valeur = bdd.execute("SELECT nbPartiesFinitSansAides FROM profil WHERE idJoueur = '#{unID}'").shift.shift + 1
 	bdd.execute("UPDATE profil SET nbPartiesFinitSansAides = #{valeur} WHERE idJoueur = '#{unID}' ")
 end
 
 def augmenterNbAides(unID)
 #Augmenter le nombre d'aide disponible par partie d'un joueur
-	bdd = ouvrirBDD()
+	bdd = ouvrirBDDP()
 	valeur = bdd.execute("SELECT nbAides FROM profil WHERE idJoueur = '#{unID}'").shift.shift + 1
 	bdd.execute("UPDATE profil SET nbAides = #{valeur} WHERE idJoueur = '#{unID}' ")
 end
@@ -201,21 +253,21 @@ end
 
 def augmenterNiveau(unID)
 #Augmenter le score global d'un joueur
-	bdd = ouvrirBDD()
+	bdd = ouvrirBDDP()
 	valeur = bdd.execute("SELECT niveau FROM profil WHERE idJoueur = '#{unID}'").shift.shift + 1
 	bdd.execute("UPDATE profil SET niveau = #{valeur} WHERE idJoueur = '#{unID}' ")
 end
 
 def augmenterTableau(unID)
 #Augmenter le score global d'un joueur
-	bdd = ouvrirBDD()
+	bdd = ouvrirBDDP()
 	valeur = bdd.execute("SELECT tableau FROM profil WHERE idJoueur = '#{unID}'").shift.shift + 1
 	bdd.execute("UPDATE profil SET tableau = #{valeur} WHERE idJoueur = '#{unID}' ")
 end
 
 def razTableau(unID)
 #Remise à zéro du compteur de tableau
-	bdd = ouvrirBDD()
+	bdd = ouvrirBDDP()
 	bdd.execute("UPDATE profil SET tableau = 1 WHERE idJoueur = '#{unID}' ")
 end
 
@@ -224,7 +276,7 @@ end
 ## Méthodes pour voir les différentes informations d'un compte en utilisant l'id
 def recupererInformation(unID, iterateur)
 # Envoie les informations d'un compte en utilisant l'id. L'itérateur permet de choisir l'information
-	bdd = ouvrirBDD()
+	bdd = ouvrirBDDP()
 	case iterateur
 	when 1 # Renvoie le pseudo
 		return bdd.execute("SELECT repSecret FROM profil WHERE idJoueur = #{unID}").to_s

@@ -1,20 +1,22 @@
 require 'gtk3'
+require './Page.rb'
 
 require './grille/grille.rb'
 require './boutonGrille.rb'
 
-# Fichier: fPlay.rb
-# Auteur: Marchand Killian
-# Description: 
-# => Fenertre du jeu
-# => C'est ici qu'est regroupé les composants de la fenetre de jeu
-# => Elle est composé de la grille de jeu, ainsi que la grille d'aide
+class FPlayA < Page
 
-class IGrille
+	def initialize(monApp, header, anciennePage, taille, chemin)
 
-	def initialize(taille)
+		super(monApp, :vertical, header,  anciennePage)
 
-		grilleJ = Grille.creer(taille, "./grille/GrilleJ.txt")
+        @frame = Gtk::Table.new(1,1,false)
+
+        @box = Gtk::ButtonBox.new(:horizontal)
+
+        @grille = Gtk::Table.new(taille, taille, false)
+
+        grilleJ = Grille.creer(taille, "./grille/GrilleJ.txt")
 		grilleF = Grille.creer(taille, "./grille/GrilleF.txt")
 		
 		@boutonGrille = [[]]
@@ -37,7 +39,7 @@ class IGrille
 			temp=[]
 			for j in (0..taille-1)
 					vEtat = grilleJ.grille[i][j].etat
-					temp[j] = BoutonGrille.new
+					temp[j] = BoutonGrille.new(chemin)
 					temp[j].mCoord(i,j)
 					temp[j].chgEtat(vEtat)
 					@grille.attach(temp[j].bouton, i+1, i+2, j+1,j+2)
@@ -56,5 +58,32 @@ class IGrille
 				}
 			}
 		}
-	end	
+
+		@gHelp = Gtk::ButtonBox.new(:vertical)
+
+		@Label = Gtk::Label.new('Timer / afficher les aides')
+		@gHelp.add(@Label)
+
+		@bAide = Gtk::Button.new()
+		@help=(Gtk::Image.new(:file =>"./image/Aide.png"))
+		@bAide.set_image(@help)
+		@gHelp.add(@bAide)
+
+		@bPause = Gtk::Button.new()
+		@pause=(Gtk::Image.new(:file =>"./image/pause.png"))
+		@bPause.set_image(@pause)
+		@gHelp.add(@bPause)
+
+		@gHelp.spacing=70
+
+		@box.add(@grille)
+		@box.add(@gHelp)
+		
+		@frame.attach(@box,0,1,0,1)
+
+		@bg=(Gtk::Image.new(:file =>"../Assets/ImgPresentation2.jpg"))
+        @frame.attach(@bg,0,1,0,1)
+
+        self.add(@frame)
+    end
 end

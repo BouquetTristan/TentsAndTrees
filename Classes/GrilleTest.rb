@@ -3,7 +3,7 @@ require_relative 'Grille.rb'
 numGrille = 40
 
 #Test de la création et de l'affichage d'une grille
-grille = Grille.creer("Facile", numGrille)
+grille = Grille.creerD("Facile")
 print "\nGrille du joueur : "
 grille.afficherGrille(grille.grilleJ)
 print "\nGrille finale : "

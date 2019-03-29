@@ -4,7 +4,7 @@
 # Ce programme a pour but d'interagir avec la base de données des profils des utilisateurs
 # Ce programme possède des méthodes pour lire, écrire et trouver des informations qui seront envoyés par le biais de 'profil.rb'
 
-load '../../BaseDeDonnees/profil.rb'
+load '../BaseDeDonnees/profil.rb'
 
 
 class Joueur
@@ -21,6 +21,7 @@ class Joueur
 		@rep = uneRepSec
 
 		@nbAides = nil
+		@argent = nil
 
 		@scoreGlobal = nil
 		@scoreFacile = nil
@@ -30,13 +31,18 @@ class Joueur
 		@nbPartiesJouees = nil
 		@nbPartiesFinitSansAides = nil
 
-		@niveau = nil
-		@tableau = nil
-
 	end
 
+	attr_reader :pseudo
+	attr_reader :scoreGlobal
+	attr_reader :scoreFacile
+	attr_reader :scoreMoyen
+	attr_reader :scoreDifficile
+	attr_reader :nbPartiesJouees
+	attr_reader :nbAides
+
 	def inscrire()
-		
+
 		puts "Ajout de l'utilisateur #{@pseudo}\n"
 		@id = ajouterUtilisateur( @pseudo, @mdp, @rep)
 		if  @id != 0 then
@@ -64,8 +70,6 @@ class Joueur
 			puts "   Récupération des informations....\n"
 				@id = id
 				@rep = recupererInformation(@id, 1)
-				
-				@nbAides = recupererInformation(@id, 10)
 
 				@scoreGlobal = recupererInformation(@id, 2)
 				@scoreFacile = recupererInformation(@id, 3)
@@ -75,8 +79,9 @@ class Joueur
 				@nbPartiesJouees = recupererInformation(@id, 6)
 				@nbPartiesFinitSansAides = recupererInformation(@id, 7)
 
-				@niveau = recupererInformation(@id, 8)
-				@tableau = recupererInformation(@id, 9)
+				@nbAides = recupererInformation(@id, 8)
+				@argent = recupererInformation(@id, 9)
+
 			puts "Connexion réussie\n"
 		else
 			puts "Connexion échouée\n"
@@ -106,10 +111,11 @@ class Joueur
 			puts " Info parties \n"
 			puts "  Parties jouées : #{@nbPartiesJouees}\n"
 			puts "  Parties finit sans aides : #{@nbPartiesFinitSansAides}\n"
-			puts " Histoire \n"
-			puts "  Niveau : #{@niveau}\n"
-			puts "  Tableau : #{@tableau}\n"
-		else
+			puts " Info profil \n"
+			puts "  Nb aides : #{@nbAides}\n"
+			puts "  argent : #{@argent}\n"
+			
+			else
 			puts "Erreur, aucune information présente. Veuillez vous identifiez avant\n"
 		end
 	end
@@ -134,7 +140,7 @@ class Joueur
 		augmenterNbPartiesJouees(@id)
 
 		if nbAidesUtilises == 0 then
-			augmenterNbPartiesTermineesSansAides(@id)	
+			augmenterNbPartiesTermineesSansAides(@id)
 		end
 
 		@scoreGlobal = (@scoreFacile + @scoreMoyen + @scoreDifficile)/3

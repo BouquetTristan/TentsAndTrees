@@ -1,6 +1,6 @@
 
 
-load 'Joueur.rb'
+load '../BaseDeDonnees/Joueur.rb'
 
 
 j1 = Joueur.creer("Killian", "Kikidu72", "Killian est genial")
@@ -18,6 +18,6 @@ j3.inscrire()
 j2.desinscrire()
 
 j2.connecter()
-j2.afficherStatistiques()
+#j2.afficherStatistiques()
 j1.connecter()
 j1.afficherStatistiques()

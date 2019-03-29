@@ -8,41 +8,38 @@ class FMdpOublie < Page
 
      def initialize(monApp, header, anciennePage)
 
-         super("Mode de Jeu", monApp, :vertical, header,  anciennePage)
-         self.hautPage.spacing = 220
+        super(monApp, :vertical, header,  anciennePage)
 
-		@gMdpOublie = Gtk::Table.new(7,1, false)
+        @frame = Gtk::Table.new(1,1,false)
 
+    	@gMdpOublie = Gtk::ButtonBox.new(:vertical)
+        @gMdpOublie.spacing = 30
 
+    	@pseudo = TexteEntree.creer('Pseudo : ', true).gTexteEntree
+        @newMdp = TexteEntree.creer('Nouveau mot de passe : ', false).gTexteEntree
+        @question =  Gtk::Label.new('Quel est votre lieux de vacance préféré?')
+        @reponse = TexteEntree.creer('Reponse : ', false).gTexteEntree
+        @connexion = Gtk::Button.new(:label => 'Connexion', :use_underline => nil, :stock_id => nil)
 
-		@pseudo = TexteEntree.creer('Pseudo : ', true).gTexteEntree
-          @newMdp = TexteEntree.creer('Nouveau mot de passe : ', false).gTexteEntree
-          @question =  Gtk::Label.new('Quel est votrelieux de vacance préféré?')
-          @reponse = TexteEntree.creer('Reponse : ', false).gTexteEntree
-          @connexion = Gtk::Button.new(:label => 'Connexion', :use_underline => nil, :stock_id => nil)
-		@quit = Gtk::Button.new(:label => 'Quitter', :use_underline => nil, :stock_id => nil)
+    		@gMdpOublie.add(@pseudo, :expand => true, :fill => false)
+    		@gMdpOublie.add(@newMdp, :expand => true, :fill => false)
+    		@gMdpOublie.add(@question, :expand => true, :fill => false)
+    		@gMdpOublie.add(@reponse, :expand => true, :fill => false)
+    		@gMdpOublie.add(@connexion, :expand => true, :fill => false)
 
-		@gMdpOublie.attach(@pseudo, 0,1,1,2)
+    	@connexion.signal_connect('clicked') {
+            self.supprimeMoi
+            suivant = FMenu.new(@window, header, self)
+            suivant.ajouteMoi
+            @window.show_all          
+        }
 
-		@gMdpOublie.attach(@question, 0,1,2,3)
-		@gMdpOublie.attach(@reponse, 0,1,3,4)
-		@gMdpOublie.attach(@newMdp, 0,1,4,5)
-		@gMdpOublie.attach(@connexion, 0,1,5,6)
-		@gMdpOublie.attach(@quit, 0,1,6,7)
+        @frame.attach(@gMdpOublie,0,1,0,1)
 
+        @bg=(Gtk::Image.new(:file =>"../Assets/ImgPresentation2.jpg"))
+        @frame.attach(@bg,0,1,0,1)
 
-
-		@connexion.signal_connect('clicked') {
-               self.supprimeMoi
-               suivant = FMenu.new(@window, header, self)
-               suivant.ajouteMoi
-               @window.show_all          
-          }
-
-        @quit.signal_connect('clicked') {        
-          }
-         
-        self.add(@gMdpOublie)
+        self.add(@frame)
 
 	end
 

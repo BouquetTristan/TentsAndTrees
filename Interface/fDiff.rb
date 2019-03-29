@@ -15,38 +15,52 @@ class FDiff < Page
 
 	def initialize(monApp, header, anciennePage)
 
-		super("Mode de Jeu", monApp, :vertical, header,  anciennePage)
-		self.hautPage.spacing = 220
+		super(monApp, :vertical, header,  anciennePage)
+
+		@frame = Gtk::Table.new(1,1,false)
 
 		@butons = Gtk::ButtonBox.new(:horizontal)
     	@butons.layout = :spread
 
 		@easy = Gtk::Button.new(:label => 'Facile', :use_underline => nil, :stock_id => nil)
 		@medium = Gtk::Button.new(:label => 'Moyen', :use_underline => nil, :stock_id => nil)
-		@hard = Gtk::Button.new(:label => 'Diffice', :use_underline => nil, :stock_id => nil)
+		@hard = Gtk::Button.new(:label => 'Difficile', :use_underline => nil, :stock_id => nil)
 
 
 		@butons.add(@easy, :expand => true, :fill => false)
 		@butons.add(@medium, :expand => true, :fill => false)
 		@butons.add(@hard, :expand => true, :fill => false)
 
+		@header.btnMenu.signal_connect('clicked') {
+	        self.supprimeMoi
+	        menu = FMenu.new(@window, @header, self)
+	        menu.ajouteMoi
+	        @window.show_all
+    	}
 
 		@easy.signal_connect('clicked') {
 			self.supprimeMoi
-			FPlay.construire(fenetre, 8)
+			suivant=FPlay.new(@window, header, self,8)
+			suivant.ajouteMoi
 			@window.show_all		
 		}
 		@medium.signal_connect('clicked') {
 			self.supprimeMoi
-			FPlay.construire(fenetre, 12)
+			suivant=FPlay.new(@window, header, self,12)
+			suivant.ajouteMoi
 			@window.show_all
 		}
 		@hard.signal_connect('clicked') {
 			self.supprimeMoi
-			FPlay.construire(fenetre, 16)
+			suivant=FPlay.new(@window, header, self,16)
+			suivant.ajouteMoi
 			@window.show_all
 		}
+		@frame.attach(@butons,0,1,0,1)
 
-		self.add(@butons)
+		@bg=(Gtk::Image.new(:file =>"../Assets/ImgPresentation2.jpg"))
+        @frame.attach(@bg,0,1,0,1)
+
+        self.add(@frame)
 	end	
 end

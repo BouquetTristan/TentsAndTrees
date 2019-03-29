@@ -18,12 +18,18 @@ class Grille
 
 	#Méthode de création
 
+	#Créé une grille avec une difficulté et un numéro
 	def Grille.creer(diff, num)
 		new(diff, num)
 	end
 
-	private_class_method:new
 
+	#Créé une grille avec un niveau de difficulté
+	def Grille.creerD(diff)
+		Grille.creer(diff, rand(366))
+	end
+
+	private_class_method:new
 
 	#Méthode d'initialisation
   	def initialize (diff, num)

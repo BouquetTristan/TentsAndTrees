@@ -10,36 +10,69 @@ class FCreationCompte < Page
 
      def initialize(monApp, header, anciennePage)
 
-          super("Mode de Jeu", monApp, :vertical, header,  anciennePage)
-          self.hautPage.spacing = 220
+          super(monApp, :vertical, header,  anciennePage)
 
-		@gCC = Gtk::Table.new(7,1, false)
+          @frame = Gtk::Table.new(1,1,false)
 
-          @pseudo = TexteEntree.creer('Pseudo : ', true).gTexteEntree
-          @mdp = TexteEntree.creer('Mot de passe : ', true).gTexteEntree
-          @question =  Gtk::Label.new('Quel est votre lieux de vacance préféré?')
-          @reponse = TexteEntree.creer('Reponse : ', false).gTexteEntree
+		@gCC = Gtk::ButtonBox.new(:vertical)
+          @gCC.spacing = 30
+
+          @pseudo = TexteEntree.creer('Pseudo : ', false)
+          @mdp = TexteEntree.creer('Mot de passe : ', true)
+          @question =  Gtk::Label.new('Quel est votre lieux de vacances préféré?')
+          @reponse = TexteEntree.creer('Reponse : ', true)
           @connexion = Gtk::Button.new(:label => 'Connexion', :use_underline => nil, :stock_id => nil)
-		#@quit = Gtk::Button.new(:label => 'Quitter', :use_underline => nil, :stock_id => nil)
 
-
-          @gCC.attach(@pseudo, 0,1,1,2)
-          @gCC.attach(@mdp, 0,1,2,3)
-          @gCC.attach(@question, 0,1,3,4)
-          @gCC.attach(@reponse, 0,1,4,5)
-          @gCC.attach(@connexion, 0,1,5,6)
-          #@gCC.attach(@quit, 0,1,6,7)
-
+          @gCC.add(@pseudo.gTexteEntree, :expand => true, :fill => false)
+          @gCC.add(@mdp.gTexteEntree, :expand => true, :fill => false)
+          @gCC.add(@question, :expand => true, :fill => false)
+          @gCC.add(@reponse.gTexteEntree, :expand => true, :fill => false)
+          @gCC.add(@connexion, :expand => true, :fill => false)
 
 
           @connexion.signal_connect('clicked') {
                self.supprimeMoi
                suivant = FMenu.new(@window, header, self)
                suivant.ajouteMoi
-               @window.show_all          
+               @window.show_all
           }
-         
-        self.add(@gCC)
+
+
+
+          @connexion.signal_connect('clicked') {
+
+
+ 			joueur = Joueur.new(@pseudo.entree.text, @mdp.entree.text, @reponse.entree.text)
+
+                puts("OK nouveau joueur\n")
+                if (@pseudo.entree.text == '' || @mdp.entree.text == '')
+ 				#@pseudo.erreur.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 10\">/!\\ Erreur entrer un pseudo et un mot de passe</span>\n")
+                     @mdp.erreur.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 10\">Erreur entrer un pseudo et un mot de passe</span>\n")
+                end
+                if (@reponse.entree.text =='')
+ 				#@pseudo.erreur.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 10\">/!\\ Erreur entrer un pseudo et un mot de passe</span>\n")
+                     @reponse.erreur.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 10\">Répondez a la question</span>\n")
+
+ 			elsif joueur.inscrire() == 0 then
+                     puts("Joueur\n")
+ 				@mdp.entree.text = ''
+                     puts("mdp sans rien\n")
+                     @mdp.erreur.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 10\">Erreur L'utilisateur est déjà enregistré</span>\n")
+
+
+                else
+                     self.supprimeMoi
+                     suivant = FMenu.new(@window, header, self)
+                     suivant.ajouteMoi
+                     @window.show_all
+                end
+          }
+
+          @frame.attach(@gCC,0,1,0,1)
+
+          @bg=(Gtk::Image.new(:file =>"../Assets/ImgPresentation2.jpg"))
+          @frame.attach(@bg,0,1,0,1)
+          self.add(@frame)
 
      end
 

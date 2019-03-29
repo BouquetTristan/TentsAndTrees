@@ -1,5 +1,4 @@
 require 'gtk3'
-#require './fGameMode.rb'
 require './TexteEntree'
 require './Page.rb'
 
@@ -7,38 +6,71 @@ class FModifC < Page
 
 	def initialize(monApp, header, anciennePage)
 
-		super("Mode de Jeu", monApp, :vertical, header,  anciennePage)
-		self.hautPage.spacing = 220
+		super(monApp, :vertical, header,  anciennePage)
+
+		@frame = Gtk::Table.new(1,1,false)
+
+		@gModifC = Gtk::ButtonBox.new(:vertical)
+          @gModifC.spacing = 30
+
+          @pseudo = TexteEntree.creer('Pseudo : ', false)
+          @mdp = TexteEntree.creer('Mot de passe : ', true)
+          @question =  Gtk::Label.new('Quel est votre lieux de vacances préféré?')
+          @reponse = TexteEntree.creer('Reponse : ', true)
+          @valider = Gtk::Button.new(:label => 'Valider les modifications', :use_underline => nil, :stock_id => nil)
+
+          @gModifC.add(@pseudo.gTexteEntree, :expand => true, :fill => false)
+          @gModifC.add(@mdp.gTexteEntree, :expand => true, :fill => false)
+          @gModifC.add(@question, :expand => true, :fill => false)
+          @gModifC.add(@reponse.gTexteEntree, :expand => true, :fill => false)
+          @gModifC.add(@valider, :expand => true, :fill => false)
+
+		
+
+		@valider.signal_connect('clicked') {
 
 
-		@gMdpOublie = Gtk::Table.new(7,1, false)
+			joueur = Joueur.new(@pseudo.entree.text, @mdp.entree.text, @reponse.entree.text)
+
+			puts("OK nouveau joueur\n")
+			if (@pseudo.entree.text == '' || @mdp.entree.text == '')
+				#@pseudo.erreur.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 10\">/!\\ Erreur entrer un pseudo et un mot de passe</span>\n")
+				@mdp.erreur.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 10\">Erreur entrer un pseudo et un mot de passe</span>\n")
+			end
+			if (@reponse.entree.text =='')
+				#@pseudo.erreur.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 10\">/!\\ Erreur entrer un pseudo et un mot de passe</span>\n")
+				@reponse.erreur.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 10\">Répondez a la question</span>\n")
+
+			elsif joueur.inscrire() == 0 then
+				puts("Joueur\n")
+				@mdp.entree.text = ''
+				puts("mdp sans rien\n")
+				@mdp.erreur.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 10\">Erreur L'utilisateur est déjà enregistré</span>\n")
 
 
-		@pseudo = TexteEntree.creer('Pseudo : ', true).gTexteEntree
-          @newMdp = TexteEntree.creer('Mot de passe : ', false).gTexteEntree
-          @question =  Gtk::Label.new('Quel est votrelieux de vacance préféré?')
-          @reponse = TexteEntree.creer('Reponse : ', false).gTexteEntree
-          @connexion = Gtk::Button.new(:label => 'Connexion', :use_underline => nil, :stock_id => nil)
-
-
-		@gMdpOublie.attach(@pseudo, 0,1,1,2)
-		@gMdpOublie.attach(@newMdp, 0,1,2,3)
-        @gMdpOublie.attach(@question, 0,1,3,4)
-		@gMdpOublie.attach(@reponse, 0,1,4,5)
-		@gMdpOublie.attach(@connexion, 0,1,5,6)
-
-
-
-		@connexion.signal_connect('clicked') {
-			self.supprimeMoi
-			FPlay.construire(fenetre, 8)
-			@window.show_all		
+			else
+				self.supprimeMoi
+				suivant = FMenu.new(@window, header, self)
+				suivant.ajouteMoi
+				@window.show_all
+			end
 		}
 
 
-		self.add(@gMdpOublie)
+		@header.btnMenu.signal_connect('clicked') {
+	        self.supprimeMoi
+	        menu = FMenu.new(@window, @header, self)
+	        menu.ajouteMoi
+	        @window.show_all
+	    }
+
+	    @frame.attach(@gModifC,0,1,0,1)
+
+		@bg=(Gtk::Image.new(:file =>"../Assets/ImgPresentation2.jpg"))
+        @frame.attach(@bg,0,1,0,1)
+
+        self.add(@frame)
 
 	end
 
 end
-

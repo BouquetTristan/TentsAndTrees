@@ -11,12 +11,12 @@ require '../BaseDeDonnees/Joueur.rb'
 
 class FConnexion < Page
 
-     def initialize(monApp, header, anciennePage)
+     def initialize(monApp, header, anciennePage, unJoueur)
 
-          super(monApp, :vertical, header,  anciennePage)
+          super(monApp, :vertical, header,  anciennePage, unJoueur)
 
           @frame = Gtk::Table.new(1,1,false)
-          super(monApp, :vertical, header,  anciennePage)
+          #super(monApp, :vertical, header,  anciennePage, unJoueur)
 
 		@gConnexion = Gtk::ButtonBox.new(:vertical)
           @gConnexion.layout = :spread
@@ -62,7 +62,7 @@ class FConnexion < Page
 
                else
                     self.supprimeMoi
-                    suivant = FMenu.new(@window, header, self)
+                    suivant = FMenu.new(@window, header, self, joueur)
                     suivant.ajouteMoi
                     @window.show_all
                end
@@ -70,19 +70,18 @@ class FConnexion < Page
 
           @creaC.signal_connect('clicked') {
                self.supprimeMoi
-               suivant = FCreationCompte.new(@window, header, self)
+               suivant = FCreationCompte.new(@window, header, self, nil)
                suivant.ajouteMoi
                @window.show_all
           }
 
           @mdpO.signal_connect('clicked') {
                self.supprimeMoi
-               suivant = FMdpOublie.new(@window, header, self)
+               suivant = FMdpOublie.new(@window, header, self, nil)
                suivant.ajouteMoi
                @window.show_all
           }
-          @quit.signal_connect('clicked') {
-          }
+          @quit.signal_connect('clicked') {onDestroy}
 
           @frame.attach(@gConnexion, 0,1,0,1)
 

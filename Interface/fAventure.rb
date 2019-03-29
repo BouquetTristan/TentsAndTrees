@@ -3,9 +3,9 @@ require './fPlayA.rb'
 
 class FAventure < Page
 
-	def initialize(monApp, header, anciennePage)
+	def initialize(monApp, header, anciennePage, unJoueur)
 
-		super(monApp, :vertical, header,  anciennePage)
+		super(monApp, :vertical, header,  anciennePage, unJoueur)
 
 		@frame = Gtk::Table.new(1,1,false)
 
@@ -38,7 +38,7 @@ class FAventure < Page
 
         @imgH=(Gtk::Image.new(:file =>"../Assets/VignetteHiver.png"))
         @hiver.set_image(@imgH)
-        focus_hadjustment=(:start)		
+        focus_hadjustment=(:start)
 
 		@level.add(@print, :expand => true, :fill => false)
 		@level.add(@ete, :expand => true, :fill => false)
@@ -49,14 +49,14 @@ class FAventure < Page
 
 		@header.btnMenu.signal_connect('clicked') {
 		        self.supprimeMoi
-		        menu = FMenu.new(@window, @header, self)
+		        menu = FMenu.new(@window, @header, self, unJoueur)
 		        menu.ajouteMoi
 		        @window.show_all
 		    }
 
 		@print.signal_connect('clicked') {
 		        self.supprimeMoi
-		        menu = FPlayA.new(@window, @header, self)
+		        menu = FPlayA.new(@window, @header, self, unJoueur)
 		        menu.ajouteMoi
 		        @window.show_all
 		    }
@@ -64,7 +64,7 @@ class FAventure < Page
 		if(bloqueE == true)
 			@ete.signal_connect('clicked') {
 			        self.supprimeMoi
-			        menu = FPlayA.new(@window, @header, self)
+			        menu = FPlayA.new(@window, @header, self, unJoueur)
 			        menu.ajouteMoi
 			        @window.show_all
 			    }
@@ -93,5 +93,5 @@ class FAventure < Page
         @frame.attach(@bg,0,1,0,1)
 
         self.add(@frame)
-	end	
+	end
 end

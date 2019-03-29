@@ -40,7 +40,7 @@ if ARGV.size.eql?(0) then
 
 	  ##
 	  # Box principale
-	  page = FConnexion.new(monApp, header, nil)
+	  page = FConnexion.new(monApp, header, nil, nil)
 
 	  page.ajouteMoi
 

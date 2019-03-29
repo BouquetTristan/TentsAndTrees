@@ -10,10 +10,16 @@ require './fTuto5.rb'
 
 class FDidac < Page
 
+<<<<<<< HEAD
      def initialize(monApp, header, anciennePage)
+=======
+		super("", monApp, :vertical, header,  anciennePage, unJoueur)
+		self.hautPage.spacing = 220
+>>>>>>> c5f1685f7036decd2bbfec073d7e0c32cd525fdf
 
      	super(monApp, :vertical, header,  anciennePage)
 
+<<<<<<< HEAD
         @frame = Gtk::Table.new(1,1,false)
     		@gMain = Gtk::ButtonBox.new(:vertical)
 
@@ -89,3 +95,11 @@ class FDidac < Page
     end
 end
 
+=======
+		@header.btnMenu.signal_connect('clicked') {
+        	self.supprimeMoi
+        	menu = FMenu.new(@window, @header, self, unJoueur)
+        	menu.ajouteMoi
+        	@window.show_all
+    	}
+>>>>>>> c5f1685f7036decd2bbfec073d7e0c32cd525fdf

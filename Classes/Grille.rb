@@ -67,7 +67,7 @@ class Grille
 		grilleFich.each() do |l|
 			@nbTentesLigne << l.split(':').last.to_i
 			ligne = l.delete "0-9:"
-		  	
+
 			ligneCasesF = []
 			ligneCasesJ = []
 
@@ -87,7 +87,7 @@ class Grille
 	#Méthodes d'accès
 	attr_reader :taille, :difficulte, :numero, :grilleJ, :grilleF, :nbTentesLigne, :nbTentesColonne
 	attr_writer :grilleJ
-  
+
 
 	#Méthodes d'instance
 
@@ -108,7 +108,7 @@ class Grille
   	#Enregistre la grille dans un fichier
   	def enregistrerFichier()
     	ligne = []
-		
+
 		for i in 0..(@taille-1)
 			ligneGrille = ""
 			ligneTemp = ""
@@ -129,7 +129,7 @@ class Grille
 			ligneGrille = ligneGrille + ligneTemp.to_s
 			ligne<<ligneGrille.to_s
 		end
-		
+
 		ligne = ligne.join(';')
 
 		fichier =File.new("../Ressources/SauvegardeGrilles.txt", File::CREAT|File::RDWR)
@@ -142,8 +142,8 @@ class Grille
   def Grille.charger (diff, num)
   	grille = Grille.creer(diff, num)
   	ligneGrille = IO.readlines("../Ressources/SauvegardeGrilles.txt")[0].delete "\n"
-  	grilleFich = ligneGrille.split(';') 
-  	
+  	grilleFich = ligneGrille.split(';')
+
   	grille.grilleJ = []
 
   	i = 0
@@ -172,7 +172,7 @@ class Grille
 
   #Parcours par ligne de la grille
   def parcourirL ()
-  	@grilleJ.each do |ligne|	
+  	@grilleJ.each do |ligne|
   			yield ligne
   	end
   end
@@ -193,4 +193,20 @@ class Grille
   		yield ligne
   	end
   end
+
+	# Observateur pour savoir si l'utilisateur a gagner
+	def observateur()
+
+	  for i in 0..(taille-1)
+	    for j in 0..(taille-1)
+	      if ( grilleJ[i][j].etat != grilleF[i][j].etat )
+	        return 0
+	      end
+	    end
+	  end
+	    return 1
+
+
+	end
+
 end

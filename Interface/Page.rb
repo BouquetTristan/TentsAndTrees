@@ -2,11 +2,11 @@ require "gtk3"
 
 # Classe représentant une page
 
-class Page <  Gtk::Box 
+class Page <  Gtk::Box
 
   attr_reader :hautPage, :btnRetour, :btnHome, :btnCompte, :enciennePage, :hautPage, :label , :couleur
 
-  def initialize(monApp, sens, unHeader, anciennePage)
+  def initialize(monApp, sens, unHeader, anciennePage, unJoueur)
 
     ##
     # Creation de la Gtk::Box

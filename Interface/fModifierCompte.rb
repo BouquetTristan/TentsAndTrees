@@ -4,9 +4,9 @@ require './Page.rb'
 
 class FModifC < Page
 
-	def initialize(monApp, header, anciennePage)
+	def initialize(monApp, header, anciennePage, unJoueur)
 
-		super(monApp, :vertical, header,  anciennePage)
+		super(monApp, :vertical, header,  anciennePage, unJoueur)
 
 		@frame = Gtk::Table.new(1,1,false)
 
@@ -25,7 +25,7 @@ class FModifC < Page
           @gModifC.add(@reponse.gTexteEntree, :expand => true, :fill => false)
           @gModifC.add(@valider, :expand => true, :fill => false)
 
-		
+
 
 		@valider.signal_connect('clicked') {
 
@@ -49,8 +49,9 @@ class FModifC < Page
 
 
 			else
+				unJoueur.desinscrire
 				self.supprimeMoi
-				suivant = FMenu.new(@window, header, self)
+				suivant = FMenu.new(@window, header, self, joueur)
 				suivant.ajouteMoi
 				@window.show_all
 			end
@@ -59,7 +60,7 @@ class FModifC < Page
 
 		@header.btnMenu.signal_connect('clicked') {
 	        self.supprimeMoi
-	        menu = FMenu.new(@window, @header, self)
+	        menu = FMenu.new(@window, @header, self, unJoueur)
 	        menu.ajouteMoi
 	        @window.show_all
 	    }

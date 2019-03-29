@@ -8,9 +8,9 @@ require './fGameMode.rb'
 
 class FMenu < Page
 
-     def initialize(monApp, header, anciennePage)
+     def initialize(monApp, header, anciennePage, unJoueur)
 
-     	super(monApp, :vertical, header,  anciennePage)
+     	super(monApp, :vertical, header,  anciennePage, unJoueur)
 
         @frame = Gtk::Table.new(1,1,false)
     		@gMenu = Gtk::ButtonBox.new(:vertical)
@@ -36,7 +36,7 @@ class FMenu < Page
     		@play = Gtk::Button.new(:label => 'Jouer', :use_underline => nil, :stock_id => nil)
     		@didac = Gtk::Button.new(:label => 'Didacticiel', :use_underline => nil, :stock_id => nil)
     		@score = Gtk::Button.new(:label => 'Classement', :use_underline => nil, :stock_id => nil)
-    		
+
 
     		@gMenu.add(@play, :expand => true, :fill => false)
     		@gMenu.add(@didac, :expand => true, :fill => false)
@@ -46,19 +46,19 @@ class FMenu < Page
         @option.signal_connect('clicked') {
                #self.supprimeMoi
                #FPlay.construire(fenetre, 8)
-               #@window.show_all         
+               #@window.show_all
         }
         @profil.signal_connect('clicked') {
                self.supprimeMoi
-               suivant = FProfil.new(@window, header, self)
+               suivant = FProfil.new(@window, header, self, unJoueur)
                suivant.ajouteMoi
-               @window.show_all  
+               @window.show_all
         }
         @play.signal_connect('clicked') {
                self.supprimeMoi
-               suivant = FGM.new(@window, header, self)
+               suivant = FGM.new(@window, header, self, unJoueur)
                suivant.ajouteMoi
-               @window.show_all          
+               @window.show_all
         }
         @didac.signal_connect('clicked') {
               self.supprimeMoi
@@ -77,4 +77,3 @@ class FMenu < Page
         self.add(@frame)
     end
 end
-

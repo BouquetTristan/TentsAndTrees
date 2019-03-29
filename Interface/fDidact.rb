@@ -50,7 +50,6 @@ class FDidac < Page
 	        menu = FMenu.new(@window, @header, self)
 	        menu.ajouteMoi
 	        @window.show_all
-<<<<<<< HEAD
     	}
 
       

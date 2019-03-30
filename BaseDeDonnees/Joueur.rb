@@ -105,6 +105,26 @@ class Joueur
 		end
 	end
 
+	def nouveauMotDePasse(nouveauMotDePasse)
+		if changerMotDePasse(@id, nouveauMotDePasse) == true then
+			puts "   Le mot de passe a bien été modifié\n"
+			return true
+		else
+			puts "   Le nouveau mot de passe ne peut pas être le même\n"
+			return false
+		end
+	end
+
+	def nouveauPseudo(nouveauPseudo)
+		if changerPseudo(@id, nouveauPseudo) == true then
+			puts "   Le pseudo a bien été modifié\n"
+			return true
+		else
+			puts "   Le nouveau pseudo ne peut pas être le même\n"
+			return false
+		end
+	end
+
 	def afficherStatistiques()
 		if @scoreGlobal != nil then
 			puts "Joueur : #{@pseudo}##{@id}\n"
@@ -121,13 +141,17 @@ class Joueur
 			puts "  argent : #{@argent}\n"
 			puts " Histoire \n"
 			for i in 0..(@niveaux.length-1)
-				nomNiveau = @niveaux.at(i).at(0)
-				statutNiveau = @niveaux.at(i).at(1)  
+				nomNiveau = @niveaux.at(i).at(1)
+				statutNiveau = @niveaux.at(i).at(2)  
 				puts "  #{nomNiveau} : #{statutNiveau}\n"
 			end
 			else
 			puts "Erreur, aucune information présente. Veuillez vous identifiez avant\n"
 		end
+	end
+
+	def acheterNiveau(unNumeroNiveau)
+
 	end
 
 

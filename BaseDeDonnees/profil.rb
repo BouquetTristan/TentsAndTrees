@@ -177,29 +177,30 @@ def creerModeAventure(unID)
 	bddG = ouvrirBDDG()
 
 	baseNiveau = unID*100
+	nbGrilleParNiveau = 6
 
 	#Création de tous les niveaux avec l'id du joueur
 
 	ligne = 0
 
 	#printemps
-		niveau1 = creerNiveauAventure(baseNiveau, ligne)
-		ligne += 7
+		niveau1 = creerNiveauAventure(baseNiveau, ligne, nbGrilleParNiveau)
+		ligne += nbGrilleParNiveau+1
 	#été
-		niveau2 = creerNiveauAventure(baseNiveau, ligne)
-		ligne += 7
+		niveau2 = creerNiveauAventure(baseNiveau, ligne, nbGrilleParNiveau)
+		ligne += nbGrilleParNiveau+1
 	#automne
-		niveau3 = creerNiveauAventure(baseNiveau, ligne)
-		ligne += 7
+		niveau3 = creerNiveauAventure(baseNiveau, ligne, nbGrilleParNiveau)
+		ligne += nbGrilleParNiveau+1
 	#hiver
-		niveau4 = creerNiveauAventure(baseNiveau, ligne)
-		ligne += 7
+		niveau4 = creerNiveauAventure(baseNiveau, ligne, nbGrilleParNiveau)
+		ligne += nbGrilleParNiveau+1
 	#Ajout du mode aventure au compte du joueur
 	bddA.execute("INSERT INTO aventure (idAventure, idPrintemps, idEte, idAutomne, idHiver) VALUES (#{unID}, #{niveau1}, #{niveau2}, #{niveau3}, #{niveau4})")
 	
 end
 
-def creerNiveauAventure(baseNiveau, uneLigne)
+def creerNiveauAventure(baseNiveau, uneLigne, nbGrilleParNiveau)
 	bddN = ouvrirBDDN()
 
 	ligneAventure = IO.readlines("../Ressources/aventure.txt")[uneLigne]
@@ -212,7 +213,7 @@ def creerNiveauAventure(baseNiveau, uneLigne)
 
 	bddN.execute("INSERT INTO niveau (idNiveau, nomNiveau, statut, cout) VALUES (#{niveauCourant}, '#{nomCourant}', 'Verouillé', #{coutCourant})")
 
-	for i in 1..6
+	for i in 1..nbGrilleParNiveau
 		creerGrilleAventure(niveauCourant, uneLigne + i)
 	end
 	#puts "--------"
@@ -363,6 +364,29 @@ end
 
 ## Méthodes pour interagir avec le mode aventure
 
+def deverouillerNiveau(unIDNiveau, unNiveau)
+#Méthode pour déverouiller un niveau
+	bdd = ouvrirBDDN()
+	bdd.execute("UPDATE niveau SET statut = 'Déverouillé' WHERE idNiveau = '#{unIDNiveau}'")
+end
+
+def payerNiveau(unID, unIDNiveau, unNiveau)
+#Méthode pour payer un niveau
+	bddP = ouvrirBDDP()
+	bddN = ouvrirBDDN()
+
+	difference = bddP.execute("SELECT argent FROM profil WHERE idJoueur = '#{unID}").shift.shift - bddN.execute("SELECT cout FROM niveau WHERE idNiveau = '#{unIDNiveau}")
+
+	if difference >= 0 then
+		bdd.execute("UPDATE profil SET argent = '#{difference}' WHERE idNiveau = '#{unIDNiveau}'")
+		return true
+	else 
+		return false
+	end
+end
+
+
+
 
 ################
 
@@ -407,7 +431,7 @@ def recupererInformation(unID, iterateur)
 	
 			#puts " #{nomCourantNiveau}\n"
 			#puts " #{statutCourantNiveau}\n"
-			informationsCourantes = [nomCourantNiveau, statutCourantNiveau]
+			informationsCourantes = [idDuNiveau, nomCourantNiveau, statutCourantNiveau]
 			informations.push(informationsCourantes)
 		end
 

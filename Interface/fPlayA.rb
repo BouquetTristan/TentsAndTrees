@@ -1,7 +1,7 @@
 require 'gtk3'
 require './Page.rb'
 
-require './grille/grille.rb'
+require '../Classes/Grille.rb'
 require './boutonGrille.rb'
 
 class FPlayA < Page

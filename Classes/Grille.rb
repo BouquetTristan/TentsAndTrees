@@ -200,11 +200,11 @@ class Grille
 	  for i in 0..(taille-1)
 	    for j in 0..(taille-1)
 	      if ( grilleJ[i][j].etat != grilleF[i][j].etat )
-	        return 0
+	        return false
 	      end
 	    end
 	  end
-	    return 1
+	    return true
 
 
 	end

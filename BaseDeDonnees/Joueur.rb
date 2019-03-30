@@ -49,6 +49,7 @@ class Joueur
 		puts "Ajout de l'utilisateur #{@pseudo}\n"
 		@id = ajouterUtilisateur( @pseudo, @mdp, @rep)
 		if  @id != 0 then
+			connecter()
 			puts "\n\n\nL'utilisateur #{@pseudo} est bien enregistré\n\n\n"
 		else
 			puts "\n\n\nLe pseudo #{@pseudo} est déjà enregistré\n\n\n"
@@ -143,7 +144,7 @@ class Joueur
 			for i in 0..(@niveaux.length-1)
 				nomNiveau = @niveaux.at(i).at(1)
 				statutNiveau = @niveaux.at(i).at(2)  
-				puts "  #{nomNiveau} : #{statutNiveau}\n"
+				puts "#{numNiveau}  #{nomNiveau} : #{statutNiveau}\n"
 			end
 			else
 			puts "Erreur, aucune information présente. Veuillez vous identifiez avant\n"
@@ -151,7 +152,12 @@ class Joueur
 	end
 
 	def acheterNiveau(unNumeroNiveau)
-
+		if payerNiveau(@id, @niveaux.at(unNumeroNiveau).at(0)) then
+			deverouillerNiveau(@niveaux.at(unNumeroNiveau).at(0))
+			return true
+		else
+			return false
+		end
 	end
 
 

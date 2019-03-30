@@ -364,21 +364,21 @@ end
 
 ## Méthodes pour interagir avec le mode aventure
 
-def deverouillerNiveau(unIDNiveau, unNiveau)
+def deverouillerNiveau(unIDNiveau)
 #Méthode pour déverouiller un niveau
 	bdd = ouvrirBDDN()
 	bdd.execute("UPDATE niveau SET statut = 'Déverouillé' WHERE idNiveau = '#{unIDNiveau}'")
 end
 
-def payerNiveau(unID, unIDNiveau, unNiveau)
+def payerNiveau(unID, unIDNiveau)
 #Méthode pour payer un niveau
 	bddP = ouvrirBDDP()
 	bddN = ouvrirBDDN()
 
-	difference = bddP.execute("SELECT argent FROM profil WHERE idJoueur = '#{unID}").shift.shift - bddN.execute("SELECT cout FROM niveau WHERE idNiveau = '#{unIDNiveau}")
+	difference = bddP.execute("SELECT argent FROM profil WHERE idJoueur = '#{unID}'").shift.shift - bddN.execute("SELECT cout FROM niveau WHERE idNiveau = '#{unIDNiveau}'").shift.shift
 
 	if difference >= 0 then
-		bdd.execute("UPDATE profil SET argent = '#{difference}' WHERE idNiveau = '#{unIDNiveau}'")
+		bddP.execute("UPDATE profil SET argent = #{difference} WHERE idJoueur = '#{unID}'")
 		return true
 	else 
 		return false

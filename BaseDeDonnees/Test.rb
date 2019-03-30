@@ -20,4 +20,6 @@ j3.inscrire()
 j2.connecter()
 #j2.afficherStatistiques()
 j1.connecter()
+j1.acheterNiveau(0)
+
 j1.afficherStatistiques()

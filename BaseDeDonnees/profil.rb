@@ -32,9 +32,7 @@ resultat = bddP.execute <<-SQL
 		nbPartiesJouees INT DEFAULT 0,
 		nbPartiesFinitSansAides INT DEFAULT 0,
 		nbAides INT DEFAULT 10,
-		argent INT DEFAULT 0,
-
-		idAventure INT
+		argent INT DEFAULT 0
 	);
 SQL
 
@@ -43,7 +41,8 @@ resutlatNiveau = bddN.execute <<-SQL
 	CREATE TABLE IF NOT EXISTS niveau
 	(
 		idNiveau INT PRIMARY KEY,
-		statut BOOLEAN,
+		nomNiveau VARCHAR(15),
+		statut VARCHAR(12) CHECK(statut IN ('Verouillé', 'Déverouillé')),
 		cout INT
 	);
 SQL
@@ -56,13 +55,13 @@ resultatAventure = bddA.execute <<-SQL
 		idPrintemps INT,
 		idEte INT,
 		idAutomne INT,
-		idHivers INT,
+		idHiver INT,
 
 		FOREIGN KEY(idAventure) REFERENCES profil(idJoueur),
 		FOREIGN KEY(idPrintemps) REFERENCES niveau(idNiveau),
 		FOREIGN KEY(idEte) REFERENCES niveau(idNiveau),
 		FOREIGN KEY(idAutomne) REFERENCES niveau(idNiveau),
-		FOREIGN KEY(idHivers) REFERENCES niveau(idNiveau)
+		FOREIGN KEY(idHiver) REFERENCES niveau(idNiveau)
 	
 	);
 SQL
@@ -72,15 +71,16 @@ SQL
 resultatGrille = bddG.execute <<-SQL
 	CREATE TABLE IF NOT EXISTS grille
 	(
+		idGrille INT,
 		niveauDifficulte VARCHAR,
 		numeroLigne INT,
 		idNiveau INT,
 
 		pointGagnable INT,
-		statut BOOLEAN,
+		statut VARCHAR(8) CHECK(statut IN ('Fait', 'A faire')),
 
 		FOREIGN KEY(idNiveau) REFERENCES niveau(idNiveau),
-		PRIMARY KEY(numeroLigne, niveauDifficulte)
+		PRIMARY KEY(numeroLigne, niveauDifficulte, idNiveau)
 	);
 SQL
 
@@ -91,6 +91,18 @@ SQL
 
 def ouvrirBDDP()
 	return SQLite3::Database.new '../BaseDeDonnees/profil.db'
+end
+
+def ouvrirBDDA()
+	return SQLite3::Database.new '../BaseDeDonnees/aventure.db'
+end
+
+def ouvrirBDDN()
+	return SQLite3::Database.new '../BaseDeDonnees/niveau.db'
+end
+
+def ouvrirBDDG()
+	return SQLite3::Database.new '../BaseDeDonnees/grille.db'
 end
 
 
@@ -108,10 +120,11 @@ end
 
 def ajouterUtilisateur(unPseudo, unMDP, uneReponse)
 #Insérer des informations dans la base de données
-	bdd = ouvrirBDDP()
+	bddP = ouvrirBDDP()
 	if !(pseudoDejaPris(unPseudo)) then
-		id = chercherIDUnique(bdd)
-		bdd.execute("INSERT INTO profil (idJoueur, pseudo, password, repSecret, scoreGlobal, scoreFacile, scoreMoyen, scoreDifficile, nbPartiesJouees, nbPartiesFinitSansAides, argent, nbAides) VALUES ( #{id}, '#{unPseudo}', '#{Digest::SHA256.hexdigest(unMDP)[0..20]}', '#{Digest::SHA256.hexdigest(uneReponse)[0..20]}', 0, 0, 0, 0, 0, 0, 0, 10 )")
+		id = chercherIDUnique(bddP)
+		bddP.execute("INSERT INTO profil (idJoueur, pseudo, password, repSecret, scoreGlobal, scoreFacile, scoreMoyen, scoreDifficile, nbPartiesJouees, nbPartiesFinitSansAides, argent, nbAides) VALUES ( #{id}, '#{unPseudo}', '#{Digest::SHA256.hexdigest(unMDP)[0..20]}', '#{Digest::SHA256.hexdigest(uneReponse)[0..20]}', 0, 0, 0, 0, 0, 0, 0, 10 )")
+		creerModeAventure(id)
 		return id
 	else
 		return 0
@@ -156,6 +169,74 @@ def pseudoDejaPris(unPseudo)
 		return true
 	end
 end
+############
+#Création du mode aventure
+
+def creerModeAventure(unID)
+	bddA = ouvrirBDDA()
+	bddG = ouvrirBDDG()
+
+	baseNiveau = unID*100
+
+	#Création de tous les niveaux avec l'id du joueur
+
+	ligne = 0
+
+	#printemps
+		niveau1 = creerNiveauAventure(baseNiveau, ligne)
+		ligne += 7
+	#été
+		niveau2 = creerNiveauAventure(baseNiveau, ligne)
+		ligne += 7
+	#automne
+		niveau3 = creerNiveauAventure(baseNiveau, ligne)
+		ligne += 7
+	#hiver
+		niveau4 = creerNiveauAventure(baseNiveau, ligne)
+		ligne += 7
+	#Ajout du mode aventure au compte du joueur
+	bddA.execute("INSERT INTO aventure (idAventure, idPrintemps, idEte, idAutomne, idHiver) VALUES (#{unID}, #{niveau1}, #{niveau2}, #{niveau3}, #{niveau4})")
+	
+end
+
+def creerNiveauAventure(baseNiveau, uneLigne)
+	bddN = ouvrirBDDN()
+
+	ligneAventure = IO.readlines("../Ressources/aventure.txt")[uneLigne]
+	informationAventure = ligneAventure.split(';')
+
+
+	niveauCourant = baseNiveau + informationAventure.shift.to_i
+	nomCourant = informationAventure.shift
+	coutCourant = informationAventure.shift.to_i
+
+	bddN.execute("INSERT INTO niveau (idNiveau, nomNiveau, statut, cout) VALUES (#{niveauCourant}, '#{nomCourant}', 'Verouillé', #{coutCourant})")
+
+	for i in 1..6
+		creerGrilleAventure(niveauCourant, uneLigne + i)
+	end
+	#puts "--------"
+
+	return niveauCourant
+
+end
+
+def creerGrilleAventure(unIDNiveau, uneLigne)
+	bddG = ouvrirBDDG()
+
+	ligneGrille = IO.readlines("../Ressources/aventure.txt")[uneLigne]
+	#puts "#{ligneGrille}\n"
+	informationGrille = ligneGrille.split(';')
+
+	idCourant = informationGrille.shift
+	difficulteCourante = informationGrille.shift
+	ligneCourante = informationGrille.shift
+
+	bddG.execute("INSERT INTO grille (idGrille, niveauDifficulte, numeroLigne, idNiveau, pointGagnable, statut) VALUES (#{idCourant}, '#{difficulteCourante}', #{ligneCourante}, #{unIDNiveau}, 10, 'A faire')")
+
+end
+
+
 
 ############
 
@@ -176,8 +257,9 @@ end
 
 ############
 
-## Méthode de changement de mot de passe
-def nouveauMotDePasse(unPseudo, uneReponse, unMDP)
+## Méthodes de changement des informations 
+
+def motDePasseOublie(unPseudo, uneReponse, unMDP)
 # Change le mot de passe d'un profil si la réponse secrète est exacte
 	bdd = ouvrirBDDP()
 	if bdd.execute("SELECT repSecret FROM profil WHERE pseudo = '#{unPseudo}'").shift != nil then
@@ -191,8 +273,29 @@ def nouveauMotDePasse(unPseudo, uneReponse, unMDP)
 	end
 end
 
-###########
+def changerMotDePasse(unID, leNouveauMDP)
+# change le mot de passe d'un profil avec celui obtenu en paramètre
+	bdd = ouvrirBDDP()
+	if bdd.execute("SELECT password FROM profil WHERE idJoueur = '#{unID}'").shift != Digest::SHA256.hexdigest(leNouveauMDP)[0..20]  then
+		bdd.execute("UPDATE profil SET password = '#{Digest::SHA256.hexdigest(leNouveauMDP)[0..20] }' WHERE idJoueur = '#{unID}'")
+		return true
+	else
+		return false
+	end
+end
 
+def changerPseudo(unID, leNouveauPseudo)
+# change le pseudo d'un profil avec celui obtenu en paramètre
+	bdd = ouvrirBDDP()
+	if bdd.execute("SELECT pseudo FROM profil WHERE idJoueur = '#{unID}'").shift != leNouveauPseudo then
+		bdd.execute("UPDATE profil SET pseudo = leNouveauPseudo WHERE idJoueur = '#{unID}'")
+		return true
+	else
+		return false
+	end
+end
+
+###########
 
 ## Méthodes pour modifier les scores, le nombre de partie jouée et terminée et la progression du mode aventure
 
@@ -209,7 +312,7 @@ def augmenterScoreFacile(unID, uneValeur)
 	bdd = ouvrirBDDP()
 	ancienneValeur = bdd.execute("SELECT scoreFacile FROM profil WHERE idJoueur = '#{unID}'").shift.shift
 	valeur = ancienneValeur + uneValeur
-	bdd.execute("UPDATE profil SET scoreFacile = #{valeur} WHERE idJoueur = '#{unID}' ")
+	bdd.execute("UPDATE profil SET scoreFacile = #{valeur} WHERE idJoueur = '#{unID}'")
 end
 
 def augmenterScoreMoyen(unID, uneValeur)
@@ -217,7 +320,7 @@ def augmenterScoreMoyen(unID, uneValeur)
 	bdd = ouvrirBDDP()
 	ancienneValeur = bdd.execute("SELECT scoreMoyen FROM profil WHERE idJoueur = '#{unID}'").shift.shift
 	valeur = ancienneValeur + uneValeur
-	bdd.execute("UPDATE profil SET scoreMoyen = #{valeur} WHERE idJoueur = '#{unID}' ")
+	bdd.execute("UPDATE profil SET scoreMoyen = #{valeur} WHERE idJoueur = '#{unID}'")
 end
 
 def augmenterScoreDifficile(unID, uneValeur)
@@ -225,34 +328,40 @@ def augmenterScoreDifficile(unID, uneValeur)
 	bdd = ouvrirBDDP()
 	ancienneValeur = bdd.execute("SELECT scoreDifficile FROM profil WHERE idJoueur = '#{unID}'").shift.shift
 	valeur = ancienneValeur + uneValeur
-	bdd.execute("UPDATE profil SET scoreDifficile = #{valeur} WHERE idJoueur = '#{unID}' ")
+	bdd.execute("UPDATE profil SET scoreDifficile = #{valeur} WHERE idJoueur = '#{unID}'")
 end
 
 def augmenterNbPartiesJouees(unID)
 #Augmenter le score global d'un joueur
 	bdd = ouvrirBDDP()
 	valeur = bdd.execute("SELECT nbPartiesJouees FROM profil WHERE idJoueur = '#{unID}'").shift.shift + 1
-	bdd.execute("UPDATE profil SET nbPartiesJouees = #{valeur} WHERE idJoueur = '#{unID}' ")
+	bdd.execute("UPDATE profil SET nbPartiesJouees = #{valeur} WHERE idJoueur = '#{unID}'")
 end
 
 def augmenterNbPartiesTermineesSansAides(unID)
 #Augmenter le score global d'un joueur
 	bdd = ouvrirBDDP()
 	valeur = bdd.execute("SELECT nbPartiesFinitSansAides FROM profil WHERE idJoueur = '#{unID}'").shift.shift + 1
-	bdd.execute("UPDATE profil SET nbPartiesFinitSansAides = #{valeur} WHERE idJoueur = '#{unID}' ")
+	bdd.execute("UPDATE profil SET nbPartiesFinitSansAides = #{valeur} WHERE idJoueur = '#{unID}'")
 end
 
 def augmenterNbAides(unID)
 #Augmenter le nombre d'aide disponible par partie d'un joueur
 	bdd = ouvrirBDDP()
 	valeur = bdd.execute("SELECT nbAides FROM profil WHERE idJoueur = '#{unID}'").shift.shift + 1
-	bdd.execute("UPDATE profil SET nbAides = #{valeur} WHERE idJoueur = '#{unID}' ")
+	bdd.execute("UPDATE profil SET nbAides = #{valeur} WHERE idJoueur = '#{unID}'")
+end
+
+def modifierArgent(unID, uneValeur)
+#Permet d'ajouter de l'argent à un joueur en renseignant son id et la valeur à ajouter (Pour enlver, donner une valeur négative)
+	bdd = ouvrirBDDP()
+	nouvelleValeur = bdd.execute("SELECT argent FROM profil WHERE idJoueur = '#{unID}'").shift.shift + uneValeur
+	bdd.execute("UPDATE profil SET argent = #{nouvelleValeur} WHERE idJoueur = '#{unID}'")
 end
 
 ############
 
-
-## Méthodes pour intérargir avec le mode aventure
+## Méthodes pour interagir avec le mode aventure
 
 
 ################
@@ -260,26 +369,50 @@ end
 ## Méthodes pour voir les différentes informations d'un compte en utilisant l'id
 def recupererInformation(unID, iterateur)
 # Envoie les informations d'un compte en utilisant l'id. L'itérateur permet de choisir l'information
-	bdd = ouvrirBDDP()
+	bddP = ouvrirBDDP()
+	bddA = ouvrirBDDA()
+	bddN = ouvrirBDDN()
+	bddG = ouvrirBDDG()
 	case iterateur
 	when 1 # Renvoie le pseudo
-		return bdd.execute("SELECT repSecret FROM profil WHERE idJoueur = #{unID}").to_s
+		return bddP.execute("SELECT repSecret FROM profil WHERE idJoueur = #{unID}").to_s
 	when 2 # Renvoie le score global
-		return bdd.execute("SELECT scoreGlobal FROM profil WHERE idJoueur = #{unID}").shift.shift
+		return bddP.execute("SELECT scoreGlobal FROM profil WHERE idJoueur = #{unID}").shift.shift
 	when 3 # Renvoie le score facile
-		return bdd.execute("SELECT scoreFacile FROM profil WHERE idJoueur = #{unID}").shift.shift
+		return bddP.execute("SELECT scoreFacile FROM profil WHERE idJoueur = #{unID}").shift.shift
 	when 4 # Renvoie le score moyen
-		return bdd.execute("SELECT scoreMoyen FROM profil WHERE idJoueur = #{unID}").shift.shift
+		return bddP.execute("SELECT scoreMoyen FROM profil WHERE idJoueur = #{unID}").shift.shift
 	when 5 # Renvoie le score difficile
-		return bdd.execute("SELECT scoreDifficile FROM profil WHERE idJoueur = #{unID}").shift.shift
+		return bddP.execute("SELECT scoreDifficile FROM profil WHERE idJoueur = #{unID}").shift.shift
 	when 6 # Renvoie le nombre de partie jouée
-		return bdd.execute("SELECT nbPartiesJouees FROM profil WHERE idJoueur = #{unID}").shift.shift
+		return bddP.execute("SELECT nbPartiesJouees FROM profil WHERE idJoueur = #{unID}").shift.shift
 	when 7 # Renvoie le nombre de partie terminée sans aide
-		return bdd.execute("SELECT nbPartiesFinitSansAides FROM profil WHERE idJoueur = #{unID}").shift.shift
+		return bddP.execute("SELECT nbPartiesFinitSansAides FROM profil WHERE idJoueur = #{unID}").shift.shift
 	when 8 # Renvoie le nombre d'aide disponible par partie
-		return bdd.execute("SELECT nbAides FROM profil WHERE idJoueur = #{unID}").shift.shift
+		return bddP.execute("SELECT nbAides FROM profil WHERE idJoueur = #{unID}").shift.shift
 	when 9 # Renvoie l'argent du joueur
-		return bdd.execute("SELECT argent FROM profil WHERE idJoueur = #{unID}").shift.shift
+		return bddP.execute("SELECT argent FROM profil WHERE idJoueur = #{unID}").shift.shift
+	when 10 # Renvoie un array d'un array de 2 paramètres (String nom et String état)
+		
+		borneInf = unID*100
+		borneSup = (unID+1)*100
+		taille = bddN.execute("SELECT COUNT(nomNiveau) FROM niveau WHERE idNiveau BETWEEN '#{borneInf}' AND '#{borneSup}'").shift.shift
+
+		informations = Array.new()
+
+		for i in 1..taille
+			idDuNiveau = unID*100 + i
+			nomCourantNiveau = bddN.execute("SELECT nomNiveau FROM niveau WHERE idNiveau = #{idDuNiveau}").shift.shift
+			statutCourantNiveau = bddN.execute("SELECT statut FROM niveau WHERE idNiveau = #{idDuNiveau}").shift.shift
+	
+			#puts " #{nomCourantNiveau}\n"
+			#puts " #{statutCourantNiveau}\n"
+			informationsCourantes = [nomCourantNiveau, statutCourantNiveau]
+			informations.push(informationsCourantes)
+		end
+
+		return informations
+
 	else
 		return false
 	end

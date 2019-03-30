@@ -15,7 +15,7 @@ j3 = Joueur.creer("Yann", "YannouilleDu72", "Yayaya")
 j3.inscrire()
 
 
-j2.desinscrire()
+#j2.desinscrire()
 
 j2.connecter()
 #j2.afficherStatistiques()

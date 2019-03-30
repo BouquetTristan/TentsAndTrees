@@ -31,6 +31,9 @@ class Joueur
 		@nbPartiesJouees = nil
 		@nbPartiesFinitSansAides = nil
 
+		#Mode Aventure
+		@niveaux = Array.new
+
 	end
 
 	attr_reader :pseudo
@@ -82,6 +85,8 @@ class Joueur
 				@nbAides = recupererInformation(@id, 8)
 				@argent = recupererInformation(@id, 9)
 
+				@niveaux = recupererInformation(@id, 10)
+
 			puts "Connexion réussie\n"
 		else
 			puts "Connexion échouée\n"
@@ -91,7 +96,7 @@ class Joueur
 	end
 
 	def motDePasseOublier(nouveauMDP)
-		if nouveauMotDePasse(@pseudo, @rep, nouveauMDP) == true then
+		if motDePasseOublie(@id, @rep, nouveauMDP) == true then
 			puts "   Le mot de passe a bien été modifié\n"
 			return true
 		else
@@ -114,7 +119,12 @@ class Joueur
 			puts " Info profil \n"
 			puts "  Nb aides : #{@nbAides}\n"
 			puts "  argent : #{@argent}\n"
-			
+			puts " Histoire \n"
+			for i in 0..(@niveaux.length-1)
+				nomNiveau = @niveaux.at(i).at(0)
+				statutNiveau = @niveaux.at(i).at(1)  
+				puts "  #{nomNiveau} : #{statutNiveau}\n"
+			end
 			else
 			puts "Erreur, aucune information présente. Veuillez vous identifiez avant\n"
 		end

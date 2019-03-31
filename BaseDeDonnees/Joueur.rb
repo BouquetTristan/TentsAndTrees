@@ -160,6 +160,19 @@ class Joueur
 		end
 	end
 
+	def finirLaPartie(uneGrille)
+		#Méthode qui modifie les bases de données après la fin de chaque partie
+		if grillePasFaite(@id, uneGrille) then
+			
+			recupererArgentGrille(@id, uneGrille)
+			changerStatutGrille(@id, uneGrille)
+		else
+			
+		end
+
+		
+	end
+
 
 	def modifierInformationsFinDePartie(unScore, uneDifficulte, nbAidesUtilises)
 		if uneDifficulte == 1 && unScore > @scoreFacile then

@@ -428,6 +428,12 @@ def recupererInformation(unID, iterateur)
 			idDuNiveau = unID*100 + i
 			nomCourantNiveau = bddN.execute("SELECT nomNiveau FROM niveau WHERE idNiveau = #{idDuNiveau}").shift.shift
 			statutCourantNiveau = bddN.execute("SELECT statut FROM niveau WHERE idNiveau = #{idDuNiveau}").shift.shift
+
+			if statutCourantNiveau == "Déverouillé" then
+				nbGrilleParNiveau = bddG.execute("SELECT COUNT(idGrille) FROM grille WHERE idNiveau = #{idDuNiveau}").shift.shift
+				nbGrilleAccomplie = bddG.execute("SELECT COUNT(idGrille) FROM grille WHERE idNiveau = #{idDuNiveau} AND statut = 'Fait'").shift.shift
+				statutCourantNiveau = "#{nbGrilleAccomplie}/#{nbGrilleParNiveau}"
+			end
 	
 			#puts " #{nomCourantNiveau}\n"
 			#puts " #{statutCourantNiveau}\n"

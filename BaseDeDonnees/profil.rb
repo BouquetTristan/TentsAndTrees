@@ -239,7 +239,7 @@ def creerGrilleAventure(unIDNiveau, uneLigne)
 	#puts "#{ligneGrille}\n"
 	informationGrille = ligneGrille.split(';')
 
-	idCourant = informationGrille.shift
+	idCourant = informationGrille.shift + unIDNiveau%100
 	difficulteCourante = informationGrille.shift
 	ligneCourante = informationGrille.shift
 
@@ -349,10 +349,10 @@ def augmenterNbPartiesJouees(unID)
 	bdd.execute("UPDATE profil SET nbPartiesJouees = #{valeur} WHERE idJoueur = '#{unID}'")
 end
 
-def augmenterNbPartiesTermineesSansAides(unID)
+def augmenterNbPartiesTermineesSansAides(unID, uneValeur)
 #Augmenter le score global d'un joueur
 	bdd = ouvrirBDDP()
-	valeur = bdd.execute("SELECT nbPartiesFinitSansAides FROM profil WHERE idJoueur = '#{unID}'").shift.shift + 1
+	valeur = bdd.execute("SELECT nbPartiesFinitSansAides FROM profil WHERE idJoueur = '#{unID}'").shift.shift + uneValeur
 	bdd.execute("UPDATE profil SET nbPartiesFinitSansAides = #{valeur} WHERE idJoueur = '#{unID}'")
 end
 
@@ -432,6 +432,20 @@ def grillePasFaite(unID, unIDGrille)
 		return true
 	else
 		return false
+	end
+end
+
+def niveauComplet(unID, unIDGrille)
+#Méthode pour vérifier si le niveau où se trouve la grille est complet
+	bddG = ouvrirBDDG()
+
+	borneInf = unID*100
+	borneSup = (unID+1)*100
+
+	niveauCourant = bddG.execute("SELECT idNiveau FROM grille WHERE idGrille = #{unIDGrille} AND (idNiveau BETWEEN '#{borneInf}' AND '#{borneSup}')")
+
+	if bddG.execute("SELECT COUNT(idGrille) FROM grille WHERE idNiveau = #{niveauCourant} AND statut = 'Fait'") == 6 then
+		return true
 	end
 end
 

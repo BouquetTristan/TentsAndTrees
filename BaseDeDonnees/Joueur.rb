@@ -166,8 +166,14 @@ class Joueur
 			
 			recupererArgentGrille(@id, uneGrille)
 			changerStatutGrille(@id, uneGrille)
-		else
+			if niveauComplet(@id, uneGrille) then
+				augmenterNbAides(@id, 4)	
+			end
+
+			return true
 			
+		else
+			return false
 		end
 
 		

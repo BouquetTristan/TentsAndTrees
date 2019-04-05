@@ -133,9 +133,19 @@ end
 
 def supprimerUtilisateur(unID)
 #Supprimer des informations dans la base de données
-	bdd = ouvrirBDDP()
+	bddP = ouvrirBDDP()
+	bddA = ouvrirBDDA()
+	bddN = ouvrirBDDN()
+	bddG = ouvrirBDDG()
+
+	borneInf = unID*100
+	borneSup = (unID+1)*100
+
 	if (utilisateurExistant(unID)) then
-		bdd.execute("DELETE FROM profil WHERE idJoueur = '#{unID}'")
+		bddG.execute("DELETE FROM grille WHERE idNiveau BETWEEN '#{borneInf}' AND '#{borneSup}'")
+		bddN.execute("DELETE FROM niveau WHERE idNiveau BETWEEN '#{borneInf}' AND '#{borneSup}'")
+		bddA.execute("DELETE FROM aventure WHERE idAventure = '#{unID}'")
+		bddP.execute("DELETE FROM profil WHERE idJoueur = '#{unID}'")
 		return true
 	else
 		return false
@@ -152,7 +162,7 @@ end
 
 def utilisateurExistant(unID)
 	bdd = ouvrirBDDP()
-	if bdd.execute("SELECT idJoueur FROM profil WHERE idJoueur = '#{unID}'").shift.shift != nil
+	if bdd.execute("SELECT idJoueur FROM profil WHERE idJoueur = '#{unID}'").shift != nil
 		return true
 	else
 		return false

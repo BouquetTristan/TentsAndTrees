@@ -187,7 +187,6 @@ def creerModeAventure(unID)
 	bddG = ouvrirBDDG()
 
 	baseNiveau = unID*100
-	nbGrilleParNiveau = 6
 
 	#Création de tous les niveaux avec l'id du joueur
 
@@ -444,7 +443,7 @@ def niveauComplet(unID, unIDGrille)
 
 	niveauCourant = bddG.execute("SELECT idNiveau FROM grille WHERE idGrille = #{unIDGrille} AND (idNiveau BETWEEN '#{borneInf}' AND '#{borneSup}')")
 
-	if bddG.execute("SELECT COUNT(idGrille) FROM grille WHERE idNiveau = #{niveauCourant} AND statut = 'Fait'") == 6 then
+	if bddG.execute("SELECT COUNT(idGrille) FROM grille WHERE idNiveau = #{niveauCourant} AND statut = 'Fait'") == bddG.execute("SELECT COUNT(idGrille) FROM grille WHERE idNiveau = #{idNiveauCourant}") then
 		return true
 	end
 end
@@ -518,14 +517,18 @@ end
 ##Méthode pour renvoyer les identifiants de la grille, le niveau de difficulté et le numéro de la ligne
 def donnerInformationsGrille(unID, leNiveau, laGrille)
 
-	bdd = ouvrirBDDG()
-	
+	bddG = ouvrirBDDG()
+
 	informationsGrille = Array.new()
 
+	
 	idNiveauBDD = unID*100 + leNiveau
-	idGrilleBDD = (6 + 1)*(leNiveau-1) + laGrille
-	difficulte = bdd.execute("SELECT niveauDifficulte FROM grille WHERE idGrille = #{idGrilleBDD} AND idNiveau = #{idNiveauBDD}").shift.shift
-	numLigne = bdd.execute("SELECT numeroLigne FROM grille WHERE idGrille = #{idGrilleBDD} AND idNiveau = #{idNiveauBDD}").shift.shift
+
+	nbGrilleParNiveau = bddG.execute("SELECT COUNT(idGrille) FROM grille WHERE idNiveau = #{idNiveauBDD}")
+
+	idGrilleBDD = (nbGrilleParNiveau + 1)*(leNiveau-1) + laGrille
+	difficulte = bddG.execute("SELECT niveauDifficulte FROM grille WHERE idGrille = #{idGrilleBDD} AND idNiveau = #{idNiveauBDD}").shift.shift
+	numLigne = bddG.execute("SELECT numeroLigne FROM grille WHERE idGrille = #{idGrilleBDD} AND idNiveau = #{idNiveauBDD}").shift.shift
 
 
 	informationsGrille = [idGrilleBDD, difficulte, numLigne]

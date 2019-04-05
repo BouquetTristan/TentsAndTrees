@@ -7,7 +7,7 @@ class ChronoInverse
 	# @start		: boolean en false au lancement du chrono et passe en true lors du premier tosu de boucle.
 	# @pause		: boolean met en pause le chrono
 	# @chrono		: variable qui stockera le nombre de seconde actuel et qui servira à afficher.
-	# @find		: boolean ture pour arrêter le chrono.
+	# @fin		: boolean ture pour arrêter le chrono.
 	# @compteur		: variable qui va compter le temps passer et le soustraire au chrono
 
 	attr_accessor :start
@@ -26,12 +26,13 @@ class ChronoInverse
 		@chrono=0
 		@compteur=0
 		@fin=false
+		@lChrono=Gtk::Label.new("")
 	end
 
 	#lance le chrono qui se terminera uniquement en appelant la méthode fin()
 	# @param void		//ne prend aucun paramètre
 	# @return void		//ne renvoie rien
-	def start
+	def cStart
 			
 			
 			while @fin != true
@@ -48,6 +49,11 @@ class ChronoInverse
 								print self
 							end
 						end
+
+						if @chrono == 0
+							this.cFin()
+						end
+						@lChrono.set_markup(("<span foreground=\"#0066FF\" font-desc=\"Courier New bold 20\">"+@chrono.to_s+"</span>\n"))
 			end
 		
 	end
@@ -55,7 +61,7 @@ class ChronoInverse
 	#change la valeur de la variable @pause en true ou en false mettant le chrono en pause ou le faisant repartir
 	# @param void		//ne prend aucun paramètre
 	# @return void		//ne renvoie rien
-	def pause()
+	def cPause()
 		if @pause==true
 			@pause=false
 			@initial=Time.now.to_i-@compteur
@@ -67,7 +73,7 @@ class ChronoInverse
 	#relance le chrono dans sa configuration initiale
 	# @param void		//ne prend aucun paramètre
 	# @return void		//ne renvoie rien
-	def raz()
+	def cRaz()
 		@start=false
 		@pause=false
 	end
@@ -75,14 +81,14 @@ class ChronoInverse
 	#retire n seconde au chrono
 	# @param void 		//le nombre de scondes à retirer
 	# @return void		//ne renvoie rien
-	def retire(n)
+	def cRetire(n)
 		@chrono-=n
 	end
 
 	#met la variable @fin sur true ce qui à pour effet de mettre un terme au chrono
 	# @param void		//ne prend aucun paramètre
 	# @return void		//ne renvoie rien
-	def fin()
+	def cFin()
 		@fin=true
 	end
 	
@@ -104,23 +110,20 @@ class ChronoInverse
 
 end # Marqueur de fin de classe
 
-
-c=ChronoInverse.new(120)
-
-thr=Thread.new{
-			c.start
-}
+# thr=Thread.new{
+# 	c.start
+# }
 
 
-sleep(3)
-c.pause()
-sleep(3)
-c.pause()
-#print "Saisi"
-#s = gets
-#sleep(3)
-#print s
-sleep(3)
-c.raz()
-sleep(5)
+# sleep(3)
+# c.pause()
+# sleep(3)
+# c.pause()
+# #print "Saisi"
+# #s = gets
+# #sleep(3)
+# #print s
+# sleep(3)
+# c.raz()
+# sleep(5)
 

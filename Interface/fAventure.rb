@@ -46,6 +46,7 @@ class FAventure < Page
 		@level.add(@hiver, :expand => true, :fill => false)
 
 		@aventMenu.add(@level)
+		@level.spacing=90
 
 		@header.btnMenu.signal_connect('clicked') {
 		        self.supprimeMoi
@@ -56,8 +57,8 @@ class FAventure < Page
 
 		@print.signal_connect('clicked') {
 		        self.supprimeMoi
-		        menu = FPlayA.new(@window, @header, self, unJoueur)
-		        menu.ajouteMoi
+				menu = FSaison.new(@window, @header, self, unJoueur, "Printemps")
+				menu.ajouteMoi
 		        @window.show_all
 		    }
 

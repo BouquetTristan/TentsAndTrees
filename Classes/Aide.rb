@@ -136,9 +136,9 @@ class Aide
 		arbreTrouve = nil
 		grille.parcourirH() { |uneCase|
 			if uneCase.etat == 2 then
-				cGE, cDE, cHE, cBE, cGHE, cGBE, cDHE, cDBE = nil #Toutes les variables à nil (l'affectation se fait pour la première, les autres sont automatiquement misent à nil)
-				casesVoisines = uneCase.casesVoisinesComplet(grille)
+				cGE, cDE, cHE, cBE, cGHE, cGBE, cDHE, cDBE = 4,4,4,4,4,4,4,4
 
+				casesVoisines = uneCase.casesVoisinesComplet(grille)
 				casesVoisines.each do |c|
 	
 					if c.i < uneCase.i then
@@ -165,11 +165,12 @@ class Aide
 						end
 					end					
 				end
-	
-				if ((cGE != 0 || cGE == nil) && (cHE != 0 || cHE == nil) && cDBE == 0) ||  ((cGE != 0 || cGE == nil) && (cBE != 0 || cBE == nil) && cDHE == 0) || ((cDE != 0|| cDE == nil) && (cHE != 0 || cHE == nil) && cGBE == 0) || ((cDE != 0 || cDE == nil) && (cBE != 0 || cBE == nil) && cGHE == 0) then
+
+				if (cGE > 1 && cHE > 1 && cDBE == 0) || (cGE > 1 && cBE > 1 && cDHE == 0) || (cDE > 1 && cHE > 1 && cGBE == 0) || (cDE > 1 && cBE > 1 && cGHE == 0) then
 					arbreTrouve = uneCase
 					break
 				end
+
 			end
 		}
 		return arbreTrouve

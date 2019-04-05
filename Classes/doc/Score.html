@@ -92,6 +92,8 @@
 
   <section class="description">
     
+<h6 id="class-Score-label-La+Classe+Score+d-C3-A9finie+les+crit-C3-A8re+de+calcul+du+score+en+fonction+de+la+grille+etc">La Classe <a href="Score.html">Score</a> définie les critère de calcul du score en fonction de la grille etc<span><a href="#class-Score-label-La+Classe+Score+d-C3-A9finie+les+crit-C3-A8re+de+calcul+du+score+en+fonction+de+la+grille+etc">&para;</a> <a href="#top">&uarr;</a></span></h6>
+
   </section>
 
   
@@ -117,8 +119,7 @@
 
         <div class="method-description">
         
-        <p>@difficulte   La difficulté de la grille @scoreInitial Le score initial si
-la grille est complétée @nbFeuilles   Le nombre de feuilles</p>
+        
         
         </div>
       </div>
@@ -131,8 +132,7 @@ la grille est complétée @nbFeuilles   Le nombre de feuilles</p>
 
         <div class="method-description">
         
-        <p>@difficulte   La difficulté de la grille @scoreInitial Le score initial si
-la grille est complétée @nbFeuilles   Le nombre de feuilles</p>
+        
         
         </div>
       </div>
@@ -145,8 +145,11 @@ la grille est complétée @nbFeuilles   Le nombre de feuilles</p>
 
         <div class="method-description">
         
-        <p>@difficulte   La difficulté de la grille @scoreInitial Le score initial si
-la grille est complétée @nbFeuilles   Le nombre de feuilles</p>
+        <h1 id="attribute-i-scoreInitial-label-Variables+d-27instance">Variables d&#39;instance<span><a href="#attribute-i-scoreInitial-label-Variables+d-27instance">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<pre>@difficulte          : La difficulté de la grille
+@scoreInitial                : Le score initial si la grille est complétée
+@nbFeuilles          : Le nombre de feuilles (qui déterminera le nombre d&#39;aide disponsible)</pre>
         
         </div>
       </div>
@@ -174,13 +177,17 @@ la grille est complétée @nbFeuilles   Le nombre de feuilles</p>
 
         <div class="method-description">
           
-          <p>Créé un score</p>
+          <p>Création d&#39;un score</p>
+
+<pre>@param diff          //difficulté de la grille
+@param nbF           //nombre de feuille pour la grille
+@return void         //ne renvoie rien</pre>
           
           
 
           
           <div class="method-source-code" id="creer-source">
-            <pre><span class="ruby-comment"># File Score.rb, line 11</span>
+            <pre><span class="ruby-comment"># File Score.rb, line 20</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Score</span>.<span class="ruby-identifier ruby-title">creer</span> (<span class="ruby-identifier">diff</span>, <span class="ruby-identifier">nbF</span>)
         <span class="ruby-identifier">new</span>(<span class="ruby-identifier">diff</span>,<span class="ruby-identifier">nbF</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -207,13 +214,17 @@ la grille est complétée @nbFeuilles   Le nombre de feuilles</p>
 
         <div class="method-description">
           
-          
+          <p>Initialisation</p>
+
+<pre>@param diff          //difficulté de la grille
+@param nbF           //nombre de feuille pour la grille
+@return void         //ne renvoie rien</pre>
           
           
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File Score.rb, line 18</span>
+            <pre><span class="ruby-comment"># File Score.rb, line 30</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span> (<span class="ruby-identifier">diff</span>, <span class="ruby-identifier">nbF</span>)
         <span class="ruby-ivar">@difficulte</span> = <span class="ruby-identifier">diff</span>
         <span class="ruby-keyword">case</span> <span class="ruby-identifier">diff</span>
@@ -249,13 +260,16 @@ la grille est complétée @nbFeuilles   Le nombre de feuilles</p>
 
         <div class="method-description">
           
-          <p>Tri les scores par ordre décroissant Renvoie le tableau des scores trié</p>
+          <p>Tri les scores par ordre décroissant</p>
+
+<pre>@param tabScores             //tableau comportant les scores
+@return tab          //un tableau de score trié</pre>
           
           
 
           
           <div class="method-source-code" id="triScores-source">
-            <pre><span class="ruby-comment"># File Score.rb, line 39</span>
+            <pre><span class="ruby-comment"># File Score.rb, line 58</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Score</span>.<span class="ruby-identifier ruby-title">triScores</span> (<span class="ruby-identifier">tabScores</span>)
         <span class="ruby-keyword">return</span> <span class="ruby-identifier">tabScores</span>.<span class="ruby-identifier">sort</span>.<span class="ruby-identifier">reverse</span>
 <span class="ruby-keyword">end</span></pre>
@@ -291,13 +305,16 @@ la grille est complétée @nbFeuilles   Le nombre de feuilles</p>
         <div class="method-description">
           
           <p>Calcule le score en fonction de la difficulté, du temps restant et du
-nombre de feuilles restantes Param tempsRestant Le temps restant</p>
+nombre de feuilles restantes</p>
+
+<pre>@param tempsRestant          //Le temps restant à la fin de la partie
+@return score                        //Le score calculé</pre>
           
           
 
           
           <div class="method-source-code" id="calculerScore-source">
-            <pre><span class="ruby-comment"># File Score.rb, line 33</span>
+            <pre><span class="ruby-comment"># File Score.rb, line 48</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">calculerScore</span> (<span class="ruby-identifier">tempsRestant</span>)
         <span class="ruby-keyword">return</span> <span class="ruby-ivar">@scoreInitial</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">tempsRestant</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@nbFeuilles</span><span class="ruby-operator">*</span><span class="ruby-value">10</span>
 <span class="ruby-keyword">end</span></pre>

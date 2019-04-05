@@ -21,5 +21,5 @@ j2.connecter()
 #j2.afficherStatistiques()
 j1.connecter()
 j1.acheterNiveau(0)
-
+j1.finirLaPartie(1)
 j1.afficherStatistiques()

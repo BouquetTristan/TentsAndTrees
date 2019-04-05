@@ -28,12 +28,19 @@ class Aide
 		grille.parcourirL { |ligne|
 			nbTentesMax = grille.nbTentesLigne[i]
 			nbTentes = 0
+			nbArbres = 0
+			nbHerbes = 0
 			ligne.each do |c|
 				if c.etat == 1 then
 					nbTentes += 1
+				elsif c.etat == 2 then
+					nbArbres += 1
+				elsif c.etat == 3 then
+					nbHerbes += 1
 				end
+
 			end
-			if nbTentesMax == nbTentes then
+			if nbTentesMax == nbTentes && nbHerbes < (grille.taille - nbArbres - nbTentesMax) then
 				return i
 			end
 			i += 1
@@ -50,12 +57,19 @@ class Aide
 		grille.parcourirC { |ligne|
 			nbTentesMax = grille.nbTentesColonne[i]
 			nbTentes = 0
+			nbArbres = 0
+			nbHerbes = 0
 			ligne.each do |c|
 				if c.etat == 1 then
 					nbTentes += 1
+				elsif c.etat == 2 then
+					nbArbres += 1
+				elsif c.etat == 3 then
+					nbHerbes += 1
 				end
+
 			end
-			if nbTentesMax == nbTentes then
+			if nbTentesMax == nbTentes && nbHerbes < (grille.taille - nbArbres -nbTentesMax) then
 				return i
 			end
 			i += 1

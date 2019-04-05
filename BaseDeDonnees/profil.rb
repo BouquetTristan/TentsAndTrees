@@ -385,12 +385,53 @@ def payerNiveau(unID, unIDNiveau)
 	end
 end
 
+def changerStatutGrille(unID, unIDGrille)
+#Méthode pour changer le statut d'une grille d'un joueur de 'A faire' à 'Fait'
+	bddG = ouvrirBDDG()
+
+	borneInf = unID*100
+	borneSup = (unID+1)*100
+
+	bddG.execute("UPDATE grille SET statut = 'Fait' WHERE (idNiveau BETWEEN '#{borneInf}' AND '#{borneSup}') AND idGrille = #{unIDGrille}")
+
+end
+
+def recupererArgentGrille(unID, unIDGrille)
+#Méthode pour donner l'argent d'une grille à un joueur
+	bddP = ouvrirBDDP()
+	bddG = ouvrirBDDG()
+
+	borneInf = unID*100
+	borneSup = (unID+1)*100
+
+	nbPoint = bddG.execute("SELECT pointGagnable FROM grille WHERE (idNiveau BETWEEN '#{borneInf}' AND '#{borneSup}') AND idGrille = #{unIDGrille}").shift.shift
+	argentDuJoueur = nbPoint + bddP.execute("SELECT argent FROM profil WHERE idJoueur = #{unID}").shift.shift
+	bddP.execute("UPDATE profil SET argent = #{argentDuJoueur} WHERE idJoueur = #{unID}")
+end
+
+def grillePasFaite(unID, unIDGrille)
+#Méthode pour vérifier si une grille a été faite ou non
+	bddG = ouvrirBDDG()
+
+	borneInf = unID*100
+	borneSup = (unID+1)*100
+
+	statut = bddG.execute("SELECT statut FROM grille WHERE (idNiveau BETWEEN '#{borneInf}' AND '#{borneSup}') AND idGrille = #{unIDGrille}").shift.shift
+
+	if statut == "A faire" then
+		return true
+	else
+		return false
+	end
+end
 
 
 
 ################
 
 ## Méthodes pour voir les différentes informations d'un compte en utilisant l'id
+
+
 def recupererInformation(unID, iterateur)
 # Envoie les informations d'un compte en utilisant l'id. L'itérateur permet de choisir l'information
 	bddP = ouvrirBDDP()
@@ -428,6 +469,12 @@ def recupererInformation(unID, iterateur)
 			idDuNiveau = unID*100 + i
 			nomCourantNiveau = bddN.execute("SELECT nomNiveau FROM niveau WHERE idNiveau = #{idDuNiveau}").shift.shift
 			statutCourantNiveau = bddN.execute("SELECT statut FROM niveau WHERE idNiveau = #{idDuNiveau}").shift.shift
+
+			if statutCourantNiveau == "Déverouillé" then
+				nbGrilleParNiveau = bddG.execute("SELECT COUNT(idGrille) FROM grille WHERE idNiveau = #{idDuNiveau}").shift.shift
+				nbGrilleAccomplie = bddG.execute("SELECT COUNT(idGrille) FROM grille WHERE idNiveau = #{idDuNiveau} AND statut = 'Fait'").shift.shift
+				statutCourantNiveau = "#{nbGrilleAccomplie}/#{nbGrilleParNiveau}"
+			end
 	
 			#puts " #{nomCourantNiveau}\n"
 			#puts " #{statutCourantNiveau}\n"

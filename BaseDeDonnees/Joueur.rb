@@ -144,7 +144,7 @@ class Joueur
 			for i in 0..(@niveaux.length-1)
 				nomNiveau = @niveaux.at(i).at(1)
 				statutNiveau = @niveaux.at(i).at(2)  
-				puts "#{numNiveau}  #{nomNiveau} : #{statutNiveau}\n"
+				puts "  #{nomNiveau} : #{statutNiveau}\n"
 			end
 			else
 			puts "Erreur, aucune information présente. Veuillez vous identifiez avant\n"
@@ -158,6 +158,19 @@ class Joueur
 		else
 			return false
 		end
+	end
+
+	def finirLaPartie(uneGrille)
+		#Méthode qui modifie les bases de données après la fin de chaque partie
+		if grillePasFaite(@id, uneGrille) then
+			
+			recupererArgentGrille(@id, uneGrille)
+			changerStatutGrille(@id, uneGrille)
+		else
+			
+		end
+
+		
 	end
 
 

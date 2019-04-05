@@ -15,8 +15,6 @@ class FWin < Page
           label = Gtk::Label.new("Vous avez gagné !!!")
 
           @frame.attach(label,0,1,0,1)
-		
-          @frame.attach(@gConnexion, 0,1,0,1)
 
           @bg = (Gtk::Image.new(:file=>"../Assets/ImgPresentation2.jpg"))
 

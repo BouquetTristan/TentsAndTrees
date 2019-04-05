@@ -8,10 +8,12 @@ class Chrono
 	# @pause		: boolean met en pause le chrono
 	# @chrono	: variable qui stockera le nombre de seconde actuel et qui servira à afficher.
 	# @fin 		: boolean ture pour arrêter le chrono.
+	# @lChrono  : label affichant le chono.
 
 	attr_accessor :start
 	attr_accessor :pause
 	attr_accessor :chrono
+	attr_accessor :lChrono  
 	
 
 
@@ -25,6 +27,7 @@ class Chrono
 		@pause=false
 		@chrono=0
 		@fin=false
+		@lChrono=Gtk::Label.new("")
 	end
 
 
@@ -41,9 +44,10 @@ class Chrono
 						if @pause != true
 							if @chrono != Time.now.to_i - @initial
 								@chrono=Time.now.to_i - @initial
-								print self
+								#print self
 							end
 						end
+					@lChrono.set_markup(("<span foreground=\"#0066FF\" font-desc=\"Courier New bold 20\">"+@chrono.to_s+"</span>\n"))
 			end
 		
 	end

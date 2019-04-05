@@ -9,17 +9,26 @@ require './boutonAide.rb'
 require './boutonAideVerif.rb'
 require './boutonAideHerbe.rb'
 require './boutonAideTente.rb'
+require './fWin.rb'
 
 class FPlay < Page
-
-
-		
 
 	def initialize(monApp, header, anciennePage, unJoueur, difficulte)
 
 		super(monApp, :vertical, header,  anciennePage, unJoueur)
 
+		@gHelp = Gtk::ButtonBox.new(:vertical)
 		@chrono = Chrono.new
+		@gHelp.add(@chrono.lChrono) 
+
+		thr=Thread.new do
+			
+			@chrono.cStart
+		
+ 		end
+
+				
+		
         @frame = Gtk::Table.new(1,1,false)
 
         @box = Gtk::ButtonBox.new(:horizontal)
@@ -61,36 +70,38 @@ class FPlay < Page
 		end
 
 	# Appel de l'evenement bouton "cliqué", et modification du bouton cliqué
+		puts(@chrono.pause)
+		if(!@chrono.pause)
+			@boutonGrille.each{|k|
+				k.each{|l|
+					l.bouton.signal_connect("clicked"){
+			        	grilleDeJeu.grilleJ[l.coordI][l.coordJ].jouerCase()
+						@boutonGrille[l.coordI][l.coordJ].chgEtat(grilleDeJeu.grilleJ[l.coordI][l.coordJ].etat)
+						grilleDeJeu.enregistrerFichier()
+						if (grilleDeJeu.observateur())
+							#puts("gagné")
+							@chrono.cFin
+							@chrono.cRaz
+							sleep(2)
+							self.supprimeMoi
+				  	        	menu = FWin.new(@window, @header, self, unJoueur)
+				  	        	menu.ajouteMoi
+				  	        	@window.show_all
+						end
 
-		@boutonGrille.each{|k|
-			k.each{|l|
-				l.bouton.signal_connect("clicked"){
-		        	grilleDeJeu.grilleJ[l.coordI][l.coordJ].jouerCase()
-					@boutonGrille[l.coordI][l.coordJ].chgEtat(grilleDeJeu.grilleJ[l.coordI][l.coordJ].etat)
-					grilleDeJeu.enregistrerFichier()
-					if (grilleDeJeu.observateur())
-						#puts("gagné")
-						@chrono.cFin
-						sleep(2)
-						self.supprimeMoi
-			  	        	menu = FWin.new(@window, @header, self, unJoueur)
-			  	        	menu.ajouteMoi
-			  	        	@window.show_all
-					end
-
+					}
 				}
 			}
-		}
+		end
 
-		@gHelp = Gtk::ButtonBox.new(:vertical)
-		@lChrono = Gtk::Label.new("")
-		@lChrono.set_markup(("<span foreground=\"#0066FF\" font-desc=\"Courier New bold 20\">"+@chrono.to_s+"</span>\n"))
-		@gHelp.add(@lChrono)
-
-		thr=Thread.new{
-			@chrono.cStart
-			@lChrono.set_markup(("<span foreground=\"#0066FF\" font-desc=\"Courier New bold 20\">"+@chrono.to_s+"</span>\n"))
- 		}
+		@header.btnMenu.signal_connect('clicked') {
+			@chrono.cFin
+			@chrono.cRaz
+	        self.supprimeMoi
+	        menu = FMenu.new(@window, @header, self, unJoueur)
+	        menu.ajouteMoi
+	        @window.show_all
+    	}
 
 		@boxAide = Gtk::ButtonBox.new(:vertical)
 
@@ -98,26 +109,10 @@ class FPlay < Page
 
 		@boxAide.add(@lableAide)
 
-		# @box1 = Gtk::ButtonBox.new(:horizontal)
 		@b1 = BoutonAideVerif.new("1", true)
 		@b2 = BoutonAideHerbe.new("2", true)
-
-		# @box1.add(@b1.bouton)
-		# @box1.add(@b2.bouton)
-
-		# @box2 = Gtk::ButtonBox.new(:horizontal)
 		@b3 = BoutonAideTente.new("3", true)
-		# @b4 = BoutonAide.new("4", false)
-
-		# @box2.add(@b3.bouton)
-		# @box2.add(@b4.bouton)
-
-		# @box3 = Gtk::ButtonBox.new(:horizontal)
-		# @b5 = BoutonAide.new("5", false)
-		# @b6 = BoutonAide.new("6", false)
-
-		# @box3.add(@b5.bouton)
-		# @box3.add(@b6.bouton)
+		
 
 		@boxAide.add(@b1.bouton)
 		@boxAide.add(@b2.bouton)
@@ -133,20 +128,9 @@ class FPlay < Page
 
 		@b3.bouton.signal_connect('clicked') {
 			@b3.aide(grilleDeJeu, @lableAide, unJoueur)
-        }
-
-   #      @b4.bouton.signal_connect('clicked') {
-			# if(@b4.cliquable == true)
-				
-			# end	
-   #      }
-					
+        }				
 
 		
-
-		#@bAide = Gtk::Button.new()
-#		@help=(Gtk::Image.new(:file =>"./image/Aide.png"))
-#		@bAide.set_image(@help)
 		@gHelp.add(@boxAide)
 
 		@bPause = Gtk::Button.new()
@@ -156,6 +140,20 @@ class FPlay < Page
 
 		@bPause.signal_connect('clicked') {
 			@chrono.cPause
+			puts(@chrono.pause)
+			if(@chrono.pause)
+				@boutonGrille.each{|k|
+					k.each{|l|
+						l.clic=false
+					}
+				}
+			else
+				@boutonGrille.each{|k|
+					k.each{|l|
+						l.clic=true
+					}
+				} 
+			end
         }
 
 		@gHelp.spacing=70

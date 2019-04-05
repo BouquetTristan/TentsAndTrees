@@ -27,7 +27,7 @@ class FPlay < Page
 		@gHelp.add(@chrono.lChrono) 
 
 		thr=Thread.new do
-			
+			sleep(2)
 			@chrono.cStart
 		
  		end

@@ -1,0 +1,28 @@
+Grilles intéressantes :
+
+GrillesFaciles :
+6 : 20 à 40 secs; 6x6
+12 : 30 à 50 secs; 6x6
+32 : 20 à 40 secs; 6x6
+46 : 40 à 60 secs; 7x7
+65 : 45 à 60 secs; 7x7
+142 : 60 à 120 secs; 10x10
+148 : 120 à 150 secs; 10x10
+165 : 75 à 100 secs; 10x10
+219 : 300 à 360 secs; 12x12
+
+GrillesMoyennes :
+47 : 45 à 60 secs; 7x7
+94 : 50 à 70 secs; 8x8
+161 : secs; 10x10 => Celle-la a buguée après appel d'un indice.
+166 : 180 à 240 secs; 10x10
+207 : 180 à 240 secs; 12x12
+211 : 180 à 240 secs; 12x12
+217 : 180 à 240 secs; 12x12
+232 : 200 à 240 secs; 12x12
+
+GrillesDifficiles :
+116 : 60 à 80 secs; 9x9
+154 : 90 à 140 secs; 10x10
+208 : 180 à 240 secs; 12x12
+344 : Débutants : 600 à 720 secs, Adeptes : 570 à 600 secs; 16x16

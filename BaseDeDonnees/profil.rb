@@ -518,6 +518,8 @@ end
 ##Méthode pour renvoyer les identifiants de la grille, le niveau de difficulté et le numéro de la ligne
 def donnerInformationsGrille(unID, leNiveau, laGrille)
 
+	bdd = ouvrirBDDG()
+	
 	informationsGrille = Array.new()
 
 	idNiveauBDD = unID*100 + leNiveau

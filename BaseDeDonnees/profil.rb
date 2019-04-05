@@ -453,7 +453,7 @@ end
 
 ################
 
-## Méthodes pour voir les différentes informations d'un compte en utilisant l'id
+## Méthode pour voir les différentes informations d'un compte en utilisant l'id
 
 
 def recupererInformation(unID, iterateur)
@@ -511,4 +511,24 @@ def recupererInformation(unID, iterateur)
 	else
 		return false
 	end
+end
+
+#################
+
+##Méthode pour renvoyer les identifiants de la grille, le niveau de difficulté et le numéro de la ligne
+def donnerInformationsGrille(unID, leNiveau, laGrille)
+
+	informationsGrille = Array.new()
+
+	idNiveauBDD = unID*100 + leNiveau
+	idGrilleBDD = (6 + 1)*(leNiveau-1) + laGrille
+	difficulte = bdd.execute("SELECT niveauDifficulte FROM grille WHERE idGrille = #{idGrilleBDD} AND idNiveau = #{idNiveauBDD}").shift.shift
+	numLigne = bdd.execute("SELECT numeroLigne FROM grille WHERE idGrille = #{idGrilleBDD} AND idNiveau = #{idNiveauBDD}").shift.shift
+
+
+	informationsGrille = [idGrilleBDD, difficulte, numLigne]
+
+	return informationsGrille
+
+
 end

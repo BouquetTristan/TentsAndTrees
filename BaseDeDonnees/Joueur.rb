@@ -151,6 +151,10 @@ class Joueur
 		end
 	end
 
+	def commencerAventure(unNiveau, uneGrille)
+		return donnerInformationsGrille(@id, unNiveau, uneGrille)
+	end
+
 	def acheterNiveau(unNumeroNiveau)
 		if payerNiveau(@id, @niveaux.at(unNumeroNiveau).at(0)) then
 			deverouillerNiveau(@niveaux.at(unNumeroNiveau).at(0))

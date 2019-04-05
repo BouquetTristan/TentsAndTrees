@@ -56,14 +56,7 @@ class Grille
     	@difficulte, @numero = diff, num
 
 		#Récupération de la grille à partir du fichier
-		case   @difficulte
-		when "Facile" then
-			ligneGrille = IO.readlines("../Ressources/GrillesFaciles.txt")[@numero - 1]
-		when "Moyenne" then
-			ligneGrille = IO.readlines("../Ressources/GrillesMoyennes.txt")[@numero - 1]
-		when "Difficile" then
-			ligneGrille = IO.readlines("../Ressources/GrillesDifficiles.txt")[@numero - 1]
-		end
+		ligneGrille = IO.readlines("../Ressources/#{@difficulte}.txt")[@numero - 1]
 
 		#Séparation des éléments de la grille dans un tableau
 		grilleFich = ligneGrille.split(';')

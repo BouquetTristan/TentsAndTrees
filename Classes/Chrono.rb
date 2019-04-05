@@ -6,7 +6,7 @@ class Chrono
 	#@chrono	: variable qui stockera le nombre de seconde actuel et qui servira à afficher.
 	#@fin 		: boolean ture pour arrêter le chrono.
 
-	attr_accessor :chrono
+	attr_accessor :chrono, :start, :pause
 
 	#initialise les variables à 0 et a false
 	def initialize()
@@ -19,7 +19,7 @@ class Chrono
 
 
 	#lance le chrono qui se terminera uniquement en appelant la méthode fin()
-	def start
+	def cStart
 			
 			while @fin != true
 						if @start==false
@@ -37,7 +37,7 @@ class Chrono
 	end
 
 	#change la valeur de la variable @pause en true ou en false mettant le chrono en pause ou le faisant repartir
-	def pause()
+	def cPause()
 		if @pause==true
 			@pause=false
 			@initial=Time.now.to_i-@chrono
@@ -47,18 +47,18 @@ class Chrono
 	end
 
 	#relance le chrono dans sa configuration initiale 
-	def raz()
+	def cRaz()
 		@pause=false
 		@start=false
 	end
 
 	#ajoute n seconde au chrono
-	def ajout(n)
+	def cAjout(n)
 		@chrono+=n
 	end
 
 	#met la variable @fin sur true ce qui à pour effet de mettre un terme au chrono
-	def fin()
+	def cFin()
 		@fin=true
 	end
 
@@ -78,21 +78,21 @@ class Chrono
 
 end # Marqueur de fin de classe
 
-c=Chrono.new()
+#c=Chrono.new()
 
-thr=Thread.new{
-			c.start
-}
+#thr=Thread.new{
+#			c.start
+ #}
 
 
-sleep(3)
-c.pause()
-sleep(3)
-c.pause()
+#sleep(3)
+#c.pause()
+#sleep(3)
+#c.pause()
 #print "Saisi"
 #s = gets
 #sleep(3)
 #print s
-sleep(3)
-c.raz()
-sleep(5)
+#sleep(3)
+#c.raz()
+#sleep(5)

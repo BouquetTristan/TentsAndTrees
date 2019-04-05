@@ -4,13 +4,19 @@ require './Page.rb'
 require '../Classes/Grille.rb'
 require '../Classes/Aide.rb'
 require './boutonGrille.rb'
+require '../Classes/Chrono.rb'
+require './boutonAide.rb'
 
 class FPlay < Page
+
+
+		
 
 	def initialize(monApp, header, anciennePage, unJoueur, difficulte)
 
 		super(monApp, :vertical, header,  anciennePage, unJoueur)
 
+		@chrono = Chrono.new
         @frame = Gtk::Table.new(1,1,false)
 
         @box = Gtk::ButtonBox.new(:horizontal)
@@ -59,11 +65,17 @@ class FPlay < Page
 		        	grilleDeJeu.grilleJ[l.coordI][l.coordJ].jouerCase()
 					@boutonGrille[l.coordI][l.coordJ].chgEtat(grilleDeJeu.grilleJ[l.coordI][l.coordJ].etat)
 					grilleDeJeu.enregistrerFichier()
+					@b2.cliquable = false
+					@b3.cliquable = false
+					@b4.cliquable = false
+					@b5.cliquable = false
+					@b6.cliquable = false
 					if (grilleDeJeu.observateur())
 						#puts("gagné")
-						#timer stop + affichage "gagné"
+						@chrono.cFin
+						sleep(2)
 						self.supprimeMoi
-			  	        	menu = FMenu.new(@window, @header, self, unJoueur)
+			  	        	menu = FWin.new(@window, @header, self, unJoueur)
 			  	        	menu.ajouteMoi
 			  	        	@window.show_all
 					end
@@ -73,70 +85,103 @@ class FPlay < Page
 		}
 
 		@gHelp = Gtk::ButtonBox.new(:vertical)
+		@lChrono = Gtk::Label.new("")
+		@lChrono.set_markup(("<span foreground=\"#0066FF\" font-desc=\"Courier New bold 20\">"+@chrono.to_s+"</span>\n"))
+		@gHelp.add(@lChrono)
 
-		@Label = Gtk::Label.new('Timer / afficher les aides')
-		@gHelp.add(@Label)
+		thr=Thread.new{
+			@chrono.cStart
+			@lChrono.set_markup(("<span foreground=\"#0066FF\" font-desc=\"Courier New bold 20\">"+@chrono.to_s+"</span>\n"))
+ 		}
 
 		@boxAide = Gtk::ButtonBox.new(:vertical)
 
 		@box1 = Gtk::ButtonBox.new(:horizontal)
-		@b1 = Gtk::Button.new(:label => '1', :use_underline => nil, :stock_id => nil)
-		@b2 = Gtk::Button.new(:label => '2', :use_underline => nil, :stock_id => nil)
+		@b1 = BoutonAide.new("1", true)
+		@b2 = BoutonAide.new("2", false)
 
-		@box1.add(@b1)
-		@box1.add(@b2)
+		@box1.add(@b1.bouton)
+		@box1.add(@b2.bouton)
 
 		@box2 = Gtk::ButtonBox.new(:horizontal)
-		@b3 = Gtk::Button.new(:label => '3', :use_underline => nil, :stock_id => nil)
-		@b4 = Gtk::Button.new(:label => '4', :use_underline => nil, :stock_id => nil)
+		@b3 = BoutonAide.new("3", false)
+		@b4 = BoutonAide.new("4", false)
 
-		@box2.add(@b3)
-		@box2.add(@b4)
+		@box2.add(@b3.bouton)
+		@box2.add(@b4.bouton)
 
 		@box3 = Gtk::ButtonBox.new(:horizontal)
-		@b5 = Gtk::Button.new(:label => '5', :use_underline => nil, :stock_id => nil)
-		@b6 = Gtk::Button.new(:label => '6', :use_underline => nil, :stock_id => nil)
+		@b5 = BoutonAide.new("5", false)
+		@b6 = BoutonAide.new("6", false)
 
-		@box3.add(@b5)
-		@box3.add(@b6)
+		@box3.add(@b5.bouton)
+		@box3.add(@b6.bouton)
 
 		@boxAide.add(@box1)
 		@boxAide.add(@box2)
 		@boxAide.add(@box3)
 
-		@b1.signal_connect('clicked') {
+		@b1.bouton.signal_connect('clicked'){
+			if(@b1.cliquable == true)
+				if(Aide.erreur(grilleDeJeu) != nil)
+					print aide != nil ? "Erreur sur la case #{aide.i} #{aide.j}": "Aucune erreur"
+				end	
+				@b2.cliquable = true
+			end	
+        }
+
+		@b2.bouton.signal_connect('clicked') {
+			if(@b2.cliquable == true)
+				if(Aide.ligneCompleterHerbes(grilleDeJeu) != nil)
+					print aide != nil ? "\nLa colonne #{aide} peut être complétée par des herbes": "\nAucune colonne ne peut être complétée par des herbes"
+				elsif(Aide.colonneCompleterHerbes(grilleDeJeu) != nil)
+					print aide != nil ? "\nLa ligne #{aide} peut être complétée par des herbes": "\nAucune ligne ne peut être complétée par des herbes"
+				end
+				@b3.cliquable = true
+			end	
 			
-         	}
+        }
 
-		@b2.signal_connect('clicked') {
+		@b3.bouton.signal_connect('clicked') {
+			if(@b3.cliquable == true)
+				@b4.cliquable = true
+			end	
+        }
 
-         	}
+		@b4.bouton.signal_connect('clicked') {
+			if(@b4.cliquable == true)
+				aide = Aide.tenteContourCompleter(grilleDeJeu)
+				print aide != nil ? "\nLe contour de la tente en #{aide.i} #{aide.j} doit être complété": "\nAucun contour de tente ne peut être complété par des herbes"
+				@b5.cliquable = true
 
-		@b3.signal_connect('clicked') {
+			end	
+        }
 
-         	}
+		@b5.bouton.signal_connect('clicked') {
+			if(@b5.cliquable == true)
+				aide = Aide.arbreTentePlacer(grilleDeJeu)
+				print aide != nil ? "\nL'arbre en #{aide.i} #{aide.j} possède une seule possiblité pour une tente": "\nIl n'y a pas d'arbre avec une seule case disponible"
+				@b6.cliquable = true
+			end
+        }
 
-		@b4.signal_connect('clicked') {
+		@b6.bouton.signal_connect('clicked') {
+			if(@b6.cliquable == true)
+				aide = Aide.arbreAngleHerbe(grilleDeJeu)
+				print aide != nil ? "\nL'arbre en #{aide.i} #{aide.j} possède un coin qui est obligatoirement de l'herbe": "\nIl n'y a pas d'arbre avec un coin à compléter"
+			end	
+        }
 
-         	}
-
-		@b5.signal_connect('clicked') {
-
-         	}
-
-		@b6.signal_connect('clicked') {
-
-         	}
-
-		#@bAide = Gtk::Button.new()
-#		@help=(Gtk::Image.new(:file =>"./image/Aide.png"))
-#		@bAide.set_image(@help)
 		@gHelp.add(@boxAide)
 
 		@bPause = Gtk::Button.new()
 		@pause=(Gtk::Image.new(:file =>"./image/pause.png"))
 		@bPause.set_image(@pause)
 		@gHelp.add(@bPause)
+
+		@bPause.signal_connect('clicked') {
+			@chrono.cPause
+        }
 
 		@gHelp.spacing=70
 
@@ -150,4 +195,5 @@ class FPlay < Page
 
         self.add(@frame)
     end
+
 end

@@ -30,11 +30,11 @@ class Score
 	def initialize (diff, nbF)
 		@difficulte = diff
 		case diff
-		when "Facile" then
+		when "GrillesFaciles" then
 			@scoreInitial = 180
-		when "Moyenne" then
+		when "GrillesMoyennes" then
 			@scoreInitial = 360
-		when "Difficile" then
+		when "GrillesDifficiles" then
 			@scoreInitial = 720
 		end
 		@nbFeuilles = nbF
@@ -46,7 +46,7 @@ class Score
 	# @param tempsRestant		//Le temps restant à la fin de la partie
 	# @return score			//Le score calculé
 	def calculerScore (tempsRestant)
-		return @scoreInitial + tempsRestant + @nbFeuilles*10
+		return @scoreInitial + tempsRestant.to_i + @nbFeuilles*10
 	end
 
 	

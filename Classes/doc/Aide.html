@@ -96,8 +96,7 @@
 
   <section class="description">
     
-<p>La classe <a href="Aide.html">Aide</a> contient des méthodes qui évaluent
-l&#39;état de la grille du joueur</p>
+<h6 id="class-Aide-label-La+classe+Aide+contient+des+m-C3-A9thodes+qui+-C3-A9valuent+l-27-C3-A9tat+de+la+grille+du+joueur">La classe <a href="Aide.html">Aide</a> contient des méthodes qui évaluent l&#39;état de la grille du joueur<span><a href="#class-Aide-label-La+classe+Aide+contient+des+m-C3-A9thodes+qui+-C3-A9valuent+l-27-C3-A9tat+de+la+grille+du+joueur">&para;</a> <a href="#top">&uarr;</a></span></h6>
 
   </section>
 
@@ -131,15 +130,17 @@ l&#39;état de la grille du joueur</p>
 
         <div class="method-description">
           
-          <p>Vérifie si un des angles de chaque arbre est obligatoirement de l&#39;herbe
-Retourne le premier arbre rencontré avec un angle contenant forcément de
-l&#39;herbe Retourne nil sinon</p>
+          <p>Vérifie si un des angles de chaque arbre est obligatoirement de l&#39;herbe</p>
+
+<pre>@param grille                //Prend la grille de jeu en paramètre
+@return arbre                //Retourne le premier arbre rencontré avec un angle contenant forcément de l&#39;herbe
+@return nil          //Retourne nil sinon</pre>
           
           
 
           
           <div class="method-source-code" id="arbreAngleHerbe-source">
-            <pre><span class="ruby-comment"># File Aide.rb, line 135</span>
+            <pre><span class="ruby-comment"># File Aide.rb, line 149</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Aide</span>.<span class="ruby-identifier ruby-title">arbreAngleHerbe</span>(<span class="ruby-identifier">grille</span>)
         <span class="ruby-identifier">arbreTrouve</span> = <span class="ruby-keyword">nil</span>
         <span class="ruby-identifier">grille</span>.<span class="ruby-identifier">parcourirH</span>() { <span class="ruby-operator">|</span><span class="ruby-identifier">uneCase</span><span class="ruby-operator">|</span>
@@ -206,15 +207,17 @@ l&#39;herbe Retourne nil sinon</p>
         <div class="method-description">
           
           <p>Vérifie pour chaque arbre si il ne reste qu&#39;une possibilité pour placer
-une tente Retourne le premier arbre rencontré qui ne possède pas de tente
-et un seul choix restant pour la placer Retourne nil si il n&#39;y a aucun
-arbre avec un seul choix possible</p>
+une tente</p>
+
+<pre>@param grille                //Prend la grille de jeu en paramètre
+@return arbre                //Retourne le premier arbre rencontré qui ne possède pas de tente et un seul choix restant pour la place
+@return nil          //Retourne nil si il n&#39;y a aucun arbre avec un seul choix possible</pre>
           
           
 
           
           <div class="method-source-code" id="arbreTentePlacer-source">
-            <pre><span class="ruby-comment"># File Aide.rb, line 106</span>
+            <pre><span class="ruby-comment"># File Aide.rb, line 118</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Aide</span>.<span class="ruby-identifier ruby-title">arbreTentePlacer</span>(<span class="ruby-identifier">grille</span>)
         <span class="ruby-identifier">arbreTrouve</span> = <span class="ruby-keyword">nil</span>
         <span class="ruby-identifier">grille</span>.<span class="ruby-identifier">parcourirH</span>() { <span class="ruby-operator">|</span><span class="ruby-identifier">uneCase</span><span class="ruby-operator">|</span>
@@ -263,15 +266,17 @@ arbre avec un seul choix possible</p>
         <div class="method-description">
           
           <p>Parcourt chaque colonne de la grille du joueur et repère les colonnes qui
-doivent être remplies par des herbes Renvoie la première colonne rencontrée
-qui doit être complétée par des herbes Renvoie nil si aucune des colonnes
-de la grille ne peut être complétée</p>
+doivent être remplies par des herbes</p>
+
+<pre>@param grille                //Prend la grille de jeu en paramètre
+@return colonne              //Renvoie la première colonne rencontrée qui doit être complétée par des herbes des herbes
+@return nil          //Renvoie nil si aucune des colonnes de la grille ne peut être complétée</pre>
           
           
 
           
           <div class="method-source-code" id="colonneCompleterHerbes-source">
-            <pre><span class="ruby-comment"># File Aide.rb, line 54</span>
+            <pre><span class="ruby-comment"># File Aide.rb, line 62</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Aide</span>.<span class="ruby-identifier ruby-title">colonneCompleterHerbes</span>(<span class="ruby-identifier">grille</span>)
 
         <span class="ruby-identifier">i</span> = <span class="ruby-value">0</span>
@@ -321,15 +326,17 @@ de la grille ne peut être complétée</p>
         <div class="method-description">
           
           <p>Parcourt la grille du joueur et la grille finale pour repérer les erreurs
-de placement Renvoie la première case rencontrée si elle n&#39;est pas vide
-et ne correspond pas à la case finale Renvoie nil si toutes les cases sont
-correctes</p>
+de placement</p>
+
+<pre>@param grille                //Prend la grille de jeu en paramètre
+@return case         //Renvoie la première case rencontrée si elle n&#39;est pas vide et ne correspond pas à la case finale attendu
+@return nil          //Renvoie nil si toutes les cases sont correctes</pre>
           
           
 
           
           <div class="method-source-code" id="erreur-source">
-            <pre><span class="ruby-comment"># File Aide.rb, line 9</span>
+            <pre><span class="ruby-comment"># File Aide.rb, line 11</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Aide</span>.<span class="ruby-identifier ruby-title">erreur</span>(<span class="ruby-identifier">grille</span>)
         <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span>(<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">taille</span><span class="ruby-value">-1</span>)
                 <span class="ruby-keyword">for</span> <span class="ruby-identifier">j</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span>(<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">taille</span><span class="ruby-value">-1</span>)
@@ -366,15 +373,17 @@ correctes</p>
         <div class="method-description">
           
           <p>Parcourt chaque ligne de la grille du joueur et repère les lignes qui
-doivent être remplies par des herbes Renvoie la première ligne rencontrée
-qui doit être complétée par des herbes Renvoie nil si aucune des lignes de
-la grille ne peut être complétée</p>
+doivent être remplies par des herbes</p>
+
+<pre>@param grille                //Prend la grille de jeu en paramètre
+@return ligne                //Renvoie la première ligne rencontrée qui doit être complétée par des herbes
+@return nil          //Renvoie nil si aucune des lignes de la grille ne peut être complétée</pre>
           
           
 
           
           <div class="method-source-code" id="ligneCompleterHerbes-source">
-            <pre><span class="ruby-comment"># File Aide.rb, line 25</span>
+            <pre><span class="ruby-comment"># File Aide.rb, line 30</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Aide</span>.<span class="ruby-identifier ruby-title">ligneCompleterHerbes</span>(<span class="ruby-identifier">grille</span>)
 
         <span class="ruby-identifier">i</span> = <span class="ruby-value">0</span>
@@ -423,15 +432,17 @@ la grille ne peut être complétée</p>
 
         <div class="method-description">
           
-          <p>Vérifie si les cases autour des tentes sont complétées Retourne la première
-tente rencontrée avec ses alentours non complétés Retourne nil si tous les
-alentours de chaque tente ont étés complétés</p>
+          <p>Vérifie si les cases autour des tentes sont complétées</p>
+
+<pre>@param grille                //Prend la grille de jeu en paramètre
+@return tente                //Retourne la première tente rencontrée avec ses alentours non complétés
+@return nil          //Retourne nil si tous les alentours de chaque tente ont étés complétés</pre>
           
           
 
           
           <div class="method-source-code" id="tenteContourCompleter-source">
-            <pre><span class="ruby-comment"># File Aide.rb, line 84</span>
+            <pre><span class="ruby-comment"># File Aide.rb, line 94</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Aide</span>.<span class="ruby-identifier ruby-title">tenteContourCompleter</span>(<span class="ruby-identifier">grille</span>)
         <span class="ruby-identifier">caseTrouvee</span> = <span class="ruby-keyword">nil</span>
         <span class="ruby-identifier">grille</span>.<span class="ruby-identifier">parcourirH</span>() { <span class="ruby-operator">|</span><span class="ruby-identifier">uneCase</span><span class="ruby-operator">|</span>

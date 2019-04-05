@@ -190,4 +190,82 @@ class Aide
 		return arbreTrouve
 	end
 
+
+
+
+	#Vérifie si il est possible de placer au moins une tente dans la ligne
+	# @param grille		//Prend la grille de jeu en paramètre
+	# @return numLigne	//Retourne la première ligne où il est possible de placer au moins une tente
+	# @return nil		//Retourne nil sinon
+	
+	def Aide.lignePlacerTentes(grille)
+		nLigne = 0
+		grille.parcourirC { |ligne|
+			num = Aide.tentesPlacer(grille, ligne, nLigne)
+			if num != nil then
+				return num
+			end
+			nLigne += 1
+		}
+		return nil
+	end
+
+	#Vérifie si il est possible de placer au moins une tente dans la ligne
+	# @param grille		//Prend la grille de jeu en paramètre
+	# @return numLigne	//Retourne la première ligne où il est possible de placer au moins une tente
+	# @return nil		//Retourne nil sinon
+	
+	def Aide.colonnePlacerTentes(grille)
+		nLigne = 0
+		grille.parcourirL { |ligne|
+			num = Aide.tentesPlacer(grille, ligne, nLigne)
+			if num != nil then
+				return num
+			end
+			nLigne += 1
+		}
+		return nil
+	end
+
+	def Aide.tentesPlacer (grille, ligne, nLigne)
+		nbTentesRestantes = grille.nbTentesColonne[nLigne]
+		compteur = 0
+		impair = false
+		tentesPlaceMax = 0
+		numCase = 0
+		
+		ligne.each do |uneCase|
+			
+			
+			
+			if uneCase.etat == 0 then
+				compteur += 1
+			end
+			if (uneCase.etat != 0 || (grille.taille-1 == numCase))
+				if(grille.taille-1 == numCase) 
+					
+				end
+				tentesPlaceMax += (compteur+1) / 2
+
+				if uneCase.etat == 1 then
+					nbTentesRestantes -= 1
+				end
+
+				if compteur % 2 == 1 then
+					impair = true	
+				end 
+				compteur = 0
+			end
+			
+			numCase += 1		
+			
+		end
+		print "\nPour la ligne #{nLigne} Le nombre de tentes placables max #{tentesPlaceMax}\n"
+		if (impair && nbTentesRestantes == tentesPlaceMax) then
+			return nLigne
+		end
+		return nil
+
+	end
+
 end

@@ -56,9 +56,9 @@ class FGM < Page
 
 		@comp.signal_connect('clicked') {
 			self.supprimeMoi
-			suivant = FPlay.new(@window, header, self, unJoueur, 16)
+			suivant=FPlay.new(@window, header, self, unJoueur, getLevel(), true)
 			suivant.ajouteMoi
-      		@window.show_all
+			@window.show_all
 		}
 		@frame.attach(@butons,0,1,0,1)
 
@@ -66,5 +66,12 @@ class FGM < Page
         @frame.attach(@bg,0,1,0,1)
 
         self.add(@frame)
+	end
+
+	def getLevel()
+		i=rand(2)
+		diff=["GrillesFaciles", "GrillesMoyennes", "GrillesDifficiles"]
+
+		return diff[i]
 	end
 end

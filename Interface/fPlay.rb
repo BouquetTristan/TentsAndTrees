@@ -10,12 +10,17 @@ require './boutonAideVerif.rb'
 require './boutonAideHerbe.rb'
 require './boutonAideTente.rb'
 require './fWin.rb'
+require '../Classes/Score.rb'
 
 class FPlay < Page
 
-	def initialize(monApp, header, anciennePage, unJoueur, difficulte)
+	def initialize(monApp, header, anciennePage, unJoueur, difficulte, compet)
 
 		super(monApp, :vertical, header,  anciennePage, unJoueur)
+
+		@nbAidesUtilises = 0
+
+		
 
 		@gHelp = Gtk::ButtonBox.new(:vertical)
 		@chrono = Chrono.new
@@ -70,7 +75,6 @@ class FPlay < Page
 		end
 
 	# Appel de l'evenement bouton "cliqué", et modification du bouton cliqué
-		puts(@chrono.pause)
 		if(!@chrono.pause)
 			@boutonGrille.each{|k|
 				k.each{|l|
@@ -78,8 +82,22 @@ class FPlay < Page
 			        	grilleDeJeu.grilleJ[l.coordI][l.coordJ].jouerCase()
 						@boutonGrille[l.coordI][l.coordJ].chgEtat(grilleDeJeu.grilleJ[l.coordI][l.coordJ].etat)
 						grilleDeJeu.enregistrerFichier()
+						
 						if (grilleDeJeu.observateur())
-							#puts("gagné")
+							@score = Score.creer(difficulte, @nbAidesUtilises)
+							if(compet)
+								if(difficulte == "GrillesFaciles")
+									unJoueur.modifierInformationsFinDePartie(@score.calculerScore((300-@chrono.chrono)), difficulte, @nbAidesUtilises)
+								end
+								if(difficulte == "GrillesMoyennes")
+										unJoueur.modifierInformationsFinDePartie(@score.calculerScore((180-@chrono.chrono)), difficulte, @nbAidesUtilises)
+								end
+								if(difficulte == "GrillesDifficiles")
+											unJoueur.modifierInformationsFinDePartie(@score.calculerScore((120-@chrono.chrono)), difficulte, @nbAidesUtilises)
+								end
+								
+							end
+							
 							@chrono.cFin
 							@chrono.cRaz
 							sleep(2)
@@ -120,14 +138,17 @@ class FPlay < Page
 
 		@b1.bouton.signal_connect('clicked'){
 			@b1.aide(grilleDeJeu, @lableAide, unJoueur)
+			@nbAidesUtilises+=1
 		}
 
 		@b2.bouton.signal_connect('clicked') {
 			@b2.aide(grilleDeJeu, @lableAide, unJoueur)
+			@nbAidesUtilises+=1
         }
 
 		@b3.bouton.signal_connect('clicked') {
 			@b3.aide(grilleDeJeu, @lableAide, unJoueur)
+			@nbAidesUtilises+=1
         }				
 
 		
@@ -140,7 +161,7 @@ class FPlay < Page
 
 		@bPause.signal_connect('clicked') {
 			@chrono.cPause
-			puts(@chrono.pause)
+			
 			if(@chrono.pause)
 				@boutonGrille.each{|k|
 					k.each{|l|

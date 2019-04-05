@@ -348,17 +348,17 @@ def augmenterNbPartiesJouees(unID)
 	bdd.execute("UPDATE profil SET nbPartiesJouees = #{valeur} WHERE idJoueur = '#{unID}'")
 end
 
-def augmenterNbPartiesTermineesSansAides(unID, uneValeur)
+def augmenterNbPartiesTermineesSansAides(unID)
 #Augmenter le score global d'un joueur
 	bdd = ouvrirBDDP()
-	valeur = bdd.execute("SELECT nbPartiesFinitSansAides FROM profil WHERE idJoueur = '#{unID}'").shift.shift + uneValeur
+	valeur = bdd.execute("SELECT nbPartiesFinitSansAides FROM profil WHERE idJoueur = '#{unID}'").shift.shift + 1
 	bdd.execute("UPDATE profil SET nbPartiesFinitSansAides = #{valeur} WHERE idJoueur = '#{unID}'")
 end
 
-def augmenterNbAides(unID)
+def augmenterNbAides(unID, uneValeur)
 #Augmenter le nombre d'aide disponible par partie d'un joueur
 	bdd = ouvrirBDDP()
-	valeur = bdd.execute("SELECT nbAides FROM profil WHERE idJoueur = '#{unID}'").shift.shift + 1
+	valeur = bdd.execute("SELECT nbAides FROM profil WHERE idJoueur = '#{unID}'").shift.shift + uneValeur
 	bdd.execute("UPDATE profil SET nbAides = #{valeur} WHERE idJoueur = '#{unID}'")
 end
 

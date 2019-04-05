@@ -4,11 +4,8 @@ require './Page.rb'
 require '../Classes/Grille.rb'
 require '../Classes/Aide.rb'
 require './boutonGrille.rb'
-<<<<<<< HEAD
 require '../Classes/Chrono.rb'
-=======
 require './boutonAide.rb'
->>>>>>> 52427e72fdd6413505af236e47013096b38fce57
 
 class FPlay < Page
 

@@ -1,14 +1,24 @@
+#====== La classe chrono représente un chronomètre conçu pour être utilisé en thread ( en parallèle du programme princpal pour chronomètrer une partie)
+
 class Chrono
+	
+	#=Variables d'instance
+	# @initial 	: mémorise le temps de départ obtenu avec Time.now.to_i pour pouvoir le soustraire plus tard
+	# @start 	: boolean en false au lancement du chrono et passe en true lors du premier tosu de boucle.
+	# @pause		: boolean met en pause le chrono
+	# @chrono	: variable qui stockera le nombre de seconde actuel et qui servira à afficher.
+	# @fin 		: boolean ture pour arrêter le chrono.
 
-	#@initial 	: mémorise le temps de départ obtenu avec Time.now.to_i pour pouvoir le soustraire plus tard
-	#@start 	: boolean en false au lancement du chrono et passe en true lors du premier tosu de boucle.
-	#@pause		: boolean met en pause le chrono
-	#@chrono	: variable qui stockera le nombre de seconde actuel et qui servira à afficher.
-	#@fin 		: boolean ture pour arrêter le chrono.
+	attr_accessor :start
+	attr_accessor :pause
+	attr_accessor :chrono
+	
 
-	attr_accessor :chrono, :start, :pause
+
 
 	#initialise les variables à 0 et a false
+	# @param void		//ne prend aucun paramètre
+	# @return void		//ne renvoie rien
 	def initialize()
 		@initial=0
 		@start=false
@@ -19,6 +29,8 @@ class Chrono
 
 
 	#lance le chrono qui se terminera uniquement en appelant la méthode fin()
+	# @param void		//ne prend aucun paramètre
+	# @return void		//ne renvoie rien
 	def cStart
 			
 			while @fin != true
@@ -37,6 +49,8 @@ class Chrono
 	end
 
 	#change la valeur de la variable @pause en true ou en false mettant le chrono en pause ou le faisant repartir
+	# @param void		//ne prend aucun paramètre
+	# @return void		//ne renvoie rien
 	def cPause()
 		if @pause==true
 			@pause=false
@@ -46,23 +60,31 @@ class Chrono
 		end
 	end
 
-	#relance le chrono dans sa configuration initiale 
+	#relance le chrono dans sa configuration initiale
+	# @param void		//ne prend aucun paramètre
+	# @return void		//ne renvoie rien
 	def cRaz()
 		@pause=false
 		@start=false
 	end
 
 	#ajoute n seconde au chrono
+	# @param n		//nombre de secondes à ajouter au chrono
+	# @return void		//ne renvoie rien
 	def cAjout(n)
 		@chrono+=n
 	end
 
 	#met la variable @fin sur true ce qui à pour effet de mettre un terme au chrono
+	# @param void		//ne prend aucun paramètre
+	# @return void		//ne renvoie rien
 	def cFin()
 		@fin=true
 	end
 
 	#Traduction des secondes en heures/minutes/secondes
+	# @param void		//ne prend aucun paramètre
+	# @return temps	//Retourne le temps sous format h:m:s
 	def to_s
 	
 			heures = @chrono/3600

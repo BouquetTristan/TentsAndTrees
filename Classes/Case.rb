@@ -1,25 +1,38 @@
+#====== une case est definit par sa position dans la grille de jeu et son etat
+
 class Case
-  # une case est definit par sa position dans la grille de jeu et son etat
-  attr_accessor:i
+
+  #=Variable d'instance
+  # @i     : Coordonnée x de la case
+  # @j     : Coordonnée y de la case
+  # @etat  : 0 1 2 ou 3
+  # - 0 : case noir
+  # - 1 : case avec tente
+  # - 2 : case avec arbre
+  # - 3 : case avec herbe
+
   attr_accessor:j
   attr_accessor:etat
-
-  #etat etant 0 1 2 ou 3 :
-  #0: case noir
-  #1: case avec tente
-  #2: case avec arbre
-  #3: case avec herbe
-
-
-
+  attr_accessor:i
 
   private_class_method:new
+
+
 #methode de classe pour creer des objets case
+# @param x     //Coordonnée x d'une case
+# @param y     //Coordonnée y d'une case
+# @param etat   //Une lettre symbolisant un état
+# @return void  //ne renvoie rien
   def Case.creer(x,y, etat)
       new(x,y, etat)
   end
 
-  #Temporaire, l'état passe de caractères à des entiers
+
+  #reçoit une position et un état
+  # @param x     //Coordonnée x d'une case
+  # @param y     //Coordonnée y d'une case
+  # @param etat   //Une lettre symbolisant un état
+  # @return void  //ne renvoie rien
   def initialize(x,y, etat)
       @i=x
       @j=y
@@ -34,7 +47,11 @@ class Case
           @etat = 3
       end
   end
-#correspond au moment ou changement d'etat dans une case au moment ou on joue la case  0->3 / 1->0 / 2->2 /3->1
+
+
+#correspond au changement d'etat dans une case au moment ou on joue la case  0->3 / 1->0 / 2->2 /3->1
+# @param void    //Ne prend aucun paramètre
+# @return void     //modifie l'état de la case en fonction de son état actuel
   def jouerCase()
     if self.etat==0
       @etat=3
@@ -46,16 +63,27 @@ class Case
       @etat=1
     end
   end
-  #içi cette methode est bcp plus destiner a la programation si on veut changer de case en forçant le changement
+
+
+  #Cette méthode est destiné à la programmation, elle consiste à forcer l'état d'une case
+  # @param etat    //Prend en paramètre un état
+  # @return void     //Ne renvoie rien
   def changerEtat(etat)
     @etat=etat
   end
-  #methode pour retourner une case pour moi retourner une case est retourner son etat
+
+
+  #methode pour retourner une case (son Etat)
+  # @param void    //Ne prend aucun paramètre
+  # @return etat    //Renvoie l'état de la case
   def to_s()
     return @etat.to_s
   end
 
+
   #Renvoie un tableau contenant les cases adjacentes de la case
+  # @param grille    //Prend en paramètre la grille du jeu
+  # @return tab     //renvoie un tableau contenant les cases voisines adjacentes
   def casesVoisines (grille)
   
     tab = []
@@ -84,6 +112,8 @@ class Case
   end
 
   #Renvoie un tableau contenant les cases voisines de la case
+  # @param grille //Prend en paramètre la grille du jeu
+  # @return tab   //renvoie un tableau comportant les cases voisine adjacent et les cases voisines en diagonal
   def casesVoisinesComplet (grille)
     tab = self.casesVoisines(grille)
 

@@ -24,7 +24,7 @@ def configureMonApp(uneApp)
 	uneApp.border_width=5
 	##
   # On ne peut pas redimensionner
-	uneApp.set_resizable(true)
+	uneApp.set_resizable(false)
 	##
   #L'application est toujours centrée
 	uneApp.set_window_position(Gtk::WindowPosition::CENTER_ALWAYS)

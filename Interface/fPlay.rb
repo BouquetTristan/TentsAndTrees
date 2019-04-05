@@ -4,13 +4,18 @@ require './Page.rb'
 require '../Classes/Grille.rb'
 require '../Classes/Aide.rb'
 require './boutonGrille.rb'
+require '../Classes/Chrono.rb'
 
 class FPlay < Page
+
+
+		
 
 	def initialize(monApp, header, anciennePage, unJoueur, difficulte)
 
 		super(monApp, :vertical, header,  anciennePage, unJoueur)
 
+		@chrono = Chrono.new
         @frame = Gtk::Table.new(1,1,false)
 
         @box = Gtk::ButtonBox.new(:horizontal)
@@ -61,9 +66,10 @@ class FPlay < Page
 					grilleDeJeu.enregistrerFichier()
 					if (grilleDeJeu.observateur())
 						#puts("gagné")
-						#timer stop + affichage "gagné"
+						@chrono.cFin
+						sleep(2)
 						self.supprimeMoi
-			  	        	menu = FMenu.new(@window, @header, self, unJoueur)
+			  	        	menu = FWin.new(@window, @header, self, unJoueur)
 			  	        	menu.ajouteMoi
 			  	        	@window.show_all
 					end
@@ -73,9 +79,14 @@ class FPlay < Page
 		}
 
 		@gHelp = Gtk::ButtonBox.new(:vertical)
+		@lChrono = Gtk::Label.new("")
+		@lChrono.set_markup(("<span foreground=\"#0066FF\" font-desc=\"Courier New bold 20\">"+@chrono.to_s+"</span>\n"))
+		@gHelp.add(@lChrono)
 
-		@Label = Gtk::Label.new('Timer / afficher les aides')
-		@gHelp.add(@Label)
+		thr=Thread.new{
+			@chrono.cStart
+			@lChrono.set_markup(("<span foreground=\"#0066FF\" font-desc=\"Courier New bold 20\">"+@chrono.to_s+"</span>\n"))
+ 		}
 
 		@boxAide = Gtk::ButtonBox.new(:vertical)
 
@@ -128,15 +139,16 @@ class FPlay < Page
 
          	}
 
-		#@bAide = Gtk::Button.new()
-#		@help=(Gtk::Image.new(:file =>"./image/Aide.png"))
-#		@bAide.set_image(@help)
 		@gHelp.add(@boxAide)
 
 		@bPause = Gtk::Button.new()
 		@pause=(Gtk::Image.new(:file =>"./image/pause.png"))
 		@bPause.set_image(@pause)
 		@gHelp.add(@bPause)
+
+		@bPause.signal_connect('clicked') {
+			@chrono.cPause
+        }
 
 		@gHelp.spacing=70
 
@@ -150,4 +162,5 @@ class FPlay < Page
 
         self.add(@frame)
     end
+
 end

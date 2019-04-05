@@ -5,7 +5,7 @@ class Header < Gtk::HeaderBar
   def initialize(monApp)
     super()
     # Titre de la fenêtre
-    self.show_close_button = true
+    #self.show_close_button = true
     self.has_subtitle = false
 
     @window = monApp
@@ -14,12 +14,19 @@ class Header < Gtk::HeaderBar
 
     @btnMenu = Gtk::Button.new(:label => 'Menu', :use_underline => nil, :stock_id => nil)
     @image=(Gtk::Image.new(:file =>"./image/logo.png",:size => :dialog))
+    @btnDel = Gtk::Button.new(:label => 'Quitter', :use_underline => nil, :stock_id => nil)
+    #@imDel=(Gtk::Image.new(:file =>"./image/logo.png",:size => :dialog))
 
     @boxButtons.add(@image)
     @boxButtons.add(@btnMenu)
+    @boxButtons.add(@btnDel)
 
-    @boxButtons.spacing=850
+    @boxButtons.spacing=15
     self.pack_end(@boxButtons)
+
+        @btnDel.signal_connect('clicked') {
+        @window.destroy
+    }
   end
 
   def ajouterB()
@@ -35,10 +42,5 @@ class Header < Gtk::HeaderBar
     }
 
   end
-
-  def retirerB()
-  	 @boxButtons.remove(@btnMenu)
-  end
-
 
 end

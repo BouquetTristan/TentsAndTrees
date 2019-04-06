@@ -187,6 +187,7 @@ def creerModeAventure(unID)
 	bddG = ouvrirBDDG()
 
 	baseNiveau = unID*100
+	nbGrilleParNiveau = 6
 
 	#Création de tous les niveaux avec l'id du joueur
 
@@ -238,7 +239,7 @@ def creerGrilleAventure(unIDNiveau, uneLigne)
 	#puts "#{ligneGrille}\n"
 	informationGrille = ligneGrille.split(';')
 
-	idCourant = informationGrille.shift + unIDNiveau%100
+	idCourant = informationGrille.shift.to_i + unIDNiveau%100
 	difficulteCourante = informationGrille.shift
 	ligneCourante = informationGrille.shift
 
@@ -425,7 +426,7 @@ def grillePasFaite(unID, unIDGrille)
 	borneInf = unID*100
 	borneSup = (unID+1)*100
 
-	statut = bddG.execute("SELECT statut FROM grille WHERE (idNiveau BETWEEN '#{borneInf}' AND '#{borneSup}') AND idGrille = #{unIDGrille}").shift.shift
+	statut = bddG.execute("SELECT statut FROM grille WHERE (idNiveau BETWEEN '#{borneInf}' AND '#{borneSup}') AND idGrille = #{unIDGrille}").shift
 
 	if statut == "A faire" then
 		return true

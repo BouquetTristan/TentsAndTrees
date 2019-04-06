@@ -15,11 +15,20 @@ class FProfil < Page
 		super(monApp, :vertical, header,  anciennePage, unJoueur)
 
 		@frame = Gtk::Table.new(1,1,false)
+		@frame.set_opacity(0.9)
 
 		@gProfil = Gtk::ButtonBox.new(:vertical)
-		@gProfil.spacing = 30
+
+		@gP = Gtk::Table.new(1,2,false)
+		@gP.row_spacing = 50
+
+
+		@gP1 = Gtk::ButtonBox.new(:vertical)
+		@gP2 = Gtk::ButtonBox.new(:vertical)
+
 
 		@gProfil2 = Gtk::ButtonBox.new(:horizontal)
+
 		@gProfil2.spacing = 100
 
 		@pseudo = TexteAfficher.creer('Pseudo : ', unJoueur.pseudo)
@@ -32,13 +41,17 @@ class FProfil < Page
 		@deco = Gtk::Button.new(:label => 'Deconnexion', :use_underline => nil, :stock_id => nil)
 	
 
-		@gProfil.add(@pseudo.gTexteAfficher, :expand => true, :fill => false)
-		@gProfil.add(@scoreGlobal.gTexteAfficher, :expand => true, :fill => false)
-		@gProfil.add(@scoreFacile.gTexteAfficher, :expand => true, :fill => false)
-		@gProfil.add(@scoreMoyen.gTexteAfficher, :expand => true, :fill => false)
-		@gProfil.add(@scoreDifficile.gTexteAfficher, :expand => true, :fill => false)
-		@gProfil.add(@nbParties.gTexteAfficher, :expand => true, :fill => false)
+		@gP1.add(@pseudo.gTexteAfficher, :expand => true, :fill => false)
+		@gP1.add(@scoreGlobal.gTexteAfficher, :expand => true, :fill => false)
+		@gP2.add(@scoreFacile.gTexteAfficher, :expand => true, :fill => false)
+		@gP2.add(@scoreMoyen.gTexteAfficher, :expand => true, :fill => false)
+		@gP2.add(@scoreDifficile.gTexteAfficher, :expand => true, :fill => false)
+		@gP1.add(@nbParties.gTexteAfficher, :expand => true, :fill => false)
 
+		@gP.attach(@gP1,0,1,0,1)
+		@gP.attach(@gP2,0,1,1,2)	
+
+		@gProfil.add(@gP)	
 		@gProfil.add(@gProfil2)
 		@gProfil2.add(@modif, :expand => true, :fill => false)
         @gProfil2.add(@deco, :expand => true, :fill => false)

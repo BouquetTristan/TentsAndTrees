@@ -8,6 +8,7 @@ class BoutonGrille
 
 	def initialize()
 		@bouton = Gtk::Button.new
+		@bouton.set_relief(:none)
 		@clic = true
 	end
 

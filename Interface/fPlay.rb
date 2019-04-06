@@ -166,12 +166,14 @@ class FPlay < Page
 				@boutonGrille.each{|k|
 					k.each{|l|
 						l.clic=false
+						l.bouton.set_opacity(0.0)
 					}
 				}
 			else
 				@boutonGrille.each{|k|
 					k.each{|l|
 						l.clic=true
+						l.bouton.set_opacity(1.0)
 					}
 				} 
 			end
@@ -184,7 +186,7 @@ class FPlay < Page
 
 		@frame.attach(@box,0,1,0,1)
 
-		@bg=(Gtk::Image.new(:file =>"../Assets/ImgPresentation2.jpg"))
+		@bg=(Gtk::Image.new(:file =>"../Assets/ImgGame2.png"))
         @frame.attach(@bg,0,1,0,1)
 
         self.add(@frame)

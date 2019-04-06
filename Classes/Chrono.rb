@@ -47,7 +47,7 @@ class Chrono
 								#print self
 							end
 						end
-					@lChrono.set_markup(("<span foreground=\"#0066FF\" font-desc=\"Courier New bold 20\">"+@chrono.to_s+"</span>\n"))
+					@lChrono.set_markup(("<span foreground=\"#000000\" font-desc=\"Courier New bold 20\">"+@chrono.to_s+"</span>\n"))
 			end
 		
 	end

@@ -12,11 +12,11 @@ class BoutonAideTente < BoutonAide
 
 	def aide(uneGrille, unLabel, unJoueur)
 		if(@cliquable == true)
-			aide = Aide.erreur(uneGrille)
-			if(aide != nil)
-				unLabel.set_markup("<span foreground=\"#0066FF\" font-desc=\"Courier New bold 11\">Erreur sur la case #{aide.i} #{aide.j}</span>")
+			aide1 = Aide.arbreTentePlacer(uneGrille)
+			if(aide1 != nil)
+				unLabel.set_markup("<span foreground=\"#0066FF\" font-desc=\"Courier New bold 11\">Il ne reste qu'une possibilité pour la tente de l'arbre en #{aide1.i} #{aide1.j}</span>")
 			else
-				unLabel.set_markup("<span foreground=\"#0066FF\" font-desc=\"Courier New bold 11\">Aucune erreur sur la grille actuelle</span>")
+				unLabel.set_markup("<span foreground=\"#0066FF\" font-desc=\"Courier New bold 11\">Aucune tente ne peut être placée</span>")
 				return nil
 			end
 		end

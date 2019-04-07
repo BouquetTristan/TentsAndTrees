@@ -9,10 +9,13 @@ class ChronoInverse
 	# @chrono		: variable qui stockera le nombre de seconde actuel et qui servira à afficher.
 	# @fin		: boolean ture pour arrêter le chrono.
 	# @compteur		: variable qui va compter le temps passer et le soustraire au chrono
+	# @lChrono  : label affichant le chono.
 
 	attr_accessor :start
 	attr_accessor :pause
 	attr_accessor :chrono
+	attr_accessor :lChrono 
+	attr_accessor :fin
 
 
 	#initialise les variables à 0 et a false et mémorise le temps initial dans la variable @initialize
@@ -51,7 +54,7 @@ class ChronoInverse
 						end
 
 						if @chrono == 0
-							this.cFin()
+							self.cFin()
 						end
 						@lChrono.set_markup(("<span foreground=\"#0066FF\" font-desc=\"Courier New bold 20\">"+@chrono.to_s+"</span>\n"))
 			end

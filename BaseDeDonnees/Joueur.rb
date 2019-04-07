@@ -98,6 +98,7 @@ class Joueur
 
 	def motDePasseOublier(nouveauMDP)
 		if motDePasseOublie(@id, @rep, nouveauMDP) == true then
+			@mdp = nouveauMDP
 			puts "   Le mot de passe a bien été modifié\n"
 			return true
 		else
@@ -108,6 +109,7 @@ class Joueur
 
 	def nouveauMotDePasse(nouveauMotDePasse)
 		if changerMotDePasse(@id, nouveauMotDePasse) == true then
+			@mdp = nouveauMotDePasse
 			puts "   Le mot de passe a bien été modifié\n"
 			return true
 		else
@@ -118,6 +120,7 @@ class Joueur
 
 	def nouveauPseudo(nouveauPseudo)
 		if changerPseudo(@id, nouveauPseudo) == true then
+			@pseudo = nouveauPseudo
 			puts "   Le pseudo a bien été modifié\n"
 			return true
 		else

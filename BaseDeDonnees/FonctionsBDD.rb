@@ -228,8 +228,8 @@ end
 def changerPseudo(unID, leNouveauPseudo)
 # change le pseudo d'un profil avec celui obtenu en paramètre
 	bdd = ouvrirBDDP()
-	if bdd.execute("SELECT pseudo FROM profil WHERE idJoueur = '#{unID}'").shift != leNouveauPseudo && !(pseudoDejaPris(unPseudo)) then
-		bdd.execute("UPDATE profil SET pseudo = leNouveauPseudo WHERE idJoueur = '#{unID}'")
+	if bdd.execute("SELECT pseudo FROM profil WHERE idJoueur = '#{unID}'").shift != leNouveauPseudo && !(pseudoDejaPris(leNouveauPseudo)) then
+		bdd.execute("UPDATE profil SET pseudo = '#{leNouveauPseudo}' WHERE idJoueur = '#{unID}'")
 		return true
 	else
 		return false

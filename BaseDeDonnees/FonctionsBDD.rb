@@ -2,87 +2,13 @@
 ##
 # BOUQUET Tristan
 #
-# Méthodes pour créer et modifier une base de données
+# Ce fichier contient toutes les méthodes pour lire, écrire, supprimer ou remplacer des informations contenues dans les
+# bases de données
+##
 
 require 'sqlite3'
 require 'digest'
 
-# Ouverture de la base de donnée SQLite 3
-bddP = SQLite3::Database.new '../BaseDeDonnees/profil.db'
-bddN = SQLite3::Database.new '../BaseDeDonnees/niveau.db'
-bddA = SQLite3::Database.new '../BaseDeDonnees/aventure.db'
-bddG = SQLite3::Database.new '../BaseDeDonnees/grille.db'
-
-
-
-# Créer la table du profil si elle n'existe pas
-resultat = bddP.execute <<-SQL
-	CREATE TABLE IF NOT EXISTS profil
-	(
-		idJoueur INT PRIMARY KEY,
-		pseudo VARCHAR(50) UNIQUE,
-		password VARCHAR(50),
-		repSecret VARCHAR(50),
-
-		scoreGlobal INT DEFAULT 0,
-		scoreFacile INT DEFAULT 0,
-		scoreMoyen INT DEFAULT 0,
-		scoreDifficile INT DEFAULT 0,
-
-		nbPartiesJouees INT DEFAULT 0,
-		nbPartiesFinitSansAides INT DEFAULT 0,
-		nbAides INT DEFAULT 10,
-		argent INT DEFAULT 0
-	);
-SQL
-
-# Créer la table des niveaux si elle n'existe pas
-resutlatNiveau = bddN.execute <<-SQL
-	CREATE TABLE IF NOT EXISTS niveau
-	(
-		idNiveau INT PRIMARY KEY,
-		nomNiveau VARCHAR(15),
-		statut VARCHAR(12) CHECK(statut IN ('Verouillé', 'Déverouillé')),
-		cout INT
-	);
-SQL
-
-# Créer la table du mode aventure si elle n'existe pas
-resultatAventure = bddA.execute <<-SQL
-	CREATE TABLE IF NOT EXISTS aventure
-	(
-		idAventure INT PRIMARY KEY,
-		idPrintemps INT,
-		idEte INT,
-		idAutomne INT,
-		idHiver INT,
-
-		FOREIGN KEY(idAventure) REFERENCES profil(idJoueur),
-		FOREIGN KEY(idPrintemps) REFERENCES niveau(idNiveau),
-		FOREIGN KEY(idEte) REFERENCES niveau(idNiveau),
-		FOREIGN KEY(idAutomne) REFERENCES niveau(idNiveau),
-		FOREIGN KEY(idHiver) REFERENCES niveau(idNiveau)
-	
-	);
-SQL
-
-
-# Créer la table d'une grille si elle n'existe pas
-resultatGrille = bddG.execute <<-SQL
-	CREATE TABLE IF NOT EXISTS grille
-	(
-		idGrille INT,
-		niveauDifficulte VARCHAR,
-		numeroLigne INT,
-		idNiveau INT,
-
-		pointGagnable INT,
-		statut VARCHAR(8) CHECK(statut IN ('Fait', 'A faire')),
-
-		FOREIGN KEY(idNiveau) REFERENCES niveau(idNiveau),
-		PRIMARY KEY(numeroLigne, niveauDifficulte, idNiveau)
-	);
-SQL
 
 #########################################################
 ###Méthodes pour modifier la base de données du profil###
@@ -298,7 +224,7 @@ end
 def changerPseudo(unID, leNouveauPseudo)
 # change le pseudo d'un profil avec celui obtenu en paramètre
 	bdd = ouvrirBDDP()
-	if bdd.execute("SELECT pseudo FROM profil WHERE idJoueur = '#{unID}'").shift != leNouveauPseudo then
+	if bdd.execute("SELECT pseudo FROM profil WHERE idJoueur = '#{unID}'").shift != leNouveauPseudo && !(pseudoDejaPris(unPseudo)) then
 		bdd.execute("UPDATE profil SET pseudo = leNouveauPseudo WHERE idJoueur = '#{unID}'")
 		return true
 	else

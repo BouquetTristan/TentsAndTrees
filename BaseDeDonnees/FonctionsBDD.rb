@@ -451,11 +451,11 @@ def donnerInformationsGrille(unID, leNiveau, laGrille)
 	
 	idNiveauBDD = unID*100 + leNiveau
 
-	nbGrilleParNiveau = bddG.execute("SELECT COUNT(idGrille) FROM grille WHERE idNiveau = #{idNiveauBDD}")
+	nbGrilleParNiveau = bddG.execute("SELECT COUNT(idGrille) FROM grille WHERE idNiveau = #{idNiveauBDD}").shift.shift
 
 	idGrilleBDD = (nbGrilleParNiveau + 1)*(leNiveau-1) + laGrille
-	difficulte = bddG.execute("SELECT niveauDifficulte FROM grille WHERE idGrille = #{idGrilleBDD} AND idNiveau = #{idNiveauBDD}").shift.shift
-	numLigne = bddG.execute("SELECT numeroLigne FROM grille WHERE idGrille = #{idGrilleBDD} AND idNiveau = #{idNiveauBDD}").shift.shift
+	difficulte = bddG.execute("SELECT niveauDifficulte FROM grille WHERE idGrille = #{idGrilleBDD} AND idNiveau = #{idNiveauBDD}").shift
+	numLigne = bddG.execute("SELECT numeroLigne FROM grille WHERE idGrille = #{idGrilleBDD} AND idNiveau = #{idNiveauBDD}").shift	
 
 
 	informationsGrille = [idGrilleBDD, difficulte, numLigne]

@@ -38,6 +38,7 @@ class FProfil < Page
 		@scoreDifficile = TexteAfficher.creer('Score Difficile : ', unJoueur.scoreDifficile.to_s)
 		@nbParties = TexteAfficher.creer('Nombre de parties jouées : ', unJoueur.nbPartiesJouees.to_s)
 		@modif =Gtk::Button.new(:label => 'Modifier mes informations', :use_underline => nil, :stock_id => nil)
+		@desinscription =Gtk::Button.new(:label => 'Supprimer mon profil', :use_underline => nil, :stock_id => nil)
 		@deco = Gtk::Button.new(:label => 'Deconnexion', :use_underline => nil, :stock_id => nil)
 	
 
@@ -54,6 +55,7 @@ class FProfil < Page
 		@gProfil.add(@gP)	
 		@gProfil.add(@gProfil2)
 		@gProfil2.add(@modif, :expand => true, :fill => false)
+		@gProfil2.add(@desinscription, :expand => true, :fill => false)
         @gProfil2.add(@deco, :expand => true, :fill => false)
 
         @header.btnMenu.signal_connect('clicked') {
@@ -62,8 +64,6 @@ class FProfil < Page
 	        menu.ajouteMoi
 	        @window.show_all
 	    }
-		@gProfil2.add(@deco, :expand => true, :fill => false)
-
 
 		@modif.signal_connect('clicked') {
 			self.supprimeMoi
@@ -72,7 +72,21 @@ class FProfil < Page
             @window.show_all
 		}
 
-		@deco.signal_connect('clicked') {}
+		@desinscription.signal_connect('clicked') {
+			unJoueur.desinscrire()
+			self.supprimeMoi
+			suivant = FConnexion.new(@window, header, self, nil)
+            suivant.ajouteMoi
+            @window.show_all
+		}
+
+
+		@deco.signal_connect('clicked') {
+			self.supprimeMoi
+            suivant = FConnexion.new(@window, header, self, nil)
+            suivant.ajouteMoi
+            @window.show_all
+        }
 
 		@frame.attach(@gProfil,0,1,0,1)
 

@@ -73,11 +73,15 @@
     
     <li ><a href="#method-c-new">::new</a>
     
-    <li ><a href="#method-i-fin">#fin</a>
+    <li ><a href="#method-i-cFin">#cFin</a>
     
-    <li ><a href="#method-i-raz">#raz</a>
+    <li ><a href="#method-i-cPause">#cPause</a>
     
-    <li ><a href="#method-i-retire">#retire</a>
+    <li ><a href="#method-i-cRaz">#cRaz</a>
+    
+    <li ><a href="#method-i-cRetire">#cRetire</a>
+    
+    <li ><a href="#method-i-cStart">#cStart</a>
     
     <li ><a href="#method-i-to_s">#to_s</a>
     
@@ -126,6 +130,32 @@
         </div>
       </div>
       
+      <div id="attribute-i-fin" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">fin</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-lChrono" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">lChrono</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
       <div id="attribute-i-pause" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">pause</span><span
@@ -154,8 +184,9 @@
 @start               : boolean en false au lancement du chrono et passe en true lors du premier tosu de boucle.
 @pause               : boolean met en pause le chrono
 @chrono              : variable qui stockera le nombre de seconde actuel et qui servira à afficher.
-@find                : boolean ture pour arrêter le chrono.
-@compteur            : variable qui va compter le temps passer et le soustraire au chrono</pre>
+@fin         : boolean ture pour arrêter le chrono.
+@compteur            : variable qui va compter le temps passer et le soustraire au chrono
+@lChrono  : label affichant le chono.</pre>
         
         </div>
       </div>
@@ -193,7 +224,7 @@ la variable @initialize</p>
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File ChronoInverse.rb, line 21</span>
+            <pre><span class="ruby-comment"># File ChronoInverse.rb, line 24</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">temps</span>)
         <span class="ruby-ivar">@initial</span>=<span class="ruby-value">0</span>
         <span class="ruby-ivar">@initialize</span>=<span class="ruby-identifier">temps</span>
@@ -202,6 +233,7 @@ la variable @initialize</p>
         <span class="ruby-ivar">@chrono</span>=<span class="ruby-value">0</span>
         <span class="ruby-ivar">@compteur</span>=<span class="ruby-value">0</span>
         <span class="ruby-ivar">@fin</span>=<span class="ruby-keyword">false</span>
+        <span class="ruby-ivar">@lChrono</span>=<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;&quot;</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -221,10 +253,10 @@ la variable @initialize</p>
        </header>
 
     
-      <div id="method-i-fin" class="method-detail ">
+      <div id="method-i-cFin" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">fin</span><span
+          <span class="method-name">cFin</span><span
             class="method-args">()</span>
           
           <span class="method-click-advice">click to toggle source</span>
@@ -243,9 +275,9 @@ chrono</p>
           
 
           
-          <div class="method-source-code" id="fin-source">
-            <pre><span class="ruby-comment"># File ChronoInverse.rb, line 85</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">fin</span>()
+          <div class="method-source-code" id="cFin-source">
+            <pre><span class="ruby-comment"># File ChronoInverse.rb, line 94</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">cFin</span>()
         <span class="ruby-ivar">@fin</span>=<span class="ruby-keyword">true</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -258,10 +290,52 @@ chrono</p>
       </div>
 
     
-      <div id="method-i-raz" class="method-detail ">
+      <div id="method-i-cPause" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">raz</span><span
+          <span class="method-name">cPause</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>change la valeur de la variable @pause en true ou en false mettant le
+chrono en pause ou le faisant repartir</p>
+
+<pre>@param void          //ne prend aucun paramètre
+@return void         //ne renvoie rien</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="cPause-source">
+            <pre><span class="ruby-comment"># File ChronoInverse.rb, line 67</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">cPause</span>()
+        <span class="ruby-keyword">if</span> <span class="ruby-ivar">@pause</span><span class="ruby-operator">==</span><span class="ruby-keyword">true</span>
+                <span class="ruby-ivar">@pause</span>=<span class="ruby-keyword">false</span>
+                <span class="ruby-ivar">@initial</span>=<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">to_i</span><span class="ruby-operator">-</span><span class="ruby-ivar">@compteur</span>
+        <span class="ruby-keyword">else</span> 
+                <span class="ruby-ivar">@pause</span>=<span class="ruby-keyword">true</span>
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-cRaz" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">cRaz</span><span
             class="method-args">()</span>
           
           <span class="method-click-advice">click to toggle source</span>
@@ -279,9 +353,9 @@ chrono</p>
           
 
           
-          <div class="method-source-code" id="raz-source">
-            <pre><span class="ruby-comment"># File ChronoInverse.rb, line 70</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">raz</span>()
+          <div class="method-source-code" id="cRaz-source">
+            <pre><span class="ruby-comment"># File ChronoInverse.rb, line 79</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">cRaz</span>()
         <span class="ruby-ivar">@start</span>=<span class="ruby-keyword">false</span>
         <span class="ruby-ivar">@pause</span>=<span class="ruby-keyword">false</span>
 <span class="ruby-keyword">end</span></pre>
@@ -295,10 +369,10 @@ chrono</p>
       </div>
 
     
-      <div id="method-i-retire" class="method-detail ">
+      <div id="method-i-cRetire" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">retire</span><span
+          <span class="method-name">cRetire</span><span
             class="method-args">(n)</span>
           
           <span class="method-click-advice">click to toggle source</span>
@@ -316,10 +390,68 @@ chrono</p>
           
 
           
-          <div class="method-source-code" id="retire-source">
-            <pre><span class="ruby-comment"># File ChronoInverse.rb, line 78</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">retire</span>(<span class="ruby-identifier">n</span>)
+          <div class="method-source-code" id="cRetire-source">
+            <pre><span class="ruby-comment"># File ChronoInverse.rb, line 87</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">cRetire</span>(<span class="ruby-identifier">n</span>)
         <span class="ruby-ivar">@chrono</span><span class="ruby-operator">-=</span><span class="ruby-identifier">n</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-cStart" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">cStart</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>lance le chrono qui se terminera uniquement en appelant la méthode fin()</p>
+
+<pre>@param void          //ne prend aucun paramètre
+@return void         //ne renvoie rien</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="cStart-source">
+            <pre><span class="ruby-comment"># File ChronoInverse.rb, line 38</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">cStart</span>
+                
+                
+                <span class="ruby-keyword">while</span> <span class="ruby-ivar">@fin</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">true</span>
+                
+                                        <span class="ruby-keyword">if</span> <span class="ruby-ivar">@start</span><span class="ruby-operator">==</span><span class="ruby-keyword">false</span>
+                                                <span class="ruby-ivar">@initial</span>=<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">to_i</span>
+                                                <span class="ruby-ivar">@start</span>=<span class="ruby-keyword">true</span>
+                                        <span class="ruby-keyword">end</span>
+                                        
+                                        <span class="ruby-keyword">if</span> <span class="ruby-ivar">@pause</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">true</span>
+                                                <span class="ruby-keyword">if</span> <span class="ruby-ivar">@compteur</span> <span class="ruby-operator">!=</span> <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-operator">-</span> <span class="ruby-ivar">@initial</span>
+                                                        <span class="ruby-ivar">@compteur</span>=<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-operator">-</span> <span class="ruby-ivar">@initial</span>
+                                                        <span class="ruby-ivar">@chrono</span>=<span class="ruby-ivar">@initialize</span><span class="ruby-operator">-</span><span class="ruby-ivar">@compteur</span>
+                                                        <span class="ruby-identifier">print</span> <span class="ruby-keyword">self</span>
+                                                <span class="ruby-keyword">end</span>
+                                        <span class="ruby-keyword">end</span>
+
+                                        <span class="ruby-keyword">if</span> <span class="ruby-ivar">@chrono</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+                                                <span class="ruby-keyword">self</span>.<span class="ruby-identifier">cFin</span>()
+                                        <span class="ruby-keyword">end</span>
+                                        <span class="ruby-ivar">@lChrono</span>.<span class="ruby-identifier">set_markup</span>((<span class="ruby-string">&quot;&lt;span foreground=\&quot;#0066FF\&quot; font-desc=\&quot;Courier New bold 20\&quot;&gt;&quot;</span><span class="ruby-operator">+</span><span class="ruby-ivar">@chrono</span>.<span class="ruby-identifier">to_s</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;&lt;/span&gt;\n&quot;</span>))
+                <span class="ruby-keyword">end</span>
+        
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -353,7 +485,7 @@ chrono</p>
 
           
           <div class="method-source-code" id="to_s-source">
-            <pre><span class="ruby-comment"># File ChronoInverse.rb, line 92</span>
+            <pre><span class="ruby-comment"># File ChronoInverse.rb, line 101</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s</span>
 
                 <span class="ruby-identifier">heures</span> = <span class="ruby-ivar">@chrono</span><span class="ruby-operator">/</span><span class="ruby-value">3600</span>

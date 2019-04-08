@@ -74,6 +74,7 @@ class FProfil < Page
 
 		@desinscription.signal_connect('clicked') {
 			unJoueur.desinscrire()
+			unJoueur = nil
 			self.supprimeMoi
 			suivant = FConnexion.new(@window, header, self, nil)
             suivant.ajouteMoi
@@ -82,6 +83,7 @@ class FProfil < Page
 
 
 		@deco.signal_connect('clicked') {
+			unJoueur = nil
 			self.supprimeMoi
             suivant = FConnexion.new(@window, header, self, nil)
             suivant.ajouteMoi

@@ -142,9 +142,9 @@ class FPlayA < Page
 
 		@boxAide.add(@lableAide)
 
-		@b1 = BoutonAideVerif.new("1", true)
-		@b2 = BoutonAideHerbe.new("2", true)
-		@b3 = BoutonAideTente.new("3", true)
+		@b1 = BoutonAideVerif.new("Verification", true)
+		@b2 = BoutonAideHerbe.new("Aide Tente", true)
+		@b3 = BoutonAideTente.new("Aide Herbe", true)
 		
 
 		@boxAide.add(@b1.bouton)
@@ -169,6 +169,7 @@ class FPlayA < Page
 		@gHelp.add(@boxAide)
 
 		@bPause = Gtk::Button.new()
+		@bPause.set_relief(:none)
 		@pause=(Gtk::Image.new(:file =>"./image/pause.png"))
 		@bPause.set_image(@pause)
 		@gHelp.add(@bPause)
@@ -183,6 +184,12 @@ class FPlayA < Page
 						l.bouton.set_opacity(0.0)
 					}
 				}
+				@pause=(Gtk::Image.new(:file =>"./image/Play.png"))
+				@bPause.set_image(@pause)
+
+				@b1.cliquable = false
+				@b2.cliquable = false
+				@b3.cliquable = false
 			else
 				@boutonGrille.each{|k|
 					k.each{|l|
@@ -190,6 +197,12 @@ class FPlayA < Page
 						l.bouton.set_opacity(1.0)
 					}
 				} 
+				@pause=(Gtk::Image.new(:file =>"./image/pause.png"))
+				@bPause.set_image(@pause)
+
+				@b1.cliquable = true
+				@b2.cliquable = true
+				@b3.cliquable = true
 			end
         }
 

@@ -86,13 +86,13 @@ class FPlay < Page
 						if (grilleDeJeu.observateur())
 							@score = Score.creer(difficulte, @nbAidesUtilises)
 							if(compet)
-								if(difficulte == "GrillesFaciles")
+								if(difficulte == "Facile")
 									unJoueur.modifierInformationsFinDePartie(@score.calculerScore((300-@chrono.chrono)), difficulte, @nbAidesUtilises)
 								end
-								if(difficulte == "GrillesMoyennes")
+								if(difficulte == "Moyenne")
 										unJoueur.modifierInformationsFinDePartie(@score.calculerScore((180-@chrono.chrono)), difficulte, @nbAidesUtilises)
 								end
-								if(difficulte == "GrillesDifficiles")
+								if(difficulte == "Difficile")
 											unJoueur.modifierInformationsFinDePartie(@score.calculerScore((120-@chrono.chrono)), difficulte, @nbAidesUtilises)
 								end
 								

@@ -37,7 +37,7 @@ class FAventure < Page
 		@level.add(@hiver.bouton, :expand => true, :fill => false)
 
 		@aventMenu.add(@level)
-		@level.spacing=90
+		@level.spacing=77
 
 		@header.btnMenu.signal_connect('clicked') {
 		        self.supprimeMoi

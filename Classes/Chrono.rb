@@ -41,14 +41,12 @@ class Chrono
 							@initial=Time.now.to_i
 							@start=true
 						end
-						# puts @pause
 						if @pause != true
 							if @chrono != Time.now.to_i - @initial
 								@chrono=Time.now.to_i - @initial
-								# print self
 							end
 						end
-					@lChrono.set_markup(("<span foreground=\"#000000\" font-desc=\"Courier New bold 20\">"+@chrono.to_s+"</span>\n"))
+					@lChrono.set_markup(("<span foreground=\"#FFFFFF\" font-desc=\"Courier New bold 20\">"+@chrono.to_s+"</span>\n"))
 			end
 		
 	end
@@ -105,21 +103,3 @@ class Chrono
 
 end # Marqueur de fin de classe
 
-#c=Chrono.new()
-
-#thr=Thread.new{
-#			c.start
- #}
-
-
-#sleep(3)
-#c.pause()
-#sleep(3)
-#c.pause()
-#print "Saisi"
-#s = gets
-#sleep(3)
-#print s
-#sleep(3)
-#c.raz()
-#sleep(5)

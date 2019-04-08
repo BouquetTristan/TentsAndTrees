@@ -22,11 +22,11 @@ class ChronoInverse
 	# @param temps		//Prend un temps de départ en paramètre
 	# @return void		//ne renvoie rien
 	def initialize(temps)
-		@initial=0
-		@initialize=temps
+		#@initial=0
+		#@initialize=temps
 		@start=false
 		@pause=false
-		@chrono=0
+		@chrono=temps
 		@compteur=0
 		@fin=false
 		@lChrono=Gtk::Label.new("")
@@ -41,23 +41,22 @@ class ChronoInverse
 			while @fin != true
 			
 						if @start==false
-							@initial=Time.now.to_i
+							#@initial=Time.now.to_i
 							@start=true
 						end
-						
+
 						if @pause != true
-							if @compteur != Time.now.to_i - @initial
-								@compteur=Time.now.to_i - @initial
-								@chrono=@initialize-@compteur
-								puts @chrono
-								
+							sleep(1)
+							@chrono -= 1
+						
+							if @chrono <= 0
+								self.cFin()
 							end
 						end
 
-						if @chrono == 0
-							self.cFin()
-						end
-						@lChrono.set_markup(("<span foreground=\"#0066FF\" font-desc=\"Courier New bold 20\">"+@chrono.to_s+"</span>\n"))
+						@lChrono.set_markup(("<span foreground=\"#FFFFFF\" font-desc=\"Courier New bold 20\">"+@chrono.to_s+"</span>\n"))
+
+						
 			end
 		
 	end
@@ -114,20 +113,4 @@ class ChronoInverse
 
 end # Marqueur de fin de classe
 
-# thr=Thread.new{
-# 	c.start
-# }
-
-
-# sleep(3)
-# c.pause()
-# sleep(3)
-# c.pause()
-# #print "Saisi"
-# #s = gets
-# #sleep(3)
-# #print s
-# sleep(3)
-# c.raz()
-# sleep(5)
 

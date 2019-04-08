@@ -46,22 +46,13 @@ class FPlayA < Page
         @temps = 360
 
     	@gHelp = Gtk::ButtonBox.new(:vertical)
-		@chrono = Chrono.new()
+		@chrono = ChronoInverse.new(10)
 		@gHelp.add(@chrono.lChrono) 
 
 		thr=Thread.new do
-			sleep(2)
+			#sleep(2)
 			@chrono.cStart
-		# 	if (@chrono.fin == true)
-		# 		self.supprimeMoi
-  # 	        	menu = FWin.new(@window, @header, self, unJoueur)
-  # 	        	menu.ajouteMoi
-  # 	        	@window.show_all
-  # 	        end
-		
- 		end
-
-				
+ 		end				
 		
         @frame = Gtk::Table.new(1,1,false)
 
@@ -127,6 +118,14 @@ class FPlayA < Page
 				}
 			}
 		end
+
+		if (@chrono.fin == true)
+			puts('1-1')
+		#	self.supprimeMoi
+  # 	   	menu = FWin.new(@window, @header, self, unJoueur)
+  # 	   	menu.ajouteMoi
+  # 	   	@window.show_all
+  	    end
 
 		@header.btnMenu.signal_connect('clicked') {
 			@chrono.cFin

@@ -20,8 +20,8 @@ class Joueur
 		@mdp = unMDP
 		@rep = uneRepSec
 
-		@nbAides = nil
-		@argent = nil
+		@nbAides = nil #nbFeuilles
+		@argent = nil  #nbtoiles
 
 		@scoreGlobal = nil
 		@scoreFacile = nil
@@ -43,6 +43,7 @@ class Joueur
 	attr_reader :scoreDifficile
 	attr_reader :nbPartiesJouees
 	attr_reader :nbAides
+	attr_reader :argent
 
 	def inscrire()
 
@@ -155,7 +156,7 @@ class Joueur
 	end
 
 	def commencerAventure(unNiveau, uneGrille)
-		return donnerInformationsGrille(@id, unNiveau, uneGrille)
+		return donnerInformationsGrille(@id, unNiveau, uneGrille+1)
 	end
 
 	def acheterNiveau(unNumeroNiveau)

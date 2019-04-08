@@ -64,17 +64,42 @@ class FSaison < Page
 
 		@grille1.signal_connect('clicked') {
 		        self.supprimeMoi
-				menu = FPlayA.new(@window, @header, self, unJoueur, "Printemps",1)
+				menu = FPlayA.new(@window, @header, self, unJoueur, uneSaison,1)
 				menu.ajouteMoi
 		        @window.show_all
 		    }
 
 		@grille2.signal_connect('clicked') {
 		        self.supprimeMoi
-				menu = FPlayA.new(@window, @header, self, unJoueur, "Printemps",1)
+				menu = FPlayA.new(@window, @header, self, unJoueur, uneSaison,2)
 				menu.ajouteMoi
 		        @window.show_all
 		    }
+		@grille3.signal_connect('clicked') {
+		        self.supprimeMoi
+				menu = FPlayA.new(@window, @header, self, unJoueur, uneSaison,3)
+				menu.ajouteMoi
+		        @window.show_all
+		    }
+		@grille4.signal_connect('clicked') {
+		        self.supprimeMoi
+				menu = FPlayA.new(@window, @header, self, unJoueur, uneSaison,4)
+				menu.ajouteMoi
+		        @window.show_all
+		    }
+		@grille5.signal_connect('clicked') {
+		        self.supprimeMoi
+				menu = FPlayA.new(@window, @header, self, unJoueur, uneSaison,5)
+				menu.ajouteMoi
+		        @window.show_all
+		    }
+		@grille6.signal_connect('clicked') {
+		        self.supprimeMoi
+				menu = FPlayA.new(@window, @header, self, unJoueur, uneSaison,6)
+				menu.ajouteMoi
+		        @window.show_all
+		    }
+
 
 		# if(bloqueE == true)
 		# 	@ete.signal_connect('clicked') {

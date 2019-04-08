@@ -16,6 +16,6 @@ c.pause()
 #sleep(3)
 #print s
 sleep(3)
-c.raz()
+c.cRaz()
 sleep(5)
 

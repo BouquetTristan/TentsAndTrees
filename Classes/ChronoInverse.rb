@@ -1,5 +1,5 @@
 #====== La classe chronoInverse représente un compte à rebours conçu pour être utilisé en thread ( en parallèle du programme princpal pour chronomètrer une partie)
-
+require 'gtk3'
 class ChronoInverse
 	#= Variables d'instance
 	# @initialize		: mémorise le temps de départ du chrono.
@@ -49,7 +49,8 @@ class ChronoInverse
 							if @compteur != Time.now.to_i - @initial
 								@compteur=Time.now.to_i - @initial
 								@chrono=@initialize-@compteur
-								print self
+								puts @chrono
+								
 							end
 						end
 

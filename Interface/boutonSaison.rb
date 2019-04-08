@@ -10,28 +10,39 @@ class BoutonSaison
 
 	def initialize(uneSaison, cliquable)
 		@bouton = Gtk::Button.new()
-		@img=(Gtk::Image.new(:file =>"../Assets/Vignette#{uneSaison}.png"))
-        @bouton.set_image(@img)
         focus_hadjustment=(:start)
 		@cliquable = cliquable
+		@saison = uneSaison
+		case @cliquable
+			when true then 
+				@img=(Gtk::Image.new(:file =>"../Assets/Vignette#{@saison}.png"))
+		        @bouton.set_image(@img)
+			when false then 
+				@img=(Gtk::Image.new(:file =>"../Assets/Vignette#{@saison}V.png"))
+		        @bouton.set_image(@img)
+		end
 
-		case uneSaison
+		case @saison
 			when "Printemps" then
-				@saison = 0
+				@numSaison = 0
 			when "Ete" then
-				@saison = 1
+				@numSaison = 1
 			when "Automne" then
-				@saison = 2
+				@numSaison = 2
 			when "Hiver" then
-				@saison = 3
+				@numSaison = 3
    		end
    		puts @saison
 	end
 
 	def debloquer(unJoueur)
 		if (@cliquable == false)
-			@cliquable == unJoueur.acheterNiveau(@saison)
+			@cliquable = unJoueur.acheterNiveau(@numSaison)
 		end
+		if (@cliquable)
+			@img=(Gtk::Image.new(:file =>"../Assets/Vignette#{@saison}.png"))
+        	@bouton.set_image(@img)
+        end
 	end
 
 	def lancer(uneApp, unHeader, unePrecedente, unJoueur)

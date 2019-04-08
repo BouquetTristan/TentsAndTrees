@@ -23,49 +23,41 @@ class FPlayA < Page
 		super(monApp, :vertical, header,  anciennePage, unJoueur)
 
 		@nbAidesUtilises = 0
-
+		puts "#{uneSaison}\n\n\n"
         case uneSaison
 			when "Printemps" then
 				@saison = 1
 			when "Ete" then
-				@saison = 1
-			when "Automne" then
 				@saison = 2
-			when "Hiver" then
+			when "Automne" then
 				@saison = 3
+			when "Hiver" then
+				@saison = 4
    		end
 
-   		puts @saison
+   		puts ("saison #{@saison}")
+   		puts ("grille #{nbGrille}")
 
         tabGrille = unJoueur.commencerAventure(@saison, nbGrille)
         puts tabGrille.at(0)
         puts tabGrille.at(1)
         puts tabGrille.at(2)
 
-
-
-        case tabGrille.at(2)
-        	when "GrillesFaciles" then
-        		@temps = 20
-        	when "GrillesMoyens" then
-        		@temps = 10
-        	when "GrillesDificiles" then
-        		@temps = 5
-        end
+        @temps = 360
 
     	@gHelp = Gtk::ButtonBox.new(:vertical)
-		@chrono = ChronoInverse.new(@temps)
+		@chrono = Chrono.new()
 		@gHelp.add(@chrono.lChrono) 
 
 		thr=Thread.new do
 			sleep(2)
 			@chrono.cStart
-			if (@chrono.fin)
-				self.supprimeMoi
-  	        	menu = FWin.new(@window, @header, self, unJoueur)
-  	        	menu.ajouteMoi
-  	        	@window.show_all
-  	        end
+		# 	if (@chrono.fin == true)
+		# 		self.supprimeMoi
+  # 	        	menu = FWin.new(@window, @header, self, unJoueur)
+  # 	        	menu.ajouteMoi
+  # 	        	@window.show_all
+  # 	        end
 		
  		end
 
@@ -118,7 +110,7 @@ class FPlayA < Page
 					l.bouton.signal_connect("clicked"){
 			        	grilleDeJeu.grilleJ[l.coordI][l.coordJ].jouerCase()
 						@boutonGrille[l.coordI][l.coordJ].chgEtat(grilleDeJeu.grilleJ[l.coordI][l.coordJ].etat)
-						grilleDeJeu.enregistrerFichier()
+						grilleDeJeu.enregistrerFichier(unJoueur.pseudo, nil)
 						
 						if (grilleDeJeu.observateur())
 							unJoueur.finirLaPartie(tabGrille.at(0))

@@ -1,5 +1,5 @@
 #====== La classe chrono représente un chronomètre conçu pour être utilisé en thread ( en parallèle du programme princpal pour chronomètrer une partie)
-
+require 'gtk3'
 class Chrono
 	
 	#=Variables d'instance
@@ -41,10 +41,11 @@ class Chrono
 							@initial=Time.now.to_i
 							@start=true
 						end
+						# puts @pause
 						if @pause != true
 							if @chrono != Time.now.to_i - @initial
 								@chrono=Time.now.to_i - @initial
-								#print self
+								# print self
 							end
 						end
 					@lChrono.set_markup(("<span foreground=\"#000000\" font-desc=\"Courier New bold 20\">"+@chrono.to_s+"</span>\n"))

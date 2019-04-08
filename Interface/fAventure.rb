@@ -13,6 +13,16 @@ class FAventure < Page
 		@aventMenu = Gtk::ButtonBox.new(:vertical)
     	@aventMenu.layout = :spread
 
+    	@ghead = Gtk::ButtonBox.new(:horizontal)
+        @ghead.spacing = 750
+    			@option = Gtk::Label.new('')
+
+    			@profil = Gtk::Label.new().set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 15\">Argent : #{unJoueur.argent}		</span>")
+
+    			@ghead.add(@option, :expand => true, :fill => false)
+    			@ghead.add(@profil, :expand => true, :fill => false)
+        @aventMenu.add(@ghead)
+
     	@level = Gtk::ButtonBox.new(:horizontal)
     	@level.layout = :spread
 

@@ -268,4 +268,26 @@ class Aide
 
 	end
 
+
+	#Vérifie si une case n'est pas adjacente à un arbre
+	#@param grille	//La grille de jeu
+	#@return 	//La case qui doit être de l'herbe
+	#@return	//nil sinon
+	def Aide.caseEstDeLHerbe(grille)
+		grille.parcourirH { |uneCase|
+			if uneCase.etat == 0 then
+				arbre = false
+				uneCase.casesVoisines(grille).each do |c|
+					if c.etat == 2 then
+						arbre = true
+					end
+				end
+				if arbre == false then
+					return uneCase
+				end
+			end
+		}
+		return nil		
+	end
+
 end

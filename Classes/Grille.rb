@@ -56,7 +56,7 @@ class Grille
     	@difficulte, @numero = diff, num
 
 		#Récupération de la grille à partir du fichier
-		ligneGrille = IO.readlines("../Ressources/#Grilles{@difficulte}s.txt")[@numero - 1]
+		ligneGrille = IO.readlines("../Ressources/Grilles#{@difficulte}s.txt")[@numero - 1]
 
 		#Séparation des éléments de la grille dans un tableau
 		grilleFich = ligneGrille.split(';')

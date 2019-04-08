@@ -13,7 +13,7 @@ require './Page.rb'
 
 class FDiff < Page
 
-	def initialize(monApp, header, anciennePage, unJoueur)
+	def initialize(monApp, header, anciennePage, unJoueur, comp)
 
 		super(monApp, :vertical, header,  anciennePage, unJoueur)
 
@@ -43,20 +43,20 @@ class FDiff < Page
 
 		@easy.signal_connect('clicked') {
 			self.supprimeMoi
-			suivant=FPlay.new(@window, header, self, unJoueur, "GrillesFaciles",false)
+			suivant=FPlay.new(@window, header, self, unJoueur, "Facile",comp)
 			suivant.ajouteMoi
 			@window.show_all
 		}
 		@medium.signal_connect('clicked') {
 			self.supprimeMoi
 
-			suivant=FPlay.new(@window, header, self, unJoueur, "GrillesMoyennes",false)
+			suivant=FPlay.new(@window, header, self, unJoueur, "Moyenne",comp)
 			suivant.ajouteMoi
 			@window.show_all
 		}
 		@hard.signal_connect('clicked') {
 			self.supprimeMoi
-			suivant=FPlay.new(@window, header, self, unJoueur, "GrillesDifficiles",false)
+			suivant=FPlay.new(@window, header, self, unJoueur, "Difficile",comp)
 			suivant.ajouteMoi
 			@window.show_all
 		}

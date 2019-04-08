@@ -19,7 +19,9 @@ class FMenu < Page
     		@ghead = Gtk::ButtonBox.new(:horizontal)
         @ghead.spacing = 750
     			@option = Gtk::Button.new()
+          @option.set_relief(:none)
     			@profil = Gtk::Button.new()
+          @profil.set_relief(:none)
 
           @imgP=(Gtk::Image.new(:file =>"./image/profil.png"))
           @profil.set_image(@imgP)
@@ -34,9 +36,11 @@ class FMenu < Page
         @gMenu.add(@ghead)
 
     		@play = Gtk::Button.new(:label => 'Jouer', :use_underline => nil, :stock_id => nil)
+        @play.set_relief(:none)
     		@didac = Gtk::Button.new(:label => 'Didacticiel', :use_underline => nil, :stock_id => nil)
+        @didac.set_relief(:none)
     		@score = Gtk::Button.new(:label => 'Classement', :use_underline => nil, :stock_id => nil)
-
+        @score.set_relief(:none)
 
     		@gMenu.add(@play, :expand => true, :fill => false)
     		@gMenu.add(@didac, :expand => true, :fill => false)
@@ -71,7 +75,7 @@ class FMenu < Page
 
         @frame.attach(@gMenu,0,1,0,1)
 
-        @bg=(Gtk::Image.new(:file =>"../Assets/ImgPresentation2.jpg"))
+        @bg=(Gtk::Image.new(:file =>"../Assets/ImgGame2.png"))
         @frame.attach(@bg,0,1,0,1)
 
         self.add(@frame)

@@ -16,6 +16,7 @@ class FModifC < Page
           @pseudo = TexteEntree.creer('Pseudo : ', false)
           @mdp = TexteEntree.creer('Mot de passe : ', true)
           @valider = Gtk::Button.new(:label => 'Valider les modifications', :use_underline => nil, :stock_id => nil)
+          @valider.set_relief(:none)
 
           @gModifC.add(@pseudo.gTexteEntree, :expand => true, :fill => false)
           @gModifC.add(@mdp.gTexteEntree, :expand => true, :fill => false)
@@ -55,7 +56,7 @@ class FModifC < Page
 
 	    @frame.attach(@gModifC,0,1,0,1)
 
-		@bg=(Gtk::Image.new(:file =>"../Assets/ImgPresentation2.jpg"))
+		@bg=(Gtk::Image.new(:file =>"../Assets/ImgGame2.png"))
         @frame.attach(@bg,0,1,0,1)
 
         self.add(@frame)

@@ -23,8 +23,11 @@ class FDiff < Page
     	@butons.layout = :spread
 
 		@easy = Gtk::Button.new(:label => 'Facile', :use_underline => nil, :stock_id => nil)
+		@easy.set_relief(:none)
 		@medium = Gtk::Button.new(:label => 'Moyen', :use_underline => nil, :stock_id => nil)
+		@medium.set_relief(:none)
 		@hard = Gtk::Button.new(:label => 'Difficile', :use_underline => nil, :stock_id => nil)
+		@hard.set_relief(:none)
 
 
 		@butons.add(@easy, :expand => true, :fill => false)
@@ -59,7 +62,7 @@ class FDiff < Page
 		}
 		@frame.attach(@butons,0,1,0,1)
 
-		@bg=(Gtk::Image.new(:file =>"../Assets/ImgPresentation2.jpg"))
+		@bg=(Gtk::Image.new(:file =>"../Assets/ImgGame2.png"))
         @frame.attach(@bg,0,1,0,1)
 
         self.add(@frame)

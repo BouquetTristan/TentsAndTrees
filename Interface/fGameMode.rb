@@ -26,8 +26,11 @@ class FGM < Page
     	@butons.layout = :spread
 
 		@classic = Gtk::Button.new(:label => 'Classique', :use_underline => nil)
+		@classic.set_relief(:none)
 		@adven = Gtk::Button.new(:label => 'Aventure', :use_underline => nil)
+		@adven.set_relief(:none)
 		@comp = Gtk::Button.new(:label => 'Compétition', :use_underline => nil)
+		@comp.set_relief(:none)
 
 		@butons.add(@classic, :expand => true, :fill => false)
 		@butons.add(@adven, :expand => true, :fill => false)
@@ -62,7 +65,7 @@ class FGM < Page
 		}
 		@frame.attach(@butons,0,1,0,1)
 
-		@bg=(Gtk::Image.new(:file =>"../Assets/ImgPresentation2.jpg"))
+		@bg=(Gtk::Image.new(:file =>"../Assets/ImgGame2.png"))
         @frame.attach(@bg,0,1,0,1)
 
         self.add(@frame)

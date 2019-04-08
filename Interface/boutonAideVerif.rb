@@ -11,9 +11,9 @@ class BoutonAideVerif < BoutonAide
 		if(@cliquable == true)
 			aide = Aide.erreur(uneGrille)
 			if(aide != nil)
-				unLabel.set_markup("<span foreground=\"#0066FF\" font-desc=\"Courier New bold 11\">Erreur sur la case #{aide.i} #{aide.j}</span>")
+				unLabel.set_markup("<span foreground=\"#FFFFFF\" font-desc=\"Courier New bold 11\">Erreur sur la case #{aide.i} #{aide.j}</span>")
 			else
-				unLabel.set_markup("<span foreground=\"#0066FF\" font-desc=\"Courier New bold 11\">Aucune erreur sur la grille actuelle</span>")
+				unLabel.set_markup("<span foreground=\"#FFFFFF\" font-desc=\"Courier New bold 11\">Aucune erreur sur la grille actuelle</span>")
 				return nil
 			end
 		end

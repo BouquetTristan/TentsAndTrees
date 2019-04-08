@@ -8,9 +8,9 @@ class TexteAfficher
           @gTexteAfficher=Gtk::Table.new(1,2, false)
 
           @label =  Gtk::Label.new("")
-          @label.set_markup(("<span foreground=\"#0066FF\" font-desc=\"Courier New bold 20\">"+unTexte+"</span>\n"))
+          @label.set_markup(("<span foreground=\"#FFFFFF\" font-desc=\"Courier New bold 20\">"+unTexte+"</span>\n"))
           @renvoie =  Gtk::Label.new("")
-          @renvoie.set_markup(("<span foreground=\"#0020FF\" font-desc=\"Courier New bold 20\">"+unAffichage+"</span>\n"))
+          @renvoie.set_markup(("<span foreground=\"#FFFFFF\" font-desc=\"Courier New bold 20\">"+unAffichage+"</span>\n"))
 
           @gTexteAfficher.attach(@label, 0,1,0,1)
           @gTexteAfficher.attach(@renvoie, 1,2,0,1)

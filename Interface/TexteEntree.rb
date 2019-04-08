@@ -11,7 +11,8 @@ class TexteEntree
      def initialize(unTexte, erreur)
           @gTexteEntree=Gtk::Table.new(2,3, false)
 
-          @label =  Gtk::Label.new(unTexte)
+          @label =  Gtk::Label.new("")
+          @label.set_markup("<span foreground=\"#FFFFFF\" font-desc=\"Courier New bold 11\">"+unTexte+"</span>")
           @entree =  Gtk::Entry.new
           if (erreur == true)
                @erreur =  Gtk::Label.new()

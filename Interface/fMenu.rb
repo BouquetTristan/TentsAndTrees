@@ -4,6 +4,7 @@ require './fDidact.rb'
 require './Page.rb'
 require './fProfil.rb'
 require './fGameMode.rb'
+require './fScore.rb'
 
 
 class FMenu < Page
@@ -71,6 +72,10 @@ class FMenu < Page
               @window.show_all  
         }
         @score.signal_connect('clicked') {
+              self.supprimeMoi
+              suivant = FScore.new(@window, header, self, unJoueur)
+              suivant.ajouteMoi
+              @window.show_all 
         }
 
         @frame.attach(@gMenu,0,1,0,1)

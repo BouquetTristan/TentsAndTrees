@@ -17,15 +17,15 @@ class BoutonAideHerbe < BoutonAide
 			aide3 = Aide.tenteContourCompleter(uneGrille)
 			aide4 = Aide.arbreAngleHerbe(uneGrille)
 			if(aide1 != nil)
-				unLabel.set_markup("<span foreground=\"#0066FF\" font-desc=\"Courier New bold 11\">La colonne #{aide1} peut être complétée par des herbes</span>")
+				unLabel.set_markup("<span foreground=\"#FFFFFF\" font-desc=\"Courier New bold 11\">La colonne #{aide1} peut être complétée par des herbes</span>")
 			elsif(aide2 != nil)
-				unLabel.set_markup("<span foreground=\"#0066FF\" font-desc=\"Courier New bold 11\">La ligne #{aide2} peut être complétée par des herbes</span>")
+				unLabel.set_markup("<span foreground=\"#FFFFFF\" font-desc=\"Courier New bold 11\">La ligne #{aide2} peut être complétée par des herbes</span>")
 			elsif(aide3 != nil)
-				unLabel.set_markup("<span foreground=\"#0066FF\" font-desc=\"Courier New bold 11\">Le contour de la tente en #{aide3.i} #{aide3.j} doit être complété</span>")
+				unLabel.set_markup("<span foreground=\"#FFFFFF\" font-desc=\"Courier New bold 11\">Le contour de la tente en #{aide3.i} #{aide3.j} doit être complété</span>")
 			elsif(aide4 != nil)
-				unLabel.set_markup("<span foreground=\"#0066FF\" font-desc=\"Courier New bold 11\">L'arbre en #{aide4.i} #{aide4.j} possède un coin qui est obligatoirement de l'herbe</span>")
+				unLabel.set_markup("<span foreground=\"#FFFFFF\" font-desc=\"Courier New bold 11\">L'arbre en #{aide4.i} #{aide4.j} possède un coin qui est obligatoirement de l'herbe</span>")
 			else
-				unLabel.set_markup("<span foreground=\"#0066FF\" font-desc=\"Courier New bold 11\">Aucune herbe ne peut être placée</span>")
+				unLabel.set_markup("<span foreground=\"#FFFFFF\" font-desc=\"Courier New bold 11\">Aucune herbe ne peut être placée</span>")
 				return nil
 			end
 		end

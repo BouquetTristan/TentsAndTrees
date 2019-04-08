@@ -20,14 +20,19 @@ class FGM < Page
 
 		super(monApp, :vertical, header,  anciennePage, unJoueur)
 
+		@mComp = false #Booleanqui definie le mode compete
+
 		@frame = Gtk::Table.new(1,1,false)
 
 		@butons = Gtk::ButtonBox.new(:horizontal)
     	@butons.layout = :spread
 
 		@classic = Gtk::Button.new(:label => 'Classique', :use_underline => nil)
+		@classic.set_relief(:none)
 		@adven = Gtk::Button.new(:label => 'Aventure', :use_underline => nil)
+		@adven.set_relief(:none)
 		@comp = Gtk::Button.new(:label => 'Compétition', :use_underline => nil)
+		@comp.set_relief(:none)
 
 		@butons.add(@classic, :expand => true, :fill => false)
 		@butons.add(@adven, :expand => true, :fill => false)
@@ -42,7 +47,7 @@ class FGM < Page
 
 		@classic.signal_connect('clicked') {
 			self.supprimeMoi
-			suivant = FDiff.new(@window, header, self, unJoueur)
+			suivant = FDiff.new(@window, header, self, unJoueur, @mComp)
 			suivant.ajouteMoi
       		@window.show_all
 		}
@@ -55,23 +60,18 @@ class FGM < Page
 		}
 
 		@comp.signal_connect('clicked') {
+			@mComp=true
 			self.supprimeMoi
-			suivant=FPlay.new(@window, header, self, unJoueur, getLevel(), true)
+			suivant = FDiff.new(@window, header, self, unJoueur, @mComp)
 			suivant.ajouteMoi
-			@window.show_all
+      		@window.show_all
 		}
 		@frame.attach(@butons,0,1,0,1)
 
-		@bg=(Gtk::Image.new(:file =>"../Assets/ImgPresentation2.jpg"))
+		@bg=(Gtk::Image.new(:file =>"../Assets/ImgGame2.png"))
         @frame.attach(@bg,0,1,0,1)
 
         self.add(@frame)
 	end
 
-	def getLevel()
-		i=rand(2)
-		diff=["GrillesFaciles", "GrillesMoyennes", "GrillesDifficiles"]
-
-		return diff[i]
-	end
 end

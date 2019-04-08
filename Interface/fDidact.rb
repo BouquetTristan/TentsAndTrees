@@ -25,8 +25,11 @@ class FDidac < Page
     		@gbouton.spacing=20
 
     		@tuto1 = Gtk::Button.new()
+        @tuto1.set_relief(:none)
     		@tuto2 = Gtk::Button.new()
+        @tuto2.set_relief(:none)
     		@tuto3 = Gtk::Button.new()
+        @tuto3.set_relief(:none)
 
         @t1=(Gtk::Image.new(:file =>"./image/Didacticiel/t1.png"))
         @tuto1.set_image(@t1)
@@ -42,7 +45,9 @@ class FDidac < Page
     		@gbouton2 = Gtk::ButtonBox.new(:horizontal)
     		@gbouton2.spacing = 20
     		@tuto4 = Gtk::Button.new()
+        @tuto4.set_relief(:none)
     		@tuto5 = Gtk::Button.new()
+        @tuto5.set_relief(:none)
         
         @t4=(Gtk::Image.new(:file =>"./image/Didacticiel/t4.png"))
         @tuto4.set_image(@t4)
@@ -98,7 +103,7 @@ class FDidac < Page
         @frame.attach(@gMain,0,1,0,1)
 
 
-        @bg=(Gtk::Image.new(:file =>"../Assets/ImgPresentation2.jpg"))
+        @bg=(Gtk::Image.new(:file =>"../Assets/ImgGame2.png"))
         @frame.attach(@bg,0,1,0,1)
 
         self.add(@frame)

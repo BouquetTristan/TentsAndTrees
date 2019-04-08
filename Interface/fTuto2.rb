@@ -29,7 +29,7 @@ class Ftuto2 < Page
 
         @frame.attach(@gImage,0,1,0,1)
 
-        @bg=(Gtk::Image.new(:file =>"../Assets/ImgPresentation2.jpg"))
+        @bg=(Gtk::Image.new(:file =>"../Assets/ImgGame2.png"))
         @frame.attach(@bg,0,1,0,1)
 
         self.add(@frame)

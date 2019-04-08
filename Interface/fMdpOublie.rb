@@ -17,9 +17,11 @@ class FMdpOublie < Page
 
     	@pseudo = TexteEntree.creer('Pseudo : ', true)
         @newMdp = TexteEntree.creer('Nouveau mot de passe : ', true)
-        @question =  Gtk::Label.new('Quel est votre lieux de vacance préféré?')
+        @question =  Gtk::Label.new('')
+        @question.set_markup("<span foreground=\"#FFFFFF\" font-desc=\"Courier New bold 15\">Quel est votre lieu de vacance favorie ?</span>\n")
         @reponse = TexteEntree.creer('Reponse : ', true)
         @connexion = Gtk::Button.new(:label => 'Connexion', :use_underline => nil, :stock_id => nil)
+        @connexion.set_relief(:none)
 
     		@gMdpOublie.add(@pseudo.gTexteEntree, :expand => true, :fill => false)
           @gMdpOublie.add(@question, :expand => true, :fill => false)
@@ -63,7 +65,7 @@ class FMdpOublie < Page
 
         @frame.attach(@gMdpOublie,0,1,0,1)
 
-        @bg=(Gtk::Image.new(:file =>"../Assets/ImgPresentation2.jpg"))
+        @bg=(Gtk::Image.new(:file =>"../Assets/ImgGame2.png"))
         @frame.attach(@bg,0,1,0,1)
 
         self.add(@frame)

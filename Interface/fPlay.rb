@@ -127,9 +127,9 @@ class FPlay < Page
 
 		@boxAide.add(@lableAide)
 
-		@b1 = BoutonAideVerif.new("1", true)
-		@b2 = BoutonAideHerbe.new("2", true)
-		@b3 = BoutonAideTente.new("3", true)
+		@b1 = BoutonAideVerif.new("Verification", true)
+		@b2 = BoutonAideHerbe.new("Aide Tente", true)
+		@b3 = BoutonAideTente.new("Aide Herbe", true)
 		
 
 		@boxAide.add(@b1.bouton)

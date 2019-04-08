@@ -25,15 +25,17 @@ class FConnexion < Page
 
           @pseudo = TexteEntree.creer('Pseudo : ',false)
           @mdp = TexteEntree.creer('Mot de passe : ',true)
+
           @creaC = Gtk::Button.new(:label => 'Creer un compte', :use_underline => nil, :stock_id => nil)
+          @creaC.set_relief(:none)
           @connexion = Gtk::Button.new(:label => 'Connexion', :use_underline => nil, :stock_id => nil)
+          @connexion.set_relief(:none)
           @mdpO = Gtk::Button.new(:label => 'Mot de passe oublié', :use_underline => nil, :stock_id => nil)
-		@quit = Gtk::Button.new(:label => 'Quitter', :use_underline => nil, :stock_id => nil)
+          @mdpO.set_relief(:none)
 
           @gConnexion.add(@pseudo.gTexteEntree, :expand => true, :fill => false)
           @gConnexion.add(@mdp.gTexteEntree, :expand => true, :fill => false)
           @gConnexion.add(@connexion, :expand => true, :fill => false)
-          @gConnexion.add(@quit, :expand => true, :fill => false)
 
           @gConnexion.add(@gC2)
           @gC2.add(@creaC, :expand => true, :fill => false)
@@ -81,11 +83,10 @@ class FConnexion < Page
                suivant.ajouteMoi
                @window.show_all
           }
-          @quit.signal_connect('clicked') {onDestroy}
 
           @frame.attach(@gConnexion, 0,1,0,1)
 
-          @bg = (Gtk::Image.new(:file=>"../Assets/ImgPresentation2.jpg"))
+          @bg = (Gtk::Image.new(:file=>"../Assets/ImgGame2.png"))
 
           @frame.attach(@bg, 0,1,0,1)
 

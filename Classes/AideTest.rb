@@ -5,7 +5,7 @@ require_relative 'Aide.rb'
 
 numGrille = 40	#Attention ! Le changement de grille lors du test peut le casser, les cases dont l'état a été changé peuvent se retrouver hors grille.
 
-grille = Grille.creerD("GrillesDifficiles")
+grille = Grille.creerD("Difficile")
 print "\nGrille du joueur : "
 grille.afficherGrille(grille.grilleJ)
 print "\nGrille finale : "

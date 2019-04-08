@@ -119,8 +119,9 @@ class Grille
 	#Enregistre la grille dans un fichier en transformant les informations concernant l'état des case en char
 	# @param void		//ne prend aucun paramètre
 	# @return void		//ne renvoie rien
-  	def enregistrerFichier()
-    	ligne = []
+  	def enregistrerFichier(nomJoueur, mode)
+    		ligne = []
+		ligne<<nomJoueur
 
 		for i in 0..(@taille-1)
 			ligneGrille = ""
@@ -145,8 +146,14 @@ class Grille
 
 		ligne = ligne.join(';')
 
-		fichier =File.new("../Ressources/SauvegardeGrilles.txt", File::CREAT|File::RDWR)
+		fichier =File.open("../Ressources/SauvegardeGrilles.txt", File::RDWR)
+		fichier.each_line do |l|
+			if l.include?(nomJoueur) then
+				break
+			end
+		end
 		fichier.puts(ligne)
+		fichier.close
 
   end
 
@@ -156,14 +163,25 @@ class Grille
   # @param diff		//difficulté de la grille
   # @param num		//numéro de la grille
   # @return grille		//retourn la grille voulu
-  def Grille.charger (diff, num)
+  def Grille.charger (diff, num, nomJoueur)
   	grille = Grille.creer(diff, num)
-  	ligneGrille = IO.readlines("../Ressources/SauvegardeGrilles.txt")[0].delete "\n"
-  	grilleFich = ligneGrille.split(';')
+	lFich = ""
+
+	fichier =File.open("../Ressources/SauvegardeGrilles.txt", "r")
+		fichier.each_line do |l|
+			if l.include?(nomJoueur) then
+				lFich = l
+				break
+			end
+		end
+
+  	grilleFich = lFich.split(';')
+	grilleFich.shift
 
   	grille.grilleJ = []
 
   	i = 0
+	print grilleFich
   	grilleFich.each do |ligne|
   		j = 0
   		ligneCasesJ = []

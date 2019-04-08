@@ -41,7 +41,7 @@ class Grille
 	# @param diff		//difficulté de grille
 	# @return void		//ne renvoie rien
 	def Grille.creerD(diff)
-		Grille.creer(diff, rand(366))
+		Grille.creer(diff, rand(diff.include?("Difficile") ? 300:400))
 	end
 
 	private_class_method:new
@@ -56,7 +56,7 @@ class Grille
     	@difficulte, @numero = diff, num
 
 		#Récupération de la grille à partir du fichier
-		ligneGrille = IO.readlines("../Ressources/Grilles#{@difficulte}s.txt")[@numero - 1]
+		ligneGrille = IO.readlines("../Ressources/#{@difficulte}.txt")[@numero - 1]
 
 		#Séparation des éléments de la grille dans un tableau
 		grilleFich = ligneGrille.split(';')

@@ -6,8 +6,8 @@ class Aide
 	
 	#Parcourt la grille du joueur et la grille finale pour repérer les erreurs de placement
 	# @param grille		//Prend la grille de jeu en paramètre
-	# @return case		//Renvoie la première case rencontrée si elle n'est pas vide et ne correspond pas à la case finale attendu
-	# @return nil		//Renvoie nil si toutes les cases sont correctes
+	# @return case			//Renvoie la première case rencontrée si elle n'est pas vide et ne correspond pas à la case finale attendu
+	# @return nil			//Renvoie nil si toutes les cases sont correctes
 	def Aide.erreur(grille)
 		for i in 0..(grille.taille-1)
 			for j in 0..(grille.taille-1)
@@ -58,7 +58,7 @@ class Aide
 	#Parcourt chaque colonne de la grille du joueur et repère les colonnes qui doivent être remplies par des herbes
 	# @param grille		//Prend la grille de jeu en paramètre
 	# @return colonne		//Renvoie la première colonne rencontrée qui doit être complétée par des herbes des herbes
-	# @return nil		//Renvoie nil si aucune des colonnes de la grille ne peut être complétée
+	# @return nil			//Renvoie nil si aucune des colonnes de la grille ne peut être complétée
 	def Aide.colonneCompleterHerbes(grille)
 
 		i = 0
@@ -114,7 +114,7 @@ class Aide
 	#Vérifie pour chaque arbre si il ne reste qu'une possibilité pour placer une tente
 	# @param grille		//Prend la grille de jeu en paramètre
 	# @return arbre		//Retourne le premier arbre rencontré qui ne possède pas de tente et un seul choix restant pour la place
-	# @return nil		//Retourne nil si il n'y a aucun arbre avec un seul choix possible
+	# @return nil			//Retourne nil si il n'y a aucun arbre avec un seul choix possible
 	def Aide.arbreTentePlacer(grille)
 		arbreTrouve = nil
 		grille.parcourirH() { |uneCase|
@@ -145,7 +145,7 @@ class Aide
 	#Vérifie si un des angles de chaque arbre est obligatoirement de l'herbe
 	# @param grille		//Prend la grille de jeu en paramètre
 	# @return arbre		//Retourne le premier arbre rencontré avec un angle contenant forcément de l'herbe
-	# @return nil		//Retourne nil sinon
+	# @return nil			//Retourne nil sinon
 	def Aide.arbreAngleHerbe(grille)
 		arbreTrouve = nil
 		grille.parcourirH() { |uneCase|
@@ -195,8 +195,8 @@ class Aide
 
 	#Vérifie si il est possible de placer au moins une tente dans la ligne
 	# @param grille		//Prend la grille de jeu en paramètre
-	# @return numLigne	//Retourne la première ligne où il est possible de placer au moins une tente
-	# @return nil		//Retourne nil sinon
+	# @return numLigne		//Retourne la première ligne où il est possible de placer au moins une tente
+	# @return nil			//Retourne nil sinon
 	
 	def Aide.lignePlacerTentes(grille)
 		nLigne = 0
@@ -212,8 +212,8 @@ class Aide
 
 	#Vérifie si il est possible de placer au moins une tente dans la ligne
 	# @param grille		//Prend la grille de jeu en paramètre
-	# @return numLigne	//Retourne la première ligne où il est possible de placer au moins une tente
-	# @return nil		//Retourne nil sinon
+	# @return numLigne		//Retourne la première ligne où il est possible de placer au moins une tente
+	# @return nil			//Retourne nil sinon
 	
 	def Aide.colonnePlacerTentes(grille)
 		nLigne = 0
@@ -227,6 +227,12 @@ class Aide
 		return nil
 	end
 
+	#Vérifie si le nombre de tente placable maximum sur la ligne est égale aux nombres de tentes restantes à placer
+	# @param grille	//La grille de jeu
+	# @param ligne		//La ligne de la grille sur laquelle on travail
+	# @param nLigne	//Le numéro de la ligne sur laquelle on travail
+	# @return nLigne	//le numéro de la ligne éligible
+	# @return		//nil sinon
 	def Aide.tentesPlacer (grille, ligne, nLigne)
 		nbTentesRestantes = grille.nbTentesColonne[nLigne]
 		compteur = 0
@@ -270,9 +276,9 @@ class Aide
 
 
 	#Vérifie si une case n'est pas adjacente à un arbre
-	#@param grille	//La grille de jeu
-	#@return 	//La case qui doit être de l'herbe
-	#@return	//nil sinon
+	# @param grille	//La grille de jeu
+	# @return 		//La case qui doit être de l'herbe
+	# @return		//nil sinon
 	def Aide.caseEstDeLHerbe(grille)
 		grille.parcourirH { |uneCase|
 			if uneCase.etat == 0 then

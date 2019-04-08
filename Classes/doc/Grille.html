@@ -255,7 +255,7 @@
 
           
           <div class="method-source-code" id="charger-source">
-            <pre><span class="ruby-comment"># File Grille.rb, line 166</span>
+            <pre><span class="ruby-comment"># File Grille.rb, line 159</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Grille</span>.<span class="ruby-identifier ruby-title">charger</span> (<span class="ruby-identifier">diff</span>, <span class="ruby-identifier">num</span>)
       <span class="ruby-identifier">grille</span> = <span class="ruby-constant">Grille</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-identifier">diff</span>, <span class="ruby-identifier">num</span>)
       <span class="ruby-identifier">ligneGrille</span> = <span class="ruby-constant">IO</span>.<span class="ruby-identifier">readlines</span>(<span class="ruby-string">&quot;../Ressources/SauvegardeGrilles.txt&quot;</span>)[<span class="ruby-value">0</span>].<span class="ruby-identifier">delete</span> <span class="ruby-string">&quot;\n&quot;</span>
@@ -348,7 +348,7 @@
           <div class="method-source-code" id="creerD-source">
             <pre><span class="ruby-comment"># File Grille.rb, line 43</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Grille</span>.<span class="ruby-identifier ruby-title">creerD</span>(<span class="ruby-identifier">diff</span>)
-        <span class="ruby-constant">Grille</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-identifier">diff</span>, <span class="ruby-identifier">rand</span>(<span class="ruby-value">366</span>))
+        <span class="ruby-constant">Grille</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-identifier">diff</span>, <span class="ruby-identifier">rand</span>(<span class="ruby-identifier">diff</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">&quot;Difficile&quot;</span>) <span class="ruby-operator">?</span> <span class="ruby-value">300</span><span class="ruby-operator">:</span><span class="ruby-value">400</span>))
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -388,14 +388,7 @@
 <span class="ruby-ivar">@difficulte</span>, <span class="ruby-ivar">@numero</span> = <span class="ruby-identifier">diff</span>, <span class="ruby-identifier">num</span>
 
         <span class="ruby-comment">#Récupération de la grille à partir du fichier</span>
-        <span class="ruby-keyword">case</span>   <span class="ruby-ivar">@difficulte</span>
-        <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;Facile&quot;</span> <span class="ruby-keyword">then</span>
-                <span class="ruby-identifier">ligneGrille</span> = <span class="ruby-constant">IO</span>.<span class="ruby-identifier">readlines</span>(<span class="ruby-string">&quot;../Ressources/GrillesFaciles.txt&quot;</span>)[<span class="ruby-ivar">@numero</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>]
-        <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;Moyenne&quot;</span> <span class="ruby-keyword">then</span>
-                <span class="ruby-identifier">ligneGrille</span> = <span class="ruby-constant">IO</span>.<span class="ruby-identifier">readlines</span>(<span class="ruby-string">&quot;../Ressources/GrillesMoyennes.txt&quot;</span>)[<span class="ruby-ivar">@numero</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>]
-        <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;Difficile&quot;</span> <span class="ruby-keyword">then</span>
-                <span class="ruby-identifier">ligneGrille</span> = <span class="ruby-constant">IO</span>.<span class="ruby-identifier">readlines</span>(<span class="ruby-string">&quot;../Ressources/GrillesDifficiles.txt&quot;</span>)[<span class="ruby-ivar">@numero</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>]
-        <span class="ruby-keyword">end</span>
+        <span class="ruby-identifier">ligneGrille</span> = <span class="ruby-constant">IO</span>.<span class="ruby-identifier">readlines</span>(<span class="ruby-node">&quot;../Ressources/Grilles#{@difficulte}s.txt&quot;</span>)[<span class="ruby-ivar">@numero</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>]
 
         <span class="ruby-comment">#Séparation des éléments de la grille dans un tableau</span>
         <span class="ruby-identifier">grilleFich</span> = <span class="ruby-identifier">ligneGrille</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&#39;;&#39;</span>)
@@ -474,7 +467,7 @@
 
           
           <div class="method-source-code" id="afficherGrille-source">
-            <pre><span class="ruby-comment"># File Grille.rb, line 113</span>
+            <pre><span class="ruby-comment"># File Grille.rb, line 106</span>
 <span class="ruby-keyword">def</span>  <span class="ruby-identifier ruby-title">afficherGrille</span> (<span class="ruby-identifier">grille</span>)
         <span class="ruby-identifier">grille</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">ligne</span><span class="ruby-operator">|</span>
                  <span class="ruby-identifier">print</span> <span class="ruby-string">&quot;\n&quot;</span>
@@ -517,7 +510,7 @@ concernant l&#39;état des case en char</p>
 
           
           <div class="method-source-code" id="enregistrerFichier-source">
-            <pre><span class="ruby-comment"># File Grille.rb, line 129</span>
+            <pre><span class="ruby-comment"># File Grille.rb, line 122</span>
       <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">enregistrerFichier</span>()
       <span class="ruby-identifier">ligne</span> = []
 
@@ -581,7 +574,7 @@ concernant l&#39;état des case en char</p>
 
           
           <div class="method-source-code" id="observateur-source">
-            <pre><span class="ruby-comment"># File Grille.rb, line 235</span>
+            <pre><span class="ruby-comment"># File Grille.rb, line 228</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">observateur</span>()
 
   <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span>(<span class="ruby-identifier">taille</span><span class="ruby-value">-1</span>)
@@ -627,7 +620,7 @@ concernant l&#39;état des case en char</p>
 
           
           <div class="method-source-code" id="parcourirC-source">
-            <pre><span class="ruby-comment"># File Grille.rb, line 214</span>
+            <pre><span class="ruby-comment"># File Grille.rb, line 207</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">parcourirC</span> ()
       <span class="ruby-identifier">grilleTournee</span> = []
 
@@ -675,7 +668,7 @@ concernant l&#39;état des case en char</p>
 
           
           <div class="method-source-code" id="parcourirH-source">
-            <pre><span class="ruby-comment"># File Grille.rb, line 192</span>
+            <pre><span class="ruby-comment"># File Grille.rb, line 185</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">parcourirH</span> ()
       <span class="ruby-keyword">self</span>.<span class="ruby-identifier">parcourirL</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">ligne</span><span class="ruby-operator">|</span>
               <span class="ruby-identifier">ligne</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">uneCase</span><span class="ruby-operator">|</span>
@@ -715,7 +708,7 @@ concernant l&#39;état des case en char</p>
 
           
           <div class="method-source-code" id="parcourirL-source">
-            <pre><span class="ruby-comment"># File Grille.rb, line 204</span>
+            <pre><span class="ruby-comment"># File Grille.rb, line 197</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">parcourirL</span> ()
       <span class="ruby-ivar">@grilleJ</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">ligne</span><span class="ruby-operator">|</span>
                       <span class="ruby-keyword">yield</span> <span class="ruby-identifier">ligne</span>

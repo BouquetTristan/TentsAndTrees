@@ -44,18 +44,19 @@ class FInter < Page
 
 		@frame2.attach(@grille,0,1,0,1)
 
-		@box=Gtk::ButtonBox.new(:vertical)
+		@framebut=Gtk::Table.new(1,2,false)
 
-		@next= Gtk::Button.new(:label => 'Suivante', :use_underline => nil, :stock_id => nil)
+
+		@next= Gtk::Button.new(:label => 'Suivante >>', :use_underline => nil, :stock_id => nil)
 		@next.set_relief(:none)
 		@play= Gtk::Button.new(:label => 'Jouer', :use_underline => nil, :stock_id => nil)
 		@play.set_relief(:none)
 
-		@box.add(@next)
-		@box.add(@play)
+		@framebut.attach(@next, 0,1,0,1)
+		@framebut.attach(@play,0,1,1,2)
 
 
-		@frame2.attach(@box, 1,2,0,1)
+		@frame2.attach(@framebut, 1,2,0,1)
 
 		@frame.attach(@frame2,0,1,0,1)
 

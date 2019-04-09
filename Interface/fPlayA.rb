@@ -94,7 +94,7 @@ class FPlayA < Page
 			temp=[]
 			for j in (0..taille-1)
 					vEtat = grilleDeJeu.grilleJ[i][j].etat
-					temp[j] = BoutonGrilleA.new("./image/#{uneSaison}")
+					temp[j] = BoutonGrilleA.new("./Assets/#{uneSaison}")
 					temp[j].mCoord(i,j)
 					temp[j].chgEtat(vEtat)
 					@grille.attach(temp[j].bouton, i+1, i+2, j+1,j+2)

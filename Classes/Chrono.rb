@@ -1,9 +1,8 @@
 #====== La classe chrono représente un chronomètre conçu pour être utilisé en thread ( en parallèle du programme princpal pour chronomètrer une partie)
 require 'gtk3'
 class Chrono
-	
+
 	#=Variables d'instance
-	# @initial 	: mémorise le temps de départ obtenu avec Time.now.to_i pour pouvoir le soustraire plus tard
 	# @start 	: boolean en false au lancement du chrono et passe en true lors du premier tosu de boucle.
 	# @pause		: boolean met en pause le chrono
 	# @chrono	: variable qui stockera le nombre de seconde actuel et qui servira à afficher.
@@ -13,8 +12,8 @@ class Chrono
 	attr_accessor :start
 	attr_accessor :pause
 	attr_accessor :chrono
-	attr_accessor :lChrono  
-	
+	attr_accessor :lChrono
+
 
 
 
@@ -22,7 +21,6 @@ class Chrono
 	# @param void		//ne prend aucun paramètre
 	# @return void		//ne renvoie rien
 	def initialize()
-		@initial=0
 		@start=false
 		@pause=false
 		@chrono=0
@@ -35,20 +33,19 @@ class Chrono
 	# @param void		//ne prend aucun paramètre
 	# @return void		//ne renvoie rien
 	def cStart
-			
+
 			while @fin != true
 						if @start==false
-							@initial=Time.now.to_i
+							@chrono=0
 							@start=true
 						end
 						if @pause != true
-							if @chrono != Time.now.to_i - @initial
-								@chrono=Time.now.to_i - @initial
-							end
+							sleep(1);
+							@chrono+=1;
 						end
 					@lChrono.set_markup(("<span foreground=\"#FFFFFF\" font-desc=\"Courier New bold 20\">"+@chrono.to_s+"</span>\n"))
 			end
-		
+
 	end
 
 	#change la valeur de la variable @pause en true ou en false mettant le chrono en pause ou le faisant repartir
@@ -57,8 +54,7 @@ class Chrono
 	def cPause()
 		if @pause==true
 			@pause=false
-			@initial=Time.now.to_i-@chrono
-		else 
+		else
 			@pause=true
 		end
 	end
@@ -89,7 +85,7 @@ class Chrono
 	# @param void		//ne prend aucun paramètre
 	# @return temps	//Retourne le temps sous format h:m:s
 	def to_s
-	
+
 			heures = @chrono/3600
 			minutes = (@chrono - (heures*3600)) / 60
 			secondes = @chrono - (heures*3600) - (minutes*60)
@@ -102,4 +98,3 @@ class Chrono
 	end
 
 end # Marqueur de fin de classe
-

@@ -14,7 +14,7 @@ require '../Classes/Score.rb'
 
 class FPlay < Page
 
-	def initialize(monApp, header, anciennePage, unJoueur, difficulte, compet)
+	def initialize(monApp, header, anciennePage, unJoueur, difficulte, grilleDeJeu, compet)
 
 		super(monApp, :vertical, header,  anciennePage, unJoueur)
 
@@ -38,9 +38,7 @@ class FPlay < Page
 
         @box = Gtk::ButtonBox.new(:horizontal)
 
-	   grilleDeJeu = Grille.creerD(difficulte)
-
-	   taille = grilleDeJeu.taille()
+	    taille = grilleDeJeu.taille()
 
         @grille = Gtk::Table.new(taille, taille, false)
 

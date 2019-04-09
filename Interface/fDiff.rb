@@ -2,6 +2,7 @@ require 'gtk3'
 require './fGameMode.rb'
 require './fPlay.rb'
 require './Page.rb'
+require './fInter.rb'
 
 # Fichier: fDiff.rb
 # Auteur: Marchand Killian
@@ -43,20 +44,37 @@ class FDiff < Page
 
 		@easy.signal_connect('clicked') {
 			self.supprimeMoi
-			suivant=FPlay.new(@window, header, self, unJoueur, "Facile",comp)
+			diff = "Facile"
+			if comp == false
+				grilleDeJeu = Grille.creerD(diff)
+				suivant=FPlay.new(@window, header, self, unJoueur, diff, grilleDeJeu ,comp)
+			else
+				suivant=FInter.new(@window, header, self, unJoueur, diff,comp)
+			end	
 			suivant.ajouteMoi
 			@window.show_all
 		}
 		@medium.signal_connect('clicked') {
 			self.supprimeMoi
-
-			suivant=FPlay.new(@window, header, self, unJoueur, "Moyenne",comp)
+			diff = "Moyenne"
+			if comp == false
+				grilleDeJeu = Grille.creerD(diff)
+				suivant=FPlay.new(@window, header, self, unJoueur, diff, grilleDeJeu ,comp)
+			else
+				suivant=FInter.new(@window, header, self, unJoueur, diff,comp)
+			end	
 			suivant.ajouteMoi
 			@window.show_all
 		}
 		@hard.signal_connect('clicked') {
 			self.supprimeMoi
-			suivant=FPlay.new(@window, header, self, unJoueur, "Difficile",comp)
+			diff = "Difficile"
+			if comp == false
+				grilleDeJeu = Grille.creerD(diff)
+				suivant=FPlay.new(@window, header, self, unJoueur, diff, grilleDeJeu ,comp)
+			else
+				suivant=FInter.new(@window, header, self, unJoueur, diff,comp)
+			end	
 			suivant.ajouteMoi
 			@window.show_all
 		}

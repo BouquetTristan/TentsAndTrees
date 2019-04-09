@@ -14,11 +14,11 @@ class FMenu < Page
      	super(monApp, :vertical, header,  anciennePage, unJoueur)
 
         @frame = Gtk::Table.new(1,1,false)
-    		@gMenu = Gtk::ButtonBox.new(:vertical)
+    		@gMenu = Gtk::Table.new(1,2,false)
         #@gMenu.spacing = 10
 
-    		@ghead = Gtk::ButtonBox.new(:horizontal)
-        @ghead.spacing = 750
+    		@ghead = Gtk::Table.new(1,2,false)
+        
     			@option = Gtk::Button.new()
           @option.set_relief(:none)
     			@profil = Gtk::Button.new()
@@ -32,9 +32,11 @@ class FMenu < Page
           @option.set_image(@imgO)
           focus_hadjustment=(:start)
 
-    			@ghead.add(@option, :expand => true, :fill => false)
-    			@ghead.add(@profil, :expand => true, :fill => false)
-        @gMenu.add(@ghead)
+    			@ghead.attach(@option, 0,1,0,1)
+    			@ghead.attach(@profil, 1,2,0,1)
+        @gMenu.attach(@ghead, 0,1,0,1)
+
+        @tMenu = Gtk::Table.new(1,3,false)
 
     		@play = Gtk::Button.new(:label => 'Jouer', :use_underline => nil, :stock_id => nil)
         @play.set_relief(:none)
@@ -43,9 +45,11 @@ class FMenu < Page
     		@score = Gtk::Button.new(:label => 'Classement', :use_underline => nil, :stock_id => nil)
         @score.set_relief(:none)
 
-    		@gMenu.add(@play, :expand => true, :fill => false)
-    		@gMenu.add(@didac, :expand => true, :fill => false)
-    		@gMenu.add(@score, :expand => true, :fill => false)
+    		@tMenu.attach(@play, 0,1,0,1)
+    		@tMenu.attach(@didac, 0,1,1,2)
+    		@tMenu.attach(@score, 0,1,2,3)
+
+        @gMenu.attach(@tMenu, 0,1,1,2)
 
 
         @option.signal_connect('clicked') {

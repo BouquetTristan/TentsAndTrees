@@ -14,11 +14,11 @@ class FDidac < Page
 	
 
         @frame = Gtk::Table.new(1,1,false)
-    		@gMain = Gtk::ButtonBox.new(:vertical)
-        @gMain.spacing = 10
+    		@tMain = Gtk::Table.new(1,2,false)
+        
 
     		@gbouton = Gtk::ButtonBox.new(:horizontal)
-    		@gbouton.spacing=20
+    		
 
     		@tuto1 = Gtk::Button.new()
         @tuto1.set_relief(:none)
@@ -39,7 +39,7 @@ class FDidac < Page
     		@gbouton.add(@tuto3, :expand => true, :fill => false)
 
     		@gbouton2 = Gtk::ButtonBox.new(:horizontal)
-    		@gbouton2.spacing = 20
+    		
     		@tuto4 = Gtk::Button.new()
         @tuto4.set_relief(:none)
     		@tuto5 = Gtk::Button.new()
@@ -54,8 +54,8 @@ class FDidac < Page
     		@gbouton2.add(@tuto5, :expand => true, :fill => false)
 
 
-    		@gMain.add(@gbouton)
-    		@gMain.add(@gbouton2)
+    		@tMain.attach(@gbouton, 0,1,0,1)
+    		@tMain.attach(@gbouton2,0,1,1,2)
 
     	@header.btnMenu.signal_connect('clicked') {
 	        self.supprimeMoi
@@ -96,7 +96,7 @@ class FDidac < Page
                @window.show_all  
         }
 
-        @frame.attach(@gMain,0,1,0,1)
+        @frame.attach(@tMain,0,1,0,1)
 
 
         @bg=(Gtk::Image.new(:file =>"./Assets/ImgGame.jpg"))

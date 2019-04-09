@@ -1,6 +1,6 @@
 require 'gtk3'
 
-require './Page.rb'
+require './Classes/Page.rb'
 
 
 class FScore < Page
@@ -50,7 +50,7 @@ class FScore < Page
 
         @frame.attach(@box,0,1,0,1)
 
-        @bg=(Gtk::Image.new(:file =>"../Assets/ImgGame.jpg"))
+        @bg=(Gtk::Image.new(:file =>"./Assets/ImgGame.jpg"))
         @frame.attach(@bg,0,1,0,1)
 
         self.add(@frame)

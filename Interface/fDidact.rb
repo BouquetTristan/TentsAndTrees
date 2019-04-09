@@ -1,12 +1,12 @@
 require 'gtk3'
 
 
-require './Page.rb'
-require './fTuto1.rb'
-require './fTuto2.rb'
-require './fTuto3.rb'
-require './fTuto4.rb'
-require './fTuto5.rb'
+require './Classes/Page.rb'
+require './Interface/fTuto1.rb'
+require './Interface/fTuto2.rb'
+require './Interface/fTuto3.rb'
+require './Interface/fTuto4.rb'
+require './Interface/fTuto5.rb'
 
 
 class FDidac < Page
@@ -31,11 +31,11 @@ class FDidac < Page
     		@tuto3 = Gtk::Button.new()
         @tuto3.set_relief(:none)
 
-        @t1=(Gtk::Image.new(:file =>"./image/Didacticiel/t1.png"))
+        @t1=(Gtk::Image.new(:file =>"./Assets/Didacticiel/t1.png"))
         @tuto1.set_image(@t1)
-        @t2=(Gtk::Image.new(:file =>"./image/Didacticiel/t2.png"))
+        @t2=(Gtk::Image.new(:file =>"./Assets/Didacticiel/t2.png"))
         @tuto2.set_image(@t2)
-        @t3=(Gtk::Image.new(:file =>"./image/Didacticiel/t3.png"))
+        @t3=(Gtk::Image.new(:file =>"./Assets/Didacticiel/t3.png"))
         @tuto3.set_image(@t3)
     	
     		@gbouton.add(@tuto1, :expand => true, :fill => false)
@@ -49,9 +49,9 @@ class FDidac < Page
     		@tuto5 = Gtk::Button.new()
         @tuto5.set_relief(:none)
         
-        @t4=(Gtk::Image.new(:file =>"./image/Didacticiel/t4.png"))
+        @t4=(Gtk::Image.new(:file =>"./Assets/Didacticiel/t4.png"))
         @tuto4.set_image(@t4)
-        @t5=(Gtk::Image.new(:file =>"./image/Didacticiel/t5.png"))
+        @t5=(Gtk::Image.new(:file =>"./Assets/Didacticiel/t5.png"))
         @tuto5.set_image(@t5)
     	
     		@gbouton2.add(@tuto4, :expand => true, :fill => false)
@@ -103,7 +103,7 @@ class FDidac < Page
         @frame.attach(@gMain,0,1,0,1)
 
 
-        @bg=(Gtk::Image.new(:file =>"../Assets/ImgGame.jpg"))
+        @bg=(Gtk::Image.new(:file =>"./Assets/ImgGame.jpg"))
         @frame.attach(@bg,0,1,0,1)
 
         self.add(@frame)

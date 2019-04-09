@@ -1,10 +1,10 @@
 require 'gtk3'
 
-require './fDidact.rb'
-require './Page.rb'
-require './fProfil.rb'
-require './fGameMode.rb'
-require './fScore.rb'
+require './Interface/fDidact.rb'
+require './Classes/Page.rb'
+require './Interface/fProfil.rb'
+require './Interface/fGameMode.rb'
+require './Interface/fScore.rb'
 
 
 class FMenu < Page
@@ -24,11 +24,11 @@ class FMenu < Page
     			@profil = Gtk::Button.new()
           @profil.set_relief(:none)
 
-          @imgP=(Gtk::Image.new(:file =>"./image/profil.png"))
+          @imgP=(Gtk::Image.new(:file =>"./Assets/profil.png"))
           @profil.set_image(@imgP)
           focus_hadjustment=(:start)
 
-          @imgO=(Gtk::Image.new(:file =>"./image/option.png"))
+          @imgO=(Gtk::Image.new(:file =>"./Assets/option.png"))
           @option.set_image(@imgO)
           focus_hadjustment=(:start)
 
@@ -80,7 +80,7 @@ class FMenu < Page
 
         @frame.attach(@gMenu,0,1,0,1)
 
-        @bg=(Gtk::Image.new(:file =>"../Assets/ImgGame.jpg"))
+        @bg=(Gtk::Image.new(:file =>"./Assets/ImgGame.jpg"))
         @frame.attach(@bg,0,1,0,1)
 
         self.add(@frame)

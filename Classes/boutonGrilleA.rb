@@ -1,6 +1,6 @@
 
 require 'gtk3'
-require './boutonGrille.rb'
+require './Classes/boutonGrille.rb'
 
 class BoutonGrilleA < BoutonGrille
 

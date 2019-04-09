@@ -1,16 +1,16 @@
 require 'gtk3'
-require './Page.rb'
+require './Classes/Page.rb'
 
-require '../Classes/Grille.rb'
-require '../Classes/Aide.rb'
-require './boutonGrille.rb'
-require '../Classes/Chrono.rb'
-require './boutonAide.rb'
-require './boutonAideVerif.rb'
-require './boutonAideHerbe.rb'
-require './boutonAideTente.rb'
-require './fFin.rb'
-require '../Classes/Score.rb'
+require './Classes/Grille.rb'
+require './Classes/Aide.rb'
+require './Classes/boutonGrille.rb'
+require './Classes/Chrono.rb'
+require './Classes/boutonAide.rb'
+require './Classes/boutonAideVerif.rb'
+require './Classes/boutonAideHerbe.rb'
+require './Classes/boutonAideTente.rb'
+require './Interface/fFin.rb'
+require './Classes/Score.rb'
 
 class FPlay < Page
 
@@ -202,7 +202,7 @@ class FPlay < Page
 
 		@bPause = Gtk::Button.new()
 		@bPause.set_relief(:none)
-		@pause=(Gtk::Image.new(:file =>"./image/pause.png"))
+		@pause=(Gtk::Image.new(:file =>"./Assets/pause.png"))
 		@bPause.set_image(@pause)
 		@gHelp.add(@bPause)
 
@@ -216,7 +216,7 @@ class FPlay < Page
 						l.bouton.set_opacity(0.0)
 					}
 				}
-				@pause=(Gtk::Image.new(:file =>"./image/Play.png"))
+				@pause=(Gtk::Image.new(:file =>"./Assets/Play.png"))
 				@bPause.set_image(@pause)
 
 				@b1.cliquable = false
@@ -229,7 +229,7 @@ class FPlay < Page
 						l.bouton.set_opacity(1.0)
 					}
 				} 
-				@pause=(Gtk::Image.new(:file =>"./image/pause.png"))
+				@pause=(Gtk::Image.new(:file =>"./Assets/pause.png"))
 				@bPause.set_image(@pause)
 
 				@b1.cliquable = true
@@ -245,7 +245,7 @@ class FPlay < Page
 
 		@frame.attach(@box,0,1,0,1)
 
-		@bg=(Gtk::Image.new(:file =>"../Assets/ImgGame.jpg"))
+		@bg=(Gtk::Image.new(:file =>"./Assets/ImgGame.jpg"))
         @frame.attach(@bg,0,1,0,1)
 
         self.add(@frame)

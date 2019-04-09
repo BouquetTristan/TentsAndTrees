@@ -1,8 +1,8 @@
 require 'gtk3'
 #require './fGameMode.rb'
-require './TexteEntree'
-require './Page.rb'
-require './fMenu.rb'
+require './Classes/TexteEntree'
+require './Classes/Page.rb'
+require './Interface/fMenu.rb'
 
 class FMdpOublie < Page
 
@@ -65,7 +65,7 @@ class FMdpOublie < Page
 
         @frame.attach(@gMdpOublie,0,1,0,1)
 
-        @bg=(Gtk::Image.new(:file =>"../Assets/ImgGame.jpg"))
+        @bg=(Gtk::Image.new(:file =>"./Assets/ImgGame.jpg"))
         @frame.attach(@bg,0,1,0,1)
 
         self.add(@frame)

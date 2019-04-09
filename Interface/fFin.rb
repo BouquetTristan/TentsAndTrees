@@ -1,6 +1,6 @@
 require 'gtk3'
 
-require './Page.rb'
+require './Classes/Page.rb'
 
 class FFin < Page
 
@@ -12,14 +12,14 @@ class FFin < Page
 
           if statue == "gagner"
           
-        	  @bg = (Gtk::Image.new(:file=>"../Assets/GameWin.png"))
+        	  @bg = (Gtk::Image.new(:file=>"./Assets/GameWin.png"))
 
       	  end
 
 
           if statue == "perdu"
           
-        	  @bg = (Gtk::Image.new(:file=>"../Assets/GameOver.png"))
+        	  @bg = (Gtk::Image.new(:file=>"./Assets/GameOver.png"))
 
       	  end
           @frame.attach(@bg, 0,1,0,1)

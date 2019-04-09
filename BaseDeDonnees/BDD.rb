@@ -9,11 +9,11 @@ require 'sqlite3'
 require 'digest'
 
 # Ouverture de la base de donnée SQLite 3
-bddP = SQLite3::Database.new '../BaseDeDonnees/profil.db'
-bddA = SQLite3::Database.new '../BaseDeDonnees/aventure.db'
-bddN = SQLite3::Database.new '../BaseDeDonnees/niveau.db'
-bddG = SQLite3::Database.new '../BaseDeDonnees/grille.db'
-bddS = SQLite3::Database.new '../BaseDeDonnees/succes.db'
+bddP = SQLite3::Database.new './BaseDeDonnees/profil.db'
+bddA = SQLite3::Database.new './BaseDeDonnees/aventure.db'
+bddN = SQLite3::Database.new './BaseDeDonnees/niveau.db'
+bddG = SQLite3::Database.new './BaseDeDonnees/grille.db'
+bddS = SQLite3::Database.new './BaseDeDonnees/succes.db'
 
 
 

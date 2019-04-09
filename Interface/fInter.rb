@@ -1,8 +1,7 @@
 require 'gtk3'
-require './fPlay.rb'
-require './Page.rb'
-
-require './boutonGrille.rb'
+require './Interface/fPlay.rb'
+require './Classes/Page.rb'
+require './Classes/boutonGrille.rb'
 
 # Fichier: fDiff.rb
 # Auteur: Marchand Killian
@@ -82,7 +81,7 @@ class FInter < Page
 		}
 
 
-		@bg=(Gtk::Image.new(:file =>"../Assets/ImgGame.jpg"))
+		@bg=(Gtk::Image.new(:file =>"./Assets/ImgGame.jpg"))
         @frame.attach(@bg,0,1,0,1)
 
         self.add(@frame)

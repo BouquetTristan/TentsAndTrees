@@ -5,8 +5,8 @@ end
 
 require 'gtk3'
 
-require './fConnexion.rb'
-require './Header.rb'
+require './Interface/fConnexion.rb'
+require './Classes/Header.rb'
 
 #Gtk.init
 

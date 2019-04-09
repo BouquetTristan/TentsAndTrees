@@ -16,19 +16,19 @@ require 'digest'
 
 
 def ouvrirBDDP()
-	return SQLite3::Database.new '../BaseDeDonnees/profil.db'
+	return SQLite3::Database.new './BaseDeDonnees/profil.db'
 end
 
 def ouvrirBDDA()
-	return SQLite3::Database.new '../BaseDeDonnees/aventure.db'
+	return SQLite3::Database.new './BaseDeDonnees/aventure.db'
 end
 
 def ouvrirBDDN()
-	return SQLite3::Database.new '../BaseDeDonnees/niveau.db'
+	return SQLite3::Database.new './BaseDeDonnees/niveau.db'
 end
 
 def ouvrirBDDG()
-	return SQLite3::Database.new '../BaseDeDonnees/grille.db'
+	return SQLite3::Database.new './BaseDeDonnees/grille.db'
 end
 
 
@@ -162,7 +162,7 @@ end
 def creerGrilleAventure(unIDNiveau, uneLigne)
 	bddG = ouvrirBDDG()
 
-	ligneGrille = IO.readlines("../Ressources/aventure.txt")[uneLigne]
+	ligneGrille = IO.readlines("./Ressources/aventure.txt")[uneLigne]
 	#puts "#{ligneGrille}\n"
 	informationGrille = ligneGrille.split(';')
 

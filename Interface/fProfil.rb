@@ -1,10 +1,9 @@
 require 'gtk3'
-#require '../Interface/fDiff.rb'
-#require '../Interface/fMenu.rb'
-#require '../Interface/fPlay.rb'
-require './TexteAfficher.rb'
-require './Page.rb'
-require './fModifierCompte.rb'
+
+require './Interface/fMenu.rb'
+require './Classes/TexteAfficher.rb'
+require './Classes/Page.rb'
+require './Interface/fModifierCompte.rb'
 
 
 
@@ -92,7 +91,7 @@ class FProfil < Page
 
 		@frame.attach(@gProfil,0,1,0,1)
 
-		@bg=(Gtk::Image.new(:file =>"../Assets/ImgGame.jpg"))
+		@bg=(Gtk::Image.new(:file =>"./Assets/ImgGame.jpg"))
         @frame.attach(@bg,0,1,0,1)
 
         self.add(@frame)

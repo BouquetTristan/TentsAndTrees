@@ -1,8 +1,8 @@
 require 'gtk3'
-require './fGameMode.rb'
-require './fPlay.rb'
-require './Page.rb'
-require './fInter.rb'
+require './Interface/fGameMode.rb'
+require './Interface/fPlay.rb'
+require './Classes/Page.rb'
+require './Interface/fInter.rb'
 
 # Fichier: fDiff.rb
 # Auteur: Marchand Killian
@@ -80,7 +80,7 @@ class FDiff < Page
 		}
 		@frame.attach(@butons,0,1,0,1)
 
-		@bg=(Gtk::Image.new(:file =>"../Assets/ImgGame.jpg"))
+		@bg=(Gtk::Image.new(:file =>"./Assets/ImgGame.jpg"))
         @frame.attach(@bg,0,1,0,1)
 
         self.add(@frame)

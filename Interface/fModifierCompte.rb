@@ -1,6 +1,6 @@
 require 'gtk3'
-require './TexteEntree'
-require './Page.rb'
+require './Classes/TexteEntree'
+require './Classes/Page.rb'
 
 class FModifC < Page
 
@@ -56,7 +56,7 @@ class FModifC < Page
 
 	    @frame.attach(@gModifC,0,1,0,1)
 
-		@bg=(Gtk::Image.new(:file =>"../Assets/ImgGame.jpg"))
+		@bg=(Gtk::Image.new(:file =>"./Assets/ImgGame.jpg"))
         @frame.attach(@bg,0,1,0,1)
 
         self.add(@frame)

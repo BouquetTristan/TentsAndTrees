@@ -1,7 +1,7 @@
 require 'gtk3'
 
-require './Page.rb'
-require './fDidact.rb'
+require './Classes/Page.rb'
+require './Interface/fDidact.rb'
 
 
 class Ftuto4 < Page
@@ -13,7 +13,7 @@ class Ftuto4 < Page
         @frame = Gtk::Table.new(1,1,false)
     		@gImage = Gtk::ButtonBox.new(:vertical)
 
-          @tuto = (Gtk::Image.new(:file =>"./image/Didacticiel/Tuto4.jpg"))
+          @tuto = (Gtk::Image.new(:file =>"./Assets/Didacticiel/Tuto4.jpg"))
     		  
     		@gImage.add(@tuto, :expand => true, :fill => false)
 
@@ -29,7 +29,7 @@ class Ftuto4 < Page
 
         @frame.attach(@gImage,0,1,0,1)
 
-        @bg=(Gtk::Image.new(:file =>"../Assets/ImgGame.jpg"))
+        @bg=(Gtk::Image.new(:file =>"./Assets/ImgGame.jpg"))
         @frame.attach(@bg,0,1,0,1)
 
         self.add(@frame)

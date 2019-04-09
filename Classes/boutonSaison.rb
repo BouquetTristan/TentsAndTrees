@@ -1,6 +1,6 @@
 
 require 'gtk3'
-require './fSaison.rb'
+require './Interface/fSaison.rb'
 
 class BoutonSaison
 
@@ -15,10 +15,10 @@ class BoutonSaison
 		@saison = uneSaison
 		case @cliquable
 			when true then 
-				@img=(Gtk::Image.new(:file =>"../Assets/Vignette#{@saison}.png"))
+				@img=(Gtk::Image.new(:file =>"./Assets/Vignette#{@saison}.png"))
 		        @bouton.set_image(@img)
 			when false then 
-				@img=(Gtk::Image.new(:file =>"../Assets/Vignette#{@saison}V.png"))
+				@img=(Gtk::Image.new(:file =>"./Assets/Vignette#{@saison}V.png"))
 		        @bouton.set_image(@img)
 		end
 
@@ -40,7 +40,7 @@ class BoutonSaison
 			@cliquable = unJoueur.acheterNiveau(@numSaison)
 		end
 		if (@cliquable)
-			@img=(Gtk::Image.new(:file =>"../Assets/Vignette#{@saison}.png"))
+			@img=(Gtk::Image.new(:file =>"./Assets/Vignette#{@saison}.png"))
         	@bouton.set_image(@img)
         end
 	end

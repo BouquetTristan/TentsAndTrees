@@ -1,5 +1,5 @@
 require 'gtk3'
-require './boutonAide.rb'
+require './Classes/boutonAide.rb'
 
 class BoutonAideVerif < BoutonAide
 

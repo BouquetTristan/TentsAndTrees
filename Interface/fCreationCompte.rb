@@ -1,9 +1,9 @@
 require 'gtk3'
 #require './IGrille.rb'
 #require './gHelp.rb'
-require './TexteEntree'
-require './Page.rb'
-require './fMenu.rb'
+require './Classes/TexteEntree'
+require './Classes/Page.rb'
+require './Interface/fMenu.rb'
 
 
 class FCreationCompte < Page
@@ -63,7 +63,7 @@ class FCreationCompte < Page
 
           @frame.attach(@gCC,0,1,0,1)
 
-          @bg=(Gtk::Image.new(:file =>"../Assets/ImgGame.jpg"))
+          @bg=(Gtk::Image.new(:file =>"./Assets/ImgGame.jpg"))
           @frame.attach(@bg,0,1,0,1)
           self.add(@frame)
 

@@ -1,10 +1,9 @@
 require 'gtk3'
 
-require './fDiff.rb'
-#require '../Interface/fMenu.rb'
-require './fPlay.rb'
-require './Page.rb'
-require './fAventure.rb'
+require './Interface/fDiff.rb'
+require './Interface/fPlay.rb'
+require './Classes/Page.rb'
+require './Interface/fAventure.rb'
 
 
 # Fichier: fGameMode.rb
@@ -68,7 +67,7 @@ class FGM < Page
 		}
 		@frame.attach(@butons,0,1,0,1)
 
-		@bg=(Gtk::Image.new(:file =>"../Assets/ImgGame.jpg"))
+		@bg=(Gtk::Image.new(:file =>"./Assets/ImgGame.jpg"))
         @frame.attach(@bg,0,1,0,1)
 
         self.add(@frame)

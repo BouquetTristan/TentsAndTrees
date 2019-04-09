@@ -13,7 +13,7 @@ class Header < Gtk::HeaderBar
     @boxButtons.spacing = 10
 
     @btnMenu = Gtk::Button.new(:label => 'Menu', :use_underline => nil, :stock_id => nil)
-    @image=(Gtk::Image.new(:file =>"./image/logo.png",:size => :dialog))
+    @image=(Gtk::Image.new(:file =>"./Assets/logo.png",:size => :dialog))
     @btnDel = Gtk::Button.new(:label => 'Quitter', :use_underline => nil, :stock_id => nil)
     #@imDel=(Gtk::Image.new(:file =>"./image/logo.png",:size => :dialog))
 

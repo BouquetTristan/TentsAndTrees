@@ -1,13 +1,13 @@
 require 'gtk3'
-#require './IGrille.rb'
-#require './gHelp.rb'
-require './TexteEntree'
-require './Page.rb'
-require './fMenu.rb'
-require './fCreationCompte.rb'
-require './fMdpOublie.rb'
-require '../BaseDeDonnees/Joueur.rb'
 
+require './Classes/TexteEntree.rb'
+require './Classes/Page.rb'
+
+require './BaseDeDonnees/Joueur.rb'
+
+require './Interface/fMenu.rb'
+require './Interface/fCreationCompte.rb'
+require './Interface/fMdpOublie.rb'
 
 class FConnexion < Page
 
@@ -86,7 +86,7 @@ class FConnexion < Page
 
           @frame.attach(@gConnexion, 0,1,0,1)
 
-          @bg = (Gtk::Image.new(:file=>"../Assets/ImgGame.jpg"))
+          @bg = (Gtk::Image.new(:file=>"./Assets/ImgGame.jpg"))
 
           @frame.attach(@bg, 0,1,0,1)
 

@@ -2,11 +2,7 @@ require 'gtk3'
 
 
 require './Classes/Page.rb'
-require './Interface/fTuto1.rb'
-require './Interface/fTuto2.rb'
-require './Interface/fTuto3.rb'
-require './Interface/fTuto4.rb'
-require './Interface/fTuto5.rb'
+require './Interface/fTuto.rb'
 
 
 class FDidac < Page
@@ -71,31 +67,31 @@ class FDidac < Page
       
         @tuto1.signal_connect('clicked') {
                self.supprimeMoi
-               suivant = Ftuto1.new(@window, header, self, unJoueur)
+               suivant = Ftuto.new(@window, header, self, unJoueur, "./Assets/Didacticiel/Tuto1.png")
                suivant.ajouteMoi
                @window.show_all          
         }
         @tuto2.signal_connect('clicked') {
                self.supprimeMoi
-               suivant = Ftuto2.new(@window, header, self, unJoueur)
+               suivant = Ftuto.new(@window, header, self, unJoueur, "./Assets/Didacticiel/Tuto2.png")
                suivant.ajouteMoi
                @window.show_all  
         }
         @tuto3.signal_connect('clicked') {
                self.supprimeMoi
-               suivant = Ftuto3.new(@window, header, self, unJoueur)
+               suivant = Ftuto.new(@window, header, self, unJoueur, "./Assets/Didacticiel/Tuto3.png")
                suivant.ajouteMoi
                @window.show_all  
         }
         @tuto4.signal_connect('clicked') {
                self.supprimeMoi
-               suivant = Ftuto4.new(@window, header, self, unJoueur)
+               suivant = Ftuto.new(@window, header, self, unJoueur, "./Assets/Didacticiel/Tuto4.png")
                suivant.ajouteMoi
                @window.show_all  
         }
         @tuto5.signal_connect('clicked') {
                self.supprimeMoi
-               suivant = Ftuto5.new(@window, header, self, unJoueur)
+               suivant = Ftuto.new(@window, header, self, unJoueur, "./Assets/Didacticiel/Tuto5.png")
                suivant.ajouteMoi
                @window.show_all  
         }

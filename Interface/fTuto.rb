@@ -4,17 +4,17 @@ require './Classes/Page.rb'
 require './Interface/fDidact.rb'
 
 
-class Ftuto5 < Page
+class Ftuto < Page
 
-     def initialize(monApp, header, anciennePage, unJoueur)
+     def initialize(monApp, header, anciennePage, unJoueur, image)
 
      	super(monApp, :vertical, header,  anciennePage, unJoueur)
 
         @frame = Gtk::Table.new(1,1,false)
     		@gImage = Gtk::ButtonBox.new(:vertical)
 
-          @tuto = (Gtk::Image.new(:file =>"./Assets/Didacticiel/Tuto5.png"))
-    		  
+          @tuto = (Gtk::Image.new(:file =>image))
+
     		@gImage.add(@tuto, :expand => true, :fill => false)
 
         @back = Gtk::Button.new(:label => 'Retour', :use_underline => nil, :stock_id => nil)
@@ -26,6 +26,7 @@ class Ftuto5 < Page
                suivant.ajouteMoi
                @window.show_all          
         }
+
 
         @frame.attach(@gImage,0,1,0,1)
 

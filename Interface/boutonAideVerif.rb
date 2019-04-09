@@ -3,10 +3,22 @@ require './boutonAide.rb'
 
 class BoutonAideVerif < BoutonAide
 
+	#=Variable d'instance
+	# @bouton		: Le bouton
+	# @coordI, @coordJ	: Coordonnée du bouton
+	# @@prix		: prix de l'aide en feuille
+
+	attr_accessor :cliquable
+	attr_accessor :bouton
+
 	@@prix = 2
-	#a voir si c légal ou pas
+	
 
-
+	#Définie la marche à suivre en cas d'appel d'aide sur le bouton verif
+	# @param uneGrille    //la grille de jeu
+	# @param unLabel      //La position d'affichage 
+	# @param unJoueur     //Pour sauvegarder le joueur et ne pas le perdre en cas de changement de page 
+	# @return nil  	//si aucune aide ne trouve de solution
 	def aide(uneGrille, unLabel, unJoueur)
 		if(@cliquable == true)
 			aide = Aide.erreur(uneGrille)
@@ -19,5 +31,5 @@ class BoutonAideVerif < BoutonAide
 		end
 	end
 
-	attr_accessor :bouton, :cliquable
+	
 end

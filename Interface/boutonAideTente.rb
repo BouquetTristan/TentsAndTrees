@@ -3,13 +3,29 @@ require './boutonAide.rb'
 
 class BoutonAideTente < BoutonAide
 
-	@@prix = 3
-	#a voir si c légal ou pas
+	#=Variable d'instance
+	# @bouton		: Le bouton
+	# @coordI, @coordJ	: Coordonnée du bouton
+	# @@prix		: prix de l'aide en feuille
 
+	attr_accessor :cliquable
+	attr_accessor :bouton
+
+	@@prix = 3
+
+	#Initialize le bouton
+	# @param uneValeur    //Le nom du label
+	# @param cliquable    //Booléen 
+	# @return void  	//ne renvoie rien
 	def initialize(uneValeur, cliquable)
 		super(uneValeur, cliquable)
 	end
 
+	#Définie la marche à suivre en cas d'appel d'aide sur le bouton tente
+	# @param uneGrille    //la grille de jeu
+	# @param unLabel     //La position d'affichage 
+	# @param unJoueur    //Pour sauvegarder le joueur et ne pas le perdre en cas de changement de page 
+	# @return nil  	//si aucune aide ne trouve de solution
 	def aide(uneGrille, unLabel, unJoueur)
 		if(@cliquable == true)
 			aide1 = Aide.arbreTentePlacer(uneGrille)
@@ -22,5 +38,4 @@ class BoutonAideTente < BoutonAide
 		end
 	end
 
-	attr_accessor :bouton, :cliquable
 end

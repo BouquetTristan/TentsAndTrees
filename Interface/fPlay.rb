@@ -9,7 +9,7 @@ require './boutonAide.rb'
 require './boutonAideVerif.rb'
 require './boutonAideHerbe.rb'
 require './boutonAideTente.rb'
-require './fWin.rb'
+require './fFin.rb'
 require '../Classes/Score.rb'
 
 class FPlay < Page
@@ -102,7 +102,7 @@ class FPlay < Page
 							@chrono.cRaz
 							sleep(2)
 							self.supprimeMoi
-				  	        	menu = FWin.new(@window, @header, self, unJoueur)
+				  	        	menu = FFin.new(@window, @header, self, unJoueur, "gagner")
 				  	        	menu.ajouteMoi
 				  	        	@window.show_all
 						end

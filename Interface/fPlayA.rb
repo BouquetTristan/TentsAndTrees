@@ -10,7 +10,7 @@ require './boutonAide.rb'
 require './boutonAideVerif.rb'
 require './boutonAideHerbe.rb'
 require './boutonAideTente.rb'
-require './fWin.rb'
+require './fFin.rb'
 require '../Classes/Score.rb'
 
 class FPlayA < Page
@@ -52,6 +52,15 @@ class FPlayA < Page
 		thr=Thread.new do
 			#sleep(2)
 			@chrono.cStart
+
+
+			if (@chrono.fin == true)
+				
+				self.supprimeMoi
+	   	   		menu = FFin.new(@window, @header, self, unJoueur, "perdu")
+	   		   	menu.ajouteMoi
+	  	 	   	@window.show_all
+	  	    end
  		end				
 		
         @frame = Gtk::Table.new(1,1,false)
@@ -109,7 +118,7 @@ class FPlayA < Page
 							@chrono.cRaz
 							sleep(2)
 							self.supprimeMoi
-				  	        	menu = FWin.new(@window, @header, self, unJoueur)
+				  	        	menu = FFin.new(@window, @header, self, unJoueur, "gagner")
 				  	        	menu.ajouteMoi
 				  	        	@window.show_all
 						end
@@ -119,13 +128,6 @@ class FPlayA < Page
 			}
 		end
 
-		if (@chrono.fin == true)
-			puts('1-1')
-		#	self.supprimeMoi
-  # 	   	menu = FWin.new(@window, @header, self, unJoueur)
-  # 	   	menu.ajouteMoi
-  # 	   	@window.show_all
-  	    end
 
 		@header.btnMenu.signal_connect('clicked') {
 			@chrono.cFin

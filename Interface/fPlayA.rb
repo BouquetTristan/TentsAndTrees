@@ -43,10 +43,9 @@ class FPlayA < Page
         puts tabGrille.at(1)
         puts tabGrille.at(2)
 
-        @temps = 360
 
     	@gHelp = Gtk::ButtonBox.new(:vertical)
-		@chrono = ChronoInverse.new(10)
+		@chrono = ChronoInverse.new(360)
 		@gHelp.add(@chrono.lChrono) 
 
 		thr=Thread.new do
@@ -108,6 +107,18 @@ class FPlayA < Page
 			@boutonGrille.each{|k|
 				k.each{|l|
 					l.bouton.signal_connect("clicked"){
+						if @aide != nil
+							if @aide.instance_of? Case
+								@boutonGrille[@aide.i][@aide.j].chgEtat(grilleDeJeu.grilleJ[@aide.i][@aide.j].etat)
+							else
+								for i in (0..taille-1)
+									@boutonGrille[@aide][i].chgEtat(grilleDeJeu.grilleJ[@aide][i].etat)
+									@boutonGrille[i][@aide].chgEtat(grilleDeJeu.grilleJ[i][@aide].etat)
+								end
+							end
+
+							@aide = nil
+						end
 			        	grilleDeJeu.grilleJ[l.coordI][l.coordJ].jouerCase()
 						@boutonGrille[l.coordI][l.coordJ].chgEtat(grilleDeJeu.grilleJ[l.coordI][l.coordJ].etat)
 						grilleDeJeu.enregistrerFichier(unJoueur.pseudo, nil)
@@ -130,8 +141,8 @@ class FPlayA < Page
 
 
 		@header.btnMenu.signal_connect('clicked') {
-			@chrono.cFin
-			@chrono.cRaz
+			# @chrono.cFin
+			# @chrono.cRaz
 	        self.supprimeMoi
 	        menu = FMenu.new(@window, @header, self, unJoueur)
 	        menu.ajouteMoi
@@ -145,8 +156,8 @@ class FPlayA < Page
 		@boxAide.add(@lableAide)
 
 		@b1 = BoutonAideVerif.new("Verification", true)
-		@b2 = BoutonAideHerbe.new("Aide Tente", true)
-		@b3 = BoutonAideTente.new("Aide Herbe", true)
+		@b2 = BoutonAideHerbe.new("Aide Herbe", true)
+		@b3 = BoutonAideTente.new("Aide Tente", true)
 		
 
 		@boxAide.add(@b1.bouton)
@@ -154,17 +165,53 @@ class FPlayA < Page
 		@boxAide.add(@b3.bouton)
 
 		@b1.bouton.signal_connect('clicked'){
-			@b1.aide(grilleDeJeu, @lableAide, unJoueur)
+			if @aide != nil
+				if @aide.instance_of? Case
+					@boutonGrille[@aide.i][@aide.j].chgEtat(grilleDeJeu.grilleJ[@aide.i][@aide.j].etat)
+				else
+					for i in (0..taille-1)
+						@boutonGrille[@aide][i].chgEtat(grilleDeJeu.grilleJ[@aide][i].etat)
+						@boutonGrille[i][@aide].chgEtat(grilleDeJeu.grilleJ[i][@aide].etat)
+					end
+				end
+
+				@aide = nil
+			end
+			@aide = @b1.aide(grilleDeJeu, @lableAide, unJoueur, @boutonGrille)
 			@nbAidesUtilises+=1
 		}
 
 		@b2.bouton.signal_connect('clicked') {
-			@b2.aide(grilleDeJeu, @lableAide, unJoueur)
+			if @aide != nil
+				if @aide.instance_of? Case
+					@boutonGrille[@aide.i][@aide.j].chgEtat(grilleDeJeu.grilleJ[@aide.i][@aide.j].etat)
+				else
+					for i in (0..taille-1)
+						@boutonGrille[@aide][i].chgEtat(grilleDeJeu.grilleJ[@aide][i].etat)
+						@boutonGrille[i][@aide].chgEtat(grilleDeJeu.grilleJ[i][@aide].etat)
+					end
+				end
+
+				@aide = nil
+			end
+			@aide = @b2.aide(grilleDeJeu, @lableAide, unJoueur, @boutonGrille)
 			@nbAidesUtilises+=1
         }
 
 		@b3.bouton.signal_connect('clicked') {
-			@b3.aide(grilleDeJeu, @lableAide, unJoueur)
+			if @aide != nil
+				if @aide.instance_of? Case
+					@boutonGrille[@aide.i][@aide.j].chgEtat(grilleDeJeu.grilleJ[@aide.i][@aide.j].etat)
+				else
+					for i in (0..taille-1)
+						@boutonGrille[@aide][i].chgEtat(grilleDeJeu.grilleJ[@aide][i].etat)
+						@boutonGrille[i][@aide].chgEtat(grilleDeJeu.grilleJ[i][@aide].etat)
+					end
+				end
+
+				@aide = nil
+			end
+			@aide = @b3.aide(grilleDeJeu, @lableAide, unJoueur, @boutonGrille)
 			@nbAidesUtilises+=1
         }				
 

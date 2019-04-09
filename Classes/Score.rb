@@ -30,11 +30,11 @@ class Score
 	def initialize (diff, nbF)
 		@difficulte = diff
 		case diff
-		when "GrillesFaciles" then
+		when "Facile" then
 			@scoreInitial = 180
-		when "GrillesMoyennes" then
+		when "Moyenne" then
 			@scoreInitial = 360
-		when "GrillesDifficiles" then
+		when "Difficile" then
 			@scoreInitial = 720
 		end
 		@nbFeuilles = nbF

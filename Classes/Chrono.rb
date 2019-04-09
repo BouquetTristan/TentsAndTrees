@@ -38,6 +38,7 @@ class Chrono
 						if @start==false
 							@chrono=0
 							@start=true
+							@lChrono.set_markup(("<span foreground=\"#FFFFFF\" font-desc=\"Courier New bold 20\">"+@chrono.to_s+"</span>\n"))
 						end
 						if @pause != true
 							sleep(1);

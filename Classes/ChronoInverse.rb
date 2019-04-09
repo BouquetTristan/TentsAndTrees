@@ -39,6 +39,7 @@ class ChronoInverse
 						if @start==false
 							@compteur=@initial
 							@start=true
+							@lChrono.set_markup(("<span foreground=\"#FFFFFF\" font-desc=\"Courier New bold 20\">"+@chrono.to_s+"</span>\n"))
 						end
 
 						if @pause != true

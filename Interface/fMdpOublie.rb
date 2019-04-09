@@ -65,7 +65,7 @@ class FMdpOublie < Page
 
         @frame.attach(@gMdpOublie,0,1,0,1)
 
-        @bg=(Gtk::Image.new(:file =>"../Assets/ImgGame2.png"))
+        @bg=(Gtk::Image.new(:file =>"../Assets/ImgGame.jpg"))
         @frame.attach(@bg,0,1,0,1)
 
         self.add(@frame)

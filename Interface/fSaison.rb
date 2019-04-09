@@ -129,7 +129,7 @@ class FSaison < Page
 
 		@frame.attach(@selecGrille,0,1,0,1)
 
-		@bg=(Gtk::Image.new(:file =>"../Assets/ImgPresentation2.jpg"))
+		@bg=(Gtk::Image.new(:file =>"../Assets/ImgGameA.png"))
         @frame.attach(@bg,0,1,0,1)
 
         self.add(@frame)

@@ -14,13 +14,19 @@ class FAventure < Page
     	@aventMenu.layout = :spread
 
     	@ghead = Gtk::ButtonBox.new(:horizontal)
-        @ghead.spacing = 750
+        @ghead.spacing = 700
     			@option = Gtk::Label.new('')
-
-    			@profil = Gtk::Label.new().set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 15\">Argent : #{unJoueur.argent}		</span>")
+    			
+    			@boxArgent=Gtk::ButtonBox.new(:horizontal)
+    				@boxArgent.spacing=1
+    				@img =(Gtk::Image.new(:file =>"../Assets/billet.png"))
+    				@profil = Gtk::Label.new().set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 15\"> #{unJoueur.argent}</span>")
+    				@boxArgent.add(@img)
+    				@boxArgent.add(@profil, :expand => true, :fill => false)
 
     			@ghead.add(@option, :expand => true, :fill => false)
-    			@ghead.add(@profil, :expand => true, :fill => false)
+    			@ghead.add(@boxArgent)
+    				
         @aventMenu.add(@ghead)
 
     	@level = Gtk::ButtonBox.new(:horizontal)
@@ -37,7 +43,7 @@ class FAventure < Page
 		@level.add(@hiver.bouton, :expand => true, :fill => false)
 
 		@aventMenu.add(@level)
-		@level.spacing=77
+		@level.spacing=115
 
 		@header.btnMenu.signal_connect('clicked') {
 		        self.supprimeMoi
@@ -70,7 +76,7 @@ class FAventure < Page
 
 		@frame.attach(@aventMenu,0,1,0,1)
 
-		@bg=(Gtk::Image.new(:file =>"../Assets/ImgPresentation2.jpg"))
+		@bg=(Gtk::Image.new(:file =>"../Assets/ImgGameA.png"))
         @frame.attach(@bg,0,1,0,1)
 
         self.add(@frame)

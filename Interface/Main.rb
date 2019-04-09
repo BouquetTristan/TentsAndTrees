@@ -18,7 +18,7 @@ end
 def configureMonApp(uneApp)
   ##
   # Taille de la fenêtre
-	uneApp.set_default_size(1200,620)
+	uneApp.set_default_size(1400,859)
 	##
   # Réglage de la bordure
 	uneApp.border_width=5

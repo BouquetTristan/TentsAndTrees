@@ -23,7 +23,7 @@ class FPlayA < Page
 		super(monApp, :vertical, header,  anciennePage, unJoueur)
 
 		@nbAidesUtilises = 0
-		puts "#{uneSaison}\n\n\n"
+
         case uneSaison
 			when "Printemps" then
 				@saison = 1
@@ -35,18 +35,28 @@ class FPlayA < Page
 				@saison = 4
    		end
 
-   		puts ("saison #{@saison}")
-   		puts ("grille #{nbGrille}")
+   		@nbFeuilles = unJoueur.nbAides
 
         tabGrille = unJoueur.commencerAventure(@saison, nbGrille)
         puts tabGrille.at(0)
         puts tabGrille.at(1)
         puts tabGrille.at(2)
 
+        @nbFeuilles = unJoueur.nbAides
+
 
     	@gHelp = Gtk::ButtonBox.new(:vertical)
+
+    	@boxFeuilles=Gtk::ButtonBox.new(:horizontal)
+			@boxFeuilles.spacing=1
+			@img =(Gtk::Image.new(:file =>"./Assets/feuille.png"))
+			@profil = Gtk::Label.new().set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 15\"> #{@nbFeuilles.to_s}</span>")
+			@boxFeuilles.add(@img)
+			@boxFeuilles.add(@profil, :expand => true, :fill => false)
+
 		@chrono = ChronoInverse.new(360)
-		@gHelp.add(@chrono.lChrono) 
+		@gHelp.add(@boxFeuilles)
+		
 
 		thr=Thread.new do
 			#sleep(2)
@@ -63,6 +73,9 @@ class FPlayA < Page
  		end				
 		
         @frame = Gtk::Table.new(1,1,false)
+
+        @gChrono = Gtk::ButtonBox.new(:vertical)
+        @gChrono.add(@chrono.lChrono) 
 
         @box = Gtk::ButtonBox.new(:horizontal)
 
@@ -116,6 +129,7 @@ class FPlayA < Page
 									@boutonGrille[i][@aide].chgEtat(grilleDeJeu.grilleJ[i][@aide].etat)
 								end
 							end
+							@lableAide.set_markup('')
 
 							@aide = nil
 						end
@@ -127,7 +141,7 @@ class FPlayA < Page
 							unJoueur.finirLaPartie(tabGrille.at(0))
 							@chrono.cFin
 							@chrono.cRaz
-							sleep(2)
+							sleep(1)
 							self.supprimeMoi
 				  	        	menu = FFin.new(@window, @header, self, unJoueur, "gagner")
 				  	        	menu.ajouteMoi
@@ -155,9 +169,9 @@ class FPlayA < Page
 
 		@boxAide.add(@lableAide)
 
-		@b1 = BoutonAideVerif.new("Verification", true)
-		@b2 = BoutonAideHerbe.new("Aide Herbe", true)
-		@b3 = BoutonAideTente.new("Aide Tente", true)
+		@b1 = BoutonAideHerbe.new("Aide Herbe : 2 feuilles", true)
+		@b2 = BoutonAideTente.new("Aide Tente : 3 feuilles", true)
+		@b3 = BoutonAideVerif.new("Verification : 5 feuilles", true)
 		
 
 		@boxAide.add(@b1.bouton)
@@ -165,6 +179,7 @@ class FPlayA < Page
 		@boxAide.add(@b3.bouton)
 
 		@b1.bouton.signal_connect('clicked'){
+			tempo = @nbFeuilles - @b1.prix
 			if @aide != nil
 				if @aide.instance_of? Case
 					@boutonGrille[@aide.i][@aide.j].chgEtat(grilleDeJeu.grilleJ[@aide.i][@aide.j].etat)
@@ -177,11 +192,20 @@ class FPlayA < Page
 
 				@aide = nil
 			end
-			@aide = @b1.aide(grilleDeJeu, @lableAide, unJoueur, @boutonGrille)
-			@nbAidesUtilises+=1
+			if(tempo >= 0)
+				@nbFeuilles = tempo
+			
+				@profil.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 15\"> #{@nbFeuilles}</span>")
+				
+				@aide = @b1.aide(grilleDeJeu, @lableAide, unJoueur, @boutonGrille)
+				@nbAidesUtilises+=1
+			else
+				@lableAide.set_markup("<span foreground=\"#FFFFFF\" font-desc=\"Courier New bold 11\">Vous ne pouvez plus utiliser cette aide</span>")
+			end
 		}
 
 		@b2.bouton.signal_connect('clicked') {
+			tempo = @nbFeuilles - @b2.prix
 			if @aide != nil
 				if @aide.instance_of? Case
 					@boutonGrille[@aide.i][@aide.j].chgEtat(grilleDeJeu.grilleJ[@aide.i][@aide.j].etat)
@@ -194,11 +218,21 @@ class FPlayA < Page
 
 				@aide = nil
 			end
-			@aide = @b2.aide(grilleDeJeu, @lableAide, unJoueur, @boutonGrille)
-			@nbAidesUtilises+=1
+			if(tempo >= 0)
+
+				@nbFeuilles = tempo
+			
+				@profil.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 15\"> #{@nbFeuilles}</span>")
+				
+				@aide = @b2.aide(grilleDeJeu, @lableAide, unJoueur, @boutonGrille)
+				@nbAidesUtilises+=1
+			else
+				@lableAide.set_markup("<span foreground=\"#FFFFFF\" font-desc=\"Courier New bold 11\">Vous ne pouvez plus utiliser cette aide</span>")
+			end
         }
 
 		@b3.bouton.signal_connect('clicked') {
+			tempo = @nbFeuilles - @b3.prix
 			if @aide != nil
 				if @aide.instance_of? Case
 					@boutonGrille[@aide.i][@aide.j].chgEtat(grilleDeJeu.grilleJ[@aide.i][@aide.j].etat)
@@ -211,8 +245,15 @@ class FPlayA < Page
 
 				@aide = nil
 			end
-			@aide = @b3.aide(grilleDeJeu, @lableAide, unJoueur, @boutonGrille)
-			@nbAidesUtilises+=1
+			if(tempo >= 0)
+				@nbFeuilles = tempo
+			
+				@profil.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 15\"> #{@nbFeuilles}</span>")
+				@aide = @b3.aide(grilleDeJeu, @lableAide, unJoueur, @boutonGrille)
+				@nbAidesUtilises+=1
+			else
+				@lableAide.set_markup("<span foreground=\"#FFFFFF\" font-desc=\"Courier New bold 11\">Vous ne pouvez plus utiliser cette aide</span>")
+			end
         }				
 
 		@gHelp.add(@boxAide)
@@ -221,7 +262,9 @@ class FPlayA < Page
 		@bPause.set_relief(:none)
 		@pause=(Gtk::Image.new(:file =>"./Assets/pause.png"))
 		@bPause.set_image(@pause)
-		@gHelp.add(@bPause)
+		@gChrono.add(@bPause)
+
+
 
 		@bPause.signal_connect('clicked') {
 			@chrono.cPause
@@ -257,6 +300,7 @@ class FPlayA < Page
 
 		@gHelp.spacing=70
 
+		@box.add(@gChrono)
 		@box.add(@grille)
 		@box.add(@gHelp)
 

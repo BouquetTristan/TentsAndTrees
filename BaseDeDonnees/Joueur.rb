@@ -21,7 +21,7 @@ class Joueur
 		@rep = uneRepSec
 
 		@nbAides = nil #nbFeuilles
-		@argent = nil  #nbtoiles
+		@argent = nil  #nbEtoiles
 
 		@scoreGlobal = nil
 		@scoreFacile = nil

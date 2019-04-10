@@ -139,7 +139,7 @@ end
 def creerNiveauAventure(baseNiveau, uneLigne, nbGrilleParNiveau)
 	bddN = ouvrirBDDN()
 
-	ligneAventure = IO.readlines("../Ressources/aventure.txt")[uneLigne]
+	ligneAventure = IO.readlines("./Ressources/aventure.txt")[uneLigne]
 	informationAventure = ligneAventure.split(';')
 
 

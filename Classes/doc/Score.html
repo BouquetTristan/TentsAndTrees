@@ -316,7 +316,7 @@ nombre de feuilles restantes</p>
           <div class="method-source-code" id="calculerScore-source">
             <pre><span class="ruby-comment"># File Score.rb, line 48</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">calculerScore</span> (<span class="ruby-identifier">tempsRestant</span>)
-        <span class="ruby-keyword">return</span> <span class="ruby-ivar">@scoreInitial</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">tempsRestant</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@nbFeuilles</span><span class="ruby-operator">*</span><span class="ruby-value">10</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-ivar">@scoreInitial</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">tempsRestant</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@nbFeuilles</span><span class="ruby-operator">*</span><span class="ruby-value">10</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           

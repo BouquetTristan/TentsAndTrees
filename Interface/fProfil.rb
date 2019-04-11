@@ -1,10 +1,9 @@
 require 'gtk3'
-#require '../Interface/fDiff.rb'
-#require '../Interface/fMenu.rb'
-#require '../Interface/fPlay.rb'
-require './TexteAfficher.rb'
-require './Page.rb'
-require './fModifierCompte.rb'
+
+require './Interface/fMenu.rb'
+require './Classes/TexteAfficher.rb'
+require './Classes/Page.rb'
+require './Interface/fModifierCompte.rb'
 
 
 
@@ -74,6 +73,7 @@ class FProfil < Page
 
 		@desinscription.signal_connect('clicked') {
 			unJoueur.desinscrire()
+			unJoueur = nil
 			self.supprimeMoi
 			suivant = FConnexion.new(@window, header, self, nil)
             suivant.ajouteMoi
@@ -82,6 +82,7 @@ class FProfil < Page
 
 
 		@deco.signal_connect('clicked') {
+			unJoueur = nil
 			self.supprimeMoi
             suivant = FConnexion.new(@window, header, self, nil)
             suivant.ajouteMoi
@@ -90,7 +91,7 @@ class FProfil < Page
 
 		@frame.attach(@gProfil,0,1,0,1)
 
-		@bg=(Gtk::Image.new(:file =>"../Assets/ImgPresentation2.jpg"))
+		@bg=(Gtk::Image.new(:file =>"./Assets/ImgGame.jpg"))
         @frame.attach(@bg,0,1,0,1)
 
         self.add(@frame)

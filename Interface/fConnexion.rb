@@ -1,13 +1,13 @@
 require 'gtk3'
-#require './IGrille.rb'
-#require './gHelp.rb'
-require './TexteEntree'
-require './Page.rb'
-require './fMenu.rb'
-require './fCreationCompte.rb'
-require './fMdpOublie.rb'
-require '../BaseDeDonnees/Joueur.rb'
 
+require './Classes/TexteEntree.rb'
+require './Classes/Page.rb'
+
+require './BaseDeDonnees/Joueur.rb'
+
+require './Interface/fMenu.rb'
+require './Interface/fCreationCompte.rb'
+require './Interface/fMdpOublie.rb'
 
 class FConnexion < Page
 
@@ -25,15 +25,17 @@ class FConnexion < Page
 
           @pseudo = TexteEntree.creer('Pseudo : ',false)
           @mdp = TexteEntree.creer('Mot de passe : ',true)
+
           @creaC = Gtk::Button.new(:label => 'Creer un compte', :use_underline => nil, :stock_id => nil)
+          @creaC.set_relief(:none)
           @connexion = Gtk::Button.new(:label => 'Connexion', :use_underline => nil, :stock_id => nil)
+          @connexion.set_relief(:none)
           @mdpO = Gtk::Button.new(:label => 'Mot de passe oublié', :use_underline => nil, :stock_id => nil)
-		@quit = Gtk::Button.new(:label => 'Quitter', :use_underline => nil, :stock_id => nil)
+          @mdpO.set_relief(:none)
 
           @gConnexion.add(@pseudo.gTexteEntree, :expand => true, :fill => false)
           @gConnexion.add(@mdp.gTexteEntree, :expand => true, :fill => false)
           @gConnexion.add(@connexion, :expand => true, :fill => false)
-          @gConnexion.add(@quit, :expand => true, :fill => false)
 
           @gConnexion.add(@gC2)
           @gC2.add(@creaC, :expand => true, :fill => false)
@@ -81,11 +83,10 @@ class FConnexion < Page
                suivant.ajouteMoi
                @window.show_all
           }
-          @quit.signal_connect('clicked') {onDestroy}
 
           @frame.attach(@gConnexion, 0,1,0,1)
 
-          @bg = (Gtk::Image.new(:file=>"../Assets/ImgPresentation2.jpg"))
+          @bg = (Gtk::Image.new(:file=>"./Assets/ImgGame.jpg"))
 
           @frame.attach(@bg, 0,1,0,1)
 

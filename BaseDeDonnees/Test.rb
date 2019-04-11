@@ -1,6 +1,6 @@
 
 
-load '../BaseDeDonnees/Joueur.rb'
+require './BaseDeDonnees/Joueur.rb'
 
 
 j1 = Joueur.creer("Killian", "Kikidu72", "Killian est genial")

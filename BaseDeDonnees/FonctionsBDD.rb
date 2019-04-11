@@ -17,19 +17,19 @@ require 'digest'
 ## Méthodes d'ouverture des bases de données
 
 def ouvrirBDDP()
-	return SQLite3::Database.new '../BaseDeDonnees/profil.db'
+	return SQLite3::Database.new './BaseDeDonnees/profil.db'
 end
 
 def ouvrirBDDA()
-	return SQLite3::Database.new '../BaseDeDonnees/aventure.db'
+	return SQLite3::Database.new './BaseDeDonnees/aventure.db'
 end
 
 def ouvrirBDDN()
-	return SQLite3::Database.new '../BaseDeDonnees/niveau.db'
+	return SQLite3::Database.new './BaseDeDonnees/niveau.db'
 end
 
 def ouvrirBDDG()
-	return SQLite3::Database.new '../BaseDeDonnees/grille.db'
+	return SQLite3::Database.new './BaseDeDonnees/grille.db'
 end
 
 def ouvrirBDDS()
@@ -153,7 +153,7 @@ end
 def creerNiveauAventure(baseNiveau, uneLigne, nbGrilleParNiveau)
 	bddN = ouvrirBDDN()
 
-	ligneAventure = IO.readlines("../Ressources/aventure.txt")[uneLigne]
+	ligneAventure = IO.readlines("./Ressources/aventure.txt")[uneLigne]
 	informationAventure = ligneAventure.split(';')
 
 
@@ -176,7 +176,7 @@ end
 def creerGrilleAventure(unIDNiveau, uneLigne)
 	bddG = ouvrirBDDG()
 
-	ligneGrille = IO.readlines("../Ressources/aventure.txt")[uneLigne]
+	ligneGrille = IO.readlines("./Ressources/aventure.txt")[uneLigne]
 	#puts "#{ligneGrille}\n"
 	informationGrille = ligneGrille.split(';')
 
@@ -279,8 +279,8 @@ end
 def changerPseudo(unID, leNouveauPseudo)
 # change le pseudo d'un profil avec celui obtenu en paramètre
 	bdd = ouvrirBDDP()
-	if bdd.execute("SELECT pseudo FROM profil WHERE idJoueur = '#{unID}'").shift != leNouveauPseudo && !(pseudoDejaPris(unPseudo)) then
-		bdd.execute("UPDATE profil SET pseudo = leNouveauPseudo WHERE idJoueur = '#{unID}'")
+	if bdd.execute("SELECT pseudo FROM profil WHERE idJoueur = '#{unID}'").shift != leNouveauPseudo && !(pseudoDejaPris(leNouveauPseudo)) then
+		bdd.execute("UPDATE profil SET pseudo = '#{leNouveauPseudo}' WHERE idJoueur = '#{unID}'")
 		return true
 	else
 		return false

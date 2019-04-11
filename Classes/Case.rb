@@ -85,7 +85,7 @@ class Case
   # @param grille    //Prend en paramètre la grille du jeu
   # @return tab     //renvoie un tableau contenant les cases voisines adjacentes
   def casesVoisines (grille)
-  
+
     tab = []
 
     #case en haut
@@ -96,7 +96,7 @@ class Case
     #case en bas
     if i + 1 < grille.taille then
       tab<<(grille.grilleJ[i+1][j])
-    end 
+    end
 
     #case à gauche
     if j - 1 >= 0 then
@@ -106,7 +106,7 @@ class Case
     #case à droite
     if j + 1 < grille.taille then
       tab<<(grille.grilleJ[i][j+1])
-    end 
+    end
 
     return tab
   end
@@ -121,11 +121,11 @@ class Case
     if i - 1 >= 0 && j - 1 >= 0 then
       tab<<(grille.grilleJ[i-1][j-1])
     end
-    
+
     #case en haut à droite
     if i - 1 >= 0 && j + 1 < grille.taille then
       tab<<(grille.grilleJ[i-1][j+1])
-    end 
+    end
 
     #case en bas à gauche
     if i + 1 < grille.taille && j - 1 >= 0 then
@@ -135,10 +135,10 @@ class Case
     #case en bas à droite
     if i + 1 < grille.taille && j + 1 < grille.taille then
       tab<<(grille.grilleJ[i+1][j+1])
-    end 
+    end
 
     return tab
   end
- 
+
 #fin de la classe Case
 end

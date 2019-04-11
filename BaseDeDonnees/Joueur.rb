@@ -4,7 +4,7 @@
 # Ce programme a pour but d'interagir avec la base de données des profils des utilisateurs
 # Ce programme possède des méthodes pour lire, écrire et trouver des informations qui seront envoyés par le biais de 'profil.rb'
 
-load '../BaseDeDonnees/FonctionsBDD.rb'
+require './BaseDeDonnees/FonctionsBDD.rb'
 
 
 class Joueur
@@ -20,8 +20,8 @@ class Joueur
 		@mdp = unMDP
 		@rep = uneRepSec
 
-		@creditAide = nil	#feuilles
-		@argent = nil	#étoiles
+		@nbAides = nil #nbFeuilles
+		@argent = nil  #nbEtoiles
 
 		@scoreGlobal = nil
 		@scoreFacile = nil
@@ -42,7 +42,7 @@ class Joueur
 	attr_reader :scoreMoyen
 	attr_reader :scoreDifficile
 	attr_reader :nbPartiesJouees
-	attr_reader :creditAide
+	attr_reader :nbAides
 	attr_reader :argent
 
 	def inscrire()
@@ -86,6 +86,7 @@ class Joueur
 
 	def motDePasseOublier(nouveauMDP)
 		if motDePasseOublie(@id, @rep, nouveauMDP) == true then
+			@mdp = nouveauMDP
 			puts "   Le mot de passe a bien été modifié\n"
 			return true
 		else
@@ -96,6 +97,7 @@ class Joueur
 
 	def nouveauMotDePasse(nouveauMotDePasse)
 		if changerMotDePasse(@id, nouveauMotDePasse) == true then
+			@mdp = nouveauMotDePasse
 			puts "   Le mot de passe a bien été modifié\n"
 			return true
 		else
@@ -106,6 +108,7 @@ class Joueur
 
 	def nouveauPseudo(nouveauPseudo)
 		if changerPseudo(@id, nouveauPseudo) == true then
+			@pseudo = nouveauPseudo
 			puts "   Le pseudo a bien été modifié\n"
 			return true
 		else
@@ -140,7 +143,6 @@ class Joueur
 	end
 
 	def commencerAventure(unNiveau, uneGrille)
-		#puts "#{donnerInformationsGrille(@id, unNiveau, uneGrille+1)}\n"
 
 		return donnerInformationsGrille(@id, unNiveau, uneGrille+1)
 	end

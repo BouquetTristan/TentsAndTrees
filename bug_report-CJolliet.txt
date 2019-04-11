@@ -1,0 +1,24 @@
+Note sur les bugs et inconvénients de la version du 11/04/2019 - 15:05 :
+
+L'utilisation de l'aide peut provoquer une modification de la mise en page.
+
+L'Aide est peu pratique sur les lignes et colonnes où il ne reste plus qu'au moins 1 tente à placer.
+(Elle ne fait qu'indiquer la ligne et la colonne sans donner l'arbre ou la case de la tente)
+L'Aide de placement des tentes, quand il y a suffisamment de cases libres, ne fait qu'indiquer la ligne ou colonne où l'on peut placer toutes les tentes, sans préciser leurs positions exactes.
+
+L'Aide peut vérifier qu'un élément 'herbe' ou 'tente' est bien placé mais n'a pas l'air de pouvoir indiquer la position d'une 'tente' dont la position est occupée par de 'l'herbe'.
+(Si il y a de l'herbe là où il devrait y avoir une tente et que l'on utilise "Aide Tente", la seule façon de savoir qu'il y a une tente à la place de l'herbe est d'utiliser "Vérification")
+
+Les Aides peuvent modifier l'apparence des cases jusqu'à ce que l'on clique à nouveau sur les cases.
+
+Le Chrono peut parfois lourdement laguer lorsque l'on quitte la pause.
+
+La Mise en Page globale est clairement à retravailler, au moins pour que ça soit propre.
+
+Peut-être revoir la présentation du Didacticiel : Devoir cliquer sur le bouton Retour sans cesse pour cliquer sur la page suivante n'est pas très pratique.
+
+Trouver une utilité ou implémenter les options au bouton 'Option' / Supprimer le bouton 'Option' si on se retrouve à ne pas l'utiliser.
+
+Trouver comment masquer les Mots de passe >u<
+
+Terminer l'implémentation des aides dans les autres modes de jeu.

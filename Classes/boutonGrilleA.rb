@@ -2,7 +2,7 @@
 require 'gtk3'
 require './Classes/boutonGrille.rb'
 
-class BoutonGrilleA < BoutonGrille
+class BoutonGrilleA
 
 	#=Variable d'instance
 	# @bouton		: Le bouton
@@ -19,10 +19,11 @@ class BoutonGrilleA < BoutonGrille
 	#Initialise le bouton (case)
 	# @param void		//ne prend aucun paramètre
 	# @return void		//ne renvoie rien
-	def initialize()
+	def initialize(chemin)
 		@bouton = Gtk::Button.new
 		@bouton.set_relief(:none)
 		@clic = true
+		@chemin = chemin
 	end
 
 	#Détermine les coordonnées du bouton  (case)

@@ -1,0 +1,12 @@
+Le prince du camping><Avoir 1000 points en mode classé en difficulté facile><scoreFacile;profil;1000
+Le roi du camping><Avoir 1000 points en mode classé en difficulté normale><scoreMoyen;profil;1000
+L_empereur du camping><Avoir 1000 points en mode classé en difficulté difficile><scoreDificile;profil;1000
+Le dieu du camping><Avoir 1000 points en mode classé en score global><scoreGlobal;profil;1000
+La première d_une longue série><Réussir 1 grille><nbPartiesJouees;profil;1
+Et de dix !><Réussir 10 grilles><nbPartiesJouees;profil;10
+Je crois que c_est un peu trop><Réussir 100 grilles><nbPartiesJouees;profil;100
+Il faut se calmer><Réussir 1000 grilles><nbPartiesJouees;profil;1000
+Bien joué, vous êtes sur la bonne lancée><Réussir 1 grille sans aide><nbPartiesFinitSansAides;profil;1
+Je vois qu_on se débrouille bien><Réussir 10 grilles sans aide><nbPartiesFinitSansAides;profil;10
+Vous êtes vraiment très fort><Réussir 100 grilles sans aide><nbPartiesFinitSansAides;profil;100
+Grillophile><Réussir 1000 grilles sans aide><nbPartiesFinitSansAides;profil;1000

@@ -11,9 +11,10 @@ require 'digest'
 
 
 #########################################################
-###Méthodes pour modifier la base de données du profil###
+### Méthodes pour modifier la base de données du profil###
 
-
+##################
+## Méthodes d'ouverture des bases de données
 
 def ouvrirBDDP()
 	return SQLite3::Database.new './BaseDeDonnees/profil.db'
@@ -31,9 +32,19 @@ def ouvrirBDDG()
 	return SQLite3::Database.new './BaseDeDonnees/grille.db'
 end
 
+def ouvrirBDDS()
+	return SQLite3::Database.new '../BaseDeDonnees/succes.db'
+end
+
+def ouvrirBDDCS()
+	return SQLite3::Database.new '../BaseDeDonnees/conditionSucces.db'
+end
+
+###################
+
 
 def chercherIDUnique(bdd)
-# Cette méthode cherche le nombre de joueur enregistré et renvoie la valeur suppérieure
+# Cette méthode cherche le nombre de joueur enregistré et renvoie la valeur supérieure
 	id = bdd.execute("SELECT MAX( idJoueur) FROM profil")
 	tmp = id.shift.shift.to_i
 	#puts tmp.class
@@ -51,6 +62,7 @@ def ajouterUtilisateur(unPseudo, unMDP, uneReponse)
 		id = chercherIDUnique(bddP)
 		bddP.execute("INSERT INTO profil (idJoueur, pseudo, password, repSecret, scoreGlobal, scoreFacile, scoreMoyen, scoreDifficile, nbPartiesJouees, nbPartiesFinitSansAides, argent, nbAides) VALUES ( #{id}, '#{unPseudo}', '#{Digest::SHA256.hexdigest(unMDP)[0..20]}', '#{Digest::SHA256.hexdigest(uneReponse)[0..20]}', 0, 0, 0, 0, 0, 0, 0, 10 )")
 		creerModeAventure(id)
+		creerSucces(id)
 		return id
 	else
 		return 0
@@ -63,6 +75,7 @@ def supprimerUtilisateur(unID)
 	bddA = ouvrirBDDA()
 	bddN = ouvrirBDDN()
 	bddG = ouvrirBDDG()
+	bddS = ouvrirBDDS()
 
 	borneInf = unID*100
 	borneSup = (unID+1)*100
@@ -71,6 +84,7 @@ def supprimerUtilisateur(unID)
 		bddG.execute("DELETE FROM grille WHERE idNiveau BETWEEN '#{borneInf}' AND '#{borneSup}'")
 		bddN.execute("DELETE FROM niveau WHERE idNiveau BETWEEN '#{borneInf}' AND '#{borneSup}'")
 		bddA.execute("DELETE FROM aventure WHERE idAventure = '#{unID}'")
+		bddS.execute("DELETE FROM succes WHERE idJoueur = '#{unID}'")
 		bddP.execute("DELETE FROM profil WHERE idJoueur = '#{unID}'")
 		return true
 	else
@@ -177,6 +191,43 @@ def creerGrilleAventure(unIDNiveau, uneLigne)
 
 end
 
+
+############
+
+## Méthodes pour créer les succès de chaque joueur
+def creerSucces(unID)
+# Méthode qui crée la base de données des succès du joueur à partir du fichier Succes.txt
+	bddS = ouvrirBDDS()
+
+	idDuSucces = 0
+
+	# Lecture de l'ensemble du fichier
+	ligneFichier = IO.readlines("../Ressources/Succes.txt")
+	ligneFichier.each { |ligne| 
+		leSucces = ligne.split('><')
+
+		nomDuSucces = leSucces[0]
+		descriptionDuSucces = leSucces[1]
+
+		bddS.execute("INSERT INTO succes (idSucces, idJoueur, nom, description, statut) VALUES (#{idDuSucces}, #{unID}, '#{nomDuSucces}', '#{descriptionDuSucces}', 'A faire')")
+
+		creerConditionSucces(idDuSucces, leSucces[2])
+		idDuSucces += 1
+	}
+end
+
+def creerConditionSucces(unID, lesConditions)
+# Méthode qui crée la base de données des conditions des succès du joueur à partir de l'id du succes et des conditions reçu en paramètres
+	bddCS = ouvrirBDDCS()
+
+
+	laCondition = lesConditions.split(';')
+	donnee = laCondition[0]
+	table = laCondition[1]
+	valeur = laCondition[2].to_i
+
+	bddCS.execute("INSERT INTO conditionSucces (idSucces, donnee, tableCondition, valeurCondition) VALUES (#{unID}, '#{donnee}', '#{table}', #{valeur})")
+end
 
 
 ############
@@ -380,6 +431,51 @@ def niveauComplet(unID, unIDGrille)
 end
 
 
+
+################
+
+## Méthode pour récupérer les informations du succès
+def inspecterSucces(unIDS, unID)
+	bddCS = ouvrirBDDCS()
+
+	uneDonnee = bddCS.execute("SELECT donnee FROM conditionSucces WHERE idSucces = #{unIDS}").shift.shift
+	uneTable = bddCS.execute("SELECT tableCondition FROM conditionSucces WHERE idSucces = #{unIDS}").shift.shift
+	uneValeur = bddCS.execute("SELECT valeurCondition FROM conditionSucces WHERE idSucces = #{unIDS}").shift.shift
+	
+	verifierSucces(unIDS, unID, uneDonnee, uneTable, uneValeur)
+end
+
+## Méthode pour vérifier si ce succès peut être validé ou non et renvoie le résultat en booléan
+def verifierSucces(unIDS, unID, uneDonnee, uneTable, uneValeur)
+	bddP = ouvrirBDDP()
+	bddA = ouvrirBDDA()
+	bddN = ouvrirBDDN()
+	bddG = ouvrirBDDG()
+	bddS = ouvrirBDDS()
+
+	if bddS.execute("SELECT statut FROM succes WHERE idSucces = #{unIDS} AND idJoueur = #{unID}") == 'A faire' then
+		case uneTable
+			when 'profil' # si la table est la table profil
+				if bddP.execute("SELECT #{uneDonnee} FROM #{uneTable} WHERE idJoueur = #{unID}") >= uneValeur then
+					return true
+				end
+			when 'aventure' # si la table est la table aventure
+				if bddA.execute("SELECT #{uneDonnee} FROM #{uneTable} WHERE idJoueur = #{unID}") >= uneValeur then
+					return true
+				end
+		else
+			return false
+		end
+	else
+		return false
+	end
+end
+
+def validerSucces(unIDS, unID)
+	bddS = ouvrirBDDS()
+
+	bddS.execute("UPDATE succes SET statut = 'Fait' WHERE idSucces = #{unIDS} AND idJoueur = #{unID}")
+end
 
 ################
 

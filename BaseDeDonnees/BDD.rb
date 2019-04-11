@@ -14,6 +14,7 @@ bddA = SQLite3::Database.new './BaseDeDonnees/aventure.db'
 bddN = SQLite3::Database.new './BaseDeDonnees/niveau.db'
 bddG = SQLite3::Database.new './BaseDeDonnees/grille.db'
 bddS = SQLite3::Database.new './BaseDeDonnees/succes.db'
+bddCS = SQLite3::Database.new './BaseDeDonnees/conditionSucces.db'
 
 
 
@@ -84,5 +85,36 @@ resultatGrille = bddG.execute <<-SQL
 
 		FOREIGN KEY(idNiveau) REFERENCES niveau(idNiveau),
 		PRIMARY KEY(numeroLigne, niveauDifficulte, idNiveau)
+	);
+SQL
+
+
+# Créer la table des succes si elle n'existe pas
+resultatSucces = bddS.execute <<-SQL
+	CREATE TABLE IF NOT EXISTS succes
+	(
+		idSucces INT, 
+		idJoueur INT,
+
+		nom VARCHAR(40),
+		description VARCHAR(100),
+		statut VARCHAR(8) CHECK(statut IN ('Fait', 'A faire')),
+
+		FOREIGN KEY(idJoueur) REFERENCES profil(idJoueur),
+		PRIMARY KEY(idJoueur, idSucces)
+	);
+SQL
+
+
+# Créer la table des conditions de succes si elle n'existe pas
+resultatConditionSucces = bddCS.execute <<-SQL
+	CREATE TABLE IF NOT EXISTS conditionSucces
+	(
+		idSucces INT, 
+		donnee VARCHAR(20),
+		tableCondition VARCHAR(10),
+		valeurCOndition INT,
+
+		FOREIGN KEY(idSucces) REFERENCES succes(idSucces)
 	);
 SQL

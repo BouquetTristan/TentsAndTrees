@@ -1,9 +1,10 @@
 require_relative 'Grille.rb'
 
 numGrille = 40
+difficulte = "Facile"
 
 #Test de la création et de l'affichage d'une grille
-grille = Grille.creerD("Moyenne")
+grille = Grille.creerD(difficulte)
 print "\nGrille du joueur : "
 grille.afficherGrille(grille.grilleJ)
 print "\nGrille finale : "
@@ -16,9 +17,9 @@ grille.afficherGrille(grille.grilleJ)
 
 #Test de la sauvegarde et du chargement d'une grille
 print "\nSauvegarde de la grille\n"
-grille.enregistrerFichier("Tuck Frayton", "classique")
+#grille.enregistrerFichier("Kiki", "classique")
 print "\nChargement de la grille\n"
-grille = Grille.charger("Facile", numGrille, "Tuck Frayton")
+grille = Grille.charger("Kiki", "classique")
 
 print "\nGrille chargée : "
 grille.afficherGrille(grille.grilleJ)

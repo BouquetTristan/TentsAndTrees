@@ -56,7 +56,7 @@ class Grille
     	@difficulte, @numero = diff, num
 
 		#Récupération de la grille à partir du fichier
-		ligneGrille = IO.readlines("./Ressources/Grilles#{@difficulte}s.txt")[@numero - 1]
+		ligneGrille = IO.readlines("../Ressources/Grilles#{@difficulte}s.txt")[@numero - 1]
 
 		#Séparation des éléments de la grille dans un tableau
 		grilleFich = ligneGrille.split(';')
@@ -117,11 +117,12 @@ class Grille
 	
 
 	#Enregistre la grille dans un fichier en transformant les informations concernant l'état des case en char
-	# @param void		//ne prend aucun paramètre
+	# @param nomJoueur	//Le nom du joueur
+	# @param mode		//Le mode de jeu dans lequel la grille est jouée
 	# @return void		//ne renvoie rien
   	def enregistrerFichier(nomJoueur, mode)
     		ligne = []
-		ligne<<nomJoueur
+		ligne<<@numero<<@difficulte<<nomJoueur
 
 		for i in 0..(@taille-1)
 			ligneGrille = ""
@@ -146,7 +147,7 @@ class Grille
 
 		ligne = ligne.join(';')
 
-		fichier =File.open("./Ressources/SauvegardeGrilles.txt", File::RDWR)
+		fichier =File.open("../Ressources/Sauvegarde#{mode}.txt", File::CREAT|File::RDWR)
 		fichier.each_line do |l|
 			if l.include?(nomJoueur) then
 				break
@@ -160,40 +161,49 @@ class Grille
 
   
   #Charge une grille sauvegardée lors d'une partie
-  # @param diff		//difficulté de la grille
-  # @param num		//numéro de la grille
-  # @return grille		//retourn la grille voulu
-  def Grille.charger (diff, num, nomJoueur)
-  	grille = Grille.creer(diff, num)
+  # @param nomJoueur	//Le nom du joueur
+  # @param mode		//Le mode de jeu dans lequel la grille est jouée
+  # @return grille	//retourn la grille voulue si elle existe
+  def Grille.charger (nomJoueur, mode)
+  	
 	lFich = ""
+	trouve = false
 
-	fichier =File.open("./Ressources/SauvegardeGrilles.txt", "r")
+	fichier =File.open("../Ressources/Sauvegarde#{mode}.txt", "r")
 		fichier.each_line do |l|
 			if l.include?(nomJoueur) then
 				lFich = l
-				break
+				if trouve then
+					break
+				end
+				trouve = true
 			end
 		end
+	if trouve then 
+		lFich = lFich.chomp
+	  	grilleFich = lFich.split(';')
+		num = grilleFich.shift
+		diff = grilleFich.shift
+		grilleFich.shift
 
-  	grilleFich = lFich.split(';')
-	grilleFich.shift
+		grille = Grille.creer(diff, num.to_i)
+	  	grille.grilleJ = []
+		
+	  	i = 0		
+	  	grilleFich.each do |ligne|
+	  		j = 0
+	  		ligneCasesJ = []
+	  		ligne.each_char do |c|
+	  			ligneCasesJ << Case.creer(i, j, c )
+	  			j += 1
+	  		end
+	  		grille.grilleJ<<ligneCasesJ
+	  		i += 1
+	  	end
 
-  	grille.grilleJ = []
-
-  	i = 0
-	print grilleFich
-  	grilleFich.each do |ligne|
-  		j = 0
-  		ligneCasesJ = []
-  		ligne.each_char do |c|
-  			ligneCasesJ << Case.creer(i, j, c )
-  			j += 1
-  		end
-  		grille.grilleJ<<ligneCasesJ
-  		i += 1
-  	end
-
-  	return grille
+	  	return grille
+	end
+	return nil
   end
 
 

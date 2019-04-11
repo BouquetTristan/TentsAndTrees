@@ -2,6 +2,8 @@
 require 'gtk3'
 require './Interface/fSaison.rb'
 
+#====== La classe BoutonSaison représente les boutons de l'interface sur la section aventure
+
 class BoutonSaison
 
 	# @bouton
@@ -14,10 +16,10 @@ class BoutonSaison
 		@cliquable = cliquable
 		@saison = uneSaison
 		case @cliquable
-			when true then 
+			when true then
 				@img=(Gtk::Image.new(:file =>"./Assets/Vignette#{@saison}.png"))
 		        @bouton.set_image(@img)
-			when false then 
+			when false then
 				@img=(Gtk::Image.new(:file =>"./Assets/Vignette#{@saison}V.png"))
 		        @bouton.set_image(@img)
 		end

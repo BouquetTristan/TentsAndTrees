@@ -1,6 +1,8 @@
 require 'gtk3'
 require './Classes/boutonAide.rb'
 
+#====== La classe BOutonAideTente hérite de la classe BoutonAide et représente une aide spécifique aux tentes
+
 class BoutonAideTente < BoutonAide
 
 	#=Variable d'instance
@@ -20,7 +22,7 @@ class BoutonAideTente < BoutonAide
 
 	#Initialize le bouton
 	# @param uneValeur    //Le nom du label
-	# @param cliquable    //Booléen 
+	# @param cliquable    //Booléen
 	# @return void  	//ne renvoie rien
 	def initialize(uneValeur, cliquable)
 		super(uneValeur, cliquable)
@@ -28,8 +30,8 @@ class BoutonAideTente < BoutonAide
 
 	#Définie la marche à suivre en cas d'appel d'aide sur le bouton tente
 	# @param uneGrille    //la grille de jeu
-	# @param unLabel     //La position d'affichage 
-	# @param unJoueur    //Pour sauvegarder le joueur et ne pas le perdre en cas de changement de page 
+	# @param unLabel     //La position d'affichage
+	# @param unJoueur    //Pour sauvegarder le joueur et ne pas le perdre en cas de changement de page
 	# @return nil  	//si aucune aide ne trouve de solution
 	def aide(uneGrille, unLabel, unJoueur, interfaceGrille)
 		if(@cliquable == true)

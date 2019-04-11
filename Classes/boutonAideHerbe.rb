@@ -1,13 +1,15 @@
 require 'gtk3'
 require './Classes/boutonAide.rb'
 
+#====== La classe BouonAideHerbe hérite de la classe BoutonAide et répésente une aide spécifique aux herbes
+
 class BoutonAideHerbe < BoutonAide
 
 	#=Variable d'instance
 	# @bouton		: Le bouton
 	# @coordI, @coordJ	: Coordonnée du bouton
 	# @@prix		: prix de l'aide en feuille
-	
+
 	attr_accessor :cliquable
 	attr_accessor :bouton
 	attr_accessor :prix
@@ -21,17 +23,17 @@ class BoutonAideHerbe < BoutonAide
 
 	#Initialize le bouton
 	# @param uneValeur    //Le nom du label
-	# @param cliquable    //Booléen 
+	# @param cliquable    //Booléen
 	# @return void  	//ne renvoie rien
 	def initialize(uneValeur, cliquable)
 		super(uneValeur, cliquable)
 	end
-	
+
 
 	#Définie la marche à suivre en cas d'appel d'aide sur le bouton herbe
 	# @param uneGrille    //la grille de jeu
-	# @param unLabel    //La position d'affichage 
-	# @param unJoueur    //POur sauvegarder le joueur et ne pas le perdre en cas de changement de page 
+	# @param unLabel    //La position d'affichage
+	# @param unJoueur    //POur sauvegarder le joueur et ne pas le perdre en cas de changement de page
 	# @return nil  	//si aucune aide ne trouve de solution
 	def aide(uneGrille, unLabel, unJoueur, interfaceGrille)
 		if(@cliquable == true)
@@ -70,5 +72,5 @@ class BoutonAideHerbe < BoutonAide
 			end
 		end
 	end
-	
+
 end

@@ -179,13 +179,11 @@
         
         <h1 id="attribute-i-start-label-Variables+d-27instance">Variables d&#39;instance<span><a href="#attribute-i-start-label-Variables+d-27instance">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
-<pre>@initialize          : mémorise le temps de départ du chrono.
-@initial             : mémorise le temps de départ obtenu avec Time.now.to_i pour pouvoir le soustraire plus tard
+<pre>@initial             :Stock le temps initial du chrono
 @start               : boolean en false au lancement du chrono et passe en true lors du premier tosu de boucle.
 @pause               : boolean met en pause le chrono
 @chrono              : variable qui stockera le nombre de seconde actuel et qui servira à afficher.
 @fin         : boolean ture pour arrêter le chrono.
-@compteur            : variable qui va compter le temps passer et le soustraire au chrono
 @lChrono  : label affichant le chono.</pre>
         
         </div>
@@ -226,12 +224,10 @@ la variable @initialize</p>
           <div class="method-source-code" id="new-source">
             <pre><span class="ruby-comment"># File ChronoInverse.rb, line 24</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">temps</span>)
-        <span class="ruby-ivar">@initial</span>=<span class="ruby-value">0</span>
-        <span class="ruby-ivar">@initialize</span>=<span class="ruby-identifier">temps</span>
+        <span class="ruby-ivar">@initial</span>=<span class="ruby-identifier">temps</span>
         <span class="ruby-ivar">@start</span>=<span class="ruby-keyword">false</span>
         <span class="ruby-ivar">@pause</span>=<span class="ruby-keyword">false</span>
-        <span class="ruby-ivar">@chrono</span>=<span class="ruby-value">0</span>
-        <span class="ruby-ivar">@compteur</span>=<span class="ruby-value">0</span>
+        <span class="ruby-ivar">@chrono</span>=<span class="ruby-identifier">temps</span>
         <span class="ruby-ivar">@fin</span>=<span class="ruby-keyword">false</span>
         <span class="ruby-ivar">@lChrono</span>=<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;&quot;</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -313,12 +309,11 @@ chrono en pause ou le faisant repartir</p>
 
           
           <div class="method-source-code" id="cPause-source">
-            <pre><span class="ruby-comment"># File ChronoInverse.rb, line 67</span>
+            <pre><span class="ruby-comment"># File ChronoInverse.rb, line 68</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">cPause</span>()
         <span class="ruby-keyword">if</span> <span class="ruby-ivar">@pause</span><span class="ruby-operator">==</span><span class="ruby-keyword">true</span>
                 <span class="ruby-ivar">@pause</span>=<span class="ruby-keyword">false</span>
-                <span class="ruby-ivar">@initial</span>=<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">to_i</span><span class="ruby-operator">-</span><span class="ruby-ivar">@compteur</span>
-        <span class="ruby-keyword">else</span> 
+        <span class="ruby-keyword">else</span>
                 <span class="ruby-ivar">@pause</span>=<span class="ruby-keyword">true</span>
         <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
@@ -427,31 +422,34 @@ chrono en pause ou le faisant repartir</p>
 
           
           <div class="method-source-code" id="cStart-source">
-            <pre><span class="ruby-comment"># File ChronoInverse.rb, line 38</span>
+            <pre><span class="ruby-comment"># File ChronoInverse.rb, line 36</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">cStart</span>
-                
-                
+
+
                 <span class="ruby-keyword">while</span> <span class="ruby-ivar">@fin</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">true</span>
-                
+
                                         <span class="ruby-keyword">if</span> <span class="ruby-ivar">@start</span><span class="ruby-operator">==</span><span class="ruby-keyword">false</span>
-                                                <span class="ruby-ivar">@initial</span>=<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">to_i</span>
+                                                <span class="ruby-ivar">@compteur</span>=<span class="ruby-ivar">@initial</span>
                                                 <span class="ruby-ivar">@start</span>=<span class="ruby-keyword">true</span>
+                                                <span class="ruby-ivar">@lChrono</span>.<span class="ruby-identifier">set_markup</span>((<span class="ruby-string">&quot;&lt;span foreground=\&quot;#FFFFFF\&quot; font-desc=\&quot;Courier New bold 20\&quot;&gt;&quot;</span><span class="ruby-operator">+</span><span class="ruby-ivar">@chrono</span>.<span class="ruby-identifier">to_s</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;&lt;/span&gt;\n&quot;</span>))
                                         <span class="ruby-keyword">end</span>
-                                        
+
                                         <span class="ruby-keyword">if</span> <span class="ruby-ivar">@pause</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">true</span>
-                                                <span class="ruby-keyword">if</span> <span class="ruby-ivar">@compteur</span> <span class="ruby-operator">!=</span> <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-operator">-</span> <span class="ruby-ivar">@initial</span>
-                                                        <span class="ruby-ivar">@compteur</span>=<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-operator">-</span> <span class="ruby-ivar">@initial</span>
-                                                        <span class="ruby-ivar">@chrono</span>=<span class="ruby-ivar">@initialize</span><span class="ruby-operator">-</span><span class="ruby-ivar">@compteur</span>
-                                                        <span class="ruby-identifier">print</span> <span class="ruby-keyword">self</span>
+                                                <span class="ruby-identifier">sleep</span>(<span class="ruby-value">1</span>)
+                                                <span class="ruby-ivar">@chrono</span> <span class="ruby-operator">-=</span> <span class="ruby-value">1</span>
+
+                                                <span class="ruby-keyword">if</span> <span class="ruby-ivar">@chrono</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-value">0</span>
+                                                        <span class="ruby-ivar">@chrono</span>=<span class="ruby-value">0</span>
+                                                        <span class="ruby-ivar">@lChrono</span>.<span class="ruby-identifier">set_markup</span>((<span class="ruby-string">&quot;&lt;span foreground=\&quot;#FFFFFF\&quot; font-desc=\&quot;Courier New bold 20\&quot;&gt;&quot;</span><span class="ruby-operator">+</span><span class="ruby-ivar">@chrono</span>.<span class="ruby-identifier">to_s</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;&lt;/span&gt;\n&quot;</span>))
+                                                        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">cFin</span>()
                                                 <span class="ruby-keyword">end</span>
                                         <span class="ruby-keyword">end</span>
 
-                                        <span class="ruby-keyword">if</span> <span class="ruby-ivar">@chrono</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
-                                                <span class="ruby-keyword">self</span>.<span class="ruby-identifier">cFin</span>()
-                                        <span class="ruby-keyword">end</span>
-                                        <span class="ruby-ivar">@lChrono</span>.<span class="ruby-identifier">set_markup</span>((<span class="ruby-string">&quot;&lt;span foreground=\&quot;#0066FF\&quot; font-desc=\&quot;Courier New bold 20\&quot;&gt;&quot;</span><span class="ruby-operator">+</span><span class="ruby-ivar">@chrono</span>.<span class="ruby-identifier">to_s</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;&lt;/span&gt;\n&quot;</span>))
+                                        <span class="ruby-ivar">@lChrono</span>.<span class="ruby-identifier">set_markup</span>((<span class="ruby-string">&quot;&lt;span foreground=\&quot;#FFFFFF\&quot; font-desc=\&quot;Courier New bold 20\&quot;&gt;&quot;</span><span class="ruby-operator">+</span><span class="ruby-ivar">@chrono</span>.<span class="ruby-identifier">to_s</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;&lt;/span&gt;\n&quot;</span>))
+
+
                 <span class="ruby-keyword">end</span>
-        
+
 <span class="ruby-keyword">end</span></pre>
           </div>
           

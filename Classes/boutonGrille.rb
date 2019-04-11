@@ -1,4 +1,3 @@
-
 require 'gtk3'
 
 class BoutonGrille

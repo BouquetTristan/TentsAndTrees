@@ -1,5 +1,7 @@
-#====== La classe chronoInverse représente un compte à rebours conçu pour être utilisé en thread ( en parallèle du programme princpal pour chronomètrer une partie)
 require 'gtk3'
+
+#====== La classe chronoInverse représente un compte à rebours conçu pour être utilisé en thread ( en parallèle du programme princpal pour chronomètrer une partie)
+
 class ChronoInverse
 	#= Variables d'instance
 	# @initial		:Stock le temps initial du chrono

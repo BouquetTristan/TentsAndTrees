@@ -304,7 +304,7 @@
   <span class="ruby-comment">#case en bas</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">i</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">grille</span>.<span class="ruby-identifier">taille</span> <span class="ruby-keyword">then</span>
     <span class="ruby-identifier">tab</span><span class="ruby-operator">&lt;&lt;</span>(<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">grilleJ</span>[<span class="ruby-identifier">i</span><span class="ruby-value">+1</span>][<span class="ruby-identifier">j</span>])
-  <span class="ruby-keyword">end</span> 
+  <span class="ruby-keyword">end</span>
 
   <span class="ruby-comment">#case à gauche</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">j</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span> <span class="ruby-keyword">then</span>
@@ -314,7 +314,7 @@
   <span class="ruby-comment">#case à droite</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">j</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">grille</span>.<span class="ruby-identifier">taille</span> <span class="ruby-keyword">then</span>
     <span class="ruby-identifier">tab</span><span class="ruby-operator">&lt;&lt;</span>(<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">grilleJ</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span><span class="ruby-value">+1</span>])
-  <span class="ruby-keyword">end</span> 
+  <span class="ruby-keyword">end</span>
 
   <span class="ruby-keyword">return</span> <span class="ruby-identifier">tab</span>
 <span class="ruby-keyword">end</span></pre>
@@ -358,11 +358,11 @@
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">i</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">j</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span> <span class="ruby-keyword">then</span>
     <span class="ruby-identifier">tab</span><span class="ruby-operator">&lt;&lt;</span>(<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">grilleJ</span>[<span class="ruby-identifier">i</span><span class="ruby-value">-1</span>][<span class="ruby-identifier">j</span><span class="ruby-value">-1</span>])
   <span class="ruby-keyword">end</span>
-  
+
   <span class="ruby-comment">#case en haut à droite</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">i</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">j</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">grille</span>.<span class="ruby-identifier">taille</span> <span class="ruby-keyword">then</span>
     <span class="ruby-identifier">tab</span><span class="ruby-operator">&lt;&lt;</span>(<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">grilleJ</span>[<span class="ruby-identifier">i</span><span class="ruby-value">-1</span>][<span class="ruby-identifier">j</span><span class="ruby-value">+1</span>])
-  <span class="ruby-keyword">end</span> 
+  <span class="ruby-keyword">end</span>
 
   <span class="ruby-comment">#case en bas à gauche</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">i</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">grille</span>.<span class="ruby-identifier">taille</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">j</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span> <span class="ruby-keyword">then</span>
@@ -372,7 +372,7 @@
   <span class="ruby-comment">#case en bas à droite</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">i</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">grille</span>.<span class="ruby-identifier">taille</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">j</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">grille</span>.<span class="ruby-identifier">taille</span> <span class="ruby-keyword">then</span>
     <span class="ruby-identifier">tab</span><span class="ruby-operator">&lt;&lt;</span>(<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">grilleJ</span>[<span class="ruby-identifier">i</span><span class="ruby-value">+1</span>][<span class="ruby-identifier">j</span><span class="ruby-value">+1</span>])
-  <span class="ruby-keyword">end</span> 
+  <span class="ruby-keyword">end</span>
 
   <span class="ruby-keyword">return</span> <span class="ruby-identifier">tab</span>
 <span class="ruby-keyword">end</span></pre>

@@ -10,18 +10,27 @@ class Header < Gtk::HeaderBar
 
     @window = monApp
     @boxButtons = Gtk::Box.new(:horizontal)
-    @boxButtons.spacing = 10
+    @boxButtons.spacing = 400
 
+    @box = Gtk::Box.new(:horizontal)
+    @boxb = Gtk::Box.new(:horizontal)
+
+    @titre = Gtk::Label.new("")
+    @titre.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 20\">Tents and Trees</span>")
     @btnMenu = Gtk::Button.new(:label => 'Menu', :use_underline => nil, :stock_id => nil)
     @image=(Gtk::Image.new(:file =>"./Assets/logo.png",:size => :dialog))
     @btnDel = Gtk::Button.new(:label => 'Quitter', :use_underline => nil, :stock_id => nil)
     #@imDel=(Gtk::Image.new(:file =>"./image/logo.png",:size => :dialog))
 
-    @boxButtons.add(@image)
-    @boxButtons.add(@btnMenu)
-    @boxButtons.add(@btnDel)
+    @box.add(@image)
+    @box.add(@titre)
+    @boxButtons.add(@box)
 
-    @boxButtons.spacing=15
+    @boxb.add(@btnMenu)
+    @boxb.add(@btnDel)
+    @boxButtons.add(@boxb)
+
+   
     self.pack_end(@boxButtons)
 
         @btnDel.signal_connect('clicked') {

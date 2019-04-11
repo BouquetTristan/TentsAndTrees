@@ -42,8 +42,13 @@ class FModifC < Page
 					@mdp.erreur.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 10\">Erreur entrer un mot de passe différent</span>\n")
 				end
 			else
-				@mdp.erreur.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 10\">Erreur ce pseudo est déjà utilisé ou esr déjà votre pseudo actuel</span>\n")
+				@mdp.erreur.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 10\">Erreur ce pseudo est déjà utilisé ou est déjà votre pseudo actuel</span>\n")
 			end
+
+			self.supprimeMoi
+	        menu = FProfil.new(@window, @header, self, unJoueur)
+	        menu.ajouteMoi
+	        @window.show_all
 		}
 
 

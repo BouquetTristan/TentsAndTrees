@@ -27,6 +27,8 @@ class FInter < Page
 
 		@frame2 = Gtk::Table.new(1,2,false)
 
+		@box = Gtk::ButtonBox.new(:vertical)
+
 		@boutonGrille = [[]]
 
 		for i in (0..taille-1)
@@ -41,7 +43,8 @@ class FInter < Page
 			@boutonGrille[i] = temp
 		end
 
-		@frame2.attach(@grille,0,1,0,1)
+		@box.add(@grille)
+		@frame2.attach(@box,0,1,0,1)
 
 		@framebut=Gtk::Table.new(1,2,false)
 

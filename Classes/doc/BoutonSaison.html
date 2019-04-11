@@ -130,7 +130,13 @@
 
         <div class="method-description">
         
-        
+        <h1 id="attribute-i-cliquable-label-Variable+d-27instance">Variable d&#39;instance<span><a href="#attribute-i-cliquable-label-Variable+d-27instance">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<pre>@bouton                      : Le bouton
+@coordI, @coordJ             : Coordonée du bouton
+@img                         : mémorise l&#39;image associé au bouon
+@numSaison                   : enregistre le numéro relatif à la saison
+@@prix                       : prix de l&#39;aide en feuille</pre>
         
         </div>
       </div>
@@ -158,13 +164,17 @@
 
         <div class="method-description">
           
-          <p>@bouton @coordI, @coordJ @@prix : prix de l&#39;aide en feuille</p>
+          <p>Initialise le bouton eprésentant l&#39;accès aux saison</p>
+
+<pre>@param uneSaison             //Chaine de caracère eprésentant une des 4 saison (été/hiver/automne/pintemps)
+@param cliquable             //Booléen pou définir si le bouton sera cliquable ou non
+@return void                 //ne renvoie rien</pre>
           
           
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File boutonSaison.rb, line 13</span>
+            <pre><span class="ruby-comment"># File boutonSaison.rb, line 24</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">uneSaison</span>, <span class="ruby-identifier">cliquable</span>)
         <span class="ruby-ivar">@bouton</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>()
 <span class="ruby-identifier">focus_hadjustment</span>=(<span class="ruby-value">:start</span>)
@@ -222,13 +232,16 @@
 
         <div class="method-description">
           
-          
+          <p>Débloque un bouton en le rendant cliquable pour un joueur donné</p>
+
+<pre>@param unJoueur              //Joueur ayant débloqué le bouon
+@return void                 //ne renvoie rien</pre>
           
           
 
           
           <div class="method-source-code" id="debloquer-source">
-            <pre><span class="ruby-comment"># File boutonSaison.rb, line 40</span>
+            <pre><span class="ruby-comment"># File boutonSaison.rb, line 54</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">debloquer</span>(<span class="ruby-identifier">unJoueur</span>)
         <span class="ruby-keyword">if</span> (<span class="ruby-ivar">@cliquable</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span>)
                 <span class="ruby-ivar">@cliquable</span> = <span class="ruby-identifier">unJoueur</span>.<span class="ruby-identifier">acheterNiveau</span>(<span class="ruby-ivar">@numSaison</span>)
@@ -261,13 +274,19 @@
 
         <div class="method-description">
           
-          
+          <p>Lance le mode aventure de la saison concerné</p>
+
+<pre>@param uneApp                //La fenêtre
+@param unHeader              //La bande en haut (titre de page)
+@param unePrecedente         //La fenêtre précédente pour destruction
+@param unJoueur              //Le joueur concerné
+@return void                 //ne renvoie rien</pre>
           
           
 
           
           <div class="method-source-code" id="lancer-source">
-            <pre><span class="ruby-comment"># File boutonSaison.rb, line 50</span>
+            <pre><span class="ruby-comment"># File boutonSaison.rb, line 70</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">lancer</span>(<span class="ruby-identifier">uneApp</span>, <span class="ruby-identifier">unHeader</span>, <span class="ruby-identifier">unePrecedente</span>, <span class="ruby-identifier">unJoueur</span>)
         <span class="ruby-keyword">if</span> (<span class="ruby-ivar">@cliquable</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">true</span>)
                 <span class="ruby-identifier">unePrecedente</span>.<span class="ruby-identifier">supprimeMoi</span>

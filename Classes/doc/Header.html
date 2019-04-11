@@ -174,18 +174,27 @@
 
   <span class="ruby-ivar">@window</span> = <span class="ruby-identifier">monApp</span>
   <span class="ruby-ivar">@boxButtons</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Box</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:horizontal</span>)
-  <span class="ruby-ivar">@boxButtons</span>.<span class="ruby-identifier">spacing</span> = <span class="ruby-value">10</span>
+  <span class="ruby-ivar">@boxButtons</span>.<span class="ruby-identifier">spacing</span> = <span class="ruby-value">400</span>
 
+  <span class="ruby-ivar">@box</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Box</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:horizontal</span>)
+  <span class="ruby-ivar">@boxb</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Box</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:horizontal</span>)
+
+  <span class="ruby-ivar">@titre</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;&quot;</span>)
+  <span class="ruby-ivar">@titre</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-string">&quot;&lt;span foreground=\&quot;#EF2929\&quot; font-desc=\&quot;Courier New bold 20\&quot;&gt;Tents and Trees&lt;/span&gt;&quot;</span>)
   <span class="ruby-ivar">@btnMenu</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:label</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&#39;Menu&#39;</span>, <span class="ruby-value">:use_underline</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">nil</span>, <span class="ruby-value">:stock_id</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">nil</span>)
   <span class="ruby-ivar">@image</span>=(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span> <span class="ruby-operator">=&gt;</span><span class="ruby-string">&quot;./Assets/logo.png&quot;</span>,<span class="ruby-value">:size</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-value">:dialog</span>))
   <span class="ruby-ivar">@btnDel</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:label</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&#39;Quitter&#39;</span>, <span class="ruby-value">:use_underline</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">nil</span>, <span class="ruby-value">:stock_id</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">nil</span>)
   <span class="ruby-comment">#@imDel=(Gtk::Image.new(:file =&gt;&quot;./image/logo.png&quot;,:size =&gt; :dialog))</span>
 
-  <span class="ruby-ivar">@boxButtons</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@image</span>)
-  <span class="ruby-ivar">@boxButtons</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@btnMenu</span>)
-  <span class="ruby-ivar">@boxButtons</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@btnDel</span>)
+  <span class="ruby-ivar">@box</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@image</span>)
+  <span class="ruby-ivar">@box</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@titre</span>)
+  <span class="ruby-ivar">@boxButtons</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@box</span>)
 
-  <span class="ruby-ivar">@boxButtons</span>.<span class="ruby-identifier">spacing</span>=<span class="ruby-value">15</span>
+  <span class="ruby-ivar">@boxb</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@btnMenu</span>)
+  <span class="ruby-ivar">@boxb</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@btnDel</span>)
+  <span class="ruby-ivar">@boxButtons</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@boxb</span>)
+
+ 
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">pack_end</span>(<span class="ruby-ivar">@boxButtons</span>)
 
       <span class="ruby-ivar">@btnDel</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {
@@ -229,7 +238,7 @@
 
           
           <div class="method-source-code" id="ajouterB-source">
-            <pre><span class="ruby-comment"># File Header.rb, line 32</span>
+            <pre><span class="ruby-comment"># File Header.rb, line 41</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">ajouterB</span>()
       <span class="ruby-ivar">@btnMenu</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:label</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&#39;Menu&#39;</span>, <span class="ruby-value">:use_underline</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">nil</span>, <span class="ruby-value">:stock_id</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">nil</span>)
 

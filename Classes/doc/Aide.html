@@ -180,7 +180,7 @@
                                         <span class="ruby-keyword">else</span>
                                                 <span class="ruby-identifier">cDBE</span> = <span class="ruby-identifier">c</span>.<span class="ruby-identifier">etat</span>
                                         <span class="ruby-keyword">end</span>
-                                <span class="ruby-keyword">end</span>                                        
+                                <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">end</span>
 
                         <span class="ruby-keyword">if</span> (<span class="ruby-identifier">cGE</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">cHE</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">cDBE</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>) <span class="ruby-operator">||</span> (<span class="ruby-identifier">cGE</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">cBE</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">cDHE</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>) <span class="ruby-operator">||</span> (<span class="ruby-identifier">cDE</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">cHE</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">cGBE</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>) <span class="ruby-operator">||</span> (<span class="ruby-identifier">cDE</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">cBE</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">cGHE</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>) <span class="ruby-keyword">then</span>
@@ -246,7 +246,7 @@ une tente</p>
                         <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">tentes</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">nbCasesVides</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span> <span class="ruby-keyword">then</span>
                                 <span class="ruby-identifier">arbreTrouve</span> = <span class="ruby-identifier">uneCase</span>
                                 <span class="ruby-keyword">break</span>
-                        <span class="ruby-keyword">end</span> 
+                        <span class="ruby-keyword">end</span>
                 <span class="ruby-keyword">end</span>
         }
         <span class="ruby-keyword">return</span> <span class="ruby-identifier">arbreTrouve</span>
@@ -299,7 +299,7 @@ une tente</p>
                         <span class="ruby-keyword">end</span>
                 <span class="ruby-keyword">end</span>
         }
-        <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>            
+        <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -601,11 +601,11 @@ doivent être remplies par des herbes</p>
                                 <span class="ruby-keyword">if</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">etat</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-keyword">then</span>
                                         <span class="ruby-identifier">caseTrouvee</span> = <span class="ruby-identifier">uneCase</span>
                                         <span class="ruby-keyword">break</span>
-                                        
+
                                 <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">end</span>
                 <span class="ruby-keyword">end</span>
-                
+
         }
         <span class="ruby-keyword">return</span> <span class="ruby-identifier">caseTrouvee</span>
 <span class="ruby-keyword">end</span></pre>
@@ -652,17 +652,17 @@ nombres de tentes restantes à placer</p>
         <span class="ruby-identifier">impair</span> = <span class="ruby-keyword">false</span>
         <span class="ruby-identifier">tentesPlaceMax</span> = <span class="ruby-value">0</span>
         <span class="ruby-identifier">numCase</span> = <span class="ruby-value">0</span>
-        
+
         <span class="ruby-identifier">ligne</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">uneCase</span><span class="ruby-operator">|</span>
-                
-                
-                
+
+
+
                 <span class="ruby-keyword">if</span> <span class="ruby-identifier">uneCase</span>.<span class="ruby-identifier">etat</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-keyword">then</span>
                         <span class="ruby-identifier">compteur</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
                 <span class="ruby-keyword">end</span>
                 <span class="ruby-keyword">if</span> (<span class="ruby-identifier">uneCase</span>.<span class="ruby-identifier">etat</span> <span class="ruby-operator">!=</span> <span class="ruby-value">0</span> <span class="ruby-operator">||</span> (<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">taille</span><span class="ruby-value">-1</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">numCase</span>))
-                        <span class="ruby-keyword">if</span>(<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">taille</span><span class="ruby-value">-1</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">numCase</span>) 
-                                
+                        <span class="ruby-keyword">if</span>(<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">taille</span><span class="ruby-value">-1</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">numCase</span>)
+
                         <span class="ruby-keyword">end</span>
                         <span class="ruby-identifier">tentesPlaceMax</span> <span class="ruby-operator">+=</span> (<span class="ruby-identifier">compteur</span><span class="ruby-value">+1</span>) <span class="ruby-operator">/</span> <span class="ruby-value">2</span>
 
@@ -671,15 +671,15 @@ nombres de tentes restantes à placer</p>
                         <span class="ruby-keyword">end</span>
 
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">compteur</span> <span class="ruby-operator">%</span> <span class="ruby-value">2</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span> <span class="ruby-keyword">then</span>
-                                <span class="ruby-identifier">impair</span> = <span class="ruby-keyword">true</span>      
-                        <span class="ruby-keyword">end</span> 
+                                <span class="ruby-identifier">impair</span> = <span class="ruby-keyword">true</span>
+                        <span class="ruby-keyword">end</span>
                         <span class="ruby-identifier">compteur</span> = <span class="ruby-value">0</span>
                 <span class="ruby-keyword">end</span>
-                
-                <span class="ruby-identifier">numCase</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>         
-                
+
+                <span class="ruby-identifier">numCase</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+
         <span class="ruby-keyword">end</span>
-        <span class="ruby-identifier">print</span> <span class="ruby-node">&quot;\nPour la ligne #{nLigne} Le nombre de tentes placables max #{tentesPlaceMax}\n&quot;</span>
+        <span class="ruby-identifier">print</span> <span class="ruby-node">&quot;\nPour la ligne #{nLigne} Le nombre de tentes placables max #{tentesPlaceMax} pour un nb teneRestante de #{nbTentesRestantes}\n&quot;</span>
         <span class="ruby-keyword">if</span> (<span class="ruby-identifier">impair</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">nbTentesRestantes</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">tentesPlaceMax</span>) <span class="ruby-keyword">then</span>
                 <span class="ruby-keyword">return</span> <span class="ruby-identifier">nLigne</span>
         <span class="ruby-keyword">end</span>

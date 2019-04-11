@@ -7,10 +7,20 @@ require './Interface/fSaison.rb'
 class BoutonSaison
 
 	#=Variable d'instance
-	# @bouton		: Le bouton
-	# @coordI, @coordJ		:Coordonée du bouton
-	# @@prix 		: prix de l'aide en feuille
+	# @bouton			: Le bouton
+	# @coordI, @coordJ		: Coordonée du bouton
+	# @img				: mémorise l'image associé au bouon
+	# @numSaison			: enregistre le numéro relatif à la saison
+	# @@prix 			: prix de l'aide en feuille
 
+	attr_accessor :cliquable
+	attr_accessor :bouton
+
+
+	#Initialise le bouton eprésentant l'accès aux saison
+	# @param uneSaison		//Chaine de caracère eprésentant une des 4 saison (été/hiver/automne/pintemps)
+	# @param cliquable		//Booléen pou définir si le bouton sera cliquable ou non
+	# @return void			//ne renvoie rien
 	def initialize(uneSaison, cliquable)
 		@bouton = Gtk::Button.new()
         focus_hadjustment=(:start)
@@ -38,6 +48,9 @@ class BoutonSaison
    		puts @saison
 	end
 
+	#Débloque un bouton en le rendant cliquable pour un joueur donné
+	# @param unJoueur		//Joueur ayant débloqué le bouon
+	# @return void			//ne renvoie rien
 	def debloquer(unJoueur)
 		if (@cliquable == false)
 			@cliquable = unJoueur.acheterNiveau(@numSaison)
@@ -48,6 +61,12 @@ class BoutonSaison
         end
 	end
 
+	#Lance le mode aventure de la saison concerné
+	# @param uneApp		//La fenêtre
+	# @param unHeader		//La bande en haut (titre de page)
+	# @param unePrecedente		//La fenêtre précédente pour destruction
+	# @param unJoueur		//Le joueur concerné
+	# @return void			//ne renvoie rien
 	def lancer(uneApp, unHeader, unePrecedente, unJoueur)
 		if (@cliquable == true)
 			unePrecedente.supprimeMoi
@@ -57,7 +76,6 @@ class BoutonSaison
 		end
    	end
 
-	attr_accessor :bouton, :cliquable
 
 
 end

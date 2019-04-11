@@ -20,8 +20,8 @@ class Joueur
 		@mdp = unMDP
 		@rep = uneRepSec
 
-		@nbAides = nil
-		@argent = nil
+		@creditAide = nil	#feuilles
+		@argent = nil	#étoiles
 
 		@scoreGlobal = nil
 		@scoreFacile = nil
@@ -42,7 +42,8 @@ class Joueur
 	attr_reader :scoreMoyen
 	attr_reader :scoreDifficile
 	attr_reader :nbPartiesJouees
-	attr_reader :nbAides
+	attr_reader :creditAide
+	attr_reader :argent
 
 	def inscrire()
 
@@ -73,20 +74,7 @@ class Joueur
 			puts "   Authentification en cours....\n"
 			puts "   Récupération des informations....\n"
 				@id = id
-				@rep = recupererInformation(@id, 1)
-
-				@scoreGlobal = recupererInformation(@id, 2)
-				@scoreFacile = recupererInformation(@id, 3)
-				@scoreMoyen = recupererInformation(@id, 4)
-				@scoreDifficile = recupererInformation(@id, 5)
-
-				@nbPartiesJouees = recupererInformation(@id, 6)
-				@nbPartiesFinitSansAides = recupererInformation(@id, 7)
-
-				@nbAides = recupererInformation(@id, 8)
-				@argent = recupererInformation(@id, 9)
-
-				@niveaux = recupererInformation(@id, 10)
+				actualiser()
 
 			puts "Connexion réussie\n"
 		else
@@ -138,7 +126,7 @@ class Joueur
 			puts "  Parties jouées : #{@nbPartiesJouees}\n"
 			puts "  Parties finit sans aides : #{@nbPartiesFinitSansAides}\n"
 			puts " Info profil \n"
-			puts "  Nb aides : #{@nbAides}\n"
+			puts "  Nb aides : #{@creditAide}\n"
 			puts "  argent : #{@argent}\n"
 			puts " Histoire \n"
 			for i in 0..(@niveaux.length-1)
@@ -152,12 +140,15 @@ class Joueur
 	end
 
 	def commencerAventure(unNiveau, uneGrille)
-		return donnerInformationsGrille(@id, unNiveau, uneGrille)
+		#puts "#{donnerInformationsGrille(@id, unNiveau, uneGrille+1)}\n"
+
+		return donnerInformationsGrille(@id, unNiveau, uneGrille+1)
 	end
 
 	def acheterNiveau(unNumeroNiveau)
 		if payerNiveau(@id, @niveaux.at(unNumeroNiveau).at(0)) then
 			deverouillerNiveau(@niveaux.at(unNumeroNiveau).at(0))
+			actualiser()
 			return true
 		else
 			return false
@@ -167,51 +158,82 @@ class Joueur
 	def finirLaPartie(uneGrille)
 		#Méthode qui modifie les bases de données après la fin de chaque partie
 		if grillePasFaite(@id, uneGrille) then
-			
 			recupererArgentGrille(@id, uneGrille)
 			changerStatutGrille(@id, uneGrille)
+
 			if niveauComplet(@id, uneGrille) then
-				augmenterNbAides(@id, 4)	
+				augmentercreditAide(@id, 4)	
 			end
 
+			actualiser()
+
 			return true
-			
 		else
 			return false
 		end
-
-		
 	end
 
 
-	def modifierInformationsFinDePartie(unScore, uneDifficulte, nbAidesUtilises)
+	def modifierInformationsFinDePartie(unScore, uneDifficulte, creditAideUtilises)
 		if uneDifficulte == "GrillesFaciles" && unScore > @scoreFacile then
 			@scoreFacile = unScore
 			augmenterScoreFacile(@id, @scoreFacile)
 		end
-
 		if uneDifficulte == "GrillesMoyennes" && unScore > @scoreMoyen then
 			@scoreMoyen = unScore
 			augmenterScoreMoyen(@id, @scoreMoyen)
 		end
-
 		if uneDifficulte == "GrillesDifficiles" && unScore > @scoreDifficile then
 			@scoreDifficile = unScore
 			augmenterScoreDifficile(@id, @scoreDifficile)
 		end
 
-		augmenterNbPartiesJouees(@id)
-
-		if nbAidesUtilises == 0 then
-			augmenterNbPartiesTermineesSansAides(@id)
-		end
-
 		@scoreGlobal = (@scoreFacile + @scoreMoyen + @scoreDifficile)/3
 		augmenterScoreGlobal(@id, @scoreGlobal)
+
+
+		augmenterNbPartiesJouees(@id)
+
+		if creditAideUtilises == 0 then
+			augmenterNbPartiesTermineesSansAides(@id)
+		end
+		
+		@nbPartiesJouees = recupererInformation(@id, 6)
+		@nbPartiesFinitSansAides = recupererInformation(@id, 7)
+
+		actualiser()
+
+	end
+
+
+
+	def verifierSucces()
+		dernierSucces = dernierSucces()
+
+		(0..dernierSucces).each do |i|
+			if inspecterSucces(i, @id) then
+				validerSucces(i, @id)
+			end
+		end
+	end
+
+
+	def actualiser()
+
+		@rep = recupererInformation(@id, 1)
+
+		@scoreGlobal = recupererInformation(@id, 2)
+		@scoreFacile = recupererInformation(@id, 3)
+		@scoreMoyen = recupererInformation(@id, 4)
+		@scoreDifficile = recupererInformation(@id, 5)
 
 		@nbPartiesJouees = recupererInformation(@id, 6)
 		@nbPartiesFinitSansAides = recupererInformation(@id, 7)
 
+		@creditAide = recupererInformation(@id, 8)
+		@argent = recupererInformation(@id, 9)
+
+		@niveaux = recupererInformation(@id, 10)
 	end
 
 end

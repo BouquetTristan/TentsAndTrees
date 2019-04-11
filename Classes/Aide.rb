@@ -3,7 +3,7 @@ require_relative 'Grille.rb'
 #====== La classe Aide contient des méthodes qui évaluent l'état de la grille du joueur
 class Aide
 
-	
+
 	#Parcourt la grille du joueur et la grille finale pour repérer les erreurs de placement
 	# @param grille		//Prend la grille de jeu en paramètre
 	# @return case			//Renvoie la première case rencontrée si elle n'est pas vide et ne correspond pas à la case finale attendu
@@ -21,7 +21,7 @@ class Aide
 		return nil
 	end
 
-	
+
 
 	#Parcourt chaque ligne de la grille du joueur et repère les lignes qui doivent être remplies par des herbes
 	# @param grille		//Prend la grille de jeu en paramètre
@@ -85,7 +85,7 @@ class Aide
 		return nil
 	end
 
-	
+
 
 	#Vérifie si les cases autour des tentes sont complétées
 	# @param grille		//Prend la grille de jeu en paramètre
@@ -100,11 +100,11 @@ class Aide
 					if c.etat == 0 then
 						caseTrouvee = uneCase
 						break
-						
+
 					end
 				end
 			end
-			
+
 		}
 		return caseTrouvee
 	end
@@ -134,7 +134,7 @@ class Aide
 				if !tentes && nbCasesVides == 1 then
 					arbreTrouve = uneCase
 					break
-				end 
+				end
 			end
 		}
 		return arbreTrouve
@@ -154,7 +154,7 @@ class Aide
 
 				casesVoisines = uneCase.casesVoisinesComplet(grille)
 				casesVoisines.each do |c|
-	
+
 					if c.i < uneCase.i then
 						if c.j < uneCase.j then
 							cGHE = c.etat
@@ -177,7 +177,7 @@ class Aide
 						else
 							cDBE = c.etat
 						end
-					end					
+					end
 				end
 
 				if (cGE > 1 && cHE > 1 && cDBE == 0) || (cGE > 1 && cBE > 1 && cDHE == 0) || (cDE > 1 && cHE > 1 && cGBE == 0) || (cDE > 1 && cBE > 1 && cGHE == 0) then
@@ -197,7 +197,7 @@ class Aide
 	# @param grille		//Prend la grille de jeu en paramètre
 	# @return numLigne		//Retourne la première ligne où il est possible de placer au moins une tente
 	# @return nil			//Retourne nil sinon
-	
+
 	def Aide.lignePlacerTentes(grille)
 		nLigne = 0
 		grille.parcourirC { |ligne|
@@ -214,7 +214,7 @@ class Aide
 	# @param grille		//Prend la grille de jeu en paramètre
 	# @return numLigne		//Retourne la première ligne où il est possible de placer au moins une tente
 	# @return nil			//Retourne nil sinon
-	
+
 	def Aide.colonnePlacerTentes(grille)
 		nLigne = 0
 		grille.parcourirL { |ligne|
@@ -239,17 +239,17 @@ class Aide
 		impair = false
 		tentesPlaceMax = 0
 		numCase = 0
-		
+
 		ligne.each do |uneCase|
-			
-			
-			
+
+
+
 			if uneCase.etat == 0 then
 				compteur += 1
 			end
 			if (uneCase.etat != 0 || (grille.taille-1 == numCase))
-				if(grille.taille-1 == numCase) 
-					
+				if(grille.taille-1 == numCase)
+
 				end
 				tentesPlaceMax += (compteur+1) / 2
 
@@ -258,15 +258,15 @@ class Aide
 				end
 
 				if compteur % 2 == 1 then
-					impair = true	
-				end 
+					impair = true
+				end
 				compteur = 0
 			end
-			
-			numCase += 1		
-			
+
+			numCase += 1
+
 		end
-		print "\nPour la ligne #{nLigne} Le nombre de tentes placables max #{tentesPlaceMax}\n"
+		print "\nPour la ligne #{nLigne} Le nombre de tentes placables max #{tentesPlaceMax} pour un nb teneRestante de #{nbTentesRestantes}\n"
 		if (impair && nbTentesRestantes == tentesPlaceMax) then
 			return nLigne
 		end
@@ -293,7 +293,7 @@ class Aide
 				end
 			end
 		}
-		return nil		
+		return nil
 	end
 
 end

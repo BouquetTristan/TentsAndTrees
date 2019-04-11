@@ -56,7 +56,7 @@ class Grille
     	@difficulte, @numero = diff, num
 
 		#Récupération de la grille à partir du fichier
-		ligneGrille = IO.readlines("../Ressources/Grilles#{@difficulte}s.txt")[@numero - 1]
+		ligneGrille = IO.readlines("./Ressources/Grilles#{@difficulte}s.txt")[@numero - 1]
 
 		#Séparation des éléments de la grille dans un tableau
 		grilleFich = ligneGrille.split(';')
@@ -147,7 +147,7 @@ class Grille
 
 		ligne = ligne.join(';')
 
-		fichier =File.open("../Ressources/Sauvegarde#{mode}.txt", File::CREAT|File::RDWR)
+		fichier =File.open("./Ressources/Sauvegarde#{mode}.txt", File::CREAT|File::RDWR)
 		fichier.each_line do |l|
 			if l.include?(nomJoueur) then
 				break
@@ -169,7 +169,7 @@ class Grille
 	lFich = ""
 	trouve = false
 
-	fichier =File.open("../Ressources/Sauvegarde#{mode}.txt", "r")
+	fichier =File.open("./Ressources/Sauvegarde#{mode}.txt", "r")
 		fichier.each_line do |l|
 			if l.include?(nomJoueur) then
 				lFich = l

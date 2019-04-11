@@ -17,19 +17,22 @@ class FCreationCompte < Page
 		@gCC = Gtk::ButtonBox.new(:vertical)
           @gCC.spacing = 30
 
-          @pseudo = TexteEntree.creer('Pseudo : ', false)
+          @pseudo = TexteEntree.creer('Pseudo : ', true)
           @mdp = TexteEntree.creer('Mot de passe : ', true)
           @question =  Gtk::Label.new('')
-          @question.set_markup("<span foreground=\"#FFFFFF\" font-desc=\"Courier New bold 15\">Quel est votre lieu de vacance favorie ?</span>\n")
+          @question.set_markup("<span foreground=\"#FFFFFF\" font-desc=\"Courier New bold 15\">Quel est votre lieu de vacance favori ?</span>\n")
           @reponse = TexteEntree.creer('Reponse : ', true)
           @connexion = Gtk::Button.new(:label => 'Connexion', :use_underline => nil, :stock_id => nil)
           @connexion.set_relief(:none)
+          @back = Gtk::Button.new(:label => 'Retour', :use_underline => nil, :stock_id => nil)
+          @back.set_relief(:none)
 
           @gCC.add(@pseudo.gTexteEntree, :expand => true, :fill => false)
           @gCC.add(@mdp.gTexteEntree, :expand => true, :fill => false)
           @gCC.add(@question, :expand => true, :fill => false)
           @gCC.add(@reponse.gTexteEntree, :expand => true, :fill => false)
           @gCC.add(@connexion, :expand => true, :fill => false)
+          @gCC.add(@back, :expand => true, :fill => false)
 
 
           @connexion.signal_connect('clicked') {
@@ -48,9 +51,9 @@ class FCreationCompte < Page
 
  			elsif joueur.inscrire() == 0 then
                      puts("Joueur\n")
- 				@mdp.entree.text = ''
+ 				             @pseudo.entree.text = ''
                      puts("mdp sans rien\n")
-                     @mdp.erreur.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 10\">Erreur L'utilisateur est déjà enregistré</span>\n")
+                     @pseudo.erreur.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 10\">Erreur L'utilisateur est déjà enregistré</span>\n")
 
 
                 else
@@ -59,6 +62,14 @@ class FCreationCompte < Page
                      suivant.ajouteMoi
                      @window.show_all
                 end
+          }
+
+
+          @back.signal_connect('clicked') {
+              self.supprimeMoi
+              suivant = FConnexion.new(@window, header, self, nil)
+              suivant.ajouteMoi
+              @window.show_all
           }
 
           @frame.attach(@gCC,0,1,0,1)

@@ -6,9 +6,10 @@ require './Interface/fSaison.rb'
 
 class BoutonSaison
 
-	# @bouton
-	# @coordI, @coordJ
-	# @@prix : prix de l'aide en feuille
+	#=Variable d'instance
+	# @bouton		: Le bouton
+	# @coordI, @coordJ		:Coordonée du bouton
+	# @@prix 		: prix de l'aide en feuille
 
 	def initialize(uneSaison, cliquable)
 		@bouton = Gtk::Button.new()

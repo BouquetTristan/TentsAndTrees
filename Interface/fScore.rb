@@ -13,40 +13,21 @@ class FScore < Page
 
         @box = Gtk::ButtonBox.new(:vertical)
     		
-        @tScore = Gtk::Table.new(3,5,false)
+        @tScore = Gtk::ListStore.new(3, :string, :int, :string)
 
         @back = Gtk::Button.new(:label => 'Retour', :use_underline => nil)
         @back.set_relief(:none)
 
-        @box.add(@tScore)
-        @box.add(@back)
 
-        @tScore.each{|k|
-            k.each{|m|
-              puts('1')
-                
-                if k==0
-                    label=Gtk::Label.new("")
-                    label.set_markup("<span foreground=\"#FFFFFF\" font-desc=\"Courier New bold 20\">test</span>\n")
-                    @tScore.attach(label, m,m+1,k,k+1)    
-                end
-              puts('2')
-                if m==0
-                    label1=Gtk::Label.new("")
-                    label1.set_markup("<span foreground=\"#FFFFFF\" font-desc=\"Courier New bold 20\">test</span>\n")
-                    @tScore.attach(label1, m,m+1,k,k+1) 
-                end
-              puts('3')
-            }
-        }
-
-        @back.signal_connect('clicked') {
+       @back.signal_connect('clicked') {
                self.supprimeMoi
                suivant = FMenu.new(@window, header, self, unJoueur)
                suivant.ajouteMoi
                @window.show_all          
         }
 
+        @box.add(@tScore)
+        @box.add(@back)
 
         @frame.attach(@box,0,1,0,1)
 

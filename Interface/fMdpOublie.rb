@@ -18,10 +18,12 @@ class FMdpOublie < Page
     	@pseudo = TexteEntree.creer('Pseudo : ', true)
         @newMdp = TexteEntree.creer('Nouveau mot de passe : ', true)
         @question =  Gtk::Label.new('')
-        @question.set_markup("<span foreground=\"#FFFFFF\" font-desc=\"Courier New bold 15\">Quel est votre lieu de vacance favorie ?</span>\n")
+        @question.set_markup("<span foreground=\"#FFFFFF\" font-desc=\"Courier New bold 15\">Quel est votre lieu de vacance favori ?</span>\n")
         @reponse = TexteEntree.creer('Reponse : ', true)
         @connexion = Gtk::Button.new(:label => 'Connexion', :use_underline => nil, :stock_id => nil)
         @connexion.set_relief(:none)
+        @back = Gtk::Button.new(:label => 'Retour', :use_underline => nil, :stock_id => nil)
+        @back.set_relief(:none)
 
     		@gMdpOublie.add(@pseudo.gTexteEntree, :expand => true, :fill => false)
           @gMdpOublie.add(@question, :expand => true, :fill => false)
@@ -29,6 +31,7 @@ class FMdpOublie < Page
     		@gMdpOublie.add(@newMdp.gTexteEntree, :expand => true, :fill => false)
 
     		@gMdpOublie.add(@connexion, :expand => true, :fill => false)
+        @gMdpOublie.add(@back, :expand => true, :fill => false)
 
     	@connexion.signal_connect('clicked') {
 
@@ -62,6 +65,13 @@ class FMdpOublie < Page
                @window.show_all
           end
     }
+
+          @back.signal_connect('clicked') {
+              self.supprimeMoi
+              suivant = FConnexion.new(@window, header, self, nil)
+              suivant.ajouteMoi
+              @window.show_all
+          }
 
         @frame.attach(@gMdpOublie,0,1,0,1)
 

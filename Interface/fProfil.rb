@@ -23,7 +23,9 @@ class FProfil < Page
 
 
 		@gP1 = Gtk::ButtonBox.new(:vertical)
+		@gP1.spacing = 100
 		@gP2 = Gtk::ButtonBox.new(:vertical)
+		@gP2.spacing = 100
 
 
 		@gProfil2 = Gtk::ButtonBox.new(:horizontal)

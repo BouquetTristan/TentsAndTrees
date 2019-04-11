@@ -1,16 +1,8 @@
-- pas de titre sur la fenetre
-- orthographe question secrete pas de "e" a "favori"
-- creation de compte : si l'utilisateur est deja enregistré, le message d'erreur s'affiche au mauvais endroit
+
 - possibilité de creer un compte avec mdp vide
 - decalage de l'interface lors d'un appui sur certains boutons d'aide
 
-- orthographe : lors du changement de mdp via profil, le message indiquant un mauvais mdp ou deja actuel est mal orthographié.
-De plus rien est affiché (ou aucune redirection) lors de la validation des changements
-
-
 - si on se deconnecte, on peut a nouveau acceder au menu via le bouton "menu" sans avoir besoin de se reconnecter, donnant des erreurs par la suite
-
-
 
 - via "mot de passe oublié" , si on lui donne un pseudo inconnu, il retourne " reponse a la question incorrecte".
 

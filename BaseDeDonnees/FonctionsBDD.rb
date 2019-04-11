@@ -33,11 +33,11 @@ def ouvrirBDDG()
 end
 
 def ouvrirBDDS()
-	return SQLite3::Database.new '../BaseDeDonnees/succes.db'
+	return SQLite3::Database.new './BaseDeDonnees/succes.db'
 end
 
 def ouvrirBDDCS()
-	return SQLite3::Database.new '../BaseDeDonnees/conditionSucces.db'
+	return SQLite3::Database.new './BaseDeDonnees/conditionSucces.db'
 end
 
 ###################
@@ -202,7 +202,7 @@ def creerSucces(unID)
 	idDuSucces = 0
 
 	# Lecture de l'ensemble du fichier
-	ligneFichier = IO.readlines("../Ressources/Succes.txt")
+	ligneFichier = IO.readlines("./Ressources/Succes.txt")
 	ligneFichier.each { |ligne| 
 		leSucces = ligne.split('><')
 

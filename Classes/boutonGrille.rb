@@ -1,5 +1,7 @@
 require 'gtk3'
 
+#====== La classe BoutonGrilleA caractéise la grille de jeu représenter à l'aide de bouton en guise de case sur l'interface
+
 class BoutonGrille
 
 

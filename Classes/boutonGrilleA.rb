@@ -12,12 +12,13 @@ class BoutonGrilleA
 	attr_reader :coordI
 	attr_reader :bouton
 	attr_reader :clic
+	attr_reader :chemin
 	attr_writer :bouton
 	attr_writer :clic
 
 
 	#Initialise le bouton (case)
-	# @param void		//ne prend aucun paramètre
+	# @param chemin		//Le chemin d'accès du dossier contenant les différentes images
 	# @return void		//ne renvoie rien
 	def initialize(chemin)
 		@bouton = Gtk::Button.new
@@ -42,6 +43,9 @@ class BoutonGrilleA
 		@box.set_label(valeur.to_s)
 	end
 
+	#Change l'image du bouton en fonction de l'état
+	# @param etat 		//un chiffre représentant l'état d'une case
+	# @return void		//ne renvoie rien
 	def chgEtat(etat)
 		if etat == 0
 			@image=(Gtk::Image.new(:file =>"#{@chemin}/terre.png", :size => :dialog))
@@ -65,7 +69,9 @@ class BoutonGrilleA
 		end
 	end
 
-
+	#Va checher l'image modifier avec un encadré rouge pour indiquer une erreur 
+	# @param etat 		//un chiffre représentant l'état d'une case
+	# @return void		//ne renvoie rien
 	def indiquerAide(etat)
 		if etat == 0
 			@image=(Gtk::Image.new(:file =>"#{@chemin}/terreS.png", :size => :dialog))
@@ -89,7 +95,7 @@ class BoutonGrilleA
 		end
 	end
 
-	attr_reader :chemin
+
 
 
 end

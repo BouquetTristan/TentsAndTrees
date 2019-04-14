@@ -183,11 +183,12 @@ def creerGrilleAventure(unIDNiveau, uneLigne)
 	idCourant = informationGrille.shift.to_i + unIDNiveau%100
 	difficulteCourante = informationGrille.shift
 	ligneCourante = informationGrille.shift
+	tempsCourant = informationAventure.shift.to_i
 
 	#puts "#{difficulteCourante}\n"
 	#puts "#{ligneCourante}\n"
 
-	bddG.execute("INSERT INTO grille (idGrille, niveauDifficulte, numeroLigne, idNiveau, pointGagnable, statut) VALUES (#{idCourant}, '#{difficulteCourante}', #{ligneCourante}, #{unIDNiveau}, 10, 'A faire')")
+	bddG.execute("INSERT INTO grille (idGrille, niveauDifficulte, numeroLigne, idNiveau, temps, pointGagnable, statut) VALUES (#{idCourant}, '#{difficulteCourante}', #{ligneCourante}, #{unIDNiveau}, #{tempsCourant}, 10, 'A faire')")
 
 end
 
@@ -556,8 +557,9 @@ def donnerInformationsGrille(unID, leNiveau, laGrille)
 	idGrilleBDD = (nbGrilleParNiveau + 1)*(leNiveau-1) + laGrille
 	difficulte = bddG.execute("SELECT niveauDifficulte FROM grille WHERE idGrille = #{idGrilleBDD} AND idNiveau = #{idNiveauBDD}").shift.shift
 	numLigne = bddG.execute("SELECT numeroLigne FROM grille WHERE idGrille = #{idGrilleBDD} AND idNiveau = #{idNiveauBDD}").shift.shift
+	tempsGrille = bddG.execute("SELECT temps FROM grille WHERE idGrille = #{idGrilleBDD} AND idNiveau = #{idNiveauBDD}").shift.shift
 
-	informationsGrille = [idGrilleBDD, difficulte, numLigne]
+	informationsGrille = [idGrilleBDD, difficulte, numLigne, tempsGrille]
 
 	return informationsGrille
 

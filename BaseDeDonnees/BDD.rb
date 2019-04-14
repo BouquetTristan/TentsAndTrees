@@ -80,6 +80,8 @@ resultatGrille = bddG.execute <<-SQL
 		numeroLigne INT,
 		idNiveau INT,
 
+		temps INT,
+
 		pointGagnable INT,
 		statut VARCHAR(8) CHECK(statut IN ('Fait', 'A faire')),
 

@@ -20,7 +20,7 @@ class Joueur
 		@mdp = unMDP
 		@rep = uneRepSec
 
-		@nbAides = nil #nbFeuilles
+		@creditAide = nil #nbFeuilles
 		@argent = nil  #nbEtoiles
 
 		@scoreGlobal = nil
@@ -42,7 +42,7 @@ class Joueur
 	attr_reader :scoreMoyen
 	attr_reader :scoreDifficile
 	attr_reader :nbPartiesJouees
-	attr_reader :nbAides
+	attr_reader :creditAide
 	attr_reader :argent
 
 	def inscrire()
@@ -143,7 +143,6 @@ class Joueur
 	end
 
 	def commencerAventure(unNiveau, uneGrille)
-
 		return donnerInformationsGrille(@id, unNiveau, uneGrille+1)
 	end
 
@@ -158,7 +157,7 @@ class Joueur
 	end
 
 	def finirLaPartie(uneGrille)
-		#Méthode qui modifie les bases de données après la fin de chaque partie
+		#Méthode qui modifie les bases de données après la fin de chaque partie du mode aventure
 		if grillePasFaite(@id, uneGrille) then
 			recupererArgentGrille(@id, uneGrille)
 			changerStatutGrille(@id, uneGrille)

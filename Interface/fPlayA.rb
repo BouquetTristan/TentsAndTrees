@@ -10,6 +10,8 @@ require './Classes/boutonAide.rb'
 require './Classes/boutonAideVerif.rb'
 require './Classes/boutonAideHerbe.rb'
 require './Classes/boutonAideTente.rb'
+require './Classes/boutonNbTentesColonne.rb'
+require './Classes/boutonNbTentesLigne.rb'
 require './Interface/fFin.rb'
 require './Classes/Score.rb'
 
@@ -35,14 +37,14 @@ class FPlayA < Page
 				@saison = 4
    		end
 
-   		@nbFeuilles = unJoueur.nbAides
-
         tabGrille = unJoueur.commencerAventure(@saison, nbGrille)
         puts tabGrille.at(0)
         puts tabGrille.at(1)
         puts tabGrille.at(2)
 
-        @nbFeuilles = unJoueur.nbAides
+        @nbFeuilles = unJoueur.creditAide
+
+        puts "feuilles : #{unJoueur.creditAide}"
 
 
     	@gHelp = Gtk::ButtonBox.new(:vertical)
@@ -50,11 +52,11 @@ class FPlayA < Page
     	@boxFeuilles=Gtk::ButtonBox.new(:horizontal)
 			@boxFeuilles.spacing=1
 			@img =(Gtk::Image.new(:file =>"./Assets/feuille.png"))
-			@profil = Gtk::Label.new().set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 15\"> #{@nbFeuilles.to_s}</span>")
+			@profil = Gtk::Label.new().set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 15\"> #{@nbFeuilles}</span>")
 			@boxFeuilles.add(@img)
 			@boxFeuilles.add(@profil, :expand => true, :fill => false)
 
-		@chrono = ChronoInverse.new(360)
+		@chrono = ChronoInverse.new(tabGrille.at(3))
 		@gHelp.add(@boxFeuilles)
 		
 
@@ -91,14 +93,32 @@ class FPlayA < Page
 
 	# Mise en place des indicateurs de la grille de jeu
 
-		for i in (0..taille-1)
-			for j in (0..taille-1)
-				lId = Gtk::Label.new(grilleDeJeu.nbTentesLigne[j].to_s)
-				@grille.attach(lId, j+1,j+2, 0,1)
-			end
-			lId2 = Gtk::Label.new(grilleDeJeu.nbTentesColonne[i].to_s)
-			@grille.attach(lId2,0,1, i+1,i+2)
+		tabBout=[]
+
+		for j in (0..taille-1)
+			tabBout[j] = BoutonNbTentesColonne.new(grilleDeJeu, @boutonGrille, j, "./Assets/#{uneSaison}", unJoueur)
+			tabBout[j].bouton.set_label(grilleDeJeu.nbTentesLigne[j].to_s)
+			@grille.attach(tabBout[j].bouton, j+1,j+2, 0,1)
+			
 		end
+
+		tabBout.each { |l|
+			l.bouton.signal_connect("clicked"){
+				l.chgEtat
+			}
+		}
+
+		for i in (0..taille-1)
+			tabBout[i] = BoutonNbTentesLigne.new(grilleDeJeu, @boutonGrille, i, "./Assets/#{uneSaison}", unJoueur)
+			tabBout[i].bouton.set_label(grilleDeJeu.nbTentesColonne[i].to_s)
+			@grille.attach(tabBout[i].bouton,0,1, i+1,i+2)
+		end
+
+		tabBout.each { |l|
+			l.bouton.signal_connect("clicked"){
+				l.chgEtat
+			}
+		}
 
 	# Création de la grille de jeu.
 	# Mise en place d'une matrice composant tous les boutons

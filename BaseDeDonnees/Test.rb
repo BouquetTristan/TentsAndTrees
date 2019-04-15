@@ -15,11 +15,10 @@ j3 = Joueur.creer("Yann", "YannouilleDu72", "Yayaya")
 j3.inscrire()
 
 
-#j2.desinscrire()
-
-j2.connecter()
 #j2.afficherStatistiques()
 j1.connecter()
 j1.acheterNiveau(0)
-j1.finirLaPartie(1)
+j1.finirLaPartie(2)
+j1.finirLaPartie(3)
+j1.finirLaPartie(4)
 j1.afficherStatistiques()

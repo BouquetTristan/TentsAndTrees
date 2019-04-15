@@ -408,7 +408,7 @@ def grillePasFaite(unID, unIDGrille)
 	borneInf = unID*100
 	borneSup = (unID+1)*100
 
-	statut = bddG.execute("SELECT statut FROM grille WHERE (idNiveau BETWEEN '#{borneInf}' AND '#{borneSup}') AND idGrille = #{unIDGrille}").shift
+	statut = bddG.execute("SELECT statut FROM grille WHERE (idNiveau BETWEEN '#{borneInf}' AND '#{borneSup}') AND idGrille = #{unIDGrille}").shift.shift
 
 	if statut == "A faire" then
 		return true
@@ -424,9 +424,9 @@ def niveauComplet(unID, unIDGrille)
 	borneInf = unID*100
 	borneSup = (unID+1)*100
 
-	niveauCourant = bddG.execute("SELECT idNiveau FROM grille WHERE idGrille = #{unIDGrille} AND (idNiveau BETWEEN '#{borneInf}' AND '#{borneSup}')")
+	niveauCourant = bddG.execute("SELECT idNiveau FROM grille WHERE idGrille = #{unIDGrille} AND (idNiveau BETWEEN '#{borneInf}' AND '#{borneSup}')").shift.shift
 
-	if bddG.execute("SELECT COUNT(idGrille) FROM grille WHERE idNiveau = #{niveauCourant} AND statut = 'Fait'") == bddG.execute("SELECT COUNT(idGrille) FROM grille WHERE idNiveau = #{idNiveauCourant}") then
+	if bddG.execute("SELECT COUNT(idGrille) FROM grille WHERE idNiveau = #{niveauCourant} AND statut = 'Fait'") == bddG.execute("SELECT COUNT(idGrille) FROM grille WHERE idNiveau = #{niveauCourant}") then
 		return true
 	end
 end

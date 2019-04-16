@@ -25,6 +25,8 @@ class FConnexion < Page
 
           @pseudo = TexteEntree.creer('Pseudo : ',false)
           @mdp = TexteEntree.creer('Mot de passe : ',true)
+          
+          @mdp.entree.set_visibility(:true)
 
           @creaC = Gtk::Button.new(:label => 'Creer un compte', :use_underline => nil, :stock_id => nil)
           @creaC.set_relief(:none)

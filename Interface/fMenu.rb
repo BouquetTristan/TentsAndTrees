@@ -14,29 +14,16 @@ class FMenu < Page
      	super(monApp, :vertical, header,  anciennePage, unJoueur)
 
         @frame = Gtk::Table.new(1,1,false)
-    		@gMenu = Gtk::Table.new(1,2,false)
-        #@gMenu.spacing = 10
-
-    		@ghead = Gtk::Table.new(1,2,false)
+    		@gMenu = Gtk::Table.new(1,4,false)
         
-    			@option = Gtk::Button.new()
-          @option.set_relief(:none)
-    			@profil = Gtk::Button.new()
-          @profil.set_relief(:none)
+    		@profil = Gtk::Button.new()
+        @profil.set_relief(:none)
 
-          @imgP=(Gtk::Image.new(:file =>"./Assets/profil.png"))
-          @profil.set_image(@imgP)
-          focus_hadjustment=(:start)
+        @imgP=(Gtk::Image.new(:file =>"./Assets/profil.png"))
+        @profil.set_image(@imgP)
+        focus_hadjustment=(:start)
 
-          @imgO=(Gtk::Image.new(:file =>"./Assets/option.png"))
-          @option.set_image(@imgO)
-          focus_hadjustment=(:start)
-
-    			@ghead.attach(@option, 0,1,0,1)
-    			@ghead.attach(@profil, 1,2,0,1)
-        @gMenu.attach(@ghead, 0,1,0,1)
-
-        @tMenu = Gtk::Table.new(1,3,false)
+        @gMenu.attach(@profil, 0,1,0,1)
 
     		@play = Gtk::Button.new(:label => 'Jouer', :use_underline => nil, :stock_id => nil)
         @play.set_relief(:none)
@@ -45,18 +32,10 @@ class FMenu < Page
     		@score = Gtk::Button.new(:label => 'Classement', :use_underline => nil, :stock_id => nil)
         @score.set_relief(:none)
 
-    		@tMenu.attach(@play, 0,1,0,1)
-    		@tMenu.attach(@didac, 0,1,1,2)
-    		@tMenu.attach(@score, 0,1,2,3)
+    		@gMenu.attach(@play, 0,1,1,2)
+    		@gMenu.attach(@didac, 0,1,2,3)
+    		@gMenu.attach(@score, 0,1,3,4)
 
-        @gMenu.attach(@tMenu, 0,1,1,2)
-
-
-        @option.signal_connect('clicked') {
-               #self.supprimeMoi
-               #FPlay.construire(fenetre, 8)
-               #@window.show_all
-        }
         @profil.signal_connect('clicked') {
                self.supprimeMoi
                suivant = FProfil.new(@window, header, self, unJoueur)

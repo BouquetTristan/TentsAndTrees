@@ -105,6 +105,17 @@ class FPlayA < Page
 		tabBout.each { |l|
 			l.bouton.signal_connect("clicked"){
 				l.chgEtat
+				if (grilleDeJeu.observateur())
+					unJoueur.finirLaPartie(tabGrille.at(0))
+					unJoueur.actualiser
+					@chrono.cFin
+					@chrono.cRaz
+					sleep(1)
+					self.supprimeMoi
+		  	        	menu = FFin.new(@window, @header, self, unJoueur, "gagner")
+		  	        	menu.ajouteMoi
+		  	        	@window.show_all
+				end
 			}
 		}
 
@@ -117,6 +128,17 @@ class FPlayA < Page
 		tabBout.each { |l|
 			l.bouton.signal_connect("clicked"){
 				l.chgEtat
+				if (grilleDeJeu.observateur())
+					unJoueur.finirLaPartie(tabGrille.at(0))
+					unJoueur.actualiser
+					@chrono.cFin
+					@chrono.cRaz
+					sleep(1)
+					self.supprimeMoi
+		  	        	menu = FFin.new(@window, @header, self, unJoueur, "gagner")
+		  	        	menu.ajouteMoi
+		  	        	@window.show_all
+				end
 			}
 		}
 
@@ -159,6 +181,7 @@ class FPlayA < Page
 						
 						if (grilleDeJeu.observateur())
 							unJoueur.finirLaPartie(tabGrille.at(0))
+							unJoueur.actualiser
 							@chrono.cFin
 							@chrono.cRaz
 							sleep(1)

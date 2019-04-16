@@ -77,6 +77,29 @@ class FPlay < Page
 		tabBout.each { |l|
 			l.bouton.signal_connect("clicked"){
 				l.chgEtat
+				if (grilleDeJeu.observateur())
+					@score = Score.creer(difficulte, @nbAidesUtilises)
+					if(compet)
+						if(difficulte == "Facile")
+							unJoueur.modifierInformationsFinDePartie(@score.calculerScore((300-@chrono.chrono)), difficulte, @nbAidesUtilises)
+						end
+						if(difficulte == "Moyenne")
+								unJoueur.modifierInformationsFinDePartie(@score.calculerScore((180-@chrono.chrono)), difficulte, @nbAidesUtilises)
+						end
+						if(difficulte == "Difficile")
+									unJoueur.modifierInformationsFinDePartie(@score.calculerScore((120-@chrono.chrono)), difficulte, @nbAidesUtilises)
+						end
+						
+					end
+					
+					@chrono.cFin
+					@chrono.cRaz
+					sleep(1)
+					self.supprimeMoi
+		  	        	menu = FFin.new(@window, @header, self, unJoueur, "gagner")
+		  	        	menu.ajouteMoi
+		  	        	@window.show_all
+				end
 			}
 		}
 
@@ -89,6 +112,29 @@ class FPlay < Page
 		tabBout.each { |l|
 			l.bouton.signal_connect("clicked"){
 				l.chgEtat
+				if (grilleDeJeu.observateur())
+					@score = Score.creer(difficulte, @nbAidesUtilises)
+					if(compet)
+						if(difficulte == "Facile")
+							unJoueur.modifierInformationsFinDePartie(@score.calculerScore((300-@chrono.chrono)), difficulte, @nbAidesUtilises)
+						end
+						if(difficulte == "Moyenne")
+								unJoueur.modifierInformationsFinDePartie(@score.calculerScore((180-@chrono.chrono)), difficulte, @nbAidesUtilises)
+						end
+						if(difficulte == "Difficile")
+									unJoueur.modifierInformationsFinDePartie(@score.calculerScore((120-@chrono.chrono)), difficulte, @nbAidesUtilises)
+						end
+						
+					end
+					
+					@chrono.cFin
+					@chrono.cRaz
+					sleep(1)
+					self.supprimeMoi
+		  	        	menu = FFin.new(@window, @header, self, unJoueur, "gagner")
+		  	        	menu.ajouteMoi
+		  	        	@window.show_all
+				end
 			}
 		}
 

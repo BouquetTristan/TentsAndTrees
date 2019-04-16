@@ -159,7 +159,6 @@ class Joueur
 	def finirLaPartie(uneGrille)
 	#Méthode qui modifie les bases de données après la fin de chaque partie du mode aventure
 		if grillePasFaite(@id, uneGrille) then
-			puts "blbl"
 			recupererArgentGrille(@id, uneGrille)
 			changerStatutGrille(@id, uneGrille)
 
@@ -217,6 +216,10 @@ class Joueur
 				validerSucces(i, @id)
 			end
 		end
+	end
+
+	def recupererScoreJoueurs()
+		return scoreDeTousLesJoueurs()
 	end
 
 

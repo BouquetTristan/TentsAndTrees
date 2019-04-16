@@ -100,6 +100,13 @@ def voirLesUtilisateurs()
 	end
 end
 
+def scoreDeTousLesJoueurs()
+	bddP = ouvrirBDDP()
+	tableauScore = bddP.execute("SELECT pseudo, scoreGlobal, scoreFacile, scoreMoyen, scoreDifficile FROM profil")
+
+	return tableauScore
+end
+
 def utilisateurExistant(unID)
 	bdd = ouvrirBDDP()
 	if bdd.execute("SELECT idJoueur FROM profil WHERE idJoueur = '#{unID}'").shift != nil

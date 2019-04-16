@@ -68,7 +68,7 @@ class FPlay < Page
 		tabBout=[]
 
 		for j in (0..taille-1)
-			tabBout[j] = BoutonNbTentesColonne.new(grilleDeJeu, @boutonGrille, j, "./Assets/#{uneSaison}", unJoueur)
+			tabBout[j] = BoutonNbTentesColonne.new(grilleDeJeu, @boutonGrille, j, "./Assets/Printemps", unJoueur)
 			tabBout[j].bouton.set_label(grilleDeJeu.nbTentesLigne[j].to_s)
 			@grille.attach(tabBout[j].bouton, j+1,j+2, 0,1)
 			
@@ -81,7 +81,7 @@ class FPlay < Page
 		}
 
 		for i in (0..taille-1)
-			tabBout[i] = BoutonNbTentesLigne.new(grilleDeJeu, @boutonGrille, i, "./Assets/#{uneSaison}", unJoueur)
+			tabBout[i] = BoutonNbTentesLigne.new(grilleDeJeu, @boutonGrille, i, "./Assets/Printemps", unJoueur)
 			tabBout[i].bouton.set_label(grilleDeJeu.nbTentesColonne[i].to_s)
 			@grille.attach(tabBout[i].bouton,0,1, i+1,i+2)
 		end

@@ -77,7 +77,7 @@ class FMenu < Page
         }
         @score.signal_connect('clicked') {
               self.supprimeMoi
-              suivant = FScore.new(@window, header, self, unJoueur)
+              suivant = FScore.new(@window, header, self, unJoueur, "facile")
               suivant.ajouteMoi
               @window.show_all 
         }

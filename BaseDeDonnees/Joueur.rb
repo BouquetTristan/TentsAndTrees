@@ -176,15 +176,15 @@ class Joueur
 
 
 	def modifierInformationsFinDePartie(unScore, uneDifficulte, creditAideUtilises)
-		if uneDifficulte == "GrillesFaciles" && unScore > @scoreFacile then
+		if uneDifficulte == "Facile" && unScore > @scoreFacile then
 			@scoreFacile = unScore
 			augmenterScoreFacile(@id, @scoreFacile)
 		end
-		if uneDifficulte == "GrillesMoyennes" && unScore > @scoreMoyen then
+		if uneDifficulte == "Moyenne" && unScore > @scoreMoyen then
 			@scoreMoyen = unScore
 			augmenterScoreMoyen(@id, @scoreMoyen)
 		end
-		if uneDifficulte == "GrillesDifficiles" && unScore > @scoreDifficile then
+		if uneDifficulte == "Difficile" && unScore > @scoreDifficile then
 			@scoreDifficile = unScore
 			augmenterScoreDifficile(@id, @scoreDifficile)
 		end

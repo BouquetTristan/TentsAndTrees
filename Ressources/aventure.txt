@@ -1,10 +1,10 @@
 1;Printemps;0;
-1;Facile;101;120
-2;Facile;271;120
-3;Facile;89;120
-4;Moyenne;167;200
-5;Facile;346;120
-6;Moyenne;367;200
+1;Facile;89;60
+2;Facile;101;90
+3;Facile;271;120
+4;Facile;346;120
+5;Moyenne;167;220
+6;Moyenne;367;220
 2;Ete;20;
 1;Facile;12;120
 2;Moyenne;71;200

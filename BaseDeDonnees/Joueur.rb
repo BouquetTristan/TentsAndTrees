@@ -44,6 +44,7 @@ class Joueur
 	attr_reader :nbPartiesJouees
 	attr_reader :creditAide
 	attr_reader :argent
+	attr_reader :niveaux
 
 	def inscrire()
 
@@ -154,6 +155,10 @@ class Joueur
 		else
 			return false
 		end
+	end
+
+	def niveauDeverouille(unNumeroNiveau)
+		return niveauDebloque(@id, unNumeroNiveau)
 	end
 
 	def finirLaPartie(uneGrille)

@@ -384,6 +384,20 @@ def payerNiveau(unID, unIDNiveau)
 	end
 end
 
+def niveauDebloque(unId, unIdNiveau)
+#Méthode pour vérifier qu'un niveau à été débloquer ou non
+	bdd = ouvrirBDDN()
+	idCourant = unId*100 + unIdNiveau+1
+	statut = bdd.execute("SELECT statut FROM niveau WHERE idNiveau = '#{idCourant}'").shift.shift
+
+	puts "statut #{statut.to_s}"
+
+	if statut == 'Déverouillé'
+		return true
+	end
+	return false
+end
+
 def changerStatutGrille(unID, unIDGrille)
 #Méthode pour changer le statut d'une grille d'un joueur de 'A faire' à 'Fait'
 	bddG = ouvrirBDDG()

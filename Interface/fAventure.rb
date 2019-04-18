@@ -32,10 +32,15 @@ class FAventure < Page
     	@level = Gtk::ButtonBox.new(:horizontal)
     	@level.layout = :spread
 
-		@print = BoutonSaison.new("Printemps", true)
-		@ete = BoutonSaison.new("Ete", false)
-		@autom = BoutonSaison.new("Automne", false)
-		@hiver = BoutonSaison.new("Hiver", false)
+		@print = BoutonSaison.new("Printemps", unJoueur)
+		@ete = BoutonSaison.new("Ete", unJoueur)
+		@autom = BoutonSaison.new("Automne", unJoueur)
+		@hiver = BoutonSaison.new("Hiver", unJoueur)
+
+		@print.actualiserImg
+		@ete.actualiserImg
+		@autom.actualiserImg
+		@hiver.actualiserImg
 
 		@level.add(@print.bouton, :expand => true, :fill => false)
 		@level.add(@ete.bouton, :expand => true, :fill => false)
@@ -53,24 +58,24 @@ class FAventure < Page
 		    }
 
 		@print.bouton.signal_connect('clicked') {
-			@print.debloquer(unJoueur)
-			@print.lancer(@window, @header, self, unJoueur)
+			@print.debloquer()
+			@print.lancer(@window, @header, self)
 		}
 
 
 		@ete.bouton.signal_connect('clicked') {
-			@ete.debloquer(unJoueur)
-			@ete.lancer(@window, @header, self, unJoueur)
+			@ete.debloquer()
+			@ete.lancer(@window, @header, self)
 		}
 
 		@autom.bouton.signal_connect('clicked') {
-			@autom.debloquer(unJoueur)
-			@autom.lancer(@window, @header, self, unJoueur)
+			@autom.debloquer()
+			@autom.lancer(@window, @header, self)
 		}
 
 		@hiver.bouton.signal_connect('clicked') {
-			@hiver.debloquer(unJoueur)
-			@hiver.lancer(@window, @header, self, unJoueur)
+			@hiver.debloquer()
+			@hiver.lancer(@window, @header, self)
 		}
 		
 

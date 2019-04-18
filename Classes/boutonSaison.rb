@@ -21,23 +21,17 @@ class BoutonSaison
 	# @param uneSaison		//Chaine de caracère eprésentant une des 4 saison (été/hiver/automne/pintemps)
 	# @param cliquable		//Booléen pou définir si le bouton sera cliquable ou non
 	# @return void			//ne renvoie rien
-	def initialize(uneSaison, cliquable)
+	def initialize(uneSaison, unJoueur)
 		@bouton = Gtk::Button.new()
         focus_hadjustment=(:start)
-		@cliquable = cliquable
+		
 		@saison = uneSaison
-		case @cliquable
-			when true then
-				@img=(Gtk::Image.new(:file =>"./Assets/Vignette#{@saison}.png"))
-		        @bouton.set_image(@img)
-			when false then
-				@img=(Gtk::Image.new(:file =>"./Assets/Vignette#{@saison}V.png"))
-		        @bouton.set_image(@img)
-		end
+		@joueur = unJoueur
 
 		case @saison
 			when "Printemps" then
 				@numSaison = 0
+				@joueur.acheterNiveau(@numSaison)
 			when "Ete" then
 				@numSaison = 1
 			when "Automne" then
@@ -45,15 +39,31 @@ class BoutonSaison
 			when "Hiver" then
 				@numSaison = 3
    		end
+		@img=(Gtk::Image.new(:file =>"./Assets/Vignette#{@saison}V.png"))
+        @bouton.set_image(@img)
+
+        @cliquable = @joueur.niveauDeverouille(@numSaison)
    		puts @saison
 	end
+
+	def actualiserImg()
+		if (@cliquable)
+			@img=(Gtk::Image.new(:file =>"./Assets/Vignette#{@saison}.png"))
+	        @bouton.set_image(@img)
+	    end
+	end
+
 
 	#Débloque un bouton en le rendant cliquable pour un joueur donné
 	# @param unJoueur		//Joueur ayant débloqué le bouon
 	# @return void			//ne renvoie rien
-	def debloquer(unJoueur)
+	def debloquer()
+		puts @saison
+		puts @joueur.niveauDeverouille(@numSaison)
+		puts "cliquable : #{@cliquable}"
+
 		if (@cliquable == false)
-			@cliquable = unJoueur.acheterNiveau(@numSaison)
+			@cliquable = @joueur.acheterNiveau(@numSaison)
 		end
 		if (@cliquable)
 			@img=(Gtk::Image.new(:file =>"./Assets/Vignette#{@saison}.png"))
@@ -67,10 +77,10 @@ class BoutonSaison
 	# @param unePrecedente		//La fenêtre précédente pour destruction
 	# @param unJoueur		//Le joueur concerné
 	# @return void			//ne renvoie rien
-	def lancer(uneApp, unHeader, unePrecedente, unJoueur)
+	def lancer(uneApp, unHeader, unePrecedente)
 		if (@cliquable == true)
 			unePrecedente.supprimeMoi
-			suivante = FSaison.new(uneApp, unHeader, unePrecedente, unJoueur, @saison)
+			suivante = FSaison.new(uneApp, unHeader, unePrecedente, @joueur, @saison)
 			suivante.ajouteMoi
 			uneApp.show_all
 		end

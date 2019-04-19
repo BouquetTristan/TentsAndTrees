@@ -390,8 +390,6 @@ def niveauDebloque(unId, unIdNiveau)
 	idCourant = unId*100 + unIdNiveau+1
 	statut = bdd.execute("SELECT statut FROM niveau WHERE idNiveau = '#{idCourant}'").shift.shift
 
-	puts "statut #{statut.to_s}"
-
 	if statut == 'Déverouillé'
 		return true
 	end
@@ -463,7 +461,7 @@ def inspecterSucces(unIDS, unID)
 	uneDonnee = bddCS.execute("SELECT donnee FROM conditionSucces WHERE idSucces = #{unIDS}").shift.shift
 	uneTable = bddCS.execute("SELECT tableCondition FROM conditionSucces WHERE idSucces = #{unIDS}").shift.shift
 	uneValeur = bddCS.execute("SELECT valeurCondition FROM conditionSucces WHERE idSucces = #{unIDS}").shift.shift
-	
+
 	verifierSucces(unIDS, unID, uneDonnee, uneTable, uneValeur)
 end
 
@@ -499,6 +497,23 @@ def validerSucces(unIDS, unID)
 	bddS.execute("UPDATE succes SET statut = 'Fait' WHERE idSucces = #{unIDS} AND idJoueur = #{unID}")
 end
 
+def voirSucces(unID)
+	bddS = ouvrirBDDS()
+
+	informationSucces = Array.new()
+
+	for unIDS in 0..11
+		nom = bddS.execute("SELECT nom FROM succes WHERE idSucces = #{unIDS} AND idJoueur = #{unID}").shift.shift
+		description = bddS.execute("SELECT description FROM succes WHERE idSucces = #{unIDS} AND idJoueur = #{unID}").shift.shift
+		statut = bddS.execute("SELECT statut FROM succes WHERE idSucces = #{unIDS} AND idJoueur = #{unID}").shift.shift
+
+		informationsCourantes = [nom, description, statut]
+		informationSucces.push(informationsCourantes)
+	end
+
+	return informationSucces
+
+end
 ################
 
 ## Méthode pour voir les différentes informations d'un compte en utilisant l'id
@@ -530,7 +545,7 @@ def recupererInformation(unID, iterateur)
 	when 9 # Renvoie l'argent du joueur
 		return bddP.execute("SELECT argent FROM profil WHERE idJoueur = #{unID}").shift.shift
 	when 10 # Renvoie un array d'un array de 2 paramètres (String nom et String état)
-		
+
 		borneInf = unID*100
 		borneSup = (unID+1)*100
 		taille = bddN.execute("SELECT COUNT(nomNiveau) FROM niveau WHERE idNiveau BETWEEN '#{borneInf}' AND '#{borneSup}'").shift.shift
@@ -547,9 +562,7 @@ def recupererInformation(unID, iterateur)
 				nbGrilleAccomplie = bddG.execute("SELECT COUNT(idGrille) FROM grille WHERE idNiveau = #{idDuNiveau} AND statut = 'Fait'").shift.shift
 				statutCourantNiveau = "#{nbGrilleAccomplie}/#{nbGrilleParNiveau}"
 			end
-	
-			#puts " #{nomCourantNiveau}\n"
-			#puts " #{statutCourantNiveau}\n"
+
 			informationsCourantes = [idDuNiveau, nomCourantNiveau, statutCourantNiveau]
 			informations.push(informationsCourantes)
 		end

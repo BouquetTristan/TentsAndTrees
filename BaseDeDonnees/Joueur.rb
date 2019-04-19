@@ -223,6 +223,10 @@ class Joueur
 		end
 	end
 
+	def recupererSucces()
+		return voirSucces(@id)
+	end
+
 	def recupererScoreJoueurs()
 		return scoreDeTousLesJoueurs()
 	end

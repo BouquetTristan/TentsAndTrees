@@ -144,7 +144,7 @@ class Joueur
 	end
 
 	def commencerAventure(unNiveau, uneGrille)
-		return donnerInformationsGrille(@id, unNiveau, uneGrille+1)
+		return donnerInformationsGrille(@id, unNiveau, uneGrille)
 	end
 
 	def acheterNiveau(unNumeroNiveau)

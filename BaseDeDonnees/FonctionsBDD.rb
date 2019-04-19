@@ -192,6 +192,8 @@ def creerGrilleAventure(unIDNiveau, uneLigne)
 	ligneCourante = informationGrille.shift
 	tempsCourant = informationGrille.shift.to_i
 
+	puts "#{unIDNiveau} #{idCourant} #{difficulteCourante} #{ligneCourante} #{tempsCourant}"
+
 	#puts "#{difficulteCourante}\n"
 	#puts "#{ligneCourante}\n"
 
@@ -588,12 +590,11 @@ def donnerInformationsGrille(unID, leNiveau, laGrille)
 
 	nbGrilleParNiveau = bddG.execute("SELECT COUNT(idGrille) FROM grille WHERE idNiveau = #{idNiveauBDD}").shift.shift
 
-	idGrilleBDD = (nbGrilleParNiveau + 1)*(leNiveau-1) + laGrille
-	difficulte = bddG.execute("SELECT niveauDifficulte FROM grille WHERE idGrille = #{idGrilleBDD} AND idNiveau = #{idNiveauBDD}").shift.shift
-	numLigne = bddG.execute("SELECT numeroLigne FROM grille WHERE idGrille = #{idGrilleBDD} AND idNiveau = #{idNiveauBDD}").shift.shift
-	tempsGrille = bddG.execute("SELECT temps FROM grille WHERE idGrille = #{idGrilleBDD} AND idNiveau = #{idNiveauBDD}").shift.shift
+	difficulte = bddG.execute("SELECT niveauDifficulte FROM grille WHERE idGrille = #{laGrille} AND idNiveau = #{idNiveauBDD}").shift.shift
+	numLigne = bddG.execute("SELECT numeroLigne FROM grille WHERE idGrille = #{laGrille} AND idNiveau = #{idNiveauBDD}").shift.shift
+	tempsGrille = bddG.execute("SELECT temps FROM grille WHERE idGrille = #{laGrille} AND idNiveau = #{idNiveauBDD}").shift.shift
 
-	informationsGrille = [idGrilleBDD, difficulte, numLigne, tempsGrille]
+	informationsGrille = [laGrille, difficulte, numLigne, tempsGrille]
 
 	return informationsGrille
 end

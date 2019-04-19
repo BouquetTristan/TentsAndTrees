@@ -65,7 +65,7 @@ class FPlayA < Page
 			@chrono.cStart
 
 
-			if (@chrono.fin == true)
+			if (@chrono.chrono <= 0)
 				
 				self.supprimeMoi
 	   	   		menu = FFin.new(@window, @header, self, unJoueur, "perdu")

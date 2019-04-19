@@ -187,7 +187,7 @@ def creerGrilleAventure(unIDNiveau, uneLigne)
 	#puts "#{ligneGrille}\n"
 	informationGrille = ligneGrille.split(';')
 
-	idCourant = informationGrille.shift.to_i + unIDNiveau%100
+	idCourant = informationGrille.shift.to_i
 	difficulteCourante = informationGrille.shift
 	ligneCourante = informationGrille.shift
 	tempsCourant = informationGrille.shift.to_i

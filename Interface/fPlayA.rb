@@ -60,7 +60,7 @@ class FPlayA < Page
 		@gHelp.add(@boxFeuilles)
 		
 
-		thr=Thread.new do
+		thr=Thread.new{
 			#sleep(2)
 			@chrono.cStart
 
@@ -72,7 +72,7 @@ class FPlayA < Page
 	   		   	menu.ajouteMoi
 	  	 	   	@window.show_all
 	  	    end
- 		end				
+ 		}			
 		
         @frame = Gtk::Table.new(1,1,false)
 
@@ -106,11 +106,11 @@ class FPlayA < Page
 			l.bouton.signal_connect("clicked"){
 				l.chgEtat
 				if (grilleDeJeu.observateur())
-					unJoueur.finirLaPartie(tabGrille.at(0))
+					unJoueur.finirLaPartie(@saison, tabGrille.at(0))
 					unJoueur.actualiser
-					@chrono.cFin
 					@chrono.cRaz
 					sleep(1)
+					thr.kill
 					self.supprimeMoi
 		  	        	menu = FFin.new(@window, @header, self, unJoueur, "gagner")
 		  	        	menu.ajouteMoi
@@ -129,9 +129,10 @@ class FPlayA < Page
 			l.bouton.signal_connect("clicked"){
 				l.chgEtat
 				if (grilleDeJeu.observateur())
-					unJoueur.finirLaPartie(tabGrille.at(0))
+					unJoueur.finirLaPartie(@saison, tabGrille.at(0))
 					unJoueur.actualiser
 					@chrono.cRaz
+					thr.kill
 					sleep(1)
 					self.supprimeMoi
 		  	        	menu = FFin.new(@window, @header, self, unJoueur, "gagner")
@@ -179,10 +180,9 @@ class FPlayA < Page
 						grilleDeJeu.enregistrerFichier(unJoueur.pseudo, nil)
 						
 						if (grilleDeJeu.observateur())
-							unJoueur.finirLaPartie(tabGrille.at(0))
+							unJoueur.finirLaPartie(@saison, tabGrille.at(0))
 							unJoueur.actualiser
-							@chrono.cFin
-							@chrono.cRaz
+							thr.kill
 							sleep(1)
 							self.supprimeMoi
 				  	        	menu = FFin.new(@window, @header, self, unJoueur, "gagner")
@@ -199,6 +199,7 @@ class FPlayA < Page
 		@header.btnMenu.signal_connect('clicked') {
 			# @chrono.cFin
 			# @chrono.cRaz
+			thr.kill
 	        self.supprimeMoi
 	        menu = FMenu.new(@window, @header, self, unJoueur)
 	        menu.ajouteMoi

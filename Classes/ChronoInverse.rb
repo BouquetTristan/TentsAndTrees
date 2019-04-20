@@ -51,11 +51,13 @@ class ChronoInverse
 
 
 			end
-			if @chrono <= 0
-				@chrono=0
-				@lChrono.set_markup(("<span foreground=\"#FFFFFF\" font-desc=\"Courier New bold 20\">"+@chrono.to_s+"</span>\n"))
+			@chrono=0
+			@lChrono.set_markup(("<span foreground=\"#FFFFFF\" font-desc=\"Courier New bold 20\">"+@chrono.to_s+"</span>\n"))
 
-			end
+			self.supprimeMoi
+   	   		menu = FFin.new(@window, @header, self, unJoueur, "perdu")
+   		   	menu.ajouteMoi
+  	 	   	@window.show_all
 
 	end
 

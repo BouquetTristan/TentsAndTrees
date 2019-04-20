@@ -1,5 +1,6 @@
 task default: %w[main]
 
 task :main do
-  ruby "Main.rb"
+	ruby "BDD.rb"
+	ruby "Main.rb"
 end

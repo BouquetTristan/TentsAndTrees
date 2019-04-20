@@ -8,14 +8,12 @@ class ChronoInverse
 	# @start		: boolean en false au lancement du chrono et passe en true lors du premier tosu de boucle.
 	# @pause		: boolean met en pause le chrono
 	# @chrono		: variable qui stockera le nombre de seconde actuel et qui servira à afficher.
-	# @fin		: boolean ture pour arrêter le chrono.
 	# @lChrono  : label affichant le chono.
 
 	attr_accessor :start
 	attr_accessor :pause
 	attr_accessor :chrono
 	attr_accessor :lChrono
-	attr_accessor :fin
 
 
 	#initialise les variables à 0 et a false et mémorise le temps initial dans la variable @initialize
@@ -36,7 +34,7 @@ class ChronoInverse
 	def cStart
 
 
-			while @fin != true
+			while @chrono >= 0
 
 						if @start==false
 							@compteur=@initial
@@ -47,16 +45,15 @@ class ChronoInverse
 						if @pause != true
 							sleep(1)
 							@chrono -= 1
-
-							if @chrono <= 0
-								@chrono=0
-								@lChrono.set_markup(("<span foreground=\"#FFFFFF\" font-desc=\"Courier New bold 20\">"+@chrono.to_s+"</span>\n"))
-								self.cFin()
-							end
 						end
 
 						@lChrono.set_markup(("<span foreground=\"#FFFFFF\" font-desc=\"Courier New bold 20\">"+@chrono.to_s+"</span>\n"))
 
+
+			end
+			if @chrono <= 0
+				@chrono=0
+				@lChrono.set_markup(("<span foreground=\"#FFFFFF\" font-desc=\"Courier New bold 20\">"+@chrono.to_s+"</span>\n"))
 
 			end
 
@@ -88,12 +85,12 @@ class ChronoInverse
 		@chrono-=n
 	end
 
-	#met la variable @fin sur true ce qui à pour effet de mettre un terme au chrono
-	# @param void		//ne prend aucun paramètre
-	# @return void		//ne renvoie rien
-	def cFin()
-		@fin=true
-	end
+	# #met la variable @fin sur true ce qui à pour effet de mettre un terme au chrono
+	# # @param void		//ne prend aucun paramètre
+	# # @return void		//ne renvoie rien
+	#def cFin()
+	#	@fin=true
+	#end
 
 	#Traduction des secondes en heures/minutes/secondes
 	# @param void		//ne prend aucun paramètre

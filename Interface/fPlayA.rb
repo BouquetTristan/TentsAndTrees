@@ -131,7 +131,6 @@ class FPlayA < Page
 				if (grilleDeJeu.observateur())
 					unJoueur.finirLaPartie(tabGrille.at(0))
 					unJoueur.actualiser
-					@chrono.cFin
 					@chrono.cRaz
 					sleep(1)
 					self.supprimeMoi

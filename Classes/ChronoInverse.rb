@@ -88,9 +88,9 @@ class ChronoInverse
 	# #met la variable @fin sur true ce qui à pour effet de mettre un terme au chrono
 	# # @param void		//ne prend aucun paramètre
 	# # @return void		//ne renvoie rien
-	 def cFin()
-	 	@fin=true
-	 end
+	#def cFin()
+	#	@fin=true
+	#end
 
 	#Traduction des secondes en heures/minutes/secondes
 	# @param void		//ne prend aucun paramètre

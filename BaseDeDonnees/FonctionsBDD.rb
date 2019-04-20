@@ -398,38 +398,35 @@ def niveauDebloque(unId, unIdNiveau)
 	return false
 end
 
-def changerStatutGrille(unID, unIDGrille)
+def changerStatutGrille(unID, unNiveau, unIDGrille)
 #Méthode pour changer le statut d'une grille d'un joueur de 'A faire' à 'Fait'
 	bddG = ouvrirBDDG()
 
-	borneInf = unID*100
-	borneSup = (unID+1)*100
-
-	bddG.execute("UPDATE grille SET statut = 'Fait' WHERE (idNiveau BETWEEN '#{borneInf}' AND '#{borneSup}') AND idGrille = #{unIDGrille}")
+	unIDNiveau = unID*100 + unNiveau
+	
+	bddG.execute("UPDATE grille SET statut = 'Fait' WHERE idNiveau = #{unIDNiveau} AND idGrille = #{unIDGrille}")
 
 end
 
-def recupererArgentGrille(unID, unIDGrille)
+def recupererArgentGrille(unID, unNiveau, unIDGrille)
 #Méthode pour donner l'argent d'une grille à un joueur
 	bddP = ouvrirBDDP()
 	bddG = ouvrirBDDG()
 
-	borneInf = unID*100
-	borneSup = (unID+1)*100
-
-	nbPoint = bddG.execute("SELECT pointGagnable FROM grille WHERE (idNiveau BETWEEN '#{borneInf}' AND '#{borneSup}') AND idGrille = #{unIDGrille}").shift.shift
+	unIDNiveau = unID*100 + unNiveau
+	
+	nbPoint = bddG.execute("SELECT pointGagnable FROM grille WHERE idNiveau = #{unIDNiveau} AND idGrille = #{unIDGrille}").shift.shift
 	argentDuJoueur = nbPoint + bddP.execute("SELECT argent FROM profil WHERE idJoueur = #{unID}").shift.shift
 	bddP.execute("UPDATE profil SET argent = #{argentDuJoueur} WHERE idJoueur = #{unID}")
 end
 
-def grillePasFaite(unID, unIDGrille)
+def grillePasFaite(unID, unNiveau, unIDGrille)
 #Méthode pour vérifier si une grille a été faite ou non
 	bddG = ouvrirBDDG()
 
-	borneInf = unID*100
-	borneSup = (unID+1)*100
+	unIDNiveau = unID*100 + unNiveau
 
-	statut = bddG.execute("SELECT statut FROM grille WHERE (idNiveau BETWEEN '#{borneInf}' AND '#{borneSup}') AND idGrille = #{unIDGrille}").shift.shift
+	statut = bddG.execute("SELECT statut FROM grille WHERE idNiveau = #{unIDNiveau} AND idGrille = #{unIDGrille}").shift.shift
 
 	if statut == "A faire" then
 		return true
@@ -438,14 +435,13 @@ def grillePasFaite(unID, unIDGrille)
 	end
 end
 
-def niveauComplet(unID, unIDGrille)
+def niveauComplet(unID, unNiveau, unIDGrille)
 #Méthode pour vérifier si le niveau où se trouve la grille est complet
 	bddG = ouvrirBDDG()
 
-	borneInf = unID*100
-	borneSup = (unID+1)*100
+	unIDNiveau = unID*100 + unNiveau
 
-	niveauCourant = bddG.execute("SELECT idNiveau FROM grille WHERE idGrille = #{unIDGrille} AND (idNiveau BETWEEN '#{borneInf}' AND '#{borneSup}')").shift.shift
+	niveauCourant = bddG.execute("SELECT idNiveau FROM grille WHERE idGrille = #{unIDGrille} AND idNiveau = #{unIDNiveau}").shift.shift
 
 	if bddG.execute("SELECT COUNT(idGrille) FROM grille WHERE idNiveau = #{niveauCourant} AND statut = 'Fait'") == bddG.execute("SELECT COUNT(idGrille) FROM grille WHERE idNiveau = #{niveauCourant}") then
 		return true

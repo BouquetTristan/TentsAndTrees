@@ -161,13 +161,13 @@ class Joueur
 		return niveauDebloque(@id, unNumeroNiveau)
 	end
 
-	def finirLaPartie(uneGrille)
+	def finirLaPartie(unNiveau, uneGrille)
 	#Méthode qui modifie les bases de données après la fin de chaque partie du mode aventure
-		if grillePasFaite(@id, uneGrille) then
-			recupererArgentGrille(@id, uneGrille)
-			changerStatutGrille(@id, uneGrille)
+		if grillePasFaite(@id, unNiveau, uneGrille) then
+			recupererArgentGrille(@id, unNiveau, uneGrille)
+			changerStatutGrille(@id, unNiveau, uneGrille)
 
-			if niveauComplet(@id, uneGrille) then
+			if niveauComplet(@id, unNiveau, uneGrille) then
 				augmentercreditAide(@id, 4)	
 			end
 

@@ -8,14 +8,46 @@
 require 'sqlite3'
 require 'digest'
 
+dbProfil = './BaseDeDonnees/profil.db'
+dbAventure = './BaseDeDonnees/aventure.db'
+dbNiveau = './BaseDeDonnees/niveau.db'
+dbGrille = './BaseDeDonnees/grille.db'
+dbSucces = './BaseDeDonnees/succes.db'
+dbConditionsS = './BaseDeDonnees/conditionSucces.db'
+
 # Ouverture de la base de donnée SQLite 3
-if (!File.exist?('./BaseDeDonnees/profil.db'))
-	bddP = SQLite3::Database.new './BaseDeDonnees/profil.db'
-	bddA = SQLite3::Database.new './BaseDeDonnees/aventure.db'
-	bddN = SQLite3::Database.new './BaseDeDonnees/niveau.db'
-	bddG = SQLite3::Database.new './BaseDeDonnees/grille.db'
-	bddS = SQLite3::Database.new './BaseDeDonnees/succes.db'
-	bddCS = SQLite3::Database.new './BaseDeDonnees/conditionSucces.db'
+if (!File.exist?(dbProfil) || !File.exist?(dbAventure) || !File.exist?(dbNiveau) || !File.exist?(dbGrille) || !File.exist?(dbSucces) || !File.exist?(dbConditionsS))
+	
+	if File.exist?(dbProfil)
+		File.delete(dbProfil)
+	end
+
+	if File.exist?(dbAventure)
+		File.delete(dbAventure)
+	end
+
+	if File.exist?(dbNiveau)
+		File.delete(dbNiveau)
+	end
+
+	if File.exist?(dbGrille)
+		File.delete(dbGrille)
+	end
+
+	if File.exist?(dbSucces)
+		File.delete(dbSucces)
+	end
+
+	if File.exist?(dbConditionsS)
+		File.delete(dbConditionsS)
+	end
+
+	bddP = SQLite3::Database.new dbProfil
+	bddA = SQLite3::Database.new dbAventure
+	bddN = SQLite3::Database.new dbNiveau
+	bddG = SQLite3::Database.new dbGrille
+	bddS = SQLite3::Database.new dbSucces
+	bddCS = SQLite3::Database.new dbConditionsS
 
 
 	# Créer la table du profil si elle n'existe pas

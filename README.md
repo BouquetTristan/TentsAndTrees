@@ -1,4 +1,4 @@
-﻿<img src="./Assets/ImgPresentation.jpg" width="1500" align="center">
+﻿<img src="./Assets/ImgGameA.jpg" width="1500" align="center">
 
 # Des arbres et des tentes
 

@@ -64,27 +64,27 @@ class FInter < Page
 
 		@header.btnMenu.signal_connect('clicked') {
 	        self.supprimeMoi
-	        menu = FMenu.new(@window, @header, self, unJoueur)
+	        menu = FMenu.new(monApp, @header, self, unJoueur)
 	        menu.ajouteMoi
 	        @window.show_all
     	}
 
 		@next.signal_connect('clicked') {
 			self.supprimeMoi
-			suivant=FInter.new(@window, header, self, unJoueur, difficulte ,comp)
+			suivant=FInter.new(monApp, header, self, unJoueur, difficulte ,comp)
 			suivant.ajouteMoi
 			@window.show_all
 		}
 
 		@play.signal_connect('clicked') {
 			self.supprimeMoi
-			suivant=FPlay.new(@window, header, self, unJoueur, difficulte, grilleDeJeu ,comp)
+			suivant=FPlay.new(monApp, header, self, unJoueur, difficulte, grilleDeJeu ,comp)
 			suivant.ajouteMoi
 			@window.show_all
 		}
 
-
-		@bg=(Gtk::Image.new(:file =>"./Assets/ImgGame.jpg"))
+ 		@pix = (GdkPixbuf::Pixbuf.new(:file=>"./Assets/ImgGame.jpg",:width=> monApp.width, :height=> monApp.height))
+        @bg=(Gtk::Image.new(:pixbuf => @pix))
         @frame.attach(@bg,0,1,0,1)
 
         self.add(@frame)

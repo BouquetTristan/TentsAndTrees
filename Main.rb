@@ -7,6 +7,7 @@ require 'gtk3'
 
 require './Interface/fConnexion.rb'
 require './Classes/Header.rb'
+require './Classes/App.rb'
 
 #Gtk.init
 
@@ -16,27 +17,25 @@ def onDestroy
 end
 
 def configureMonApp(uneApp)
+
   ##
   # Taille de la fenêtre
-	uneApp.set_default_size(1400,859)
+	uneApp.window.set_default_size(uneApp.width,uneApp.height)
 	##
-  # Réglage de la bordure
-	uneApp.border_width=5
-	##
+
   # On ne peut pas redimensionner
-	uneApp.set_resizable(false)
+	uneApp.window.set_resizable(false)
 	##
   #L'application est toujours centrée
-	uneApp.set_window_position(Gtk::WindowPosition::CENTER_ALWAYS)
+	uneApp.window.set_window_position(Gtk::WindowPosition::CENTER_ALWAYS)
 end
 
 if ARGV.size.eql?(0) then
-
-	  monApp = Gtk::Window.new
+	  monApp = App.new(Gtk::Window.new, 1400,859)
 	  configureMonApp(monApp)
 
 	  # Titre de la fenêtre
-		header = Header.new(monApp)
+	  header = Header.new(monApp.window)
 
 	  ##
 	  # Box principale
@@ -44,17 +43,19 @@ if ARGV.size.eql?(0) then
 
 	  page.ajouteMoi
 
+
+
 	  ######FIN########
 
 	  ##
 	  # Ajout du header a la fenetre
-	  monApp.titlebar = header
+	  monApp.window.titlebar = header
 
-		monApp.show_all
+		monApp.window.show_all
 
 		##
 	  #Quand la fenêtre est détruite il faut quitter
-		monApp.signal_connect('destroy') {onDestroy}
+		monApp.window.signal_connect('destroy') {onDestroy}
 
 		Gtk.main
 	else

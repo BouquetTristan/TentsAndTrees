@@ -39,21 +39,21 @@ class FGM < Page
 
 			@header.btnMenu.signal_connect('clicked') {
 		        self.supprimeMoi
-		        menu = FMenu.new(@window, @header, self, unJoueur)
+		        menu = FMenu.new(monApp, @header, self, unJoueur)
 		        menu.ajouteMoi
 		        @window.show_all
 		    }
 
 		@classic.signal_connect('clicked') {
 			self.supprimeMoi
-			suivant = FDiff.new(@window, header, self, unJoueur, @mComp)
+			suivant = FDiff.new(monApp, header, self, unJoueur, @mComp)
 			suivant.ajouteMoi
       		@window.show_all
 		}
 
 		@adven.signal_connect('clicked') {
 			self.supprimeMoi
-			suivant = FAventure.new(@window, header, self, unJoueur)
+			suivant = FAventure.new(monApp, header, self, unJoueur)
 			suivant.ajouteMoi
       		@window.show_all
 		}
@@ -61,13 +61,14 @@ class FGM < Page
 		@comp.signal_connect('clicked') {
 			@mComp=true
 			self.supprimeMoi
-			suivant = FDiff.new(@window, header, self, unJoueur, @mComp)
+			suivant = FDiff.new(monApp, header, self, unJoueur, @mComp)
 			suivant.ajouteMoi
       		@window.show_all
 		}
 		@frame.attach(@butons,0,1,0,1)
 
-		@bg=(Gtk::Image.new(:file =>"./Assets/ImgGame.jpg"))
+		@pix = (GdkPixbuf::Pixbuf.new(:file=>"./Assets/ImgGame.jpg",:width=> monApp.width, :height=> monApp.height))
+        @bg=(Gtk::Image.new(:pixbuf => @pix))
         @frame.attach(@bg,0,1,0,1)
 
         self.add(@frame)

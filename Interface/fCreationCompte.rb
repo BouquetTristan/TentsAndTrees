@@ -58,7 +58,7 @@ class FCreationCompte < Page
 
                 else
                      self.supprimeMoi
-                     suivant = FMenu.new(@window, header, self, joueur)
+                     suivant = FMenu.new(monApp, header, self, joueur)
                      suivant.ajouteMoi
                      @window.show_all
                 end
@@ -67,14 +67,15 @@ class FCreationCompte < Page
 
           @back.signal_connect('clicked') {
               self.supprimeMoi
-              suivant = FConnexion.new(@window, header, self, nil)
+              suivant = FConnexion.new(monApp, header, self, nil)
               suivant.ajouteMoi
               @window.show_all
           }
 
           @frame.attach(@gCC,0,1,0,1)
 
-          @bg=(Gtk::Image.new(:file =>"./Assets/ImgGame.jpg"))
+          @pix = (GdkPixbuf::Pixbuf.new(:file=>"./Assets/ImgGame.jpg",:width=> monApp.width, :height=> monApp.height))
+          @bg=(Gtk::Image.new(:pixbuf => @pix))
           @frame.attach(@bg,0,1,0,1)
           self.add(@frame)
 

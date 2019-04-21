@@ -8,6 +8,7 @@ require './BaseDeDonnees/Joueur.rb'
 require './Interface/fMenu.rb'
 require './Interface/fCreationCompte.rb'
 require './Interface/fMdpOublie.rb'
+require './Classes/App.rb'
 
 class FConnexion < Page
 
@@ -66,7 +67,7 @@ class FConnexion < Page
 
                else
                     self.supprimeMoi
-                    suivant = FMenu.new(@window, header, self, joueur)
+                    suivant = FMenu.new(monApp, header, self, joueur)
                     suivant.ajouteMoi
                     @window.show_all
                end
@@ -74,21 +75,22 @@ class FConnexion < Page
 
           @creaC.signal_connect('clicked') {
                self.supprimeMoi
-               suivant = FCreationCompte.new(@window, header, self, nil)
+               suivant = FCreationCompte.new(monApp, header, self, nil)
                suivant.ajouteMoi
                @window.show_all
           }
 
           @mdpO.signal_connect('clicked') {
                self.supprimeMoi
-               suivant = FMdpOublie.new(@window, header, self, nil)
+               suivant = FMdpOublie.new(monApp, header, self, nil)
                suivant.ajouteMoi
                @window.show_all
           }
 
           @frame.attach(@gConnexion, 0,1,0,1)
 
-          @bg = (Gtk::Image.new(:file=>"./Assets/ImgGame.jpg"))
+          @pix = (GdkPixbuf::Pixbuf.new(:file=>"./Assets/ImgGame.jpg",:width=> monApp.width, :height=> monApp.height))
+          @bg=(Gtk::Image.new(:pixbuf => @pix))
 
           @frame.attach(@bg, 0,1,0,1)
 

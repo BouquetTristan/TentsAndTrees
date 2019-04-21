@@ -57,45 +57,45 @@ class FSaison < Page
 
 		@header.btnMenu.signal_connect('clicked') {
 		        self.supprimeMoi
-		        menu = FMenu.new(@window, @header, self, unJoueur)
+		        menu = FMenu.new(monApp, @header, self, unJoueur)
 		        menu.ajouteMoi
 		        @window.show_all
 		    }
 
 		@grille1.signal_connect('clicked') {
 		        self.supprimeMoi
-				menu = FPlayA.new(@window, @header, self, unJoueur, uneSaison,1)
+				menu = FPlayA.new(monApp, @header, self, unJoueur, uneSaison,1)
 				menu.ajouteMoi
 		        @window.show_all
 		    }
 
 		@grille2.signal_connect('clicked') {
 		        self.supprimeMoi
-				menu = FPlayA.new(@window, @header, self, unJoueur, uneSaison,2)
+				menu = FPlayA.new(monApp, @header, self, unJoueur, uneSaison,2)
 				menu.ajouteMoi
 		        @window.show_all
 		    }
 		@grille3.signal_connect('clicked') {
 		        self.supprimeMoi
-				menu = FPlayA.new(@window, @header, self, unJoueur, uneSaison,3)
+				menu = FPlayA.new(monApp, @header, self, unJoueur, uneSaison,3)
 				menu.ajouteMoi
 		        @window.show_all
 		    }
 		@grille4.signal_connect('clicked') {
 		        self.supprimeMoi
-				menu = FPlayA.new(@window, @header, self, unJoueur, uneSaison,4)
+				menu = FPlayA.new(monApp, @header, self, unJoueur, uneSaison,4)
 				menu.ajouteMoi
 		        @window.show_all
 		    }
 		@grille5.signal_connect('clicked') {
 		        self.supprimeMoi
-				menu = FPlayA.new(@window, @header, self, unJoueur, uneSaison,5)
+				menu = FPlayA.new(monApp, @header, self, unJoueur, uneSaison,5)
 				menu.ajouteMoi
 		        @window.show_all
 		    }
 		@grille6.signal_connect('clicked') {
 		        self.supprimeMoi
-				menu = FPlayA.new(@window, @header, self, unJoueur, uneSaison,6)
+				menu = FPlayA.new(monApp, @header, self, unJoueur, uneSaison,6)
 				menu.ajouteMoi
 		        @window.show_all
 		    }
@@ -129,7 +129,8 @@ class FSaison < Page
 
 		@frame.attach(@selecGrille,0,1,0,1)
 
-		@bg=(Gtk::Image.new(:file =>"./Assets/ImgGameA.png"))
+		@pix = (GdkPixbuf::Pixbuf.new(:file=>"./Assets/ImgGame.jpg",:width=> monApp.width, :height=> monApp.height))
+        @bg=(Gtk::Image.new(:pixbuf => @pix))
         @frame.attach(@bg,0,1,0,1)
 
         self.add(@frame)

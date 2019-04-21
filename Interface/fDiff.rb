@@ -37,7 +37,7 @@ class FDiff < Page
 
 		@header.btnMenu.signal_connect('clicked') {
 	        self.supprimeMoi
-	        menu = FMenu.new(@window, @header, self, unJoueur)
+	        menu = FMenu.new(monApp, @header, self, unJoueur)
 	        menu.ajouteMoi
 	        @window.show_all
     	}
@@ -47,9 +47,9 @@ class FDiff < Page
 			diff = "Facile"
 			if comp == false
 				grilleDeJeu = Grille.creerD(diff)
-				suivant=FPlay.new(@window, header, self, unJoueur, diff, grilleDeJeu ,comp)
+				suivant=FPlay.new(monApp, header, self, unJoueur, diff, grilleDeJeu ,comp)
 			else
-				suivant=FInter.new(@window, header, self, unJoueur, diff,comp)
+				suivant=FInter.new(monApp, header, self, unJoueur, diff,comp)
 			end	
 			suivant.ajouteMoi
 			@window.show_all
@@ -59,9 +59,9 @@ class FDiff < Page
 			diff = "Moyenne"
 			if comp == false
 				grilleDeJeu = Grille.creerD(diff)
-				suivant=FPlay.new(@window, header, self, unJoueur, diff, grilleDeJeu ,comp)
+				suivant=FPlay.new(monApp, header, self, unJoueur, diff, grilleDeJeu ,comp)
 			else
-				suivant=FInter.new(@window, header, self, unJoueur, diff,comp)
+				suivant=FInter.new(monApp, header, self, unJoueur, diff,comp)
 			end	
 			suivant.ajouteMoi
 			@window.show_all
@@ -71,16 +71,17 @@ class FDiff < Page
 			diff = "Difficile"
 			if comp == false
 				grilleDeJeu = Grille.creerD(diff)
-				suivant=FPlay.new(@window, header, self, unJoueur, diff, grilleDeJeu ,comp)
+				suivant=FPlay.new(monApp, header, self, unJoueur, diff, grilleDeJeu ,comp)
 			else
-				suivant=FInter.new(@window, header, self, unJoueur, diff,comp)
+				suivant=FInter.new(monApp, header, self, unJoueur, diff,comp)
 			end	
 			suivant.ajouteMoi
 			@window.show_all
 		}
 		@frame.attach(@butons,0,1,0,1)
 
-		@bg=(Gtk::Image.new(:file =>"./Assets/ImgGame.jpg"))
+		@pix = (GdkPixbuf::Pixbuf.new(:file=>"./Assets/ImgGame.jpg",:width=> monApp.width, :height=> monApp.height))
+        @bg=(Gtk::Image.new(:pixbuf => @pix))
         @frame.attach(@bg,0,1,0,1)
 
         self.add(@frame)

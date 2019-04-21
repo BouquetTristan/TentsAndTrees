@@ -53,28 +53,28 @@ class FScore < Page
 
         @btnFac.signal_connect('clicked') {
               self.supprimeMoi
-              suivant = FScore.new(@window, header, self, unJoueur, "facile")
+              suivant = FScore.new(monApp, header, self, unJoueur, "facile")
               suivant.ajouteMoi
               @window.show_all 
         }
         
         @btnMoy.signal_connect('clicked') {
               self.supprimeMoi
-              suivant = FScore.new(@window, header, self, unJoueur, "moyen")
+              suivant = FScore.new(monApp, header, self, unJoueur, "moyen")
               suivant.ajouteMoi
               @window.show_all 
         }
 
         @btnDif.signal_connect('clicked') {
               self.supprimeMoi
-              suivant = FScore.new(@window, header, self, unJoueur, "diff")
+              suivant = FScore.new(monApp, header, self, unJoueur, "diff")
               suivant.ajouteMoi
               @window.show_all 
         }
 
        @back.signal_connect('clicked') {
                self.supprimeMoi
-               suivant = FMenu.new(@window, header, self, unJoueur)
+               suivant = FMenu.new(monApp, header, self, unJoueur)
                suivant.ajouteMoi
                @window.show_all          
         }
@@ -85,7 +85,8 @@ class FScore < Page
 
         @frame.attach(@box,0,1,0,1)
 
-        @bg=(Gtk::Image.new(:file =>"./Assets/ImgGame.jpg"))
+        @pix = (GdkPixbuf::Pixbuf.new(:file=>"./Assets/ImgGame.jpg",:width=> monApp.width, :height=> monApp.height))
+        @bg=(Gtk::Image.new(:pixbuf => @pix))
         @frame.attach(@bg,0,1,0,1)
 
         self.add(@frame)

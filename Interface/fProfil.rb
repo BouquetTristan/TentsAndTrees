@@ -18,14 +18,8 @@ class FProfil < Page
 
 		@gProfil = Gtk::ButtonBox.new(:vertical)
 
-		@gP = Gtk::Table.new(1,2,false)
-		@gP.row_spacing = 50
-
-
-		@gP1 = Gtk::ButtonBox.new(:vertical)
-		@gP1.spacing = 100
-		@gP2 = Gtk::ButtonBox.new(:vertical)
-		@gP2.spacing = 100
+		@gP = Gtk::Box.new(:vertical)
+		@gP.spacing = 50
 
 
 		@gProfil2 = Gtk::ButtonBox.new(:horizontal)
@@ -43,15 +37,12 @@ class FProfil < Page
 		@deco = Gtk::Button.new(:label => 'Deconnexion', :use_underline => nil, :stock_id => nil)
 	
 
-		@gP1.add(@pseudo.gTexteAfficher, :expand => true, :fill => false)
-		@gP1.add(@scoreGlobal.gTexteAfficher, :expand => true, :fill => false)
-		@gP2.add(@scoreFacile.gTexteAfficher, :expand => true, :fill => false)
-		@gP2.add(@scoreMoyen.gTexteAfficher, :expand => true, :fill => false)
-		@gP2.add(@scoreDifficile.gTexteAfficher, :expand => true, :fill => false)
-		@gP1.add(@nbParties.gTexteAfficher, :expand => true, :fill => false)
-
-		@gP.attach(@gP1,0,1,0,1)
-		@gP.attach(@gP2,0,1,1,2)	
+		@gP.add(@pseudo.gTexteAfficher, :expand => true, :fill => false)
+		@gP.add(@scoreGlobal.gTexteAfficher, :expand => true, :fill => false)
+		@gP.add(@scoreFacile.gTexteAfficher, :expand => true, :fill => false)
+		@gP.add(@scoreMoyen.gTexteAfficher, :expand => true, :fill => false)
+		@gP.add(@scoreDifficile.gTexteAfficher, :expand => true, :fill => false)
+		@gP.add(@nbParties.gTexteAfficher, :expand => true, :fill => false)	
 
 		@gProfil.add(@gP)	
 		@gProfil.add(@gProfil2)
@@ -61,14 +52,14 @@ class FProfil < Page
 
         @header.btnMenu.signal_connect('clicked') {
 	        self.supprimeMoi
-	        menu = FMenu.new(@window, @header, self, unJoueur)
+	        menu = FMenu.new(monApp, @header, self, unJoueur)
 	        menu.ajouteMoi
 	        @window.show_all
 	    }
 
 		@modif.signal_connect('clicked') {
 			self.supprimeMoi
-            suivant = FModifC.new(@window, header, self, unJoueur)
+            suivant = FModifC.new(monApp, header, self, unJoueur)
             suivant.ajouteMoi
             @window.show_all
 		}
@@ -77,7 +68,7 @@ class FProfil < Page
 			unJoueur.desinscrire()
 			unJoueur = nil
 			self.supprimeMoi
-			suivant = FConnexion.new(@window, header, self, nil)
+			suivant = FConnexion.new(monApp, header, self, nil)
             suivant.ajouteMoi
             @window.show_all
 		}
@@ -86,14 +77,15 @@ class FProfil < Page
 		@deco.signal_connect('clicked') {
 			unJoueur = nil
 			self.supprimeMoi
-            suivant = FConnexion.new(@window, header, self, nil)
+            suivant = FConnexion.new(monApp, header, self, nil)
             suivant.ajouteMoi
             @window.show_all
         }
 
 		@frame.attach(@gProfil,0,1,0,1)
 
-		@bg=(Gtk::Image.new(:file =>"./Assets/ImgGame.jpg"))
+		@pix = (GdkPixbuf::Pixbuf.new(:file=>"./Assets/ImgGame.jpg",:width=> monApp.width, :height=> monApp.height))
+        @bg=(Gtk::Image.new(:pixbuf => @pix))
         @frame.attach(@bg,0,1,0,1)
 
         self.add(@frame)

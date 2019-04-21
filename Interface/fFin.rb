@@ -11,15 +11,17 @@ class FFin < Page
           @frame = Gtk::Table.new(1,1,false)
 
           if statue == "gagner"
-          
-        	  @bg = (Gtk::Image.new(:file=>"./Assets/GameWin.png"))
+            
+            @pix = (GdkPixbuf::Pixbuf.new(:file=>"./Assets/GameWin.png",:width=> 1400, :height=>859))
+            @bg=(Gtk::Image.new(:pixbuf => @pix))
 
       	  end
 
 
           if statue == "perdu"
           
-        	  @bg = (Gtk::Image.new(:file=>"./Assets/GameOver.png"))
+            @pix = (GdkPixbuf::Pixbuf.new(:file=>"./Assets/GameOver.png",:width=> 1400, :height=>859))
+            @bg=(Gtk::Image.new(:pixbuf => @pix))
 
       	  end
           @frame.attach(@bg, 0,1,0,1)

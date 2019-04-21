@@ -52,36 +52,37 @@ class FAventure < Page
 
 		@header.btnMenu.signal_connect('clicked') {
 		        self.supprimeMoi
-		        menu = FMenu.new(@window, @header, self, unJoueur)
+		        menu = FMenu.new(monApp, @header, self, unJoueur)
 		        menu.ajouteMoi
 		        @window.show_all
 		    }
 
 		@print.bouton.signal_connect('clicked') {
 			@print.debloquer()
-			@print.lancer(@window, @header, self)
+			@print.lancer(monApp, @header, self)
 		}
 
 
 		@ete.bouton.signal_connect('clicked') {
 			@ete.debloquer()
-			@ete.lancer(@window, @header, self)
+			@ete.lancer(monApp, @header, self)
 		}
 
 		@autom.bouton.signal_connect('clicked') {
 			@autom.debloquer()
-			@autom.lancer(@window, @header, self)
+			@autom.lancer(monApp, @header, self)
 		}
 
 		@hiver.bouton.signal_connect('clicked') {
 			@hiver.debloquer()
-			@hiver.lancer(@window, @header, self)
+			@hiver.lancer(monApp, @header, self)
 		}
 		
 
 		@frame.attach(@aventMenu,0,1,0,1)
 
-		@bg=(Gtk::Image.new(:file =>"./Assets/ImgGameA.png"))
+		@pix = (GdkPixbuf::Pixbuf.new(:file=>"./Assets/ImgGame.jpg",:width=> monApp.width, :height=> monApp.height))
+        @bg=(Gtk::Image.new(:pixbuf => @pix))
         @frame.attach(@bg,0,1,0,1)
 
         self.add(@frame)

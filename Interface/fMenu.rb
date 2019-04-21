@@ -5,6 +5,7 @@ require './Classes/Page.rb'
 require './Interface/fProfil.rb'
 require './Interface/fGameMode.rb'
 require './Interface/fScore.rb'
+require './Classes/App.rb'
 
 
 class FMenu < Page
@@ -38,32 +39,33 @@ class FMenu < Page
 
         @profil.signal_connect('clicked') {
                self.supprimeMoi
-               suivant = FProfil.new(@window, header, self, unJoueur)
+               suivant = FProfil.new(monApp, header, self, unJoueur)
                suivant.ajouteMoi
                @window.show_all
         }
         @play.signal_connect('clicked') {
                self.supprimeMoi
-               suivant = FGM.new(@window, header, self, unJoueur)
+               suivant = FGM.new(monApp, header, self, unJoueur)
                suivant.ajouteMoi
                @window.show_all
         }
         @didac.signal_connect('clicked') {
               self.supprimeMoi
-              suivant = FDidac.new(@window, header, self, unJoueur)
+              suivant = FDidac.new(monApp, header, self, unJoueur)
               suivant.ajouteMoi
               @window.show_all  
         }
         @score.signal_connect('clicked') {
               self.supprimeMoi
-              suivant = FScore.new(@window, header, self, unJoueur, "facile")
+              suivant = FScore.new(monApp, header, self, unJoueur, "facile")
               suivant.ajouteMoi
               @window.show_all 
         }
 
         @frame.attach(@gMenu,0,1,0,1)
 
-        @bg=(Gtk::Image.new(:file =>"./Assets/ImgGame.jpg"))
+        @pix = (GdkPixbuf::Pixbuf.new(:file=>"./Assets/ImgGame.jpg",:width=> monApp.width, :height=> monApp.height))
+        @bg=(Gtk::Image.new(:pixbuf => @pix))
         @frame.attach(@bg,0,1,0,1)
 
         self.add(@frame)

@@ -18,7 +18,7 @@ class BoutonSaison
 
 
 	#Initialise le bouton eprésentant l'accès aux saison
-	# @param uneSaison		//Chaine de caracère eprésentant une des 4 saison (été/hiver/automne/pintemps)
+	# @param uneSaison		//Chaine de caracère représentant une des 4 saison (été/hiver/automne/pintemps)
 	# @param cliquable		//Booléen pou définir si le bouton sera cliquable ou non
 	# @return void			//ne renvoie rien
 	def initialize(uneSaison, unJoueur)
@@ -82,7 +82,7 @@ class BoutonSaison
 			unePrecedente.supprimeMoi
 			suivante = FSaison.new(uneApp, unHeader, unePrecedente, @joueur, @saison)
 			suivante.ajouteMoi
-			uneApp.show_all
+			uneApp.window.show_all
 		end
    	end
 

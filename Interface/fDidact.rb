@@ -59,7 +59,7 @@ class FDidac < Page
 
     	@header.btnMenu.signal_connect('clicked') {
 	        self.supprimeMoi
-	        menu = FMenu.new(@window, @header, self, unJoueur)
+	        menu = FMenu.new(monApp, @header, self, unJoueur)
 	        menu.ajouteMoi
 	        @window.show_all
     	}
@@ -67,31 +67,31 @@ class FDidac < Page
       
         @tuto1.signal_connect('clicked') {
                self.supprimeMoi
-               suivant = Ftuto.new(@window, header, self, unJoueur, "./Assets/Didacticiel/Tuto1.png")
+               suivant = Ftuto.new(monApp, header, self, unJoueur, "./Assets/Didacticiel/Tuto1.png")
                suivant.ajouteMoi
                @window.show_all          
         }
         @tuto2.signal_connect('clicked') {
                self.supprimeMoi
-               suivant = Ftuto.new(@window, header, self, unJoueur, "./Assets/Didacticiel/Tuto2.png")
+               suivant = Ftuto.new(monApp, header, self, unJoueur, "./Assets/Didacticiel/Tuto2.png")
                suivant.ajouteMoi
                @window.show_all  
         }
         @tuto3.signal_connect('clicked') {
                self.supprimeMoi
-               suivant = Ftuto.new(@window, header, self, unJoueur, "./Assets/Didacticiel/Tuto3.png")
+               suivant = Ftuto.new(monApp, header, self, unJoueur, "./Assets/Didacticiel/Tuto3.png")
                suivant.ajouteMoi
                @window.show_all  
         }
         @tuto4.signal_connect('clicked') {
                self.supprimeMoi
-               suivant = Ftuto.new(@window, header, self, unJoueur, "./Assets/Didacticiel/Tuto4.png")
+               suivant = Ftuto.new(monApp, header, self, unJoueur, "./Assets/Didacticiel/Tuto4.png")
                suivant.ajouteMoi
                @window.show_all  
         }
         @tuto5.signal_connect('clicked') {
                self.supprimeMoi
-               suivant = Ftuto.new(@window, header, self, unJoueur, "./Assets/Didacticiel/Tuto5.png")
+               suivant = Ftuto.new(monApp, header, self, unJoueur, "./Assets/Didacticiel/Tuto5.png")
                suivant.ajouteMoi
                @window.show_all  
         }
@@ -99,7 +99,8 @@ class FDidac < Page
         @frame.attach(@tMain,0,1,0,1)
 
 
-        @bg=(Gtk::Image.new(:file =>"./Assets/ImgGame.jpg"))
+        @pix = (GdkPixbuf::Pixbuf.new(:file=>"./Assets/ImgGame.jpg",:width=> monApp.width, :height=> monApp.height))
+        @bg=(Gtk::Image.new(:pixbuf => @pix))
         @frame.attach(@bg,0,1,0,1)
 
         self.add(@frame)

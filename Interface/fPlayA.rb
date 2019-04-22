@@ -17,9 +17,6 @@ require './Classes/Score.rb'
 
 class FPlayA < Page
 
-
-		
-
 	def initialize(monApp, header, anciennePage, unJoueur, uneSaison, nbGrille)
 
 		super(monApp, :vertical, header,  anciennePage, unJoueur)
@@ -35,6 +32,8 @@ class FPlayA < Page
 				@saison = 3
 			when "Hiver" then
 				@saison = 4
+			when "Bonus"
+				@saison = 5
    		end
 
         tabGrille = unJoueur.commencerAventure(@saison, nbGrille)
@@ -71,6 +70,7 @@ class FPlayA < Page
 	   	   		menu = FFin.new(monApp, @header, self, unJoueur, "perdu")
 	   		   	menu.ajouteMoi
 	  	 	   	@window.show_all
+	  	 	   	thr.kill
 	  	    end
  		}			
 		
@@ -295,7 +295,7 @@ class FPlayA < Page
 				@aide = @b3.aide(grilleDeJeu, @lableAide, unJoueur, @boutonGrille)
 				@nbAidesUtilises+=1
 			else
-				@lableAide.set_markup("<span foreground=\"#FFFFFF\" font-desc=\"Courier New bold 11\">Vous ne pouvez plus utiliser cette aide</span>")
+				@lableAide.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 11\">Vous ne pouvez plus utiliser cette aide</span>")
 			end
         }				
 
@@ -349,7 +349,7 @@ class FPlayA < Page
 
 		@frame.attach(@box,0,1,0,1)
 
-		@pix = (GdkPixbuf::Pixbuf.new(:file=>"./Assets/ImgGame.jpg",:width=> monApp.width, :height=> monApp.height))
+		@pix = (GdkPixbuf::Pixbuf.new(:file=>"./Assets/ImgGameA.png",:width=> monApp.width, :height=> monApp.height))
         @bg=(Gtk::Image.new(:pixbuf => @pix))
         @frame.attach(@bg,0,1,0,1)
 

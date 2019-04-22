@@ -31,11 +31,11 @@ class BoutonAideVerif < BoutonAide
 		if(@cliquable == true)
 			aide = Aide.erreur(uneGrille)
 			if(aide != nil)
-				unLabel.set_markup("<span foreground=\"#FFFFFF\" font-desc=\"Courier New bold 11\">Erreur sur la case \n#{aide.i} #{aide.j}</span>")
+				unLabel.set_markup("<span foreground=\"#E30E0B\" font-desc=\"Courier New bold 11\">Erreur sur la case \n#{aide.i} #{aide.j}</span>")
 				interfaceGrille[aide.i][aide.j].indiquerAide(uneGrille.grilleJ[aide.i][aide.j].etat)
 				return aide
 			else
-				unLabel.set_markup("<span foreground=\"#FFFFFF\" font-desc=\"Courier New bold 11\">Aucune erreur \nsur la grille actuelle</span>")
+				unLabel.set_markup("<span foreground=\"#E30E0B\" font-desc=\"Courier New bold 11\">Aucune erreur \nsur la grille actuelle</span>")
 				return nil
 			end
 		end

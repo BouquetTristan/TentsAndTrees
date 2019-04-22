@@ -39,7 +39,7 @@ class ChronoInverse
 						if @start==false
 							@compteur=@initial
 							@start=true
-							@lChrono.set_markup(("<span foreground=\"#FFFFFF\" font-desc=\"Courier New bold 20\">"+@chrono.to_s+"</span>\n"))
+							@lChrono.set_markup(("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 20\">"+@chrono.to_s+"</span>\n"))
 						end
 
 						if @pause != true
@@ -47,17 +47,12 @@ class ChronoInverse
 							@chrono -= 1
 						end
 
-						@lChrono.set_markup(("<span foreground=\"#FFFFFF\" font-desc=\"Courier New bold 20\">"+@chrono.to_s+"</span>\n"))
+						@lChrono.set_markup(("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 20\">"+@chrono.to_s+"</span>\n"))
 
 
 			end
 			@chrono=0
-			@lChrono.set_markup(("<span foreground=\"#FFFFFF\" font-desc=\"Courier New bold 20\">"+@chrono.to_s+"</span>\n"))
-
-			self.supprimeMoi
-   	   		menu = FFin.new(@window, @header, self, unJoueur, "perdu")
-   		   	menu.ajouteMoi
-  	 	   	@window.show_all
+			@lChrono.set_markup(("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 20\">"+@chrono.to_s+"</span>\n"))
 
 	end
 

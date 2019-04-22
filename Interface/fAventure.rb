@@ -77,11 +77,16 @@ class FAventure < Page
 			@hiver.debloquer()
 			@hiver.lancer(monApp, @header, self)
 		}
+
+		@bonus.bouton.signal_connect('clicked') {
+			@bonus.debloquer()
+			@bonus.lancer(monApp, @header, self)
+		}
 		
 
 		@frame.attach(@aventMenu,0,1,0,1)
 
-		@pix = (GdkPixbuf::Pixbuf.new(:file=>"./Assets/ImgGame.jpg",:width=> monApp.width, :height=> monApp.height))
+		@pix = (GdkPixbuf::Pixbuf.new(:file=>"./Assets/ImgGameA.png",:width=> monApp.width, :height=> monApp.height))
         @bg=(Gtk::Image.new(:pixbuf => @pix))
         @frame.attach(@bg,0,1,0,1)
 

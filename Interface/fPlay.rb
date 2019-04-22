@@ -94,6 +94,7 @@ class FPlay < Page
 					
 					@chrono.cFin
 					@chrono.cRaz
+					thr.kill
 					sleep(1)
 					self.supprimeMoi
 		  	        	menu = FFin.new(monApp, @header, self, unJoueur, "gagner")
@@ -129,6 +130,7 @@ class FPlay < Page
 					
 					@chrono.cFin
 					@chrono.cRaz
+					thr.kill
 					sleep(1)
 					self.supprimeMoi
 		  	        	menu = FFin.new(monApp, @header, self, unJoueur, "gagner")
@@ -192,6 +194,7 @@ class FPlay < Page
 							
 							@chrono.cFin
 							@chrono.cRaz
+							thr.kill
 							sleep(1)
 							self.supprimeMoi
 				  	        	menu = FFin.new(monApp, @header, self, unJoueur, "gagner")
@@ -211,6 +214,7 @@ class FPlay < Page
 	        menu = FMenu.new(monApp, @header, self, unJoueur)
 	        menu.ajouteMoi
 	        @window.show_all
+	        thr.kill
     	}
 
 		@boxAide = Gtk::ButtonBox.new(:vertical)
@@ -315,7 +319,7 @@ class FPlay < Page
 				if(tempo >= 0)
 					@nbFeuilles = tempo
 				
-					@profil.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 15\"> #{@nbFeuilles}</span>")
+					@profil.set_markup("<span foreground=\"#FFFFFF\" font-desc=\"Courier New bold 15\"> #{@nbFeuilles}</span>")
 					
 					@aide = @b3.aide(grilleDeJeu, @lableAide, unJoueur, @boutonGrille)
 					@nbAidesUtilises+=1

@@ -86,7 +86,7 @@ class Joueur
 	end
 
 	def motDePasseOublier(nouveauMDP)
-		if motDePasseOublie(@id, @rep, nouveauMDP) == true then
+		if motDePasseOublie(@pseudo, @rep, nouveauMDP) == true then
 			@mdp = nouveauMDP
 			puts "   Le mot de passe a bien été modifié\n"
 			return true

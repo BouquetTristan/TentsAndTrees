@@ -44,12 +44,11 @@ class FCreationCompte < Page
                 if (@pseudo.entree.text == '' || @mdp.entree.text == '')
  				#@pseudo.erreur.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 10\">/!\\ Erreur entrer un pseudo et un mot de passe</span>\n")
                      @mdp.erreur.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 10\">Erreur entrer un pseudo et un mot de passe</span>\n")
-                end
-                if (@reponse.entree.text =='')
+                elsif (@reponse.entree.text =='')
  				#@pseudo.erreur.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 10\">/!\\ Erreur entrer un pseudo et un mot de passe</span>\n")
                      @reponse.erreur.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 10\">Répondez a la question</span>\n")
 
- 			elsif joueur.inscrire() == 0 then
+ 		           	elsif joueur.inscrire() == 0 then
                      puts("Joueur\n")
  				             @pseudo.entree.text = ''
                      puts("mdp sans rien\n")

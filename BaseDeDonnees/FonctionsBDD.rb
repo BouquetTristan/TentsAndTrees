@@ -152,8 +152,11 @@ def creerModeAventure(unID)
 	#hiver
 		niveau4 = creerNiveauAventure(baseNiveau, ligne, nbGrilleParNiveau)
 		ligne += nbGrilleParNiveau+1
+	#bonus
+		niveau5 = creerNiveauAventure(baseNiveau, ligne, nbGrilleParNiveau)
+		ligne += nbGrilleParNiveau+1
 	#Ajout du mode aventure au compte du joueur
-	bddA.execute("INSERT INTO aventure (idAventure, idPrintemps, idEte, idAutomne, idHiver) VALUES (#{unID}, #{niveau1}, #{niveau2}, #{niveau3}, #{niveau4})")
+	bddA.execute("INSERT INTO aventure (idAventure, idPrintemps, idEte, idAutomne, idHiver, idBonus) VALUES (#{unID}, #{niveau1}, #{niveau2}, #{niveau3}, #{niveau4}, #{niveau5})")
 	
 end
 

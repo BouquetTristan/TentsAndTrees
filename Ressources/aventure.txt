@@ -26,3 +26,10 @@
 4;Difficile;251;180
 5;Difficile;261;150
 6;Difficile;271;150
+5;Bonus;120;
+1;Moyenne;261;150
+2;Moyenne;271;150
+3;Difficile;241;180
+4;Difficile;251;180
+5;Difficile;261;150
+6;Difficile;271;150

@@ -92,12 +92,14 @@ if (!File.exist?(dbProfil) || !File.exist?(dbAventure) || !File.exist?(dbNiveau)
 			idEte INT,
 			idAutomne INT,
 			idHiver INT,
+			idBonus INT,
 
 			FOREIGN KEY(idAventure) REFERENCES profil(idJoueur),
 			FOREIGN KEY(idPrintemps) REFERENCES niveau(idNiveau),
 			FOREIGN KEY(idEte) REFERENCES niveau(idNiveau),
 			FOREIGN KEY(idAutomne) REFERENCES niveau(idNiveau),
-			FOREIGN KEY(idHiver) REFERENCES niveau(idNiveau)
+			FOREIGN KEY(idHiver) REFERENCES niveau(idNiveau),
+			FOREIGN KEY(idBonus) REFERENCES niveau(idNiveau)
 		
 		);
 	SQL

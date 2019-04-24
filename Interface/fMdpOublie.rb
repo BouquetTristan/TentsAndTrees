@@ -17,9 +17,11 @@ class FMdpOublie < Page
 
     	@pseudo = TexteEntree.creer('Pseudo : ', true)
         @newMdp = TexteEntree.creer('Nouveau mot de passe : ', true)
+	@newMdp.entree.visibility = false
         @question =  Gtk::Label.new('')
-        @question.set_markup("<span foreground=\"#FFFFFF\" font-desc=\"Courier New bold 15\">Quel est votre lieu de vacance favori ?</span>\n")
-        @reponse = TexteEntree.creer('Reponse : ', true)
+        @question.set_markup("<span foreground=\"#FFFFFF\" font-desc=\"Courier New bold 15\">Quel est votre lieu de vacances favori ?</span>\n")
+        @reponse = TexteEntree.creer('Reponse secrète : ', true)
+	@reponse.entree.visibility = false
         @connexion = Gtk::Button.new(:label => 'Connexion', :use_underline => nil, :stock_id => nil)
         @connexion.set_relief(:none)
         @back = Gtk::Button.new(:label => 'Retour', :use_underline => nil, :stock_id => nil)

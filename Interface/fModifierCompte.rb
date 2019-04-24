@@ -15,6 +15,7 @@ class FModifC < Page
 
           @pseudo = TexteEntree.creer('Pseudo : ', false)
           @mdp = TexteEntree.creer('Mot de passe : ', true)
+	  @mdp.entree.visibility = false
           @valider = Gtk::Button.new(:label => 'Valider les modifications', :use_underline => nil, :stock_id => nil)
           @valider.set_relief(:none)
 

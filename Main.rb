@@ -31,7 +31,7 @@ def configureMonApp(uneApp)
 end
 
 if ARGV.size.eql?(0) then
-	  monApp = App.new(Gtk::Window.new, 1400,859)
+	  monApp = App.new(Gtk::Window.new, 1200,650)
 	  configureMonApp(monApp)
 
 	  # Titre de la fenêtre

@@ -36,7 +36,7 @@ class BoutonAideVerif < BoutonAide
 		if(@cliquable == true)
 			aide = Aide.erreur(uneGrille)
 			if(aide != nil)
-				unLabel.set_markup("<span foreground=\"#E30E0B\" font-desc=\"Courier New bold 11\">Erreur sur la case \n#{aide.i} #{aide.j}</span>")
+				unLabel.set_markup("<span foreground=\"#E30E0B\" font-desc=\"Courier New bold 11\">Erreur sur la case \n en surbrillance</span>")
 				interfaceGrille[aide.i][aide.j].indiquerAide(uneGrille.grilleJ[aide.i][aide.j].etat)
 				return aide
 			else

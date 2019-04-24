@@ -43,17 +43,17 @@ class BoutonAideTente < BoutonAide
 			aide2 = Aide.lignePlacerTentes(uneGrille)
 			aide3 = Aide.colonnePlacerTentes(uneGrille)
 			if(aide1 != nil)
-				unLabel.set_markup("<span foreground=\"#E30E0B\" font-desc=\"Courier New bold 11\">Il ne reste qu'une possibilité\npour la tente de l'arbre en #{aide1.i} #{aide1.j}</span>")
+				unLabel.set_markup("<span foreground=\"#E30E0B\" font-desc=\"Courier New bold 11\">Il ne reste qu'une \npossibilité pour la tente de\nl'arbre en surbrillance</span>")
 				interfaceGrille[aide1.i][aide1.j].indiquerAide(uneGrille.grilleJ[aide1.i][aide1.j].etat)
 				return aide1
 			elsif(aide2 != nil)
-				unLabel.set_markup("<span foreground=\"#E30E0B\" font-desc=\"Courier New bold 11\">On peut placer toutes \nles tentes sur la ligne #{aide2}</span>")
+				unLabel.set_markup("<span foreground=\"#E30E0B\" font-desc=\"Courier New bold 11\">On peut placer toutes \nles tentes sur la ligne\nen surbrillance</span>")
 				for i in (0..uneGrille.taille-1)
 					interfaceGrille[i][aide2].indiquerAide(uneGrille.grilleJ[i][aide2].etat)
 				end
 				return aide2
 			elsif(aide3 != nil)
-				unLabel.set_markup("<span foreground=\"#E30E0B\" font-desc=\"Courier New bold 11\">On peut placer toutes \nles tentes sur la colonne #{aide3}</span>")
+				unLabel.set_markup("<span foreground=\"#E30E0B\" font-desc=\"Courier New bold 11\">On peut placer toutes \nles tentes sur la colonne\n en surbrillance</span>")
 				for i in (0..uneGrille.taille-1)
 					interfaceGrille[aide3][i].indiquerAide(uneGrille.grilleJ[aide3][i].etat)
 				end

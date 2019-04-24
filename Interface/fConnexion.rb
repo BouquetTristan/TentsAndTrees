@@ -10,6 +10,8 @@ require './Interface/fCreationCompte.rb'
 require './Interface/fMdpOublie.rb'
 require './Classes/App.rb'
 
+#====== Fenetre de connexion du jeu
+
 class FConnexion < Page
 
      def initialize(monApp, header, anciennePage, unJoueur)
@@ -26,7 +28,7 @@ class FConnexion < Page
 
           @pseudo = TexteEntree.creer('Pseudo : ',false)
           @mdp = TexteEntree.creer('Mot de passe : ',true)
-          
+
           @mdp.entree.visibility = false
 
           @creaC = Gtk::Button.new(:label => 'Creer un compte', :use_underline => nil, :stock_id => nil)

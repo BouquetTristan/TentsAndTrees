@@ -61,6 +61,7 @@ class FMdpOublie < Page
                @reponse.erreur.set_markup("")
 
           else
+              joueur.connecter()
                self.supprimeMoi
                suivant = FMenu.new(monApp, header, self, joueur)
                suivant.ajouteMoi

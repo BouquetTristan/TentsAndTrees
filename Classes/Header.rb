@@ -1,7 +1,11 @@
 class Header < Gtk::HeaderBar
 
+
   attr_reader :btnMenu, :pseudo
 
+  #Initialise le titre de page
+	# @param monApp		//l'application qui recevra la barre de titre
+	# @return void			//ne renvoie rien
   def initialize(monApp)
     super()
     # Titre de la fenêtre
@@ -30,7 +34,7 @@ class Header < Gtk::HeaderBar
     @boxb.add(@btnDel)
     @boxButtons.add(@boxb)
 
-   
+
     self.pack_end(@boxButtons)
 
         @btnDel.signal_connect('clicked') {
@@ -38,6 +42,9 @@ class Header < Gtk::HeaderBar
     }
   end
 
+  #Ajoute un bouton
+	# @param void		//ne prend aucun paramètre
+	# @return void		//ne renvoie rien
   def ajouterB()
   	@btnMenu = Gtk::Button.new(:label => 'Menu', :use_underline => nil, :stock_id => nil)
 

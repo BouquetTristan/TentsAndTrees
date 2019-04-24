@@ -2,8 +2,17 @@ require 'gtk3'
 require './Interface/fPlayA.rb'
 require './Classes/boutonSaison.rb'
 
+#====== Fenetre aventure du jeu
+
 class FAventure < Page
 
+
+	#Initialise la page aventure
+	# @param monApp		//l'application
+  # @param header		//le titre de la page
+  # @param anciennePage		//Le lien de la dernière page
+  # @param unJoueur		//le joueur concerné
+	# @return void			//ne renvoie rien
 	def initialize(monApp, header, anciennePage, unJoueur)
 
 		super(monApp, :vertical, header,  anciennePage, unJoueur)
@@ -16,7 +25,7 @@ class FAventure < Page
     	@ghead = Gtk::ButtonBox.new(:horizontal)
         @ghead.spacing = 700
     			@option = Gtk::Label.new('')
-    			
+
     			@boxArgent=Gtk::ButtonBox.new(:horizontal)
     				@boxArgent.spacing=1
     				@img =(Gtk::Image.new(:file =>"./Assets/billet.png"))
@@ -26,7 +35,7 @@ class FAventure < Page
 
     			@ghead.add(@option, :expand => true, :fill => false)
     			@ghead.add(@boxArgent)
-    				
+
         @aventMenu.add(@ghead)
 
     	@level = Gtk::ButtonBox.new(:horizontal)
@@ -82,7 +91,7 @@ class FAventure < Page
 			@bonus.debloquer()
 			@bonus.lancer(monApp, @header, self)
 		}
-		
+
 
 		@frame.attach(@aventMenu,0,1,0,1)
 

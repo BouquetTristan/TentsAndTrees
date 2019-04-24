@@ -1,0 +1,1995 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Object - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+  var index_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/darkfish.js"></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link">BasicObject
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-i-ajouterUtilisateur">#ajouterUtilisateur</a>
+    
+    <li ><a href="#method-i-augmenterNbAides">#augmenterNbAides</a>
+    
+    <li ><a href="#method-i-augmenterNbPartiesJouees">#augmenterNbPartiesJouees</a>
+    
+    <li ><a href="#method-i-augmenterNbPartiesTermineesSansAides">#augmenterNbPartiesTermineesSansAides</a>
+    
+    <li ><a href="#method-i-augmenterScoreDifficile">#augmenterScoreDifficile</a>
+    
+    <li ><a href="#method-i-augmenterScoreFacile">#augmenterScoreFacile</a>
+    
+    <li ><a href="#method-i-augmenterScoreGlobal">#augmenterScoreGlobal</a>
+    
+    <li ><a href="#method-i-augmenterScoreMoyen">#augmenterScoreMoyen</a>
+    
+    <li ><a href="#method-i-changerMotDePasse">#changerMotDePasse</a>
+    
+    <li ><a href="#method-i-changerPseudo">#changerPseudo</a>
+    
+    <li ><a href="#method-i-changerStatutGrille">#changerStatutGrille</a>
+    
+    <li ><a href="#method-i-chercherIDUnique">#chercherIDUnique</a>
+    
+    <li ><a href="#method-i-connexion">#connexion</a>
+    
+    <li ><a href="#method-i-creerConditionSucces">#creerConditionSucces</a>
+    
+    <li ><a href="#method-i-creerGrilleAventure">#creerGrilleAventure</a>
+    
+    <li ><a href="#method-i-creerModeAventure">#creerModeAventure</a>
+    
+    <li ><a href="#method-i-creerNiveauAventure">#creerNiveauAventure</a>
+    
+    <li ><a href="#method-i-creerSucces">#creerSucces</a>
+    
+    <li ><a href="#method-i-deverouillerNiveau">#deverouillerNiveau</a>
+    
+    <li ><a href="#method-i-donnerInformationsGrille">#donnerInformationsGrille</a>
+    
+    <li ><a href="#method-i-grillePasFaite">#grillePasFaite</a>
+    
+    <li ><a href="#method-i-inspecterSucces">#inspecterSucces</a>
+    
+    <li ><a href="#method-i-modifierArgent">#modifierArgent</a>
+    
+    <li ><a href="#method-i-motDePasseOublie">#motDePasseOublie</a>
+    
+    <li ><a href="#method-i-niveauComplet">#niveauComplet</a>
+    
+    <li ><a href="#method-i-niveauDebloque">#niveauDebloque</a>
+    
+    <li ><a href="#method-i-ouvrirBDDA">#ouvrirBDDA</a>
+    
+    <li ><a href="#method-i-ouvrirBDDCS">#ouvrirBDDCS</a>
+    
+    <li ><a href="#method-i-ouvrirBDDG">#ouvrirBDDG</a>
+    
+    <li ><a href="#method-i-ouvrirBDDN">#ouvrirBDDN</a>
+    
+    <li ><a href="#method-i-ouvrirBDDP">#ouvrirBDDP</a>
+    
+    <li ><a href="#method-i-ouvrirBDDS">#ouvrirBDDS</a>
+    
+    <li ><a href="#method-i-payerNiveau">#payerNiveau</a>
+    
+    <li ><a href="#method-i-pseudoDejaPris">#pseudoDejaPris</a>
+    
+    <li ><a href="#method-i-recupererArgentGrille">#recupererArgentGrille</a>
+    
+    <li ><a href="#method-i-recupererInformation">#recupererInformation</a>
+    
+    <li ><a href="#method-i-scoreDeTousLesJoueurs">#scoreDeTousLesJoueurs</a>
+    
+    <li ><a href="#method-i-supprimerUtilisateur">#supprimerUtilisateur</a>
+    
+    <li ><a href="#method-i-utilisateurExistant">#utilisateurExistant</a>
+    
+    <li ><a href="#method-i-validerSucces">#validerSucces</a>
+    
+    <li ><a href="#method-i-verifierSucces">#verifierSucces</a>
+    
+    <li ><a href="#method-i-voirLesUtilisateurs">#voirLesUtilisateurs</a>
+    
+    <li ><a href="#method-i-voirSucces">#voirSucces</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Object">
+  <h1 id="class-Object" class="class">
+    class Object
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-ajouterUtilisateur" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">ajouterUtilisateur</span><span
+            class="method-args">(unPseudo, unMDP, uneReponse)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Ajouter et supprimer un utilisateur</p>
+          
+          
+
+          
+          <div class="method-source-code" id="ajouterUtilisateur-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/FonctionsBDD.rb, line 58</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">ajouterUtilisateur</span>(<span class="ruby-identifier">unPseudo</span>, <span class="ruby-identifier">unMDP</span>, <span class="ruby-identifier">uneReponse</span>)
+<span class="ruby-comment">#Insérer des informations dans la base de données</span>
+        <span class="ruby-identifier">bddP</span> = <span class="ruby-identifier">ouvrirBDDP</span>()
+        <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span>(<span class="ruby-identifier">pseudoDejaPris</span>(<span class="ruby-identifier">unPseudo</span>)) <span class="ruby-keyword">then</span>
+                <span class="ruby-identifier">id</span> = <span class="ruby-identifier">chercherIDUnique</span>(<span class="ruby-identifier">bddP</span>)
+                <span class="ruby-identifier">bddP</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;INSERT INTO profil (idJoueur, pseudo, password, repSecret, scoreGlobal, scoreFacile, scoreMoyen, scoreDifficile, nbPartiesJouees, nbPartiesFinitSansAides, argent, nbAides) VALUES ( #{id}, &#39;#{unPseudo}&#39;, &#39;#{Digest::SHA256.hexdigest(unMDP)[0..20]}&#39;, &#39;#{Digest::SHA256.hexdigest(uneReponse)[0..20]}&#39;, 0, 0, 0, 0, 0, 0, 0, 10 )&quot;</span>)
+                <span class="ruby-identifier">creerModeAventure</span>(<span class="ruby-identifier">id</span>)
+                <span class="ruby-identifier">creerSucces</span>(<span class="ruby-identifier">id</span>)
+                <span class="ruby-keyword">return</span> <span class="ruby-identifier">id</span>
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-keyword">return</span> <span class="ruby-value">0</span>
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-augmenterNbAides" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">augmenterNbAides</span><span
+            class="method-args">(unID, uneValeur)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="augmenterNbAides-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/FonctionsBDD.rb, line 353</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">augmenterNbAides</span>(<span class="ruby-identifier">unID</span>, <span class="ruby-identifier">uneValeur</span>)
+<span class="ruby-comment">#Augmenter le nombre d&#39;aide disponible par partie d&#39;un joueur</span>
+        <span class="ruby-identifier">bdd</span> = <span class="ruby-identifier">ouvrirBDDP</span>()
+        <span class="ruby-identifier">valeur</span> = <span class="ruby-identifier">bdd</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;SELECT nbAides FROM profil WHERE idJoueur = &#39;#{unID}&#39;&quot;</span>).<span class="ruby-identifier">shift</span>.<span class="ruby-identifier">shift</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">uneValeur</span>
+        <span class="ruby-identifier">bdd</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;UPDATE profil SET nbAides = #{valeur} WHERE idJoueur = &#39;#{unID}&#39;&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-augmenterNbPartiesJouees" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">augmenterNbPartiesJouees</span><span
+            class="method-args">(unID)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="augmenterNbPartiesJouees-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/FonctionsBDD.rb, line 339</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">augmenterNbPartiesJouees</span>(<span class="ruby-identifier">unID</span>)
+<span class="ruby-comment">#Augmenter le score global d&#39;un joueur</span>
+        <span class="ruby-identifier">bdd</span> = <span class="ruby-identifier">ouvrirBDDP</span>()
+        <span class="ruby-identifier">valeur</span> = <span class="ruby-identifier">bdd</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;SELECT nbPartiesJouees FROM profil WHERE idJoueur = &#39;#{unID}&#39;&quot;</span>).<span class="ruby-identifier">shift</span>.<span class="ruby-identifier">shift</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>
+        <span class="ruby-identifier">bdd</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;UPDATE profil SET nbPartiesJouees = #{valeur} WHERE idJoueur = &#39;#{unID}&#39;&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-augmenterNbPartiesTermineesSansAides" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">augmenterNbPartiesTermineesSansAides</span><span
+            class="method-args">(unID)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="augmenterNbPartiesTermineesSansAides-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/FonctionsBDD.rb, line 346</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">augmenterNbPartiesTermineesSansAides</span>(<span class="ruby-identifier">unID</span>)
+<span class="ruby-comment">#Augmenter le score global d&#39;un joueur</span>
+        <span class="ruby-identifier">bdd</span> = <span class="ruby-identifier">ouvrirBDDP</span>()
+        <span class="ruby-identifier">valeur</span> = <span class="ruby-identifier">bdd</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;SELECT nbPartiesFinitSansAides FROM profil WHERE idJoueur = &#39;#{unID}&#39;&quot;</span>).<span class="ruby-identifier">shift</span>.<span class="ruby-identifier">shift</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>
+        <span class="ruby-identifier">bdd</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;UPDATE profil SET nbPartiesFinitSansAides = #{valeur} WHERE idJoueur = &#39;#{unID}&#39;&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-augmenterScoreDifficile" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">augmenterScoreDifficile</span><span
+            class="method-args">(unID, uneValeur)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="augmenterScoreDifficile-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/FonctionsBDD.rb, line 331</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">augmenterScoreDifficile</span>(<span class="ruby-identifier">unID</span>, <span class="ruby-identifier">uneValeur</span>)
+<span class="ruby-comment">#Augmenter le score global d&#39;un joueur</span>
+        <span class="ruby-identifier">bdd</span> = <span class="ruby-identifier">ouvrirBDDP</span>()
+        <span class="ruby-identifier">ancienneValeur</span> = <span class="ruby-identifier">bdd</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;SELECT scoreDifficile FROM profil WHERE idJoueur = &#39;#{unID}&#39;&quot;</span>).<span class="ruby-identifier">shift</span>.<span class="ruby-identifier">shift</span>
+        <span class="ruby-identifier">valeur</span> = <span class="ruby-identifier">ancienneValeur</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">uneValeur</span>
+        <span class="ruby-identifier">bdd</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;UPDATE profil SET scoreDifficile = #{valeur} WHERE idJoueur = &#39;#{unID}&#39;&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-augmenterScoreFacile" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">augmenterScoreFacile</span><span
+            class="method-args">(unID, uneValeur)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="augmenterScoreFacile-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/FonctionsBDD.rb, line 315</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">augmenterScoreFacile</span>(<span class="ruby-identifier">unID</span>, <span class="ruby-identifier">uneValeur</span>)
+<span class="ruby-comment">#Augmenter le score global d&#39;un joueur</span>
+        <span class="ruby-identifier">bdd</span> = <span class="ruby-identifier">ouvrirBDDP</span>()
+        <span class="ruby-identifier">ancienneValeur</span> = <span class="ruby-identifier">bdd</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;SELECT scoreFacile FROM profil WHERE idJoueur = &#39;#{unID}&#39;&quot;</span>).<span class="ruby-identifier">shift</span>.<span class="ruby-identifier">shift</span>
+        <span class="ruby-identifier">valeur</span> = <span class="ruby-identifier">ancienneValeur</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">uneValeur</span>
+        <span class="ruby-identifier">bdd</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;UPDATE profil SET scoreFacile = #{valeur} WHERE idJoueur = &#39;#{unID}&#39;&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-augmenterScoreGlobal" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">augmenterScoreGlobal</span><span
+            class="method-args">(unID, uneValeur)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthodes pour modifier les scores, le nombre de partie jouée et terminée et
+la progression du mode aventure</p>
+          
+          
+
+          
+          <div class="method-source-code" id="augmenterScoreGlobal-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/FonctionsBDD.rb, line 307</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">augmenterScoreGlobal</span>(<span class="ruby-identifier">unID</span>, <span class="ruby-identifier">uneValeur</span>)
+<span class="ruby-comment">#Augmenter le score global d&#39;un joueur</span>
+        <span class="ruby-identifier">bdd</span> = <span class="ruby-identifier">ouvrirBDDP</span>()
+        <span class="ruby-identifier">ancienneValeur</span> = <span class="ruby-identifier">bdd</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;SELECT scoreGlobal FROM profil WHERE idJoueur = &#39;#{unID}&#39;&quot;</span>).<span class="ruby-identifier">shift</span>.<span class="ruby-identifier">shift</span>
+        <span class="ruby-identifier">valeur</span> = <span class="ruby-identifier">ancienneValeur</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">uneValeur</span>
+        <span class="ruby-identifier">bdd</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;UPDATE profil SET scoreGlobal = #{valeur} &quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-augmenterScoreMoyen" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">augmenterScoreMoyen</span><span
+            class="method-args">(unID, uneValeur)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="augmenterScoreMoyen-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/FonctionsBDD.rb, line 323</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">augmenterScoreMoyen</span>(<span class="ruby-identifier">unID</span>, <span class="ruby-identifier">uneValeur</span>)
+<span class="ruby-comment">#Augmenter le score global d&#39;un joueur</span>
+        <span class="ruby-identifier">bdd</span> = <span class="ruby-identifier">ouvrirBDDP</span>()
+        <span class="ruby-identifier">ancienneValeur</span> = <span class="ruby-identifier">bdd</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;SELECT scoreMoyen FROM profil WHERE idJoueur = &#39;#{unID}&#39;&quot;</span>).<span class="ruby-identifier">shift</span>.<span class="ruby-identifier">shift</span>
+        <span class="ruby-identifier">valeur</span> = <span class="ruby-identifier">ancienneValeur</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">uneValeur</span>
+        <span class="ruby-identifier">bdd</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;UPDATE profil SET scoreMoyen = #{valeur} WHERE idJoueur = &#39;#{unID}&#39;&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-changerMotDePasse" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">changerMotDePasse</span><span
+            class="method-args">(unID, leNouveauMDP)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="changerMotDePasse-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/FonctionsBDD.rb, line 281</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">changerMotDePasse</span>(<span class="ruby-identifier">unID</span>, <span class="ruby-identifier">leNouveauMDP</span>)
+<span class="ruby-comment"># change le mot de passe d&#39;un profil avec celui obtenu en paramètre</span>
+        <span class="ruby-identifier">bdd</span> = <span class="ruby-identifier">ouvrirBDDP</span>()
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">bdd</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;SELECT password FROM profil WHERE idJoueur = &#39;#{unID}&#39;&quot;</span>).<span class="ruby-identifier">shift</span> <span class="ruby-operator">!=</span> <span class="ruby-constant">Digest</span><span class="ruby-operator">::</span><span class="ruby-constant">SHA256</span>.<span class="ruby-identifier">hexdigest</span>(<span class="ruby-identifier">leNouveauMDP</span>)[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">20</span>]  <span class="ruby-keyword">then</span>
+                <span class="ruby-identifier">bdd</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;UPDATE profil SET password = &#39;#{Digest::SHA256.hexdigest(leNouveauMDP)[0..20] }&#39; WHERE idJoueur = &#39;#{unID}&#39;&quot;</span>)
+                <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span>
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-changerPseudo" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">changerPseudo</span><span
+            class="method-args">(unID, leNouveauPseudo)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="changerPseudo-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/FonctionsBDD.rb, line 292</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">changerPseudo</span>(<span class="ruby-identifier">unID</span>, <span class="ruby-identifier">leNouveauPseudo</span>)
+<span class="ruby-comment"># change le pseudo d&#39;un profil avec celui obtenu en paramètre</span>
+        <span class="ruby-identifier">bdd</span> = <span class="ruby-identifier">ouvrirBDDP</span>()
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">bdd</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;SELECT pseudo FROM profil WHERE idJoueur = &#39;#{unID}&#39;&quot;</span>).<span class="ruby-identifier">shift</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">leNouveauPseudo</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span>(<span class="ruby-identifier">pseudoDejaPris</span>(<span class="ruby-identifier">leNouveauPseudo</span>)) <span class="ruby-keyword">then</span>
+                <span class="ruby-identifier">bdd</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;UPDATE profil SET pseudo = &#39;#{leNouveauPseudo}&#39; WHERE idJoueur = &#39;#{unID}&#39;&quot;</span>)
+                <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span>
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-changerStatutGrille" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">changerStatutGrille</span><span
+            class="method-args">(unID, unNiveau, unIDGrille)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="changerStatutGrille-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/FonctionsBDD.rb, line 404</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">changerStatutGrille</span>(<span class="ruby-identifier">unID</span>, <span class="ruby-identifier">unNiveau</span>, <span class="ruby-identifier">unIDGrille</span>)
+<span class="ruby-comment">#Méthode pour changer le statut d&#39;une grille d&#39;un joueur de &#39;A faire&#39; à &#39;Fait&#39;</span>
+        <span class="ruby-identifier">bddG</span> = <span class="ruby-identifier">ouvrirBDDG</span>()
+
+        <span class="ruby-identifier">unIDNiveau</span> = <span class="ruby-identifier">unID</span><span class="ruby-operator">*</span><span class="ruby-value">100</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">unNiveau</span>
+        
+        <span class="ruby-identifier">bddG</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;UPDATE grille SET statut = &#39;Fait&#39; WHERE idNiveau = #{unIDNiveau} AND idGrille = #{unIDGrille}&quot;</span>)
+
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-chercherIDUnique" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">chercherIDUnique</span><span
+            class="method-args">(bdd)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="chercherIDUnique-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/FonctionsBDD.rb, line 46</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">chercherIDUnique</span>(<span class="ruby-identifier">bdd</span>)
+<span class="ruby-comment"># Cette méthode cherche le nombre de joueur enregistré et renvoie la valeur supérieure</span>
+        <span class="ruby-identifier">id</span> = <span class="ruby-identifier">bdd</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-string">&quot;SELECT MAX( idJoueur) FROM profil&quot;</span>)
+        <span class="ruby-identifier">tmp</span> = <span class="ruby-identifier">id</span>.<span class="ruby-identifier">shift</span>.<span class="ruby-identifier">shift</span>.<span class="ruby-identifier">to_i</span>
+        <span class="ruby-comment">#puts tmp.class</span>
+        <span class="ruby-keyword">return</span> (<span class="ruby-identifier">tmp</span><span class="ruby-value">+1</span>)
+
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-connexion" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">connexion</span><span
+            class="method-args">(unPseudo, unMDP)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode de recherche du mot de passe par le pseudo</p>
+          
+          
+
+          
+          <div class="method-source-code" id="connexion-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/FonctionsBDD.rb, line 249</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">connexion</span>(<span class="ruby-identifier">unPseudo</span>, <span class="ruby-identifier">unMDP</span>)
+<span class="ruby-comment"># Recherche si les deux éléments passés en paramètre appartiennent à un même compte</span>
+        <span class="ruby-identifier">bdd</span> = <span class="ruby-identifier">ouvrirBDDP</span>()
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">bdd</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;SELECT password FROM profil WHERE pseudo = &#39;#{unPseudo}&#39;&quot;</span>).<span class="ruby-identifier">shift</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">then</span>
+                <span class="ruby-identifier">motDePasse</span> = <span class="ruby-identifier">bdd</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;SELECT password FROM profil WHERE pseudo = &#39;#{unPseudo}&#39;&quot;</span>).<span class="ruby-identifier">shift</span>.<span class="ruby-identifier">shift</span>
+                <span class="ruby-keyword">if</span> <span class="ruby-constant">Digest</span><span class="ruby-operator">::</span><span class="ruby-constant">SHA256</span>.<span class="ruby-identifier">hexdigest</span>(<span class="ruby-identifier">unMDP</span>)[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">20</span>] <span class="ruby-operator">==</span> <span class="ruby-identifier">motDePasse</span> <span class="ruby-keyword">then</span>
+                        <span class="ruby-keyword">return</span> <span class="ruby-identifier">bdd</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;SELECT idJoueur FROM profil WHERE pseudo = &#39;#{unPseudo}&#39;&quot;</span>).<span class="ruby-identifier">shift</span>.<span class="ruby-identifier">shift</span>
+                <span class="ruby-keyword">end</span>
+
+                <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-creerConditionSucces" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">creerConditionSucces</span><span
+            class="method-args">(unID, lesConditions)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="creerConditionSucces-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/FonctionsBDD.rb, line 232</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">creerConditionSucces</span>(<span class="ruby-identifier">unID</span>, <span class="ruby-identifier">lesConditions</span>)
+<span class="ruby-comment"># Méthode qui crée la base de données des conditions des succès du joueur à partir de l&#39;id du succes et des conditions reçu en paramètres</span>
+        <span class="ruby-identifier">bddCS</span> = <span class="ruby-identifier">ouvrirBDDCS</span>()
+
+
+        <span class="ruby-identifier">laCondition</span> = <span class="ruby-identifier">lesConditions</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&#39;;&#39;</span>)
+        <span class="ruby-identifier">donnee</span> = <span class="ruby-identifier">laCondition</span>[<span class="ruby-value">0</span>]
+        <span class="ruby-identifier">table</span> = <span class="ruby-identifier">laCondition</span>[<span class="ruby-value">1</span>]
+        <span class="ruby-identifier">valeur</span> = <span class="ruby-identifier">laCondition</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">to_i</span>
+
+        <span class="ruby-identifier">bddCS</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;INSERT INTO conditionSucces (idSucces, donnee, tableCondition, valeurCondition) VALUES (#{unID}, &#39;#{donnee}&#39;, &#39;#{table}&#39;, #{valeur})&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-creerGrilleAventure" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">creerGrilleAventure</span><span
+            class="method-args">(unIDNiveau, uneLigne)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="creerGrilleAventure-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/FonctionsBDD.rb, line 186</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">creerGrilleAventure</span>(<span class="ruby-identifier">unIDNiveau</span>, <span class="ruby-identifier">uneLigne</span>)
+        <span class="ruby-identifier">bddG</span> = <span class="ruby-identifier">ouvrirBDDG</span>()
+
+        <span class="ruby-identifier">ligneGrille</span> = <span class="ruby-constant">IO</span>.<span class="ruby-identifier">readlines</span>(<span class="ruby-string">&quot;./Ressources/aventure.txt&quot;</span>)[<span class="ruby-identifier">uneLigne</span>]
+        <span class="ruby-comment">#puts &quot;#{ligneGrille}\n&quot;</span>
+        <span class="ruby-identifier">informationGrille</span> = <span class="ruby-identifier">ligneGrille</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&#39;;&#39;</span>)
+
+        <span class="ruby-identifier">idCourant</span> = <span class="ruby-identifier">informationGrille</span>.<span class="ruby-identifier">shift</span>.<span class="ruby-identifier">to_i</span>
+        <span class="ruby-identifier">difficulteCourante</span> = <span class="ruby-identifier">informationGrille</span>.<span class="ruby-identifier">shift</span>
+        <span class="ruby-identifier">ligneCourante</span> = <span class="ruby-identifier">informationGrille</span>.<span class="ruby-identifier">shift</span>
+        <span class="ruby-identifier">tempsCourant</span> = <span class="ruby-identifier">informationGrille</span>.<span class="ruby-identifier">shift</span>.<span class="ruby-identifier">to_i</span>
+
+        <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;#{unIDNiveau} #{idCourant} #{difficulteCourante} #{ligneCourante} #{tempsCourant}&quot;</span>
+
+        <span class="ruby-comment">#puts &quot;#{difficulteCourante}\n&quot;</span>
+        <span class="ruby-comment">#puts &quot;#{ligneCourante}\n&quot;</span>
+
+        <span class="ruby-identifier">bddG</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;INSERT INTO grille (idGrille, niveauDifficulte, numeroLigne, idNiveau, temps, pointGagnable, statut) VALUES (#{idCourant}, &#39;#{difficulteCourante}&#39;, #{ligneCourante}, #{unIDNiveau}, #{tempsCourant}, 10, &#39;A faire&#39;)&quot;</span>)
+
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-creerModeAventure" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">creerModeAventure</span><span
+            class="method-args">(unID)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Création du mode aventure</p>
+          
+          
+
+          
+          <div class="method-source-code" id="creerModeAventure-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/FonctionsBDD.rb, line 132</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">creerModeAventure</span>(<span class="ruby-identifier">unID</span>)
+        <span class="ruby-identifier">bddA</span> = <span class="ruby-identifier">ouvrirBDDA</span>()
+        <span class="ruby-identifier">bddG</span> = <span class="ruby-identifier">ouvrirBDDG</span>()
+
+        <span class="ruby-identifier">baseNiveau</span> = <span class="ruby-identifier">unID</span><span class="ruby-operator">*</span><span class="ruby-value">100</span>
+        <span class="ruby-identifier">nbGrilleParNiveau</span> = <span class="ruby-value">6</span>
+
+        <span class="ruby-comment">#Création de tous les niveaux avec l&#39;id du joueur</span>
+
+        <span class="ruby-identifier">ligne</span> = <span class="ruby-value">0</span>
+
+        <span class="ruby-comment">#printemps</span>
+                <span class="ruby-identifier">niveau1</span> = <span class="ruby-identifier">creerNiveauAventure</span>(<span class="ruby-identifier">baseNiveau</span>, <span class="ruby-identifier">ligne</span>, <span class="ruby-identifier">nbGrilleParNiveau</span>)
+                <span class="ruby-identifier">ligne</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">nbGrilleParNiveau</span><span class="ruby-value">+1</span>
+        <span class="ruby-comment">#été</span>
+                <span class="ruby-identifier">niveau2</span> = <span class="ruby-identifier">creerNiveauAventure</span>(<span class="ruby-identifier">baseNiveau</span>, <span class="ruby-identifier">ligne</span>, <span class="ruby-identifier">nbGrilleParNiveau</span>)
+                <span class="ruby-identifier">ligne</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">nbGrilleParNiveau</span><span class="ruby-value">+1</span>
+        <span class="ruby-comment">#automne</span>
+                <span class="ruby-identifier">niveau3</span> = <span class="ruby-identifier">creerNiveauAventure</span>(<span class="ruby-identifier">baseNiveau</span>, <span class="ruby-identifier">ligne</span>, <span class="ruby-identifier">nbGrilleParNiveau</span>)
+                <span class="ruby-identifier">ligne</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">nbGrilleParNiveau</span><span class="ruby-value">+1</span>
+        <span class="ruby-comment">#hiver</span>
+                <span class="ruby-identifier">niveau4</span> = <span class="ruby-identifier">creerNiveauAventure</span>(<span class="ruby-identifier">baseNiveau</span>, <span class="ruby-identifier">ligne</span>, <span class="ruby-identifier">nbGrilleParNiveau</span>)
+                <span class="ruby-identifier">ligne</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">nbGrilleParNiveau</span><span class="ruby-value">+1</span>
+        <span class="ruby-comment">#bonus</span>
+                <span class="ruby-identifier">niveau5</span> = <span class="ruby-identifier">creerNiveauAventure</span>(<span class="ruby-identifier">baseNiveau</span>, <span class="ruby-identifier">ligne</span>, <span class="ruby-identifier">nbGrilleParNiveau</span>)
+                <span class="ruby-identifier">ligne</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">nbGrilleParNiveau</span><span class="ruby-value">+1</span>
+        <span class="ruby-comment">#Ajout du mode aventure au compte du joueur</span>
+        <span class="ruby-identifier">bddA</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;INSERT INTO aventure (idAventure, idPrintemps, idEte, idAutomne, idHiver, idBonus) VALUES (#{unID}, #{niveau1}, #{niveau2}, #{niveau3}, #{niveau4}, #{niveau5})&quot;</span>)
+        
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-creerNiveauAventure" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">creerNiveauAventure</span><span
+            class="method-args">(baseNiveau, uneLigne, nbGrilleParNiveau)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="creerNiveauAventure-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/FonctionsBDD.rb, line 163</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">creerNiveauAventure</span>(<span class="ruby-identifier">baseNiveau</span>, <span class="ruby-identifier">uneLigne</span>, <span class="ruby-identifier">nbGrilleParNiveau</span>)
+        <span class="ruby-identifier">bddN</span> = <span class="ruby-identifier">ouvrirBDDN</span>()
+
+        <span class="ruby-identifier">ligneAventure</span> = <span class="ruby-constant">IO</span>.<span class="ruby-identifier">readlines</span>(<span class="ruby-string">&quot;./Ressources/aventure.txt&quot;</span>)[<span class="ruby-identifier">uneLigne</span>]
+        <span class="ruby-identifier">informationAventure</span> = <span class="ruby-identifier">ligneAventure</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&#39;;&#39;</span>)
+
+
+        <span class="ruby-identifier">niveauCourant</span> = <span class="ruby-identifier">baseNiveau</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">informationAventure</span>.<span class="ruby-identifier">shift</span>.<span class="ruby-identifier">to_i</span>
+        <span class="ruby-identifier">nomCourant</span> = <span class="ruby-identifier">informationAventure</span>.<span class="ruby-identifier">shift</span>
+        <span class="ruby-identifier">coutCourant</span> = <span class="ruby-identifier">informationAventure</span>.<span class="ruby-identifier">shift</span>.<span class="ruby-identifier">to_i</span>
+        
+
+        <span class="ruby-identifier">bddN</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;INSERT INTO niveau (idNiveau, nomNiveau, statut, cout) VALUES (#{niveauCourant}, &#39;#{nomCourant}&#39;, &#39;Verouillé&#39;, #{coutCourant})&quot;</span>)
+
+        <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> <span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-identifier">nbGrilleParNiveau</span>
+                <span class="ruby-identifier">creerGrilleAventure</span>(<span class="ruby-identifier">niveauCourant</span>, <span class="ruby-identifier">uneLigne</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">i</span>)
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-comment">#puts &quot;--------&quot;</span>
+
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">niveauCourant</span>
+
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-creerSucces" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">creerSucces</span><span
+            class="method-args">(unID)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthodes pour créer les succès de chaque joueur</p>
+          
+          
+
+          
+          <div class="method-source-code" id="creerSucces-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/FonctionsBDD.rb, line 211</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">creerSucces</span>(<span class="ruby-identifier">unID</span>)
+<span class="ruby-comment"># Méthode qui crée la base de données des succès du joueur à partir du fichier Succes.txt</span>
+        <span class="ruby-identifier">bddS</span> = <span class="ruby-identifier">ouvrirBDDS</span>()
+
+        <span class="ruby-identifier">idDuSucces</span> = <span class="ruby-value">0</span>
+
+        <span class="ruby-comment"># Lecture de l&#39;ensemble du fichier</span>
+        <span class="ruby-identifier">ligneFichier</span> = <span class="ruby-constant">IO</span>.<span class="ruby-identifier">readlines</span>(<span class="ruby-string">&quot;./Ressources/Succes.txt&quot;</span>)
+        <span class="ruby-identifier">ligneFichier</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">ligne</span><span class="ruby-operator">|</span> 
+                <span class="ruby-identifier">leSucces</span> = <span class="ruby-identifier">ligne</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&#39;&gt;&lt;&#39;</span>)
+
+                <span class="ruby-identifier">nomDuSucces</span> = <span class="ruby-identifier">leSucces</span>[<span class="ruby-value">0</span>]
+                <span class="ruby-identifier">descriptionDuSucces</span> = <span class="ruby-identifier">leSucces</span>[<span class="ruby-value">1</span>]
+
+                <span class="ruby-identifier">bddS</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;INSERT INTO succes (idSucces, idJoueur, nom, description, statut) VALUES (#{idDuSucces}, #{unID}, &#39;#{nomDuSucces}&#39;, &#39;#{descriptionDuSucces}&#39;, &#39;A faire&#39;)&quot;</span>)
+
+                <span class="ruby-identifier">creerConditionSucces</span>(<span class="ruby-identifier">idDuSucces</span>, <span class="ruby-identifier">leSucces</span>[<span class="ruby-value">2</span>])
+                <span class="ruby-identifier">idDuSucces</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+        }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-deverouillerNiveau" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">deverouillerNiveau</span><span
+            class="method-args">(unIDNiveau)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthodes pour interagir avec le mode aventure</p>
+          
+          
+
+          
+          <div class="method-source-code" id="deverouillerNiveau-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/FonctionsBDD.rb, line 371</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">deverouillerNiveau</span>(<span class="ruby-identifier">unIDNiveau</span>)
+<span class="ruby-comment">#Méthode pour déverouiller un niveau</span>
+        <span class="ruby-identifier">bdd</span> = <span class="ruby-identifier">ouvrirBDDN</span>()
+        <span class="ruby-identifier">bdd</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;UPDATE niveau SET statut = &#39;Déverouillé&#39; WHERE idNiveau = &#39;#{unIDNiveau}&#39;&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-donnerInformationsGrille" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">donnerInformationsGrille</span><span
+            class="method-args">(unID, leNiveau, laGrille)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode pour renvoyer les identifiants de la grille, le niveau de
+difficulté et le numéro de la ligne</p>
+          
+          
+
+          
+          <div class="method-source-code" id="donnerInformationsGrille-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/FonctionsBDD.rb, line 581</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">donnerInformationsGrille</span>(<span class="ruby-identifier">unID</span>, <span class="ruby-identifier">leNiveau</span>, <span class="ruby-identifier">laGrille</span>)
+
+        <span class="ruby-identifier">bddG</span> = <span class="ruby-identifier">ouvrirBDDG</span>()
+
+        <span class="ruby-identifier">informationsGrille</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>()
+
+        
+        <span class="ruby-identifier">idNiveauBDD</span> = <span class="ruby-identifier">unID</span><span class="ruby-operator">*</span><span class="ruby-value">100</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">leNiveau</span>
+
+        <span class="ruby-identifier">nbGrilleParNiveau</span> = <span class="ruby-identifier">bddG</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;SELECT COUNT(idGrille) FROM grille WHERE idNiveau = #{idNiveauBDD}&quot;</span>).<span class="ruby-identifier">shift</span>.<span class="ruby-identifier">shift</span>
+
+        <span class="ruby-identifier">difficulte</span> = <span class="ruby-identifier">bddG</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;SELECT niveauDifficulte FROM grille WHERE idGrille = #{laGrille} AND idNiveau = #{idNiveauBDD}&quot;</span>).<span class="ruby-identifier">shift</span>.<span class="ruby-identifier">shift</span>
+        <span class="ruby-identifier">numLigne</span> = <span class="ruby-identifier">bddG</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;SELECT numeroLigne FROM grille WHERE idGrille = #{laGrille} AND idNiveau = #{idNiveauBDD}&quot;</span>).<span class="ruby-identifier">shift</span>.<span class="ruby-identifier">shift</span>
+        <span class="ruby-identifier">tempsGrille</span> = <span class="ruby-identifier">bddG</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;SELECT temps FROM grille WHERE idGrille = #{laGrille} AND idNiveau = #{idNiveauBDD}&quot;</span>).<span class="ruby-identifier">shift</span>.<span class="ruby-identifier">shift</span>
+
+        <span class="ruby-identifier">informationsGrille</span> = [<span class="ruby-identifier">laGrille</span>, <span class="ruby-identifier">difficulte</span>, <span class="ruby-identifier">numLigne</span>, <span class="ruby-identifier">tempsGrille</span>]
+
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">informationsGrille</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-grillePasFaite" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">grillePasFaite</span><span
+            class="method-args">(unID, unNiveau, unIDGrille)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="grillePasFaite-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/FonctionsBDD.rb, line 426</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">grillePasFaite</span>(<span class="ruby-identifier">unID</span>, <span class="ruby-identifier">unNiveau</span>, <span class="ruby-identifier">unIDGrille</span>)
+<span class="ruby-comment">#Méthode pour vérifier si une grille a été faite ou non</span>
+        <span class="ruby-identifier">bddG</span> = <span class="ruby-identifier">ouvrirBDDG</span>()
+
+        <span class="ruby-identifier">unIDNiveau</span> = <span class="ruby-identifier">unID</span><span class="ruby-operator">*</span><span class="ruby-value">100</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">unNiveau</span>
+
+        <span class="ruby-identifier">statut</span> = <span class="ruby-identifier">bddG</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;SELECT statut FROM grille WHERE idNiveau = #{unIDNiveau} AND idGrille = #{unIDGrille}&quot;</span>).<span class="ruby-identifier">shift</span>.<span class="ruby-identifier">shift</span>
+
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">statut</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;A faire&quot;</span> <span class="ruby-keyword">then</span>
+                <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span>
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-inspecterSucces" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">inspecterSucces</span><span
+            class="method-args">(unIDS, unID)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode pour récupérer les informations du succès</p>
+          
+          
+
+          
+          <div class="method-source-code" id="inspecterSucces-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/FonctionsBDD.rb, line 459</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">inspecterSucces</span>(<span class="ruby-identifier">unIDS</span>, <span class="ruby-identifier">unID</span>)
+        <span class="ruby-identifier">bddCS</span> = <span class="ruby-identifier">ouvrirBDDCS</span>()
+
+        <span class="ruby-identifier">uneDonnee</span> = <span class="ruby-identifier">bddCS</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;SELECT donnee FROM conditionSucces WHERE idSucces = #{unIDS}&quot;</span>).<span class="ruby-identifier">shift</span>.<span class="ruby-identifier">shift</span>
+        <span class="ruby-identifier">uneTable</span> = <span class="ruby-identifier">bddCS</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;SELECT tableCondition FROM conditionSucces WHERE idSucces = #{unIDS}&quot;</span>).<span class="ruby-identifier">shift</span>.<span class="ruby-identifier">shift</span>
+        <span class="ruby-identifier">uneValeur</span> = <span class="ruby-identifier">bddCS</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;SELECT valeurCondition FROM conditionSucces WHERE idSucces = #{unIDS}&quot;</span>).<span class="ruby-identifier">shift</span>.<span class="ruby-identifier">shift</span>
+
+        <span class="ruby-identifier">verifierSucces</span>(<span class="ruby-identifier">unIDS</span>, <span class="ruby-identifier">unID</span>, <span class="ruby-identifier">uneDonnee</span>, <span class="ruby-identifier">uneTable</span>, <span class="ruby-identifier">uneValeur</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-modifierArgent" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">modifierArgent</span><span
+            class="method-args">(unID, uneValeur)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="modifierArgent-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/FonctionsBDD.rb, line 360</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">modifierArgent</span>(<span class="ruby-identifier">unID</span>, <span class="ruby-identifier">uneValeur</span>)
+<span class="ruby-comment">#Permet d&#39;ajouter de l&#39;argent à un joueur en renseignant son id et la valeur à ajouter (Pour enlver, donner une valeur négative)</span>
+        <span class="ruby-identifier">bdd</span> = <span class="ruby-identifier">ouvrirBDDP</span>()
+        <span class="ruby-identifier">nouvelleValeur</span> = <span class="ruby-identifier">bdd</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;SELECT argent FROM profil WHERE idJoueur = &#39;#{unID}&#39;&quot;</span>).<span class="ruby-identifier">shift</span>.<span class="ruby-identifier">shift</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">uneValeur</span>
+        <span class="ruby-identifier">bdd</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;UPDATE profil SET argent = #{nouvelleValeur} WHERE idJoueur = &#39;#{unID}&#39;&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-motDePasseOublie" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">motDePasseOublie</span><span
+            class="method-args">(unPseudo, uneReponse, unMDP)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthodes de changement des informations</p>
+          
+          
+
+          
+          <div class="method-source-code" id="motDePasseOublie-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/FonctionsBDD.rb, line 267</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">motDePasseOublie</span>(<span class="ruby-identifier">unPseudo</span>, <span class="ruby-identifier">uneReponse</span>, <span class="ruby-identifier">unMDP</span>)
+<span class="ruby-comment"># Change le mot de passe d&#39;un profil si la réponse secrète est exacte</span>
+        <span class="ruby-identifier">bdd</span> = <span class="ruby-identifier">ouvrirBDDP</span>()
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">bdd</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;SELECT repSecret FROM profil WHERE pseudo = &#39;#{unPseudo}&#39;&quot;</span>).<span class="ruby-identifier">shift</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">then</span>
+                <span class="ruby-identifier">reponseSecrete</span> = <span class="ruby-identifier">bdd</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;SELECT repSecret FROM profil WHERE pseudo = &#39;#{unPseudo}&#39;&quot;</span>).<span class="ruby-identifier">shift</span>.<span class="ruby-identifier">shift</span>
+                <span class="ruby-keyword">if</span> <span class="ruby-constant">Digest</span><span class="ruby-operator">::</span><span class="ruby-constant">SHA256</span>.<span class="ruby-identifier">hexdigest</span>(<span class="ruby-identifier">uneReponse</span>)[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">20</span>] <span class="ruby-operator">==</span> <span class="ruby-identifier">reponseSecrete</span> <span class="ruby-keyword">then</span>
+                        <span class="ruby-identifier">bdd</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;UPDATE profil SET password = &#39;#{Digest::SHA256.hexdigest(unMDP)[0..20] }&#39; WHERE pseudo = &#39;#{unPseudo}&#39;&quot;</span>)
+                        <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span>
+                <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-niveauComplet" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">niveauComplet</span><span
+            class="method-args">(unID, unNiveau, unIDGrille)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="niveauComplet-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/FonctionsBDD.rb, line 441</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">niveauComplet</span>(<span class="ruby-identifier">unID</span>, <span class="ruby-identifier">unNiveau</span>, <span class="ruby-identifier">unIDGrille</span>)
+<span class="ruby-comment">#Méthode pour vérifier si le niveau où se trouve la grille est complet</span>
+        <span class="ruby-identifier">bddG</span> = <span class="ruby-identifier">ouvrirBDDG</span>()
+
+        <span class="ruby-identifier">unIDNiveau</span> = <span class="ruby-identifier">unID</span><span class="ruby-operator">*</span><span class="ruby-value">100</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">unNiveau</span>
+
+        <span class="ruby-identifier">niveauCourant</span> = <span class="ruby-identifier">bddG</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;SELECT idNiveau FROM grille WHERE idGrille = #{unIDGrille} AND idNiveau = #{unIDNiveau}&quot;</span>).<span class="ruby-identifier">shift</span>.<span class="ruby-identifier">shift</span>
+
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">bddG</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;SELECT COUNT(idGrille) FROM grille WHERE idNiveau = #{niveauCourant} AND statut = &#39;Fait&#39;&quot;</span>) <span class="ruby-operator">==</span> <span class="ruby-identifier">bddG</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;SELECT COUNT(idGrille) FROM grille WHERE idNiveau = #{niveauCourant}&quot;</span>) <span class="ruby-keyword">then</span>
+                <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span>
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-niveauDebloque" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">niveauDebloque</span><span
+            class="method-args">(unId, unIdNiveau)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="niveauDebloque-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/FonctionsBDD.rb, line 392</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">niveauDebloque</span>(<span class="ruby-identifier">unId</span>, <span class="ruby-identifier">unIdNiveau</span>)
+<span class="ruby-comment">#Méthode pour vérifier qu&#39;un niveau à été débloquer ou non</span>
+        <span class="ruby-identifier">bdd</span> = <span class="ruby-identifier">ouvrirBDDN</span>()
+        <span class="ruby-identifier">idCourant</span> = <span class="ruby-identifier">unId</span><span class="ruby-operator">*</span><span class="ruby-value">100</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">unIdNiveau</span><span class="ruby-value">+1</span>
+        <span class="ruby-identifier">statut</span> = <span class="ruby-identifier">bdd</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;SELECT statut FROM niveau WHERE idNiveau = &#39;#{idCourant}&#39;&quot;</span>).<span class="ruby-identifier">shift</span>.<span class="ruby-identifier">shift</span>
+
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">statut</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;Déverouillé&#39;</span>
+                <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-ouvrirBDDA" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">ouvrirBDDA</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="ouvrirBDDA-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/FonctionsBDD.rb, line 23</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">ouvrirBDDA</span>()
+        <span class="ruby-keyword">return</span> <span class="ruby-constant">SQLite3</span><span class="ruby-operator">::</span><span class="ruby-constant">Database</span>.<span class="ruby-identifier">new</span> <span class="ruby-string">&#39;./BaseDeDonnees/aventure.db&#39;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-ouvrirBDDCS" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">ouvrirBDDCS</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="ouvrirBDDCS-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/FonctionsBDD.rb, line 39</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">ouvrirBDDCS</span>()
+        <span class="ruby-keyword">return</span> <span class="ruby-constant">SQLite3</span><span class="ruby-operator">::</span><span class="ruby-constant">Database</span>.<span class="ruby-identifier">new</span> <span class="ruby-string">&#39;./BaseDeDonnees/conditionSucces.db&#39;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-ouvrirBDDG" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">ouvrirBDDG</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="ouvrirBDDG-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/FonctionsBDD.rb, line 31</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">ouvrirBDDG</span>()
+        <span class="ruby-keyword">return</span> <span class="ruby-constant">SQLite3</span><span class="ruby-operator">::</span><span class="ruby-constant">Database</span>.<span class="ruby-identifier">new</span> <span class="ruby-string">&#39;./BaseDeDonnees/grille.db&#39;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-ouvrirBDDN" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">ouvrirBDDN</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="ouvrirBDDN-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/FonctionsBDD.rb, line 27</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">ouvrirBDDN</span>()
+        <span class="ruby-keyword">return</span> <span class="ruby-constant">SQLite3</span><span class="ruby-operator">::</span><span class="ruby-constant">Database</span>.<span class="ruby-identifier">new</span> <span class="ruby-string">&#39;./BaseDeDonnees/niveau.db&#39;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-ouvrirBDDP" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">ouvrirBDDP</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthodes d&#39;ouverture des bases de données</p>
+          
+          
+
+          
+          <div class="method-source-code" id="ouvrirBDDP-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/FonctionsBDD.rb, line 19</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">ouvrirBDDP</span>()
+        <span class="ruby-keyword">return</span> <span class="ruby-constant">SQLite3</span><span class="ruby-operator">::</span><span class="ruby-constant">Database</span>.<span class="ruby-identifier">new</span> <span class="ruby-string">&#39;./BaseDeDonnees/profil.db&#39;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-ouvrirBDDS" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">ouvrirBDDS</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="ouvrirBDDS-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/FonctionsBDD.rb, line 35</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">ouvrirBDDS</span>()
+        <span class="ruby-keyword">return</span> <span class="ruby-constant">SQLite3</span><span class="ruby-operator">::</span><span class="ruby-constant">Database</span>.<span class="ruby-identifier">new</span> <span class="ruby-string">&#39;./BaseDeDonnees/succes.db&#39;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-payerNiveau" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">payerNiveau</span><span
+            class="method-args">(unID, unIDNiveau)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="payerNiveau-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/FonctionsBDD.rb, line 377</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">payerNiveau</span>(<span class="ruby-identifier">unID</span>, <span class="ruby-identifier">unIDNiveau</span>)
+<span class="ruby-comment">#Méthode pour payer un niveau</span>
+        <span class="ruby-identifier">bddP</span> = <span class="ruby-identifier">ouvrirBDDP</span>()
+        <span class="ruby-identifier">bddN</span> = <span class="ruby-identifier">ouvrirBDDN</span>()
+
+        <span class="ruby-identifier">difference</span> = <span class="ruby-identifier">bddP</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;SELECT argent FROM profil WHERE idJoueur = &#39;#{unID}&#39;&quot;</span>).<span class="ruby-identifier">shift</span>.<span class="ruby-identifier">shift</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">bddN</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;SELECT cout FROM niveau WHERE idNiveau = &#39;#{unIDNiveau}&#39;&quot;</span>).<span class="ruby-identifier">shift</span>.<span class="ruby-identifier">shift</span>
+
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">difference</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span> <span class="ruby-keyword">then</span>
+                <span class="ruby-identifier">bddP</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;UPDATE profil SET argent = #{difference} WHERE idJoueur = &#39;#{unID}&#39;&quot;</span>)
+                <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span>
+        <span class="ruby-keyword">else</span> 
+                <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-pseudoDejaPris" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">pseudoDejaPris</span><span
+            class="method-args">(unPseudo)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="pseudoDejaPris-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/FonctionsBDD.rb, line 119</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">pseudoDejaPris</span>(<span class="ruby-identifier">unPseudo</span>)
+<span class="ruby-comment">#Vérifier si un pseudo est déjà présent dans la base de données</span>
+        <span class="ruby-identifier">bdd</span> = <span class="ruby-identifier">ouvrirBDDP</span>()
+        <span class="ruby-identifier">nbPseudo</span> = <span class="ruby-identifier">bdd</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;SELECT COUNT(idJoueur) FROM profil WHERE EXISTS (SELECT pseudo FROM profil WHERE pseudo = &#39;#{unPseudo}&#39;)&quot;</span>).<span class="ruby-identifier">shift</span>.<span class="ruby-identifier">shift</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">nbPseudo</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+                <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span>
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-recupererArgentGrille" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">recupererArgentGrille</span><span
+            class="method-args">(unID, unNiveau, unIDGrille)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="recupererArgentGrille-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/FonctionsBDD.rb, line 414</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">recupererArgentGrille</span>(<span class="ruby-identifier">unID</span>, <span class="ruby-identifier">unNiveau</span>, <span class="ruby-identifier">unIDGrille</span>)
+<span class="ruby-comment">#Méthode pour donner l&#39;argent d&#39;une grille à un joueur</span>
+        <span class="ruby-identifier">bddP</span> = <span class="ruby-identifier">ouvrirBDDP</span>()
+        <span class="ruby-identifier">bddG</span> = <span class="ruby-identifier">ouvrirBDDG</span>()
+
+        <span class="ruby-identifier">unIDNiveau</span> = <span class="ruby-identifier">unID</span><span class="ruby-operator">*</span><span class="ruby-value">100</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">unNiveau</span>
+        
+        <span class="ruby-identifier">nbPoint</span> = <span class="ruby-identifier">bddG</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;SELECT pointGagnable FROM grille WHERE idNiveau = #{unIDNiveau} AND idGrille = #{unIDGrille}&quot;</span>).<span class="ruby-identifier">shift</span>.<span class="ruby-identifier">shift</span>
+        <span class="ruby-identifier">argentDuJoueur</span> = <span class="ruby-identifier">nbPoint</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">bddP</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;SELECT argent FROM profil WHERE idJoueur = #{unID}&quot;</span>).<span class="ruby-identifier">shift</span>.<span class="ruby-identifier">shift</span>
+        <span class="ruby-identifier">bddP</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;UPDATE profil SET argent = #{argentDuJoueur} WHERE idJoueur = #{unID}&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-recupererInformation" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">recupererInformation</span><span
+            class="method-args">(unID, iterateur)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode pour voir les différentes informations d&#39;un compte en utilisant
+l&#39;id</p>
+          
+          
+
+          
+          <div class="method-source-code" id="recupererInformation-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/FonctionsBDD.rb, line 523</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">recupererInformation</span>(<span class="ruby-identifier">unID</span>, <span class="ruby-identifier">iterateur</span>)
+<span class="ruby-comment"># Envoie les informations d&#39;un compte en utilisant l&#39;id. L&#39;itérateur permet de choisir l&#39;information</span>
+        <span class="ruby-identifier">bddP</span> = <span class="ruby-identifier">ouvrirBDDP</span>()
+        <span class="ruby-identifier">bddA</span> = <span class="ruby-identifier">ouvrirBDDA</span>()
+        <span class="ruby-identifier">bddN</span> = <span class="ruby-identifier">ouvrirBDDN</span>()
+        <span class="ruby-identifier">bddG</span> = <span class="ruby-identifier">ouvrirBDDG</span>()
+        <span class="ruby-keyword">case</span> <span class="ruby-identifier">iterateur</span>
+        <span class="ruby-keyword">when</span> <span class="ruby-value">1</span> <span class="ruby-comment"># Renvoie le pseudo</span>
+                <span class="ruby-keyword">return</span> <span class="ruby-identifier">bddP</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;SELECT repSecret FROM profil WHERE idJoueur = #{unID}&quot;</span>).<span class="ruby-identifier">to_s</span>
+        <span class="ruby-keyword">when</span> <span class="ruby-value">2</span> <span class="ruby-comment"># Renvoie le score global</span>
+                <span class="ruby-keyword">return</span> <span class="ruby-identifier">bddP</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;SELECT scoreGlobal FROM profil WHERE idJoueur = #{unID}&quot;</span>).<span class="ruby-identifier">shift</span>.<span class="ruby-identifier">shift</span>
+        <span class="ruby-keyword">when</span> <span class="ruby-value">3</span> <span class="ruby-comment"># Renvoie le score facile</span>
+                <span class="ruby-keyword">return</span> <span class="ruby-identifier">bddP</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;SELECT scoreFacile FROM profil WHERE idJoueur = #{unID}&quot;</span>).<span class="ruby-identifier">shift</span>.<span class="ruby-identifier">shift</span>
+        <span class="ruby-keyword">when</span> <span class="ruby-value">4</span> <span class="ruby-comment"># Renvoie le score moyen</span>
+                <span class="ruby-keyword">return</span> <span class="ruby-identifier">bddP</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;SELECT scoreMoyen FROM profil WHERE idJoueur = #{unID}&quot;</span>).<span class="ruby-identifier">shift</span>.<span class="ruby-identifier">shift</span>
+        <span class="ruby-keyword">when</span> <span class="ruby-value">5</span> <span class="ruby-comment"># Renvoie le score difficile</span>
+                <span class="ruby-keyword">return</span> <span class="ruby-identifier">bddP</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;SELECT scoreDifficile FROM profil WHERE idJoueur = #{unID}&quot;</span>).<span class="ruby-identifier">shift</span>.<span class="ruby-identifier">shift</span>
+        <span class="ruby-keyword">when</span> <span class="ruby-value">6</span> <span class="ruby-comment"># Renvoie le nombre de partie jouée</span>
+                <span class="ruby-keyword">return</span> <span class="ruby-identifier">bddP</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;SELECT nbPartiesJouees FROM profil WHERE idJoueur = #{unID}&quot;</span>).<span class="ruby-identifier">shift</span>.<span class="ruby-identifier">shift</span>
+        <span class="ruby-keyword">when</span> <span class="ruby-value">7</span> <span class="ruby-comment"># Renvoie le nombre de partie terminée sans aide</span>
+                <span class="ruby-keyword">return</span> <span class="ruby-identifier">bddP</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;SELECT nbPartiesFinitSansAides FROM profil WHERE idJoueur = #{unID}&quot;</span>).<span class="ruby-identifier">shift</span>.<span class="ruby-identifier">shift</span>
+        <span class="ruby-keyword">when</span> <span class="ruby-value">8</span> <span class="ruby-comment"># Renvoie le nombre d&#39;aide disponible par partie</span>
+                <span class="ruby-keyword">return</span> <span class="ruby-identifier">bddP</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;SELECT nbAides FROM profil WHERE idJoueur = #{unID}&quot;</span>).<span class="ruby-identifier">shift</span>.<span class="ruby-identifier">shift</span>
+        <span class="ruby-keyword">when</span> <span class="ruby-value">9</span> <span class="ruby-comment"># Renvoie l&#39;argent du joueur</span>
+                <span class="ruby-keyword">return</span> <span class="ruby-identifier">bddP</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;SELECT argent FROM profil WHERE idJoueur = #{unID}&quot;</span>).<span class="ruby-identifier">shift</span>.<span class="ruby-identifier">shift</span>
+        <span class="ruby-keyword">when</span> <span class="ruby-value">10</span> <span class="ruby-comment"># Renvoie un array d&#39;un array de 2 paramètres (String nom et String état)</span>
+
+                <span class="ruby-identifier">borneInf</span> = <span class="ruby-identifier">unID</span><span class="ruby-operator">*</span><span class="ruby-value">100</span>
+                <span class="ruby-identifier">borneSup</span> = (<span class="ruby-identifier">unID</span><span class="ruby-value">+1</span>)<span class="ruby-operator">*</span><span class="ruby-value">100</span>
+                <span class="ruby-identifier">taille</span> = <span class="ruby-identifier">bddN</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;SELECT COUNT(nomNiveau) FROM niveau WHERE idNiveau BETWEEN &#39;#{borneInf}&#39; AND &#39;#{borneSup}&#39;&quot;</span>).<span class="ruby-identifier">shift</span>.<span class="ruby-identifier">shift</span>
+
+                <span class="ruby-identifier">informations</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>()
+
+                <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> <span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-identifier">taille</span>
+                        <span class="ruby-identifier">idDuNiveau</span> = <span class="ruby-identifier">unID</span><span class="ruby-operator">*</span><span class="ruby-value">100</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">i</span>
+                        <span class="ruby-identifier">nomCourantNiveau</span> = <span class="ruby-identifier">bddN</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;SELECT nomNiveau FROM niveau WHERE idNiveau = #{idDuNiveau}&quot;</span>).<span class="ruby-identifier">shift</span>.<span class="ruby-identifier">shift</span>
+                        <span class="ruby-identifier">statutCourantNiveau</span> = <span class="ruby-identifier">bddN</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;SELECT statut FROM niveau WHERE idNiveau = #{idDuNiveau}&quot;</span>).<span class="ruby-identifier">shift</span>.<span class="ruby-identifier">shift</span>
+
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">statutCourantNiveau</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;Déverouillé&quot;</span> <span class="ruby-keyword">then</span>
+                                <span class="ruby-identifier">nbGrilleParNiveau</span> = <span class="ruby-identifier">bddG</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;SELECT COUNT(idGrille) FROM grille WHERE idNiveau = #{idDuNiveau}&quot;</span>).<span class="ruby-identifier">shift</span>.<span class="ruby-identifier">shift</span>
+                                <span class="ruby-identifier">nbGrilleAccomplie</span> = <span class="ruby-identifier">bddG</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;SELECT COUNT(idGrille) FROM grille WHERE idNiveau = #{idDuNiveau} AND statut = &#39;Fait&#39;&quot;</span>).<span class="ruby-identifier">shift</span>.<span class="ruby-identifier">shift</span>
+                                <span class="ruby-identifier">statutCourantNiveau</span> = <span class="ruby-node">&quot;#{nbGrilleAccomplie}/#{nbGrilleParNiveau}&quot;</span>
+                        <span class="ruby-keyword">end</span>
+
+                        <span class="ruby-identifier">informationsCourantes</span> = [<span class="ruby-identifier">idDuNiveau</span>, <span class="ruby-identifier">nomCourantNiveau</span>, <span class="ruby-identifier">statutCourantNiveau</span>]
+                        <span class="ruby-identifier">informations</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">informationsCourantes</span>)
+                <span class="ruby-keyword">end</span>
+
+                <span class="ruby-keyword">return</span> <span class="ruby-identifier">informations</span>
+
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-scoreDeTousLesJoueurs" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">scoreDeTousLesJoueurs</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="scoreDeTousLesJoueurs-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/FonctionsBDD.rb, line 103</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">scoreDeTousLesJoueurs</span>()
+        <span class="ruby-identifier">bddP</span> = <span class="ruby-identifier">ouvrirBDDP</span>()
+        <span class="ruby-identifier">tableauScore</span> = <span class="ruby-identifier">bddP</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-string">&quot;SELECT pseudo, scoreGlobal, scoreFacile, scoreMoyen, scoreDifficile FROM profil&quot;</span>)
+
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">tableauScore</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-supprimerUtilisateur" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">supprimerUtilisateur</span><span
+            class="method-args">(unID)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="supprimerUtilisateur-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/FonctionsBDD.rb, line 72</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">supprimerUtilisateur</span>(<span class="ruby-identifier">unID</span>)
+<span class="ruby-comment">#Supprimer des informations dans la base de données</span>
+        <span class="ruby-identifier">bddP</span> = <span class="ruby-identifier">ouvrirBDDP</span>()
+        <span class="ruby-identifier">bddA</span> = <span class="ruby-identifier">ouvrirBDDA</span>()
+        <span class="ruby-identifier">bddN</span> = <span class="ruby-identifier">ouvrirBDDN</span>()
+        <span class="ruby-identifier">bddG</span> = <span class="ruby-identifier">ouvrirBDDG</span>()
+        <span class="ruby-identifier">bddS</span> = <span class="ruby-identifier">ouvrirBDDS</span>()
+
+        <span class="ruby-identifier">borneInf</span> = <span class="ruby-identifier">unID</span><span class="ruby-operator">*</span><span class="ruby-value">100</span>
+        <span class="ruby-identifier">borneSup</span> = (<span class="ruby-identifier">unID</span><span class="ruby-value">+1</span>)<span class="ruby-operator">*</span><span class="ruby-value">100</span>
+
+        <span class="ruby-keyword">if</span> (<span class="ruby-identifier">utilisateurExistant</span>(<span class="ruby-identifier">unID</span>)) <span class="ruby-keyword">then</span>
+                <span class="ruby-identifier">bddG</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;DELETE FROM grille WHERE idNiveau BETWEEN &#39;#{borneInf}&#39; AND &#39;#{borneSup}&#39;&quot;</span>)
+                <span class="ruby-identifier">bddN</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;DELETE FROM niveau WHERE idNiveau BETWEEN &#39;#{borneInf}&#39; AND &#39;#{borneSup}&#39;&quot;</span>)
+                <span class="ruby-identifier">bddA</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;DELETE FROM aventure WHERE idAventure = &#39;#{unID}&#39;&quot;</span>)
+                <span class="ruby-identifier">bddS</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;DELETE FROM succes WHERE idJoueur = &#39;#{unID}&#39;&quot;</span>)
+                <span class="ruby-identifier">bddP</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;DELETE FROM profil WHERE idJoueur = &#39;#{unID}&#39;&quot;</span>)
+                <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span>
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-utilisateurExistant" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">utilisateurExistant</span><span
+            class="method-args">(unID)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="utilisateurExistant-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/FonctionsBDD.rb, line 110</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">utilisateurExistant</span>(<span class="ruby-identifier">unID</span>)
+        <span class="ruby-identifier">bdd</span> = <span class="ruby-identifier">ouvrirBDDP</span>()
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">bdd</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;SELECT idJoueur FROM profil WHERE idJoueur = &#39;#{unID}&#39;&quot;</span>).<span class="ruby-identifier">shift</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span>
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-validerSucces" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">validerSucces</span><span
+            class="method-args">(unIDS, unID)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="validerSucces-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/FonctionsBDD.rb, line 495</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">validerSucces</span>(<span class="ruby-identifier">unIDS</span>, <span class="ruby-identifier">unID</span>)
+        <span class="ruby-identifier">bddS</span> = <span class="ruby-identifier">ouvrirBDDS</span>()
+
+        <span class="ruby-identifier">bddS</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;UPDATE succes SET statut = &#39;Fait&#39; WHERE idSucces = #{unIDS} AND idJoueur = #{unID}&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-verifierSucces" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">verifierSucces</span><span
+            class="method-args">(unIDS, unID, uneDonnee, uneTable, uneValeur)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode pour vérifier si ce succès peut être validé ou non et renvoie le
+résultat en booléan</p>
+          
+          
+
+          
+          <div class="method-source-code" id="verifierSucces-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/FonctionsBDD.rb, line 470</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">verifierSucces</span>(<span class="ruby-identifier">unIDS</span>, <span class="ruby-identifier">unID</span>, <span class="ruby-identifier">uneDonnee</span>, <span class="ruby-identifier">uneTable</span>, <span class="ruby-identifier">uneValeur</span>)
+        <span class="ruby-identifier">bddP</span> = <span class="ruby-identifier">ouvrirBDDP</span>()
+        <span class="ruby-identifier">bddA</span> = <span class="ruby-identifier">ouvrirBDDA</span>()
+        <span class="ruby-identifier">bddN</span> = <span class="ruby-identifier">ouvrirBDDN</span>()
+        <span class="ruby-identifier">bddG</span> = <span class="ruby-identifier">ouvrirBDDG</span>()
+        <span class="ruby-identifier">bddS</span> = <span class="ruby-identifier">ouvrirBDDS</span>()
+
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">bddS</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;SELECT statut FROM succes WHERE idSucces = #{unIDS} AND idJoueur = #{unID}&quot;</span>) <span class="ruby-operator">==</span> <span class="ruby-string">&#39;A faire&#39;</span> <span class="ruby-keyword">then</span>
+                <span class="ruby-keyword">case</span> <span class="ruby-identifier">uneTable</span>
+                        <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;profil&#39;</span> <span class="ruby-comment"># si la table est la table profil</span>
+                                <span class="ruby-keyword">if</span> <span class="ruby-identifier">bddP</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;SELECT #{uneDonnee} FROM #{uneTable} WHERE idJoueur = #{unID}&quot;</span>) <span class="ruby-operator">&gt;=</span> <span class="ruby-identifier">uneValeur</span> <span class="ruby-keyword">then</span>
+                                        <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span>
+                                <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;aventure&#39;</span> <span class="ruby-comment"># si la table est la table aventure</span>
+                                <span class="ruby-keyword">if</span> <span class="ruby-identifier">bddA</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;SELECT #{uneDonnee} FROM #{uneTable} WHERE idJoueur = #{unID}&quot;</span>) <span class="ruby-operator">&gt;=</span> <span class="ruby-identifier">uneValeur</span> <span class="ruby-keyword">then</span>
+                                        <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span>
+                                <span class="ruby-keyword">end</span>
+                <span class="ruby-keyword">else</span>
+                        <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+                <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-voirLesUtilisateurs" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">voirLesUtilisateurs</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="voirLesUtilisateurs-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/FonctionsBDD.rb, line 95</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">voirLesUtilisateurs</span>()
+<span class="ruby-comment">#Trouver des informations</span>
+        <span class="ruby-identifier">bdd</span> = <span class="ruby-identifier">ouvrirBDDP</span>()
+        <span class="ruby-identifier">bdd</span>.<span class="ruby-identifier">execute</span> <span class="ruby-string">&#39;SELECT * FROM profil&#39;</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">ligne</span><span class="ruby-operator">|</span>
+                <span class="ruby-identifier">p</span> <span class="ruby-identifier">ligne</span>
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-voirSucces" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">voirSucces</span><span
+            class="method-args">(unID)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="voirSucces-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/FonctionsBDD.rb, line 501</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">voirSucces</span>(<span class="ruby-identifier">unID</span>)
+        <span class="ruby-identifier">bddS</span> = <span class="ruby-identifier">ouvrirBDDS</span>()
+
+        <span class="ruby-identifier">informationSucces</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>()
+
+        <span class="ruby-keyword">for</span> <span class="ruby-identifier">unIDS</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">11</span>
+                <span class="ruby-identifier">nom</span> = <span class="ruby-identifier">bddS</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;SELECT nom FROM succes WHERE idSucces = #{unIDS} AND idJoueur = #{unID}&quot;</span>).<span class="ruby-identifier">shift</span>.<span class="ruby-identifier">shift</span>
+                <span class="ruby-identifier">description</span> = <span class="ruby-identifier">bddS</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;SELECT description FROM succes WHERE idSucces = #{unIDS} AND idJoueur = #{unID}&quot;</span>).<span class="ruby-identifier">shift</span>.<span class="ruby-identifier">shift</span>
+                <span class="ruby-identifier">statut</span> = <span class="ruby-identifier">bddS</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-node">&quot;SELECT statut FROM succes WHERE idSucces = #{unIDS} AND idJoueur = #{unID}&quot;</span>).<span class="ruby-identifier">shift</span>.<span class="ruby-identifier">shift</span>
+
+                <span class="ruby-identifier">informationsCourantes</span> = [<span class="ruby-identifier">nom</span>, <span class="ruby-identifier">description</span>, <span class="ruby-identifier">statut</span>]
+                <span class="ruby-identifier">informationSucces</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">informationsCourantes</span>)
+        <span class="ruby-keyword">end</span>
+
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">informationSucces</span>
+
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.0.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

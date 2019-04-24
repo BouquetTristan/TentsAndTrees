@@ -1,6 +1,7 @@
 require 'gtk3'
 
 require './Classes/Page.rb'
+require './Classes/JoueurClass.rb'
 require './BaseDeDonnees/FonctionsBDD.rb'
 
 #====== Fenetre score du jeu
@@ -43,18 +44,30 @@ class FScore < Page
 
         case tabScore
         when "facile"
-        	tabScore = @tabFacile
+        	tabScore = @tabFacile.sort do |score_a, score_b|
+    			score_a.score <=> score_b.score
+			end.reverse
         when "moyen"
-        	tabScore = @tabMoyen
+        	tabScore = @tabMoyen.sort do |score_a, score_b|
+    			score_a.score <=> score_b.score
+			end.reverse
         when "diff"
-        	tabScore = @tabDiff
+        	tabScore = @tabDiff.sort do |score_a, score_b|
+    			score_a.score <=> score_b.score
+			end.reverse
         end
 
-        for i in (1..unJoueur.recupererScoreJoueurs().length)
-			label = Gtk::Label.new('')
-			label.set_markup("<span foreground=\"#FFFFFF\" font-desc=\"Courier New bold 20\"> N° #{i} | Score: #{tabScore[i-1]} | Pseudo: #{unJoueur.recupererScoreJoueurs()[i-1][0]}</span>")
-			@tScore.attach(label,0,1,i-1,i)
-		end
+      if tabScore.length > 5
+        taille = 4
+      else
+        taille = tabScore.length
+      end
+
+      for i in (1..taille)      
+			 label = Gtk::Label.new('')
+			 label.set_markup("<span foreground=\"#FFFFFF\" font-desc=\"Courier New bold 20\"> N° #{i} | Score: #{tabScore[i-1].score} | Pseudo: #{tabScore[i-1].nomJoueur}</span>") 
+			 @tScore.attach(label,0,1,i-1,i)
+		  end
 
         @back = Gtk::Button.new(:label => 'Retour', :use_underline => nil)
         @back.set_relief(:none)
@@ -102,9 +115,9 @@ class FScore < Page
 
     def actualiserTab(unJoueur)
     	for i in (1..unJoueur.recupererScoreJoueurs().length)
-    		@tabFacile.push(unJoueur.recupererScoreJoueurs()[i-1][2]).sort
-    		@tabMoyen.push(unJoueur.recupererScoreJoueurs()[i-1][3]).sort
-    		@tabDiff.push(unJoueur.recupererScoreJoueurs()[i-1][4]).sort
+    		@tabFacile= @tabFacile.push(JoueurClass.new(unJoueur.recupererScoreJoueurs()[i-1][2], unJoueur.recupererScoreJoueurs()[i-1][0]))
+        	@tabMoyen= @tabMoyen.push(JoueurClass.new(unJoueur.recupererScoreJoueurs()[i-1][3], unJoueur.recupererScoreJoueurs()[i-1][0]))
+    		@tabDiff= @tabDiff.push(JoueurClass.new(unJoueur.recupererScoreJoueurs()[i-1][4], unJoueur.recupererScoreJoueurs()[i-1][0]))
     	end
     end
 

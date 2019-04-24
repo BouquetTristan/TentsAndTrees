@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Aide - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+  var index_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/darkfish.js"></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="Object.html">Object</a>
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-arbreAngleHerbe">::arbreAngleHerbe</a>
+    
+    <li ><a href="#method-c-arbreTentePlacer">::arbreTentePlacer</a>
+    
+    <li ><a href="#method-c-caseEstDeLHerbe">::caseEstDeLHerbe</a>
+    
+    <li ><a href="#method-c-colonneCompleterHerbes">::colonneCompleterHerbes</a>
+    
+    <li ><a href="#method-c-colonnePlacerTentes">::colonnePlacerTentes</a>
+    
+    <li ><a href="#method-c-erreur">::erreur</a>
+    
+    <li ><a href="#method-c-ligneCompleterHerbes">::ligneCompleterHerbes</a>
+    
+    <li ><a href="#method-c-lignePlacerTentes">::lignePlacerTentes</a>
+    
+    <li ><a href="#method-c-tenteContourCompleter">::tenteContourCompleter</a>
+    
+    <li ><a href="#method-c-tentesPlacer">::tentesPlacer</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Aide">
+  <h1 id="class-Aide" class="class">
+    class Aide
+  </h1>
+
+  <section class="description">
+    
+<h6 id="class-Aide-label-La+classe+Aide+contient+des+m-C3-A9thodes+qui+-C3-A9valuent+l-27-C3-A9tat+de+la+grille+du+joueur">La classe <a href="Aide.html">Aide</a> contient des méthodes qui évaluent l&#39;état de la grille du joueur<span><a href="#class-Aide-label-La+classe+Aide+contient+des+m-C3-A9thodes+qui+-C3-A9valuent+l-27-C3-A9tat+de+la+grille+du+joueur">&para;</a> <a href="#top">&uarr;</a></span></h6>
+
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-arbreAngleHerbe" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">arbreAngleHerbe</span><span
+            class="method-args">(grille)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Vérifie si un des angles de chaque arbre est obligatoirement de l&#39;herbe</p>
+
+<pre>@param grille                //Prend la grille de jeu en paramètre
+@return arbre                //Retourne le premier arbre rencontré avec un angle contenant forcément de l&#39;herbe
+@return nil                  //Retourne nil sinon</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="arbreAngleHerbe-source">
+            <pre><span class="ruby-comment"># File Classes/Aide.rb, line 149</span>
+<span class="ruby-keyword">def</span> <span class="ruby-constant">Aide</span>.<span class="ruby-identifier ruby-title">arbreAngleHerbe</span>(<span class="ruby-identifier">grille</span>)
+        <span class="ruby-identifier">arbreTrouve</span> = <span class="ruby-keyword">nil</span>
+        <span class="ruby-identifier">grille</span>.<span class="ruby-identifier">parcourirH</span>() { <span class="ruby-operator">|</span><span class="ruby-identifier">uneCase</span><span class="ruby-operator">|</span>
+                <span class="ruby-keyword">if</span> <span class="ruby-identifier">uneCase</span>.<span class="ruby-identifier">etat</span> <span class="ruby-operator">==</span> <span class="ruby-value">2</span> <span class="ruby-keyword">then</span>
+                        <span class="ruby-identifier">cGE</span>, <span class="ruby-identifier">cDE</span>, <span class="ruby-identifier">cHE</span>, <span class="ruby-identifier">cBE</span>, <span class="ruby-identifier">cGHE</span>, <span class="ruby-identifier">cGBE</span>, <span class="ruby-identifier">cDHE</span>, <span class="ruby-identifier">cDBE</span> = <span class="ruby-value">4</span>,<span class="ruby-value">4</span>,<span class="ruby-value">4</span>,<span class="ruby-value">4</span>,<span class="ruby-value">4</span>,<span class="ruby-value">4</span>,<span class="ruby-value">4</span>,<span class="ruby-value">4</span>
+
+                        <span class="ruby-identifier">casesVoisines</span> = <span class="ruby-identifier">uneCase</span>.<span class="ruby-identifier">casesVoisinesComplet</span>(<span class="ruby-identifier">grille</span>)
+                        <span class="ruby-identifier">casesVoisines</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span>
+
+                                <span class="ruby-keyword">if</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">i</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">uneCase</span>.<span class="ruby-identifier">i</span> <span class="ruby-keyword">then</span>
+                                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">j</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">uneCase</span>.<span class="ruby-identifier">j</span> <span class="ruby-keyword">then</span>
+                                                <span class="ruby-identifier">cGHE</span> = <span class="ruby-identifier">c</span>.<span class="ruby-identifier">etat</span>
+                                        <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">j</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">uneCase</span>.<span class="ruby-identifier">j</span> <span class="ruby-keyword">then</span>
+                                                <span class="ruby-identifier">cHE</span> = <span class="ruby-identifier">c</span>.<span class="ruby-identifier">etat</span>
+                                        <span class="ruby-keyword">else</span>
+                                                <span class="ruby-identifier">cDHE</span> = <span class="ruby-identifier">c</span>.<span class="ruby-identifier">etat</span>
+                                        <span class="ruby-keyword">end</span>
+                                <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">i</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">uneCase</span>.<span class="ruby-identifier">i</span> <span class="ruby-keyword">then</span>
+                                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">j</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">uneCase</span>.<span class="ruby-identifier">j</span> <span class="ruby-keyword">then</span>
+                                                <span class="ruby-identifier">cGE</span> = <span class="ruby-identifier">c</span>.<span class="ruby-identifier">etat</span>
+                                        <span class="ruby-keyword">else</span>
+                                                <span class="ruby-identifier">cDE</span> = <span class="ruby-identifier">c</span>.<span class="ruby-identifier">etat</span>
+                                        <span class="ruby-keyword">end</span>
+                                <span class="ruby-keyword">else</span>
+                                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">j</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">uneCase</span>.<span class="ruby-identifier">j</span> <span class="ruby-keyword">then</span>
+                                                <span class="ruby-identifier">cGBE</span> = <span class="ruby-identifier">c</span>.<span class="ruby-identifier">etat</span>
+                                        <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">j</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">uneCase</span>.<span class="ruby-identifier">j</span> <span class="ruby-keyword">then</span>
+                                                <span class="ruby-identifier">cBE</span> = <span class="ruby-identifier">c</span>.<span class="ruby-identifier">etat</span>
+                                        <span class="ruby-keyword">else</span>
+                                                <span class="ruby-identifier">cDBE</span> = <span class="ruby-identifier">c</span>.<span class="ruby-identifier">etat</span>
+                                        <span class="ruby-keyword">end</span>
+                                <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">end</span>
+
+                        <span class="ruby-keyword">if</span> (<span class="ruby-identifier">cGE</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">cHE</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">cDBE</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>) <span class="ruby-operator">||</span> (<span class="ruby-identifier">cGE</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">cBE</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">cDHE</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>) <span class="ruby-operator">||</span> (<span class="ruby-identifier">cDE</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">cHE</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">cGBE</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>) <span class="ruby-operator">||</span> (<span class="ruby-identifier">cDE</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">cBE</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">cGHE</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>) <span class="ruby-keyword">then</span>
+                                <span class="ruby-identifier">arbreTrouve</span> = <span class="ruby-identifier">uneCase</span>
+                                <span class="ruby-keyword">break</span>
+                        <span class="ruby-keyword">end</span>
+
+                <span class="ruby-keyword">end</span>
+        }
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">arbreTrouve</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-arbreTentePlacer" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">arbreTentePlacer</span><span
+            class="method-args">(grille)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Vérifie pour chaque arbre si il ne reste qu&#39;une possibilité pour placer
+une tente</p>
+
+<pre>@param grille                //Prend la grille de jeu en paramètre
+@return arbre                //Retourne le premier arbre rencontré qui ne possède pas de tente et un seul choix restant pour la place
+@return nil                  //Retourne nil si il n&#39;y a aucun arbre avec un seul choix possible</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="arbreTentePlacer-source">
+            <pre><span class="ruby-comment"># File Classes/Aide.rb, line 118</span>
+<span class="ruby-keyword">def</span> <span class="ruby-constant">Aide</span>.<span class="ruby-identifier ruby-title">arbreTentePlacer</span>(<span class="ruby-identifier">grille</span>)
+        <span class="ruby-identifier">arbreTrouve</span> = <span class="ruby-keyword">nil</span>
+        <span class="ruby-identifier">grille</span>.<span class="ruby-identifier">parcourirH</span>() { <span class="ruby-operator">|</span><span class="ruby-identifier">uneCase</span><span class="ruby-operator">|</span>
+                <span class="ruby-keyword">if</span> <span class="ruby-identifier">uneCase</span>.<span class="ruby-identifier">etat</span> <span class="ruby-operator">==</span> <span class="ruby-value">2</span> <span class="ruby-keyword">then</span>
+                        <span class="ruby-identifier">nbCasesVides</span> = <span class="ruby-value">0</span>
+                        <span class="ruby-identifier">tentes</span> = <span class="ruby-keyword">false</span>
+                        <span class="ruby-identifier">casesVoisines</span> = <span class="ruby-identifier">uneCase</span>.<span class="ruby-identifier">casesVoisines</span>(<span class="ruby-identifier">grille</span>)
+
+                        <span class="ruby-identifier">casesVoisines</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span>
+                                <span class="ruby-keyword">if</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">etat</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-keyword">then</span>
+                                        <span class="ruby-identifier">nbCasesVides</span> <span class="ruby-operator">+=</span><span class="ruby-value">1</span>
+                                <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">etat</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span> <span class="ruby-keyword">then</span>
+                                        <span class="ruby-identifier">tentes</span> = <span class="ruby-keyword">true</span>
+                                <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">end</span>
+
+                        <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">tentes</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">nbCasesVides</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span> <span class="ruby-keyword">then</span>
+                                <span class="ruby-identifier">arbreTrouve</span> = <span class="ruby-identifier">uneCase</span>
+                                <span class="ruby-keyword">break</span>
+                        <span class="ruby-keyword">end</span>
+                <span class="ruby-keyword">end</span>
+        }
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">arbreTrouve</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-caseEstDeLHerbe" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">caseEstDeLHerbe</span><span
+            class="method-args">(grille)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Vérifie si une case n&#39;est pas adjacente à un arbre</p>
+
+<pre>@param grille        //La grille de jeu
+@return              //La case qui doit être de l&#39;herbe
+@return              //nil sinon</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="caseEstDeLHerbe-source">
+            <pre><span class="ruby-comment"># File Classes/Aide.rb, line 282</span>
+<span class="ruby-keyword">def</span> <span class="ruby-constant">Aide</span>.<span class="ruby-identifier ruby-title">caseEstDeLHerbe</span>(<span class="ruby-identifier">grille</span>)
+        <span class="ruby-identifier">grille</span>.<span class="ruby-identifier">parcourirH</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">uneCase</span><span class="ruby-operator">|</span>
+                <span class="ruby-keyword">if</span> <span class="ruby-identifier">uneCase</span>.<span class="ruby-identifier">etat</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-keyword">then</span>
+                        <span class="ruby-identifier">arbre</span> = <span class="ruby-keyword">false</span>
+                        <span class="ruby-identifier">uneCase</span>.<span class="ruby-identifier">casesVoisines</span>(<span class="ruby-identifier">grille</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span>
+                                <span class="ruby-keyword">if</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">etat</span> <span class="ruby-operator">==</span> <span class="ruby-value">2</span> <span class="ruby-keyword">then</span>
+                                        <span class="ruby-identifier">arbre</span> = <span class="ruby-keyword">true</span>
+                                <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">arbre</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span> <span class="ruby-keyword">then</span>
+                                <span class="ruby-keyword">return</span> <span class="ruby-identifier">uneCase</span>
+                        <span class="ruby-keyword">end</span>
+                <span class="ruby-keyword">end</span>
+        }
+        <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-colonneCompleterHerbes" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">colonneCompleterHerbes</span><span
+            class="method-args">(grille)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Parcourt chaque colonne de la grille du joueur et repère les colonnes qui
+doivent être remplies par des herbes</p>
+
+<pre>@param grille                //Prend la grille de jeu en paramètre
+@return colonne              //Renvoie la première colonne rencontrée qui doit être complétée par des herbes des herbes
+@return nil                  //Renvoie nil si aucune des colonnes de la grille ne peut être complétée</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="colonneCompleterHerbes-source">
+            <pre><span class="ruby-comment"># File Classes/Aide.rb, line 62</span>
+<span class="ruby-keyword">def</span> <span class="ruby-constant">Aide</span>.<span class="ruby-identifier ruby-title">colonneCompleterHerbes</span>(<span class="ruby-identifier">grille</span>)
+
+        <span class="ruby-identifier">i</span> = <span class="ruby-value">0</span>
+        <span class="ruby-identifier">grille</span>.<span class="ruby-identifier">parcourirC</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">ligne</span><span class="ruby-operator">|</span>
+                <span class="ruby-identifier">nbTentesMax</span> = <span class="ruby-identifier">grille</span>.<span class="ruby-identifier">nbTentesColonne</span>[<span class="ruby-identifier">i</span>]
+                <span class="ruby-identifier">nbTentes</span> = <span class="ruby-value">0</span>
+                <span class="ruby-identifier">nbArbres</span> = <span class="ruby-value">0</span>
+                <span class="ruby-identifier">nbHerbes</span> = <span class="ruby-value">0</span>
+                <span class="ruby-identifier">ligne</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">etat</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span> <span class="ruby-keyword">then</span>
+                                <span class="ruby-identifier">nbTentes</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+                        <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">etat</span> <span class="ruby-operator">==</span> <span class="ruby-value">2</span> <span class="ruby-keyword">then</span>
+                                <span class="ruby-identifier">nbArbres</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+                        <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">etat</span> <span class="ruby-operator">==</span> <span class="ruby-value">3</span> <span class="ruby-keyword">then</span>
+                                <span class="ruby-identifier">nbHerbes</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+                        <span class="ruby-keyword">end</span>
+
+                <span class="ruby-keyword">end</span>
+                <span class="ruby-keyword">if</span> <span class="ruby-identifier">nbTentesMax</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">nbTentes</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">nbHerbes</span> <span class="ruby-operator">&lt;</span> (<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">taille</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">nbArbres</span> <span class="ruby-operator">-</span><span class="ruby-identifier">nbTentesMax</span>) <span class="ruby-keyword">then</span>
+                        <span class="ruby-keyword">return</span> <span class="ruby-identifier">i</span>
+                <span class="ruby-keyword">end</span>
+                <span class="ruby-identifier">i</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+        }
+        <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-colonnePlacerTentes" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">colonnePlacerTentes</span><span
+            class="method-args">(grille)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Vérifie si il est possible de placer au moins une tente dans la ligne</p>
+
+<pre>@param grille                //Prend la grille de jeu en paramètre
+@return numLigne             //Retourne la première ligne où il est possible de placer au moins une tente
+@return nil                  //Retourne nil sinon</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="colonnePlacerTentes-source">
+            <pre><span class="ruby-comment"># File Classes/Aide.rb, line 218</span>
+<span class="ruby-keyword">def</span> <span class="ruby-constant">Aide</span>.<span class="ruby-identifier ruby-title">colonnePlacerTentes</span>(<span class="ruby-identifier">grille</span>)
+        <span class="ruby-identifier">nLigne</span> = <span class="ruby-value">0</span>
+        <span class="ruby-identifier">grille</span>.<span class="ruby-identifier">parcourirL</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">ligne</span><span class="ruby-operator">|</span>
+                <span class="ruby-identifier">num</span> = <span class="ruby-constant">Aide</span>.<span class="ruby-identifier">tentesPlacer</span>(<span class="ruby-identifier">grille</span>, <span class="ruby-identifier">ligne</span>, <span class="ruby-identifier">nLigne</span>)
+                <span class="ruby-keyword">if</span> <span class="ruby-identifier">num</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">then</span>
+                        <span class="ruby-keyword">return</span> <span class="ruby-identifier">num</span>
+                <span class="ruby-keyword">end</span>
+                <span class="ruby-identifier">nLigne</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+        }
+        <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-erreur" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">erreur</span><span
+            class="method-args">(grille)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Parcourt la grille du joueur et la grille finale pour repérer les erreurs
+de placement</p>
+
+<pre>@param grille                //Prend la grille de jeu en paramètre
+@return case                 //Renvoie la première case rencontrée si elle n&#39;est pas vide et ne correspond pas à la case finale attendu
+@return nil                  //Renvoie nil si toutes les cases sont correctes</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="erreur-source">
+            <pre><span class="ruby-comment"># File Classes/Aide.rb, line 11</span>
+<span class="ruby-keyword">def</span> <span class="ruby-constant">Aide</span>.<span class="ruby-identifier ruby-title">erreur</span>(<span class="ruby-identifier">grille</span>)
+        <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span>(<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">taille</span><span class="ruby-value">-1</span>)
+                <span class="ruby-keyword">for</span> <span class="ruby-identifier">j</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span>(<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">taille</span><span class="ruby-value">-1</span>)
+                        <span class="ruby-identifier">caseJ</span> = <span class="ruby-identifier">grille</span>.<span class="ruby-identifier">grilleJ</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>]
+                        <span class="ruby-identifier">caseF</span> = <span class="ruby-identifier">grille</span>.<span class="ruby-identifier">grilleF</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>]
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">caseJ</span>.<span class="ruby-identifier">etat</span> <span class="ruby-operator">!=</span> <span class="ruby-value">0</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">caseJ</span>.<span class="ruby-identifier">etat</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">caseF</span>.<span class="ruby-identifier">etat</span> <span class="ruby-keyword">then</span>
+                                <span class="ruby-keyword">return</span> <span class="ruby-identifier">caseJ</span>
+                        <span class="ruby-keyword">end</span>
+                <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-ligneCompleterHerbes" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">ligneCompleterHerbes</span><span
+            class="method-args">(grille)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Parcourt chaque ligne de la grille du joueur et repère les lignes qui
+doivent être remplies par des herbes</p>
+
+<pre>@param grille                //Prend la grille de jeu en paramètre
+@return ligne                //Renvoie la première ligne rencontrée qui doit être complétée par des herbes
+@return nil          //Renvoie nil si aucune des lignes de la grille ne peut être complétée</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="ligneCompleterHerbes-source">
+            <pre><span class="ruby-comment"># File Classes/Aide.rb, line 30</span>
+<span class="ruby-keyword">def</span> <span class="ruby-constant">Aide</span>.<span class="ruby-identifier ruby-title">ligneCompleterHerbes</span>(<span class="ruby-identifier">grille</span>)
+
+        <span class="ruby-identifier">i</span> = <span class="ruby-value">0</span>
+        <span class="ruby-identifier">grille</span>.<span class="ruby-identifier">parcourirL</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">ligne</span><span class="ruby-operator">|</span>
+                <span class="ruby-identifier">nbTentesMax</span> = <span class="ruby-identifier">grille</span>.<span class="ruby-identifier">nbTentesLigne</span>[<span class="ruby-identifier">i</span>]
+                <span class="ruby-identifier">nbTentes</span> = <span class="ruby-value">0</span>
+                <span class="ruby-identifier">nbArbres</span> = <span class="ruby-value">0</span>
+                <span class="ruby-identifier">nbHerbes</span> = <span class="ruby-value">0</span>
+                <span class="ruby-identifier">ligne</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">etat</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span> <span class="ruby-keyword">then</span>
+                                <span class="ruby-identifier">nbTentes</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+                        <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">etat</span> <span class="ruby-operator">==</span> <span class="ruby-value">2</span> <span class="ruby-keyword">then</span>
+                                <span class="ruby-identifier">nbArbres</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+                        <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">etat</span> <span class="ruby-operator">==</span> <span class="ruby-value">3</span> <span class="ruby-keyword">then</span>
+                                <span class="ruby-identifier">nbHerbes</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+                        <span class="ruby-keyword">end</span>
+
+                <span class="ruby-keyword">end</span>
+                <span class="ruby-keyword">if</span> <span class="ruby-identifier">nbTentesMax</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">nbTentes</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">nbHerbes</span> <span class="ruby-operator">&lt;</span> (<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">taille</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">nbArbres</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">nbTentesMax</span>) <span class="ruby-keyword">then</span>
+                        <span class="ruby-keyword">return</span> <span class="ruby-identifier">i</span>
+                <span class="ruby-keyword">end</span>
+                <span class="ruby-identifier">i</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+        }
+        <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-lignePlacerTentes" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">lignePlacerTentes</span><span
+            class="method-args">(grille)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Vérifie si il est possible de placer au moins une tente dans la ligne</p>
+
+<pre>@param grille                //Prend la grille de jeu en paramètre
+@return numLigne             //Retourne la première ligne où il est possible de placer au moins une tente
+@return nil                  //Retourne nil sinon</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="lignePlacerTentes-source">
+            <pre><span class="ruby-comment"># File Classes/Aide.rb, line 201</span>
+<span class="ruby-keyword">def</span> <span class="ruby-constant">Aide</span>.<span class="ruby-identifier ruby-title">lignePlacerTentes</span>(<span class="ruby-identifier">grille</span>)
+        <span class="ruby-identifier">nLigne</span> = <span class="ruby-value">0</span>
+        <span class="ruby-identifier">grille</span>.<span class="ruby-identifier">parcourirC</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">ligne</span><span class="ruby-operator">|</span>
+                <span class="ruby-identifier">num</span> = <span class="ruby-constant">Aide</span>.<span class="ruby-identifier">tentesPlacer</span>(<span class="ruby-identifier">grille</span>, <span class="ruby-identifier">ligne</span>, <span class="ruby-identifier">nLigne</span>)
+                <span class="ruby-keyword">if</span> <span class="ruby-identifier">num</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">then</span>
+                        <span class="ruby-keyword">return</span> <span class="ruby-identifier">num</span>
+                <span class="ruby-keyword">end</span>
+                <span class="ruby-identifier">nLigne</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+        }
+        <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-tenteContourCompleter" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">tenteContourCompleter</span><span
+            class="method-args">(grille)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Vérifie si les cases autour des tentes sont complétées</p>
+
+<pre>@param grille                //Prend la grille de jeu en paramètre
+@return tente                //Retourne la première tente rencontrée avec ses alentours non complétés
+@return nil          //Retourne nil si tous les alentours de chaque tente ont étés complétés</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="tenteContourCompleter-source">
+            <pre><span class="ruby-comment"># File Classes/Aide.rb, line 94</span>
+<span class="ruby-keyword">def</span> <span class="ruby-constant">Aide</span>.<span class="ruby-identifier ruby-title">tenteContourCompleter</span>(<span class="ruby-identifier">grille</span>)
+        <span class="ruby-identifier">caseTrouvee</span> = <span class="ruby-keyword">nil</span>
+        <span class="ruby-identifier">grille</span>.<span class="ruby-identifier">parcourirH</span>() { <span class="ruby-operator">|</span><span class="ruby-identifier">uneCase</span><span class="ruby-operator">|</span>
+                <span class="ruby-keyword">if</span> <span class="ruby-identifier">uneCase</span>.<span class="ruby-identifier">etat</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span> <span class="ruby-keyword">then</span>
+                        <span class="ruby-identifier">casesVoisines</span> = <span class="ruby-identifier">uneCase</span>.<span class="ruby-identifier">casesVoisinesComplet</span>(<span class="ruby-identifier">grille</span>)
+                        <span class="ruby-identifier">casesVoisines</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span>
+                                <span class="ruby-keyword">if</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">etat</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-keyword">then</span>
+                                        <span class="ruby-identifier">caseTrouvee</span> = <span class="ruby-identifier">uneCase</span>
+                                        <span class="ruby-keyword">break</span>
+
+                                <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">end</span>
+                <span class="ruby-keyword">end</span>
+
+        }
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">caseTrouvee</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-tentesPlacer" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">tentesPlacer</span><span
+            class="method-args">(grille, ligne, nLigne)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Vérifie si le nombre de tente placable maximum sur la ligne est égale aux
+nombres de tentes restantes à placer</p>
+
+<pre>@param grille        //La grille de jeu
+@param ligne         //La ligne de la grille sur laquelle on travail
+@param nLigne        //Le numéro de la ligne sur laquelle on travail
+@return nLigne       //le numéro de la ligne éligible
+@return              //nil sinon</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="tentesPlacer-source">
+            <pre><span class="ruby-comment"># File Classes/Aide.rb, line 236</span>
+<span class="ruby-keyword">def</span> <span class="ruby-constant">Aide</span>.<span class="ruby-identifier ruby-title">tentesPlacer</span> (<span class="ruby-identifier">grille</span>, <span class="ruby-identifier">ligne</span>, <span class="ruby-identifier">nLigne</span>)
+        <span class="ruby-identifier">nbTentesRestantes</span> = <span class="ruby-identifier">grille</span>.<span class="ruby-identifier">nbTentesColonne</span>[<span class="ruby-identifier">nLigne</span>]
+        <span class="ruby-identifier">compteur</span> = <span class="ruby-value">0</span>
+        <span class="ruby-identifier">impair</span> = <span class="ruby-keyword">false</span>
+        <span class="ruby-identifier">tentesPlaceMax</span> = <span class="ruby-value">0</span>
+        <span class="ruby-identifier">numCase</span> = <span class="ruby-value">0</span>
+
+        <span class="ruby-identifier">ligne</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">uneCase</span><span class="ruby-operator">|</span>
+
+
+
+                <span class="ruby-keyword">if</span> <span class="ruby-identifier">uneCase</span>.<span class="ruby-identifier">etat</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-keyword">then</span>
+                        <span class="ruby-identifier">compteur</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+                <span class="ruby-keyword">end</span>
+                <span class="ruby-keyword">if</span> (<span class="ruby-identifier">uneCase</span>.<span class="ruby-identifier">etat</span> <span class="ruby-operator">!=</span> <span class="ruby-value">0</span> <span class="ruby-operator">||</span> (<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">taille</span><span class="ruby-value">-1</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">numCase</span>))
+                        <span class="ruby-keyword">if</span>(<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">taille</span><span class="ruby-value">-1</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">numCase</span>)
+
+                        <span class="ruby-keyword">end</span>
+                        <span class="ruby-identifier">tentesPlaceMax</span> <span class="ruby-operator">+=</span> (<span class="ruby-identifier">compteur</span><span class="ruby-value">+1</span>) <span class="ruby-operator">/</span> <span class="ruby-value">2</span>
+
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">uneCase</span>.<span class="ruby-identifier">etat</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span> <span class="ruby-keyword">then</span>
+                                <span class="ruby-identifier">nbTentesRestantes</span> <span class="ruby-operator">-=</span> <span class="ruby-value">1</span>
+                        <span class="ruby-keyword">end</span>
+
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">compteur</span> <span class="ruby-operator">%</span> <span class="ruby-value">2</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span> <span class="ruby-keyword">then</span>
+                                <span class="ruby-identifier">impair</span> = <span class="ruby-keyword">true</span>
+                        <span class="ruby-keyword">end</span>
+                        <span class="ruby-identifier">compteur</span> = <span class="ruby-value">0</span>
+                <span class="ruby-keyword">end</span>
+
+                <span class="ruby-identifier">numCase</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-identifier">print</span> <span class="ruby-node">&quot;\nPour la ligne #{nLigne} Le nombre de tentes placables max #{tentesPlaceMax} pour un nb teneRestante de #{nbTentesRestantes}\n&quot;</span>
+        <span class="ruby-keyword">if</span> (<span class="ruby-identifier">impair</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">nbTentesRestantes</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">tentesPlaceMax</span>) <span class="ruby-keyword">then</span>
+                <span class="ruby-keyword">return</span> <span class="ruby-identifier">nLigne</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
+
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.0.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

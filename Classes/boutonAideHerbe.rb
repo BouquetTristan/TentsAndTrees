@@ -8,15 +8,19 @@ class BoutonAideHerbe < BoutonAide
 	#=Variable d'instance
 	# @bouton		: Le bouton
 	# @coordI, @coordJ	: Coordonnée du bouton
+	# @cliquable		: booléen
 	# @@prix		: prix de l'aide en feuille
 
-	attr_accessor :cliquable
-	attr_accessor :bouton
 	attr_accessor :prix
+	attr_accessor :bouton
+	attr_accessor :cliquable
 
 
 	@@prix = 2
 
+	#renvoie le prix associé au bouton
+	# @param void		//ne prend aucun paramètre
+	# @return prix		//renvie un prix integer
 	def prix()
 		return @@prix
 	end

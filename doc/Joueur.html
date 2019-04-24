@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Joueur - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+  var index_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/darkfish.js"></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="Object.html">Object</a>
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-creer">::creer</a>
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-acheterNiveau">#acheterNiveau</a>
+    
+    <li ><a href="#method-i-actualiser">#actualiser</a>
+    
+    <li ><a href="#method-i-afficherStatistiques">#afficherStatistiques</a>
+    
+    <li ><a href="#method-i-commencerAventure">#commencerAventure</a>
+    
+    <li ><a href="#method-i-connecter">#connecter</a>
+    
+    <li ><a href="#method-i-desinscrire">#desinscrire</a>
+    
+    <li ><a href="#method-i-finirLaPartie">#finirLaPartie</a>
+    
+    <li ><a href="#method-i-inscrire">#inscrire</a>
+    
+    <li ><a href="#method-i-modifierInformationsFinDePartie">#modifierInformationsFinDePartie</a>
+    
+    <li ><a href="#method-i-motDePasseOublier">#motDePasseOublier</a>
+    
+    <li ><a href="#method-i-niveauDeverouille">#niveauDeverouille</a>
+    
+    <li ><a href="#method-i-nouveauMotDePasse">#nouveauMotDePasse</a>
+    
+    <li ><a href="#method-i-nouveauPseudo">#nouveauPseudo</a>
+    
+    <li ><a href="#method-i-recupererScoreJoueurs">#recupererScoreJoueurs</a>
+    
+    <li ><a href="#method-i-recupererSucces">#recupererSucces</a>
+    
+    <li ><a href="#method-i-verifierSucces">#verifierSucces</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Joueur">
+  <h1 id="class-Joueur" class="class">
+    class Joueur
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      
+      <div id="attribute-i-argent" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">argent</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-creditAide" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">creditAide</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-nbPartiesJouees" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">nbPartiesJouees</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-niveaux" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">niveaux</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-pseudo" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">pseudo</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-scoreDifficile" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">scoreDifficile</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-scoreFacile" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">scoreFacile</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-scoreGlobal" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">scoreGlobal</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-scoreMoyen" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">scoreMoyen</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+    </section>
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-creer" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">creer</span><span
+            class="method-args">(unPseudo, unMDP, uneRepSec)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="creer-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/Joueur.rb, line 12</span>
+<span class="ruby-keyword">def</span> <span class="ruby-constant">Joueur</span>.<span class="ruby-identifier ruby-title">creer</span>(<span class="ruby-identifier">unPseudo</span>, <span class="ruby-identifier">unMDP</span>, <span class="ruby-identifier">uneRepSec</span>)
+        <span class="ruby-identifier">new</span>(<span class="ruby-identifier">unPseudo</span>, <span class="ruby-identifier">unMDP</span>, <span class="ruby-identifier">uneRepSec</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(unPseudo, unMDP, uneRepSec)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/Joueur.rb, line 16</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">unPseudo</span>, <span class="ruby-identifier">unMDP</span>, <span class="ruby-identifier">uneRepSec</span>)
+        <span class="ruby-ivar">@id</span> = <span class="ruby-keyword">nil</span>
+
+        <span class="ruby-ivar">@pseudo</span> = <span class="ruby-identifier">unPseudo</span>
+        <span class="ruby-ivar">@mdp</span> = <span class="ruby-identifier">unMDP</span>
+        <span class="ruby-ivar">@rep</span> = <span class="ruby-identifier">uneRepSec</span>
+
+        <span class="ruby-ivar">@creditAide</span> = <span class="ruby-keyword">nil</span> <span class="ruby-comment">#nbFeuilles</span>
+        <span class="ruby-ivar">@argent</span> = <span class="ruby-keyword">nil</span>  <span class="ruby-comment">#nbEtoiles</span>
+
+        <span class="ruby-ivar">@scoreGlobal</span> = <span class="ruby-keyword">nil</span>
+        <span class="ruby-ivar">@scoreFacile</span> = <span class="ruby-keyword">nil</span>
+        <span class="ruby-ivar">@scoreMoyen</span> = <span class="ruby-keyword">nil</span>
+        <span class="ruby-ivar">@scoreDifficile</span> = <span class="ruby-keyword">nil</span>
+
+        <span class="ruby-ivar">@nbPartiesJouees</span> = <span class="ruby-keyword">nil</span>
+        <span class="ruby-ivar">@nbPartiesFinitSansAides</span> = <span class="ruby-keyword">nil</span>
+
+        <span class="ruby-comment">#Mode Aventure</span>
+        <span class="ruby-ivar">@niveaux</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
+
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-acheterNiveau" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">acheterNiveau</span><span
+            class="method-args">(unNumeroNiveau)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="acheterNiveau-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/Joueur.rb, line 150</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">acheterNiveau</span>(<span class="ruby-identifier">unNumeroNiveau</span>)
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">payerNiveau</span>(<span class="ruby-ivar">@id</span>, <span class="ruby-ivar">@niveaux</span>.<span class="ruby-identifier">at</span>(<span class="ruby-identifier">unNumeroNiveau</span>).<span class="ruby-identifier">at</span>(<span class="ruby-value">0</span>)) <span class="ruby-keyword">then</span>
+                <span class="ruby-identifier">deverouillerNiveau</span>(<span class="ruby-ivar">@niveaux</span>.<span class="ruby-identifier">at</span>(<span class="ruby-identifier">unNumeroNiveau</span>).<span class="ruby-identifier">at</span>(<span class="ruby-value">0</span>))
+                <span class="ruby-identifier">actualiser</span>()
+                <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span>
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-actualiser" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">actualiser</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="actualiser-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/Joueur.rb, line 235</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">actualiser</span>()
+
+        <span class="ruby-ivar">@rep</span> = <span class="ruby-identifier">recupererInformation</span>(<span class="ruby-ivar">@id</span>, <span class="ruby-value">1</span>)
+
+        <span class="ruby-ivar">@scoreGlobal</span> = <span class="ruby-identifier">recupererInformation</span>(<span class="ruby-ivar">@id</span>, <span class="ruby-value">2</span>)
+        <span class="ruby-ivar">@scoreFacile</span> = <span class="ruby-identifier">recupererInformation</span>(<span class="ruby-ivar">@id</span>, <span class="ruby-value">3</span>)
+        <span class="ruby-ivar">@scoreMoyen</span> = <span class="ruby-identifier">recupererInformation</span>(<span class="ruby-ivar">@id</span>, <span class="ruby-value">4</span>)
+        <span class="ruby-ivar">@scoreDifficile</span> = <span class="ruby-identifier">recupererInformation</span>(<span class="ruby-ivar">@id</span>, <span class="ruby-value">5</span>)
+
+        <span class="ruby-ivar">@nbPartiesJouees</span> = <span class="ruby-identifier">recupererInformation</span>(<span class="ruby-ivar">@id</span>, <span class="ruby-value">6</span>)
+        <span class="ruby-ivar">@nbPartiesFinitSansAides</span> = <span class="ruby-identifier">recupererInformation</span>(<span class="ruby-ivar">@id</span>, <span class="ruby-value">7</span>)
+
+        <span class="ruby-ivar">@creditAide</span> = <span class="ruby-identifier">recupererInformation</span>(<span class="ruby-ivar">@id</span>, <span class="ruby-value">8</span>)
+        <span class="ruby-ivar">@argent</span> = <span class="ruby-identifier">recupererInformation</span>(<span class="ruby-ivar">@id</span>, <span class="ruby-value">9</span>)
+
+        <span class="ruby-ivar">@niveaux</span> = <span class="ruby-identifier">recupererInformation</span>(<span class="ruby-ivar">@id</span>, <span class="ruby-value">10</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-afficherStatistiques" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">afficherStatistiques</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="afficherStatistiques-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/Joueur.rb, line 121</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">afficherStatistiques</span>()
+        <span class="ruby-keyword">if</span> <span class="ruby-ivar">@scoreGlobal</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">then</span>
+                <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Joueur : #{@pseudo}##{@id}\n&quot;</span>
+                <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot; Score \n&quot;</span>
+                <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;  Score global : #{@scoreGlobal}\n&quot;</span>
+                <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;  Score facile : #{@scoreFacile}\n&quot;</span>
+                <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;  Score moyen : #{@scoreMoyen}\n&quot;</span>
+                <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;  Score difficile : #{@scoreDifficile}\n&quot;</span>
+                <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot; Info parties \n&quot;</span>
+                <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;  Parties jouées : #{@nbPartiesJouees}\n&quot;</span>
+                <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;  Parties finit sans aides : #{@nbPartiesFinitSansAides}\n&quot;</span>
+                <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot; Info profil \n&quot;</span>
+                <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;  Nb aides : #{@creditAide}\n&quot;</span>
+                <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;  argent : #{@argent}\n&quot;</span>
+                <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot; Histoire \n&quot;</span>
+                <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span>(<span class="ruby-ivar">@niveaux</span>.<span class="ruby-identifier">length</span><span class="ruby-value">-1</span>)
+                        <span class="ruby-identifier">nomNiveau</span> = <span class="ruby-ivar">@niveaux</span>.<span class="ruby-identifier">at</span>(<span class="ruby-identifier">i</span>).<span class="ruby-identifier">at</span>(<span class="ruby-value">1</span>)
+                        <span class="ruby-identifier">statutNiveau</span> = <span class="ruby-ivar">@niveaux</span>.<span class="ruby-identifier">at</span>(<span class="ruby-identifier">i</span>).<span class="ruby-identifier">at</span>(<span class="ruby-value">2</span>)  
+                        <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;  #{nomNiveau} : #{statutNiveau}\n&quot;</span>
+                <span class="ruby-keyword">end</span>
+                <span class="ruby-keyword">else</span>
+                <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Erreur, aucune information présente. Veuillez vous identifiez avant\n&quot;</span>
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-commencerAventure" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">commencerAventure</span><span
+            class="method-args">(unNiveau, uneGrille)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="commencerAventure-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/Joueur.rb, line 146</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">commencerAventure</span>(<span class="ruby-identifier">unNiveau</span>, <span class="ruby-identifier">uneGrille</span>)
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">donnerInformationsGrille</span>(<span class="ruby-ivar">@id</span>, <span class="ruby-identifier">unNiveau</span>, <span class="ruby-identifier">uneGrille</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-connecter" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">connecter</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="connecter-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/Joueur.rb, line 71</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">connecter</span>()
+        <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Connexion en cours....\n&quot;</span>
+        <span class="ruby-identifier">id</span> = <span class="ruby-identifier">connexion</span>(<span class="ruby-ivar">@pseudo</span>, <span class="ruby-ivar">@mdp</span>)
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">id</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">then</span>
+                <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;   Authentification en cours....\n&quot;</span>
+                <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;   Récupération des informations....\n&quot;</span>
+                        <span class="ruby-ivar">@id</span> = <span class="ruby-identifier">id</span>
+                        <span class="ruby-identifier">actualiser</span>()
+
+                <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Connexion réussie\n&quot;</span>
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Connexion échouée\n&quot;</span>
+        <span class="ruby-keyword">end</span>
+
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">id</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-desinscrire" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">desinscrire</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="desinscrire-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/Joueur.rb, line 62</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">desinscrire</span>()
+        <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Suppression de l&#39;utilisateur #{@pseudo}\n&quot;</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">supprimerUtilisateur</span>(<span class="ruby-ivar">@id</span>) <span class="ruby-operator">==</span> <span class="ruby-keyword">true</span> <span class="ruby-keyword">then</span>
+                <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;L&#39;utilisateur #{@pseudo} a bien été supprimé\n&quot;</span>
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;L&#39;utilisateur #{@pseudo} n&#39;existe pas et n&#39;a pas pu être supprimé\n&quot;</span>
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-finirLaPartie" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">finirLaPartie</span><span
+            class="method-args">(unNiveau, uneGrille)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="finirLaPartie-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/Joueur.rb, line 164</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">finirLaPartie</span>(<span class="ruby-identifier">unNiveau</span>, <span class="ruby-identifier">uneGrille</span>)
+<span class="ruby-comment">#Méthode qui modifie les bases de données après la fin de chaque partie du mode aventure</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">grillePasFaite</span>(<span class="ruby-ivar">@id</span>, <span class="ruby-identifier">unNiveau</span>, <span class="ruby-identifier">uneGrille</span>) <span class="ruby-keyword">then</span>
+                <span class="ruby-identifier">recupererArgentGrille</span>(<span class="ruby-ivar">@id</span>, <span class="ruby-identifier">unNiveau</span>, <span class="ruby-identifier">uneGrille</span>)
+                <span class="ruby-identifier">changerStatutGrille</span>(<span class="ruby-ivar">@id</span>, <span class="ruby-identifier">unNiveau</span>, <span class="ruby-identifier">uneGrille</span>)
+
+                <span class="ruby-keyword">if</span> <span class="ruby-identifier">niveauComplet</span>(<span class="ruby-ivar">@id</span>, <span class="ruby-identifier">unNiveau</span>, <span class="ruby-identifier">uneGrille</span>) <span class="ruby-keyword">then</span>
+                        <span class="ruby-identifier">augmentercreditAide</span>(<span class="ruby-ivar">@id</span>, <span class="ruby-value">4</span>) 
+                <span class="ruby-keyword">end</span>
+
+                <span class="ruby-identifier">actualiser</span>()
+
+                <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span>
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-inscrire" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">inscrire</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="inscrire-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/Joueur.rb, line 49</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">inscrire</span>()
+
+        <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Ajout de l&#39;utilisateur #{@pseudo}\n&quot;</span>
+        <span class="ruby-ivar">@id</span> = <span class="ruby-identifier">ajouterUtilisateur</span>( <span class="ruby-ivar">@pseudo</span>, <span class="ruby-ivar">@mdp</span>, <span class="ruby-ivar">@rep</span>)
+        <span class="ruby-keyword">if</span>  <span class="ruby-ivar">@id</span> <span class="ruby-operator">!=</span> <span class="ruby-value">0</span> <span class="ruby-keyword">then</span>
+                <span class="ruby-identifier">connecter</span>()
+                <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;\n\n\nL&#39;utilisateur #{@pseudo} est bien enregistré\n\n\n&quot;</span>
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;\n\n\nLe pseudo #{@pseudo} est déjà enregistré\n\n\n&quot;</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-ivar">@id</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-modifierInformationsFinDePartie" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">modifierInformationsFinDePartie</span><span
+            class="method-args">(unScore, uneDifficulte, creditAideUtilises)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="modifierInformationsFinDePartie-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/Joueur.rb, line 183</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">modifierInformationsFinDePartie</span>(<span class="ruby-identifier">unScore</span>, <span class="ruby-identifier">uneDifficulte</span>, <span class="ruby-identifier">creditAideUtilises</span>)
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">uneDifficulte</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;Facile&quot;</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">unScore</span> <span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@scoreFacile</span> <span class="ruby-keyword">then</span>
+                <span class="ruby-ivar">@scoreFacile</span> = <span class="ruby-identifier">unScore</span>
+                <span class="ruby-identifier">augmenterScoreFacile</span>(<span class="ruby-ivar">@id</span>, <span class="ruby-ivar">@scoreFacile</span>)
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">uneDifficulte</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;Moyenne&quot;</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">unScore</span> <span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@scoreMoyen</span> <span class="ruby-keyword">then</span>
+                <span class="ruby-ivar">@scoreMoyen</span> = <span class="ruby-identifier">unScore</span>
+                <span class="ruby-identifier">augmenterScoreMoyen</span>(<span class="ruby-ivar">@id</span>, <span class="ruby-ivar">@scoreMoyen</span>)
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">uneDifficulte</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;Difficile&quot;</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">unScore</span> <span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@scoreDifficile</span> <span class="ruby-keyword">then</span>
+                <span class="ruby-ivar">@scoreDifficile</span> = <span class="ruby-identifier">unScore</span>
+                <span class="ruby-identifier">augmenterScoreDifficile</span>(<span class="ruby-ivar">@id</span>, <span class="ruby-ivar">@scoreDifficile</span>)
+        <span class="ruby-keyword">end</span>
+
+        <span class="ruby-ivar">@scoreGlobal</span> = (<span class="ruby-ivar">@scoreFacile</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@scoreMoyen</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@scoreDifficile</span>)<span class="ruby-operator">/</span><span class="ruby-value">3</span>
+        <span class="ruby-identifier">augmenterScoreGlobal</span>(<span class="ruby-ivar">@id</span>, <span class="ruby-ivar">@scoreGlobal</span>)
+
+
+        <span class="ruby-identifier">augmenterNbPartiesJouees</span>(<span class="ruby-ivar">@id</span>)
+
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">creditAideUtilises</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-keyword">then</span>
+                <span class="ruby-identifier">augmenterNbPartiesTermineesSansAides</span>(<span class="ruby-ivar">@id</span>)
+        <span class="ruby-keyword">end</span>
+        
+        <span class="ruby-ivar">@nbPartiesJouees</span> = <span class="ruby-identifier">recupererInformation</span>(<span class="ruby-ivar">@id</span>, <span class="ruby-value">6</span>)
+        <span class="ruby-ivar">@nbPartiesFinitSansAides</span> = <span class="ruby-identifier">recupererInformation</span>(<span class="ruby-ivar">@id</span>, <span class="ruby-value">7</span>)
+
+        <span class="ruby-identifier">actualiser</span>()
+
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-motDePasseOublier" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">motDePasseOublier</span><span
+            class="method-args">(nouveauMDP)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="motDePasseOublier-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/Joueur.rb, line 88</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">motDePasseOublier</span>(<span class="ruby-identifier">nouveauMDP</span>)
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">motDePasseOublie</span>(<span class="ruby-ivar">@pseudo</span>, <span class="ruby-ivar">@rep</span>, <span class="ruby-identifier">nouveauMDP</span>) <span class="ruby-operator">==</span> <span class="ruby-keyword">true</span> <span class="ruby-keyword">then</span>
+                <span class="ruby-ivar">@mdp</span> = <span class="ruby-identifier">nouveauMDP</span>
+                <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;   Le mot de passe a bien été modifié\n&quot;</span>
+                <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span>
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;   La réponse secrète est incorrecte\n&quot;</span>
+                <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-niveauDeverouille" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">niveauDeverouille</span><span
+            class="method-args">(unNumeroNiveau)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="niveauDeverouille-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/Joueur.rb, line 160</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">niveauDeverouille</span>(<span class="ruby-identifier">unNumeroNiveau</span>)
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">niveauDebloque</span>(<span class="ruby-ivar">@id</span>, <span class="ruby-identifier">unNumeroNiveau</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-nouveauMotDePasse" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">nouveauMotDePasse</span><span
+            class="method-args">(nouveauMotDePasse)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="nouveauMotDePasse-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/Joueur.rb, line 99</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">nouveauMotDePasse</span>(<span class="ruby-identifier">nouveauMotDePasse</span>)
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">changerMotDePasse</span>(<span class="ruby-ivar">@id</span>, <span class="ruby-identifier">nouveauMotDePasse</span>) <span class="ruby-operator">==</span> <span class="ruby-keyword">true</span> <span class="ruby-keyword">then</span>
+                <span class="ruby-ivar">@mdp</span> = <span class="ruby-identifier">nouveauMotDePasse</span>
+                <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;   Le mot de passe a bien été modifié\n&quot;</span>
+                <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span>
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;   Le nouveau mot de passe ne peut pas être le même\n&quot;</span>
+                <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-nouveauPseudo" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">nouveauPseudo</span><span
+            class="method-args">(nouveauPseudo)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="nouveauPseudo-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/Joueur.rb, line 110</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">nouveauPseudo</span>(<span class="ruby-identifier">nouveauPseudo</span>)
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">changerPseudo</span>(<span class="ruby-ivar">@id</span>, <span class="ruby-identifier">nouveauPseudo</span>) <span class="ruby-operator">==</span> <span class="ruby-keyword">true</span> <span class="ruby-keyword">then</span>
+                <span class="ruby-ivar">@pseudo</span> = <span class="ruby-identifier">nouveauPseudo</span>
+                <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;   Le pseudo a bien été modifié\n&quot;</span>
+                <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span>
+        <span class="ruby-keyword">else</span>
+                <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;   Le nouveau pseudo ne peut pas être le même\n&quot;</span>
+                <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-recupererScoreJoueurs" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">recupererScoreJoueurs</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="recupererScoreJoueurs-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/Joueur.rb, line 230</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">recupererScoreJoueurs</span>()
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">scoreDeTousLesJoueurs</span>()
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-recupererSucces" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">recupererSucces</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="recupererSucces-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/Joueur.rb, line 226</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">recupererSucces</span>()
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">voirSucces</span>(<span class="ruby-ivar">@id</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-verifierSucces" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">verifierSucces</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="verifierSucces-source">
+            <pre><span class="ruby-comment"># File BaseDeDonnees/Joueur.rb, line 216</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">verifierSucces</span>()
+        <span class="ruby-identifier">dernierSucces</span> = <span class="ruby-identifier">dernierSucces</span>()
+
+        (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-identifier">dernierSucces</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+                <span class="ruby-keyword">if</span> <span class="ruby-identifier">inspecterSucces</span>(<span class="ruby-identifier">i</span>, <span class="ruby-ivar">@id</span>) <span class="ruby-keyword">then</span>
+                        <span class="ruby-identifier">validerSucces</span>(<span class="ruby-identifier">i</span>, <span class="ruby-ivar">@id</span>)
+                <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.0.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

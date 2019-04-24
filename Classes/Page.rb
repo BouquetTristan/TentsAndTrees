@@ -6,6 +6,14 @@ class Page < Gtk::Box
 
   attr_reader :hautPage, :btnRetour, :btnHome, :btnCompte, :enciennePage, :hautPage, :label , :couleur, :window
 
+
+  #Initialise la page
+	# @param monApp		//l'application
+	# @param sens    //orientation de le page (vertical/horizontal)
+  # @param unHeader		//le titre de la page
+  # @param anciennePage		//Le lien de la dernière page
+  # @param unJoueur		//le joueur concerné
+	# @return void			//ne renvoie rien
   def initialize(monApp, sens, unHeader, anciennePage, unJoueur)
 
     ##
@@ -18,12 +26,17 @@ class Page < Gtk::Box
 
   end
 
-  ##
-  # Methode pour ajouter l'objet actuelle a la fenetre
+
+  #Methode pour ajouter l'objet actuelle a la fenetre
+	# @param void		//ne prend aucun paramètre
+	# @return void		//ne renvoie rien
   def ajouteMoi
     @window << self
   end
 
+  #supprime les fenètre fille
+	# @param void		//ne prend aucun paramètre
+	# @return void		//ne renvoie rien
   def supprimeMoi
     @window.each{ |children|
       unless children.class.eql?(Header) then
@@ -32,6 +45,9 @@ class Page < Gtk::Box
     }
   end
 
+  #Methode pour détruire les fenêtre fille
+	# @param void		//ne prend aucun paramètre
+	# @return void		//ne renvoie rien
   def detruitMoi
     @window.each{ |children|
       unless children.class.eql?(Header) then

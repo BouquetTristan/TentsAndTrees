@@ -1,6 +1,6 @@
 require 'gtk3'
 
-#====== La classe BoutonGrilleA caractéise la grille de jeu représenter à l'aide de bouton en guise de case sur l'interface
+#====== La classe BoutonGrille caractéise la grille de jeu représenter à l'aide de bouton en guise de case sur l'interface
 
 class BoutonGrille
 
@@ -71,6 +71,9 @@ class BoutonGrille
 		end
 	end
 
+	#Va checher l'image modifier avec un encadré rouge pour indiquer une erreur
+	# @param etat 		//un chiffre représentant l'état d'une case
+	# @return void		//ne renvoie rien
 	def indiquerAide(etat)
 		if etat == 0
 			@image=(Gtk::Image.new(:file =>"./Assets/Printemps/terreS.png", :size => :dialog))

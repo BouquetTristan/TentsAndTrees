@@ -7,6 +7,7 @@ class BoutonAide
 	#=Variable d'instance
 	# @bouton		: Le bouton
 	# @coordI, @coordJ	: Coordonnée du bouton
+	# @cliquable		: booléen 
 	# @@prix		: prix de l'aide en feuille
 
 	attr_accessor :cliquable

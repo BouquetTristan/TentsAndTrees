@@ -4,10 +4,24 @@
 
 class TexteEntree
 
+  attr_accessor :entree
+  attr_accessor :gTexteEntree
+  attr_accessor :erreur
+
+
+  #création du texte à entrer
+  # @param unTexte		//le texte du champ à remplir
+  # @param erreur		//l'erreur à afficher en cas de problème
+  # @return void		//ne renvoie rien
      def TexteEntree.creer(unTexte, erreur)
           new(unTexte, erreur)
      end
 
+
+     #initialisation du texte à afficher
+     # @param unTexte		//le texte du champ à remplir
+     # @param erreur		//l'erreur à afficher en cas de problème
+     # @return void		//ne renvoie rien
      def initialize(unTexte, erreur)
           @gTexteEntree=Gtk::Table.new(2,3, false)
 
@@ -25,8 +39,6 @@ class TexteEntree
 
 
      end
-     attr_accessor :entree
-     attr_accessor :gTexteEntree
-     attr_accessor :erreur
+
 
 end

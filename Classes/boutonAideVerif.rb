@@ -8,7 +8,9 @@ class BoutonAideVerif < BoutonAide
 	#=Variable d'instance
 	# @bouton		: Le bouton
 	# @coordI, @coordJ	: Coordonnée du bouton
+	# @cliquable		: booléen
 	# @@prix		: prix de l'aide en feuille
+
 
 	attr_accessor :cliquable
 	attr_accessor :bouton
@@ -16,16 +18,19 @@ class BoutonAideVerif < BoutonAide
 
 	@@prix = 5
 
+	#renvoie le prix associé au bouton
+	# @param void		//ne prend aucun paramètre
+	# @return prix		//renvie un prix integer
 	def prix()
 		return @@prix
 	end
 
 	#Définie la marche à suivre en cas d'appel d'aide sur le bouton verif
-	# @param uneGrille    //la grille de jeu
-	# @param unLabel      //La position d'affichage
-	# @param unJoueur     //Pour sauvegarder le joueur et ne pas le perdre en cas de changement de page
+	# @param uneGrille    	//la grille de jeu
+	# @param unLabel      	//La position d'affichage
+	# @param unJoueur     	//Pour sauvegarder le joueur et ne pas le perdre en cas de changement de page
 	# @param interfaceGrille //Permet d'accéder à l'affichage de la grille dans le jeu
-	# @return aide 			//Case conscenrée par l'aide si elle existe
+	# @return aide 	//Case conscenrée par l'aide si elle existe
 	# @return nil  	//si aucune aide ne trouve de solution
 	def aide(uneGrille, unLabel, unJoueur, interfaceGrille)
 		if(@cliquable == true)

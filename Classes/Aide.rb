@@ -266,7 +266,7 @@ class Aide
 			numCase += 1
 
 		end
-		print "\nPour la ligne #{nLigne} Le nombre de tentes placables max #{tentesPlaceMax} pour un nb teneRestante de #{nbTentesRestantes}\n"
+#		print "\nPour la ligne #{nLigne} Le nombre de tentes placables max #{tentesPlaceMax} pour un nb teneRestante de #{nbTentesRestantes}\n"
 		if (impair && nbTentesRestantes == tentesPlaceMax) then
 			return nLigne
 		end

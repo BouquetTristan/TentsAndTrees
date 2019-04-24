@@ -197,7 +197,7 @@ def creerGrilleAventure(unIDNiveau, uneLigne)
 	ligneCourante = informationGrille.shift
 	tempsCourant = informationGrille.shift.to_i
 
-	puts "#{unIDNiveau} #{idCourant} #{difficulteCourante} #{ligneCourante} #{tempsCourant}"
+#	puts "#{unIDNiveau} #{idCourant} #{difficulteCourante} #{ligneCourante} #{tempsCourant}"
 
 	#puts "#{difficulteCourante}\n"
 	#puts "#{ligneCourante}\n"

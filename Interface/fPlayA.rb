@@ -53,7 +53,7 @@ class FPlayA < Page
 
         @nbFeuilles = unJoueur.creditAide
 
-        puts "feuilles : #{unJoueur.creditAide}"
+#        puts "feuilles : #{unJoueur.creditAide}"
 
 
     	@gHelp = Gtk::ButtonBox.new(:vertical)

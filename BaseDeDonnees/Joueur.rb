@@ -130,26 +130,26 @@ class Joueur
 	def afficherStatistiques()
 	# Méthode de test servant à afficher toutes les informations d'un profil
 		if @scoreGlobal != nil then
-			puts "Joueur : #{@pseudo}##{@id}\n"
-			puts " Score \n"
-			puts "  Score global : #{@scoreGlobal}\n"
-			puts "  Score facile : #{@scoreFacile}\n"
-			puts "  Score moyen : #{@scoreMoyen}\n"
-			puts "  Score difficile : #{@scoreDifficile}\n"
-			puts " Info parties \n"
-			puts "  Parties jouées : #{@nbPartiesJouees}\n"
-			puts "  Parties finit sans aides : #{@nbPartiesFinitSansAides}\n"
-			puts " Info profil \n"
-			puts "  Nb aides : #{@creditAide}\n"
-			puts "  argent : #{@argent}\n"
-			puts " Histoire \n"
+#			puts "Joueur : #{@pseudo}##{@id}\n"
+#			puts " Score \n"
+#			puts "  Score global : #{@scoreGlobal}\n"
+#			puts "  Score facile : #{@scoreFacile}\n"
+#			puts "  Score moyen : #{@scoreMoyen}\n"
+#			puts "  Score difficile : #{@scoreDifficile}\n"
+#			puts " Info parties \n"
+#			puts "  Parties jouées : #{@nbPartiesJouees}\n"
+#			puts "  Parties finit sans aides : #{@nbPartiesFinitSansAides}\n"
+#			puts " Info profil \n"
+#			puts "  Nb aides : #{@creditAide}\n"
+#			puts "  argent : #{@argent}\n"
+#			puts " Histoire \n"
 			for i in 0..(@niveaux.length-1)
 				nomNiveau = @niveaux.at(i).at(1)
 				statutNiveau = @niveaux.at(i).at(2)
 				puts "  #{nomNiveau} : #{statutNiveau}\n"
 			end
-		else
-			puts "Erreur, aucune information présente. Veuillez vous identifiez avant\n"
+#		else
+#			puts "Erreur, aucune information présente. Veuillez vous identifiez avant\n"
 		end
 	end
 

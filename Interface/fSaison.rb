@@ -16,7 +16,7 @@ class FSaison < Page
 
 		super(monApp, :vertical, header,  anciennePage, unJoueur)
 
-		puts "FSaison début"
+#		puts "FSaison début"
 
 		@frame = Gtk::Table.new(1,1,false)
 

@@ -27,7 +27,7 @@ class BoutonNbTentesColonne < BoutonNbTentes
 	# @return void			//ne renvoie rien
 	def initialize(uneGrille, grilleInterface, indice, chemin, unJoueur)
 		super(uneGrille, grilleInterface, indice, chemin, unJoueur)
-		puts "@indice interne #{@indice}"
+#		puts "@indice interne #{@indice}"
 	end
 
 	#Change l'image du bouton en fonction de l'état

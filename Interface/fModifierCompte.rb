@@ -36,7 +36,7 @@ class FModifC < Page
 
 
 
-			puts("OK nouveau joueur\n")
+#			puts("OK nouveau joueur\n")
 			if (@pseudo.entree.text == '')
 				if (@mdp.entree.text == '')
 					@mdp.erreur.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 10\">Erreur entrer un pseudo et un mot de passe</span>\n")

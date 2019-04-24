@@ -58,18 +58,18 @@ class FConnexion < Page
 
 
 			joueur = Joueur.new(@pseudo.entree.text, @mdp.entree.text, nil)
-               puts @pseudo.entree.text
-               puts @mdp.entree.text
-               puts("OK nouveau joueur\n")
+#               puts @pseudo.entree.text
+#               puts @mdp.entree.text
+#               puts("OK nouveau joueur\n")
                if (@pseudo.entree.text == '' || @mdp.entree.text == '')
 				#@pseudo.erreur.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 10\">/!\\ Erreur entrer un pseudo et un mot de passe</span>\n")
                     @mdp.erreur.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 10\">Erreur entrer un pseudo et un mot de passe</span>\n")
 
 
 			elsif joueur.connecter() == nil then
-                    puts("Joueur non trouvé\n")
+#                    puts("Joueur non trouvé\n")
 				@mdp.entree.text = ''
-                    puts("mdp sans rien\n")
+#                    puts("mdp sans rien\n")
                     @mdp.erreur.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 10\">Erreur pseudo ou mot de passe incorrect</span>\n")
 
 

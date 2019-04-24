@@ -43,7 +43,7 @@ class BoutonSaison
         @bouton.set_image(@img)
 
         @cliquable = @joueur.niveauDeverouille(@numSaison)
-   		puts @saison
+#   		puts @saison
 	end
 
 	#Actualise l'image de la case
@@ -61,9 +61,9 @@ class BoutonSaison
 	# @param unJoueur		//Joueur ayant débloqué le bouton
 	# @return void			//ne renvoie rien
 	def debloquer()
-		puts @saison
-		puts @joueur.niveauDeverouille(@numSaison)
-		puts "cliquable : #{@cliquable}"
+#		puts @saison
+#		puts @joueur.niveauDeverouille(@numSaison)
+#		puts "cliquable : #{@cliquable}"
 
 		if (@cliquable == false)
 			@cliquable = @joueur.acheterNiveau(@numSaison)

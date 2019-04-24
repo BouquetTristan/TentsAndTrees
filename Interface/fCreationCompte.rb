@@ -49,7 +49,7 @@ class FCreationCompte < Page
 
  			joueur = Joueur.new(@pseudo.entree.text, @mdp.entree.text, @reponse.entree.text)
 
-                puts("OK nouveau joueur\n")
+#                puts("OK nouveau joueur\n")
                 if (@pseudo.entree.text == '' || @mdp.entree.text == '')
  				#@pseudo.erreur.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 10\">/!\\ Erreur entrer un pseudo et un mot de passe</span>\n")
                      @mdp.erreur.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 10\">Erreur entrer un pseudo et un mot de passe</span>\n")
@@ -58,9 +58,9 @@ class FCreationCompte < Page
                      @reponse.erreur.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 10\">Répondez a la question</span>\n")
 
  		           	elsif joueur.inscrire() == 0 then
-                     puts("Joueur\n")
+#                     puts("Joueur\n")
  				             @pseudo.entree.text = ''
-                     puts("mdp sans rien\n")
+#                     puts("mdp sans rien\n")
                      @pseudo.erreur.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 10\">Erreur L'utilisateur est déjà enregistré</span>\n")
 
 

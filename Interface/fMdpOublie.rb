@@ -48,17 +48,17 @@ class FMdpOublie < Page
           joueur = Joueur.new(@pseudo.entree.text, @newMdp.entree.text, @reponse.entree.text)
 
 
-          puts @newMdp.entree.text
-          puts("OK nouveau mdp\n")
+#          puts @newMdp.entree.text
+#          puts("OK nouveau mdp\n")
           if (@pseudo.entree.text == '')
                #@pseudo.erreur.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 10\">/!\\ Erreur entrer un pseudo et un mot de passe</span>\n")
                @pseudo.erreur.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 10\">Erreur entrer votre pseudo</span>\n")
 
 
           elsif joueur.motDePasseOublier(@newMdp.entree.text) == false then
-               puts("Réponse incorectve\n")
+#               puts("Réponse incorectve\n")
                @newMdp.entree.text = ''
-               puts("mdp sans rien\n")
+#               puts("mdp sans rien\n")
                @reponse.erreur.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 10\">Réponse à la question incorrecte</span>\n")
                @pseudo.erreur.set_markup("")
 

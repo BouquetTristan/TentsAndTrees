@@ -15,7 +15,9 @@ class FMenu < Page
      	super(monApp, :vertical, header,  anciennePage, unJoueur)
 
         @frame = Gtk::Table.new(1,1,false)
-    		@gMenu = Gtk::Table.new(1,4,false)
+    		@gMenu = Gtk::ButtonBox.new(:vertical)
+
+		
         
     		@profil = Gtk::Button.new()
         @profil.set_relief(:none)
@@ -23,8 +25,8 @@ class FMenu < Page
         @imgP=(Gtk::Image.new(:file =>"./Assets/profil.png"))
         @profil.set_image(@imgP)
         focus_hadjustment=(:start)
-
-        @gMenu.attach(@profil, 0,1,0,1)
+	@gMenu.add(@profil, :expand => true, :fill => false)
+  
 
     		@play = Gtk::Button.new(:label => 'Jouer', :use_underline => nil, :stock_id => nil)
         @play.set_relief(:none)
@@ -33,9 +35,9 @@ class FMenu < Page
     		@score = Gtk::Button.new(:label => 'Classement', :use_underline => nil, :stock_id => nil)
         @score.set_relief(:none)
 
-    		@gMenu.attach(@play, 0,1,1,2)
-    		@gMenu.attach(@didac, 0,1,2,3)
-    		@gMenu.attach(@score, 0,1,3,4)
+    		@gMenu.add(@play, :expand => true, :fill => false)
+    		@gMenu.add(@didac, :expand => true, :fill => false)
+    		@gMenu.add(@score, :expand => true, :fill => false)
 
         @profil.signal_connect('clicked') {
                self.supprimeMoi

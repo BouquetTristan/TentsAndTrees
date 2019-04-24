@@ -1,6 +1,6 @@
 require 'gtk3'
 
-#====== La classe BoutonGrilleA caractéise la grille de jeu représenter à l'aide de bouton en guise de case sur l'interface
+#====== La classe BoutonNbTentes représentes les bouton sur le côté de la grille de jeu pour remplire une ligne/colonne d'herbe
 
 class BoutonNbTentes
 
@@ -9,14 +9,18 @@ class BoutonNbTentes
 	# @coordI, @coordJ	: Coordonnée du bouton
 
 
-	attr_accessor :bouton
 	attr_accessor :clic
 	attr_reader :chemin
+	attr_accessor :bouton
 
 
-	#Initialise le bouton (case)
+	#Initialise le bouton
+	# @param uneGrille		//Grille de jeu
+	# @param grilleInterface	//affichage de grille de jeu
+	# @param indice		//indice ligne/colonne
 	# @param chemin		//Le chemin d'accès du dossier contenant les différentes images
-	# @return void		//ne renvoie rien
+	# @param unJoueur		//Le joueur concerné
+	# @return void			//ne renvoie rien
 	def initialize(uneGrille, grilleInterface, indice, chemin, unJoueur)
 		@bouton = Gtk::Button.new
 		# @bouton.set_relief(:none)

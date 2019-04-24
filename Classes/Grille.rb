@@ -36,7 +36,7 @@ class Grille
 	end
 
 
-	
+
 	#Créé une grille avec un niveau de difficulté
 	# @param diff		//difficulté de grille
 	# @return void		//ne renvoie rien
@@ -101,7 +101,7 @@ class Grille
 
 
 	#Affiche la grille de jeu (sans le nombre de tentes)
-	# @param grille		//Grille de jeu
+	# @param grille	//Grille de jeu
 	# @return void		//ne renvoie rien
 	def  afficherGrille (grille)
 		grille.each do |ligne|
@@ -114,7 +114,7 @@ class Grille
 	end
 
 
-	
+
 
 	#Enregistre la grille dans un fichier en transformant les informations concernant l'état des case en char
 	# @param nomJoueur	//Le nom du joueur
@@ -159,13 +159,13 @@ class Grille
   end
 
 
-  
+
   #Charge une grille sauvegardée lors d'une partie
   # @param nomJoueur	//Le nom du joueur
   # @param mode		//Le mode de jeu dans lequel la grille est jouée
   # @return grille	//retourn la grille voulue si elle existe
   def Grille.charger (nomJoueur, mode)
-  	
+
 	lFich = ""
 	trouve = false
 
@@ -179,7 +179,7 @@ class Grille
 				trouve = true
 			end
 		end
-	if trouve then 
+	if trouve then
 		lFich = lFich.chomp
 	  	grilleFich = lFich.split(';')
 		num = grilleFich.shift
@@ -188,8 +188,8 @@ class Grille
 
 		grille = Grille.creer(diff, num.to_i)
 	  	grille.grilleJ = []
-		
-	  	i = 0		
+
+	  	i = 0
 	  	grilleFich.each do |ligne|
 	  		j = 0
 	  		ligneCasesJ = []
@@ -209,7 +209,7 @@ class Grille
 
   #Parcours horizonta par case de la grille
   # @param void		//ne prend aucun paramètre
-  # @return void		//ne renvoie rien
+  # @return void	//ne renvoie rien
   def parcourirH ()
   	self.parcourirL {|ligne|
   		ligne.each do |uneCase|
@@ -218,10 +218,10 @@ class Grille
   	}
   end
 
-  
+
   #Parcours par ligne de la grille
   # @param void		//ne prend aucun paramètre
-  # @return void		//ne renvoie rien
+  # @return void	//ne renvoie rien
   def parcourirL ()
   	@grilleJ.each do |ligne|
   			yield ligne
@@ -231,7 +231,7 @@ class Grille
 
   #Parcours par colonne de la grille
   # @param void		//ne prend aucun paramètre
-  # @return void		//ne renvoie rien
+  # @return void	//ne renvoie rien
   def parcourirC ()
   	grilleTournee = []
 
@@ -252,7 +252,7 @@ class Grille
 	#Observateur pour savoir si l'utilisateur a gagner
 	# @param void		//ne prend aucun paramètre
 	# @return true		//si l'utilisateur à gagné
-	# @return false		//si l'utilisateur n'a pas gagné
+	# @return false	//si l'utilisateur n'a pas gagné
 	def observateur()
 
 	  for i in 0..(taille-1)

@@ -1,21 +1,25 @@
 require 'gtk3'
 require './Classes/boutonAide.rb'
 
-#====== La classe BOutonAideTente hérite de la classe BoutonAide et représente une aide spécifique aux tentes
+#====== La classe BoutonAideTente hérite de la classe BoutonAide et représente une aide spécifique aux tentes
 
 class BoutonAideTente < BoutonAide
 
 	#=Variable d'instance
 	# @bouton		: Le bouton
 	# @coordI, @coordJ	: Coordonnée du bouton
+	# @cliquable		: booléen
 	# @@prix		: prix de l'aide en feuille
 
+	attr_accessor :prix
 	attr_accessor :cliquable
 	attr_accessor :bouton
-	attr_accessor :prix
 
 	@@prix = 3
 
+	#renvoie le prix associé au bouton
+	# @param void		//ne prend aucun paramètre
+	# @return prix		//renvie un prix integer
 	def prix()
 		return @@prix
 	end

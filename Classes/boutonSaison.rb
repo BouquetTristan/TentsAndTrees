@@ -17,14 +17,14 @@ class BoutonSaison
 	attr_accessor :bouton
 
 
-	#Initialise le bouton eprésentant l'accès aux saison
+	#Initialise le bouton représentant l'accès aux saisons
 	# @param uneSaison		//Chaine de caracère représentant une des 4 saison (été/hiver/automne/pintemps)
 	# @param cliquable		//Booléen pou définir si le bouton sera cliquable ou non
 	# @return void			//ne renvoie rien
 	def initialize(uneSaison, unJoueur)
 		@bouton = Gtk::Button.new()
         focus_hadjustment=(:start)
-		
+
 		@saison = uneSaison
 		@joueur = unJoueur
 
@@ -46,6 +46,9 @@ class BoutonSaison
    		puts @saison
 	end
 
+	#Actualise l'image de la case
+	# @param void		//ne prend aucun paramètre
+	# @return void			//ne renvoie rien
 	def actualiserImg()
 		if (@cliquable)
 			@img=(Gtk::Image.new(:file =>"./Assets/Vignette#{@saison}.png"))
@@ -55,7 +58,7 @@ class BoutonSaison
 
 
 	#Débloque un bouton en le rendant cliquable pour un joueur donné
-	# @param unJoueur		//Joueur ayant débloqué le bouon
+	# @param unJoueur		//Joueur ayant débloqué le bouton
 	# @return void			//ne renvoie rien
 	def debloquer()
 		puts @saison

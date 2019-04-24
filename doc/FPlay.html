@@ -86,6 +86,8 @@
 
   <section class="description">
     
+<h6 id="class-FPlay-label-Fenetre+pour+jouer1+du+jeu">Fenetre pour jouer1 du jeu<span><a href="#class-FPlay-label-Fenetre+pour+jouer1+du+jeu">&para;</a> <a href="#top">&uarr;</a></span></h6>
+
   </section>
 
   
@@ -118,7 +120,16 @@
 
         <div class="method-description">
           
-          
+          <p>Initialise la page</p>
+
+<pre>@param monApp               //l&#39;application
+@param header               //le titre de la page
+@param anciennePage         //Le lien de la dernière page
+@param unJoueur             //le joueur concerné
+@param difficulte            //la difficulté choisis
+@param grilleDeJeu           //Grille du jeu
+@param compet                //boolen indiquant si nous somme en mode compétiton ou non
+@return void                //ne renvoie rien</pre>
           
           
             <div class="method-calls-super">
@@ -129,14 +140,14 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File Interface/fPlay.rb, line 19</span>
+            <pre><span class="ruby-comment"># File Interface/fPlay.rb, line 29</span>
     <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-identifier">header</span>, <span class="ruby-identifier">anciennePage</span>, <span class="ruby-identifier">unJoueur</span>, <span class="ruby-identifier">difficulte</span>, <span class="ruby-identifier">grilleDeJeu</span>, <span class="ruby-identifier">compet</span>)
 
             <span class="ruby-keyword">super</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-value">:vertical</span>, <span class="ruby-identifier">header</span>,  <span class="ruby-identifier">anciennePage</span>, <span class="ruby-identifier">unJoueur</span>)
 
             <span class="ruby-ivar">@nbAidesUtilises</span> = <span class="ruby-value">0</span>
 
-            
+
 
             <span class="ruby-ivar">@gHelp</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">ButtonBox</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:vertical</span>)
 
@@ -152,20 +163,20 @@
             <span class="ruby-keyword">end</span>
 
             <span class="ruby-ivar">@chrono</span> = <span class="ruby-constant">Chrono</span>.<span class="ruby-identifier">new</span>
-            
+
 
             <span class="ruby-identifier">thr</span>=<span class="ruby-constant">Thread</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword">do</span>
                     <span class="ruby-identifier">sleep</span>(<span class="ruby-value">2</span>)
                     <span class="ruby-ivar">@chrono</span>.<span class="ruby-identifier">cStart</span>
-            
+
             <span class="ruby-keyword">end</span>
 
-                            
-            
+
+
     <span class="ruby-ivar">@frame</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Table</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">1</span>,<span class="ruby-value">1</span>,<span class="ruby-keyword">false</span>)
 
     <span class="ruby-ivar">@gChrono</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">ButtonBox</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:vertical</span>)
-    <span class="ruby-ivar">@gChrono</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@chrono</span>.<span class="ruby-identifier">lChrono</span>) 
+    <span class="ruby-ivar">@gChrono</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@chrono</span>.<span class="ruby-identifier">lChrono</span>)
 
     <span class="ruby-ivar">@box</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">ButtonBox</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:horizontal</span>)
 
@@ -185,7 +196,7 @@
                     <span class="ruby-identifier">tabBout</span>[<span class="ruby-identifier">j</span>] = <span class="ruby-constant">BoutonNbTentesColonne</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">grilleDeJeu</span>, <span class="ruby-ivar">@boutonGrille</span>, <span class="ruby-identifier">j</span>, <span class="ruby-string">&quot;./Assets/Printemps&quot;</span>, <span class="ruby-identifier">unJoueur</span>)
                     <span class="ruby-identifier">tabBout</span>[<span class="ruby-identifier">j</span>].<span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">set_label</span>(<span class="ruby-identifier">grilleDeJeu</span>.<span class="ruby-identifier">nbTentesLigne</span>[<span class="ruby-identifier">j</span>].<span class="ruby-identifier">to_s</span>)
                     <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-identifier">tabBout</span>[<span class="ruby-identifier">j</span>].<span class="ruby-identifier">bouton</span>, <span class="ruby-identifier">j</span><span class="ruby-value">+1</span>,<span class="ruby-identifier">j</span><span class="ruby-value">+2</span>, <span class="ruby-value">0</span>,<span class="ruby-value">1</span>)
-                    
+
             <span class="ruby-keyword">end</span>
 
             <span class="ruby-identifier">tabBout</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">l</span><span class="ruby-operator">|</span>
@@ -203,9 +214,9 @@
                                             <span class="ruby-keyword">if</span>(<span class="ruby-identifier">difficulte</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;Difficile&quot;</span>)
                                                                     <span class="ruby-identifier">unJoueur</span>.<span class="ruby-identifier">modifierInformationsFinDePartie</span>(<span class="ruby-ivar">@score</span>.<span class="ruby-identifier">calculerScore</span>((<span class="ruby-value">120</span><span class="ruby-operator">-</span><span class="ruby-ivar">@chrono</span>.<span class="ruby-identifier">chrono</span>)), <span class="ruby-identifier">difficulte</span>, <span class="ruby-ivar">@nbAidesUtilises</span>)
                                             <span class="ruby-keyword">end</span>
-                                            
+
                                     <span class="ruby-keyword">end</span>
-                                    
+
                                     <span class="ruby-ivar">@chrono</span>.<span class="ruby-identifier">cFin</span>
                                     <span class="ruby-ivar">@chrono</span>.<span class="ruby-identifier">cRaz</span>
                                     <span class="ruby-identifier">thr</span>.<span class="ruby-identifier">kill</span>
@@ -239,9 +250,9 @@
                                             <span class="ruby-keyword">if</span>(<span class="ruby-identifier">difficulte</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;Difficile&quot;</span>)
                                                                     <span class="ruby-identifier">unJoueur</span>.<span class="ruby-identifier">modifierInformationsFinDePartie</span>(<span class="ruby-ivar">@score</span>.<span class="ruby-identifier">calculerScore</span>((<span class="ruby-value">120</span><span class="ruby-operator">-</span><span class="ruby-ivar">@chrono</span>.<span class="ruby-identifier">chrono</span>)), <span class="ruby-identifier">difficulte</span>, <span class="ruby-ivar">@nbAidesUtilises</span>)
                                             <span class="ruby-keyword">end</span>
-                                            
+
                                     <span class="ruby-keyword">end</span>
-                                    
+
                                     <span class="ruby-ivar">@chrono</span>.<span class="ruby-identifier">cFin</span>
                                     <span class="ruby-ivar">@chrono</span>.<span class="ruby-identifier">cRaz</span>
                                     <span class="ruby-identifier">thr</span>.<span class="ruby-identifier">kill</span>
@@ -290,7 +301,7 @@
                                  <span class="ruby-identifier">grilleDeJeu</span>.<span class="ruby-identifier">grilleJ</span>[<span class="ruby-identifier">l</span>.<span class="ruby-identifier">coordI</span>][<span class="ruby-identifier">l</span>.<span class="ruby-identifier">coordJ</span>].<span class="ruby-identifier">jouerCase</span>()
                                             <span class="ruby-ivar">@boutonGrille</span>[<span class="ruby-identifier">l</span>.<span class="ruby-identifier">coordI</span>][<span class="ruby-identifier">l</span>.<span class="ruby-identifier">coordJ</span>].<span class="ruby-identifier">chgEtat</span>(<span class="ruby-identifier">grilleDeJeu</span>.<span class="ruby-identifier">grilleJ</span>[<span class="ruby-identifier">l</span>.<span class="ruby-identifier">coordI</span>][<span class="ruby-identifier">l</span>.<span class="ruby-identifier">coordJ</span>].<span class="ruby-identifier">etat</span>)
                                             <span class="ruby-identifier">grilleDeJeu</span>.<span class="ruby-identifier">enregistrerFichier</span>(<span class="ruby-identifier">unJoueur</span>.<span class="ruby-identifier">pseudo</span>, <span class="ruby-keyword">nil</span>)
-                                            
+
                                             <span class="ruby-keyword">if</span> (<span class="ruby-identifier">grilleDeJeu</span>.<span class="ruby-identifier">observateur</span>())
                                                     <span class="ruby-ivar">@score</span> = <span class="ruby-constant">Score</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-identifier">difficulte</span>, <span class="ruby-ivar">@nbAidesUtilises</span>)
                                                     <span class="ruby-keyword">if</span>(<span class="ruby-identifier">compet</span>)
@@ -303,9 +314,9 @@
                                                             <span class="ruby-keyword">if</span>(<span class="ruby-identifier">difficulte</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;Difficile&quot;</span>)
                                                                                     <span class="ruby-identifier">unJoueur</span>.<span class="ruby-identifier">modifierInformationsFinDePartie</span>(<span class="ruby-ivar">@score</span>.<span class="ruby-identifier">calculerScore</span>((<span class="ruby-value">120</span><span class="ruby-operator">-</span><span class="ruby-ivar">@chrono</span>.<span class="ruby-identifier">chrono</span>)), <span class="ruby-identifier">difficulte</span>, <span class="ruby-ivar">@nbAidesUtilises</span>)
                                                             <span class="ruby-keyword">end</span>
-                                                            
+
                                                     <span class="ruby-keyword">end</span>
-                                                    
+
                                                     <span class="ruby-ivar">@chrono</span>.<span class="ruby-identifier">cFin</span>
                                                     <span class="ruby-ivar">@chrono</span>.<span class="ruby-identifier">cRaz</span>
                                                     <span class="ruby-identifier">thr</span>.<span class="ruby-identifier">kill</span>
@@ -347,7 +358,7 @@
                     <span class="ruby-ivar">@b2</span> = <span class="ruby-constant">BoutonAideTente</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Aide Tente&quot;</span>, <span class="ruby-keyword">true</span>)
                     <span class="ruby-ivar">@b3</span> = <span class="ruby-constant">BoutonAideVerif</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Verification&quot;</span>, <span class="ruby-keyword">true</span>)
             <span class="ruby-keyword">end</span>
-            
+
 
             <span class="ruby-ivar">@boxAide</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@b1</span>.<span class="ruby-identifier">bouton</span>)
             <span class="ruby-ivar">@boxAide</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@b2</span>.<span class="ruby-identifier">bouton</span>)
@@ -370,9 +381,9 @@
                             <span class="ruby-identifier">tempo</span> = <span class="ruby-ivar">@nbFeuilles</span> <span class="ruby-operator">-</span> <span class="ruby-ivar">@b1</span>.<span class="ruby-identifier">prix</span>
                             <span class="ruby-keyword">if</span>(<span class="ruby-identifier">tempo</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span>)
                                     <span class="ruby-ivar">@nbFeuilles</span> = <span class="ruby-identifier">tempo</span>
-                            
+
                                     <span class="ruby-ivar">@profil</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-node">&quot;&lt;span foreground=\&quot;#EF2929\&quot; font-desc=\&quot;Courier New bold 15\&quot;&gt; #{@nbFeuilles}&lt;/span&gt;&quot;</span>)
-                                    
+
                                     <span class="ruby-ivar">@aide</span> = <span class="ruby-ivar">@b1</span>.<span class="ruby-identifier">aide</span>(<span class="ruby-identifier">grilleDeJeu</span>, <span class="ruby-ivar">@lableAide</span>, <span class="ruby-identifier">unJoueur</span>, <span class="ruby-ivar">@boutonGrille</span>)
                                     <span class="ruby-ivar">@nbAidesUtilises</span><span class="ruby-operator">+=</span><span class="ruby-value">1</span>
                             <span class="ruby-keyword">else</span>
@@ -401,9 +412,9 @@
                             <span class="ruby-identifier">tempo</span> = <span class="ruby-ivar">@nbFeuilles</span> <span class="ruby-operator">-</span> <span class="ruby-ivar">@b2</span>.<span class="ruby-identifier">prix</span>
                             <span class="ruby-keyword">if</span>(<span class="ruby-identifier">tempo</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span>)
                                     <span class="ruby-ivar">@nbFeuilles</span> = <span class="ruby-identifier">tempo</span>
-                            
+
                                     <span class="ruby-ivar">@profil</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-node">&quot;&lt;span foreground=\&quot;#EF2929\&quot; font-desc=\&quot;Courier New bold 15\&quot;&gt; #{@nbFeuilles}&lt;/span&gt;&quot;</span>)
-                                    
+
                                     <span class="ruby-ivar">@aide</span> = <span class="ruby-ivar">@b2</span>.<span class="ruby-identifier">aide</span>(<span class="ruby-identifier">grilleDeJeu</span>, <span class="ruby-ivar">@lableAide</span>, <span class="ruby-identifier">unJoueur</span>, <span class="ruby-ivar">@boutonGrille</span>)
                                     <span class="ruby-ivar">@nbAidesUtilises</span><span class="ruby-operator">+=</span><span class="ruby-value">1</span>
                             <span class="ruby-keyword">else</span>
@@ -432,9 +443,9 @@
                             <span class="ruby-identifier">tempo</span> = <span class="ruby-ivar">@nbFeuilles</span> <span class="ruby-operator">-</span> <span class="ruby-ivar">@b3</span>.<span class="ruby-identifier">prix</span>
                             <span class="ruby-keyword">if</span>(<span class="ruby-identifier">tempo</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span>)
                                     <span class="ruby-ivar">@nbFeuilles</span> = <span class="ruby-identifier">tempo</span>
-                            
+
                                     <span class="ruby-ivar">@profil</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-node">&quot;&lt;span foreground=\&quot;#FFFFFF\&quot; font-desc=\&quot;Courier New bold 15\&quot;&gt; #{@nbFeuilles}&lt;/span&gt;&quot;</span>)
-                                    
+
                                     <span class="ruby-ivar">@aide</span> = <span class="ruby-ivar">@b3</span>.<span class="ruby-identifier">aide</span>(<span class="ruby-identifier">grilleDeJeu</span>, <span class="ruby-ivar">@lableAide</span>, <span class="ruby-identifier">unJoueur</span>, <span class="ruby-ivar">@boutonGrille</span>)
                                     <span class="ruby-ivar">@nbAidesUtilises</span><span class="ruby-operator">+=</span><span class="ruby-value">1</span>
                             <span class="ruby-keyword">else</span>
@@ -444,9 +455,9 @@
                             <span class="ruby-ivar">@aide</span> = <span class="ruby-ivar">@b3</span>.<span class="ruby-identifier">aide</span>(<span class="ruby-identifier">grilleDeJeu</span>, <span class="ruby-ivar">@lableAide</span>, <span class="ruby-identifier">unJoueur</span>, <span class="ruby-ivar">@boutonGrille</span>)
                             <span class="ruby-ivar">@nbAidesUtilises</span><span class="ruby-operator">+=</span><span class="ruby-value">1</span>
                     <span class="ruby-keyword">end</span>
-    }                               
+    }
 
-            
+
             <span class="ruby-ivar">@gHelp</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@boxAide</span>)
 
             <span class="ruby-ivar">@bPause</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>()
@@ -457,7 +468,7 @@
 
             <span class="ruby-ivar">@bPause</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {
                     <span class="ruby-ivar">@chrono</span>.<span class="ruby-identifier">cPause</span>
-                    
+
                     <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@chrono</span>.<span class="ruby-identifier">pause</span>)
                             <span class="ruby-ivar">@boutonGrille</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span>
                                     <span class="ruby-identifier">k</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">l</span><span class="ruby-operator">|</span>
@@ -477,7 +488,7 @@
                                             <span class="ruby-identifier">l</span>.<span class="ruby-identifier">clic</span>=<span class="ruby-keyword">true</span>
                                             <span class="ruby-identifier">l</span>.<span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">set_opacity</span>(<span class="ruby-value">1.0</span>)
                                     }
-                            } 
+                            }
                             <span class="ruby-ivar">@pause</span>=(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span> <span class="ruby-operator">=&gt;</span><span class="ruby-string">&quot;./Assets/pause.png&quot;</span>))
                             <span class="ruby-ivar">@bPause</span>.<span class="ruby-identifier">set_image</span>(<span class="ruby-ivar">@pause</span>)
 

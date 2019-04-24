@@ -4,16 +4,26 @@ require './Interface/fPlay.rb'
 require './Classes/Page.rb'
 require './Interface/fInter.rb'
 
+
 # Fichier: fDiff.rb
 # Auteur: Marchand Killian
 # Description:
-# => Menu des difficultés
-# => C'est ici qu'est regroupé les composants du menu des difficultés
-# => Ici nous gerons ainsi les évenements lié aux boutons, qui permet d'appeler la page suivante ou bien précédente ainsi que la construction de la page
+# C'est ici qu'est regroupé les composants du menu des difficultés
+# Ici nous gerons ainsi les évenements lié aux boutons, qui permet d'appeler la page suivante ou bien précédente ainsi que la construction de la page
 
+#====== Menu des difficultés
 
 class FDiff < Page
 
+
+
+	#Initialise la page 
+	# @param monApp		//l'application
+  # @param header		//le titre de la page
+  # @param anciennePage		//Le lien de la dernière page
+  # @param unJoueur		//le joueur concerné
+	# @param comp 			//booléen pour savoir si on est en mod compétition ou non
+	# @return void			//ne renvoie rien
 	def initialize(monApp, header, anciennePage, unJoueur, comp)
 
 		super(monApp, :vertical, header,  anciennePage, unJoueur)
@@ -50,7 +60,7 @@ class FDiff < Page
 				suivant=FPlay.new(monApp, header, self, unJoueur, diff, grilleDeJeu ,comp)
 			else
 				suivant=FInter.new(monApp, header, self, unJoueur, diff,comp)
-			end	
+			end
 			suivant.ajouteMoi
 			@window.show_all
 		}
@@ -62,7 +72,7 @@ class FDiff < Page
 				suivant=FPlay.new(monApp, header, self, unJoueur, diff, grilleDeJeu ,comp)
 			else
 				suivant=FInter.new(monApp, header, self, unJoueur, diff,comp)
-			end	
+			end
 			suivant.ajouteMoi
 			@window.show_all
 		}
@@ -74,7 +84,7 @@ class FDiff < Page
 				suivant=FPlay.new(monApp, header, self, unJoueur, diff, grilleDeJeu ,comp)
 			else
 				suivant=FInter.new(monApp, header, self, unJoueur, diff,comp)
-			end	
+			end
 			suivant.ajouteMoi
 			@window.show_all
 		}

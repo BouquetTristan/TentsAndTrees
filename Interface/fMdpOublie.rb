@@ -4,8 +4,16 @@ require './Classes/TexteEntree'
 require './Classes/Page.rb'
 require './Interface/fMenu.rb'
 
+#====== Fenetre mot de passe oublié du jeu
 class FMdpOublie < Page
 
+
+  #Initialise la page
+  # @param monApp		//l'application
+  # @param header		//le titre de la page
+  # @param anciennePage		//Le lien de la dernière page
+  # @param unJoueur		//le joueur concerné
+  # @return void			//ne renvoie rien
      def initialize(monApp, header, anciennePage, unJoueur)
 
         super(monApp, :vertical, header,  anciennePage, unJoueur)

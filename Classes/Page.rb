@@ -1,6 +1,6 @@
 require "gtk3"
 
-# Classe représentant une page
+#====== Classe représentant une page
 
 class Page < Gtk::Box
 

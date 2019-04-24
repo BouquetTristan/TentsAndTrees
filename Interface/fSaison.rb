@@ -1,8 +1,17 @@
 require 'gtk3'
 require './Interface/fPlayA.rb'
 
+
+#====== Fenetre de saison du jeu
 class FSaison < Page
 
+	#Initialise la page
+  # @param monApp		//l'application
+  # @param header		//le titre de la page
+  # @param anciennePage		//Le lien de la dernière page
+  # @param unJoueur		//le joueur concerné
+	# @param uneSaison		//une des 4 saisons 
+  # @return void		//ne renvoie rien
 	def initialize(monApp, header, anciennePage, unJoueur, uneSaison)
 
 		super(monApp, :vertical, header,  anciennePage, unJoueur)

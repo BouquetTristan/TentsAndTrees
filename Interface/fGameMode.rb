@@ -9,12 +9,20 @@ require './Interface/fAventure.rb'
 # Fichier: fGameMode.rb
 # Auteur: Marchand Killian
 # Description:
-# => Menu des modes de jeu
-# => C'est ici qu'est regroupé les composants du menu des modes de jeu
-# => Ici nous gerons ainsi les évenements lié aux boutons, qui permet d'appeler la page suivante ou bien précédente ainsi que la construction la page.
+# Menu des modes de jeu
+# C'est ici qu'est regroupé les composants du menu des modes de jeu
+# Ici nous gerons ainsi les évenements lié aux boutons, qui permet d'appeler la page suivante ou bien précédente ainsi que la construction la page.
 
+# = Menu des modes de jeu
 class FGM < Page
 
+
+	#Initialise la page
+	# @param monApp		//l'application
+  # @param header		//le titre de la page
+  # @param anciennePage		//Le lien de la dernière page
+  # @param unJoueur		//le joueur concerné
+	# @return void			//ne renvoie rien
 	def initialize(monApp, header, anciennePage, unJoueur)
 
 		super(monApp, :vertical, header,  anciennePage, unJoueur)

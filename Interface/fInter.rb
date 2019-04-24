@@ -6,13 +6,22 @@ require './Classes/boutonGrille.rb'
 # Fichier: fDiff.rb
 # Auteur: Marchand Killian
 # Description:
-# => Menu des difficultés
-# => C'est ici qu'est regroupé les composants du menu des difficultés
-# => Ici nous gerons ainsi les évenements lié aux boutons, qui permet d'appeler la page suivante ou bien précédente ainsi que la construction de la page
+# Menu des difficultés
+# C'est ici qu'est regroupé les composants du menu des difficultés
+# Ici nous gerons ainsi les évenements lié aux boutons, qui permet d'appeler la page suivante ou bien précédente ainsi que la construction de la page
 
-
+# = Menu des difficultés
 class FInter < Page
 
+
+	#Initialise la page
+	# @param monApp		//l'application
+  # @param header		//le titre de la page
+  # @param anciennePage		//Le lien de la dernière page
+  # @param unJoueur		//le joueur concerné
+	# @param difficulte		//difficulité 
+	# @param comp		//booléen pour savoir si on est en mod compétition ou non
+	# @return void			//ne renvoie rien
 	def initialize(monApp, header, anciennePage, unJoueur, difficulte ,comp)
 
 		super(monApp, :vertical, header,  anciennePage, unJoueur)

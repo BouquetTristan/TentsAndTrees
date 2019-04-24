@@ -88,6 +88,8 @@
 
   <section class="description">
     
+<h6 id="class-FScore-label-Fenetre+score+du+jeu">Fenetre score du jeu<span><a href="#class-FScore-label-Fenetre+score+du+jeu">&para;</a> <a href="#top">&uarr;</a></span></h6>
+
   </section>
 
   
@@ -120,7 +122,14 @@
 
         <div class="method-description">
           
-          
+          <p>Initialise la page</p>
+
+<pre>@param monApp               //l&#39;application
+@param header               //le titre de la page
+@param anciennePage         //Le lien de la dernière page
+@param unJoueur             //le joueur concerné
+@param tabScore   //tableau des scores
+@return void                //ne renvoie rien</pre>
           
           
             <div class="method-calls-super">
@@ -131,7 +140,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File Interface/fScore.rb, line 9</span>
+            <pre><span class="ruby-comment"># File Interface/fScore.rb, line 17</span>
  <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-identifier">header</span>, <span class="ruby-identifier">anciennePage</span>, <span class="ruby-identifier">unJoueur</span>, <span class="ruby-identifier">tabScore</span>)
 
     <span class="ruby-ivar">@tabFacile</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>()
@@ -152,7 +161,7 @@
     <span class="ruby-ivar">@boxBut</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@btnFac</span>)
     <span class="ruby-ivar">@boxBut</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@btnMoy</span>)
     <span class="ruby-ivar">@boxBut</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@btnDif</span>)
-            
+
     <span class="ruby-ivar">@tScore</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Table</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">4</span>,<span class="ruby-value">1</span>,<span class="ruby-keyword">false</span>)
     <span class="ruby-ivar">@tScore</span>.<span class="ruby-identifier">row_spacing</span>=<span class="ruby-value">20</span>
 
@@ -168,9 +177,9 @@
             <span class="ruby-identifier">tabScore</span> = <span class="ruby-ivar">@tabDiff</span>
     <span class="ruby-keyword">end</span>
 
-    <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> (<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-identifier">unJoueur</span>.<span class="ruby-identifier">recupererScoreJoueurs</span>().<span class="ruby-identifier">length</span>)        
+    <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> (<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-identifier">unJoueur</span>.<span class="ruby-identifier">recupererScoreJoueurs</span>().<span class="ruby-identifier">length</span>)
                     <span class="ruby-identifier">label</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;&#39;</span>)
-                    <span class="ruby-identifier">label</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-node">&quot;&lt;span foreground=\&quot;#FFFFFF\&quot; font-desc=\&quot;Courier New bold 20\&quot;&gt; N° #{i} | Score: #{tabScore[i-1]} | Pseudo: #{unJoueur.recupererScoreJoueurs()[i-1][0]}&lt;/span&gt;&quot;</span>) 
+                    <span class="ruby-identifier">label</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-node">&quot;&lt;span foreground=\&quot;#FFFFFF\&quot; font-desc=\&quot;Courier New bold 20\&quot;&gt; N° #{i} | Score: #{tabScore[i-1]} | Pseudo: #{unJoueur.recupererScoreJoueurs()[i-1][0]}&lt;/span&gt;&quot;</span>)
                     <span class="ruby-ivar">@tScore</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-identifier">label</span>,<span class="ruby-value">0</span>,<span class="ruby-value">1</span>,<span class="ruby-identifier">i</span><span class="ruby-value">-1</span>,<span class="ruby-identifier">i</span>)
             <span class="ruby-keyword">end</span>
 
@@ -181,28 +190,28 @@
           <span class="ruby-keyword">self</span>.<span class="ruby-identifier">supprimeMoi</span>
           <span class="ruby-identifier">suivant</span> = <span class="ruby-constant">FScore</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-identifier">header</span>, <span class="ruby-keyword">self</span>, <span class="ruby-identifier">unJoueur</span>, <span class="ruby-string">&quot;facile&quot;</span>)
           <span class="ruby-identifier">suivant</span>.<span class="ruby-identifier">ajouteMoi</span>
-          <span class="ruby-ivar">@window</span>.<span class="ruby-identifier">show_all</span> 
+          <span class="ruby-ivar">@window</span>.<span class="ruby-identifier">show_all</span>
     }
-    
+
     <span class="ruby-ivar">@btnMoy</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {
           <span class="ruby-keyword">self</span>.<span class="ruby-identifier">supprimeMoi</span>
           <span class="ruby-identifier">suivant</span> = <span class="ruby-constant">FScore</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-identifier">header</span>, <span class="ruby-keyword">self</span>, <span class="ruby-identifier">unJoueur</span>, <span class="ruby-string">&quot;moyen&quot;</span>)
           <span class="ruby-identifier">suivant</span>.<span class="ruby-identifier">ajouteMoi</span>
-          <span class="ruby-ivar">@window</span>.<span class="ruby-identifier">show_all</span> 
+          <span class="ruby-ivar">@window</span>.<span class="ruby-identifier">show_all</span>
     }
 
     <span class="ruby-ivar">@btnDif</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {
           <span class="ruby-keyword">self</span>.<span class="ruby-identifier">supprimeMoi</span>
           <span class="ruby-identifier">suivant</span> = <span class="ruby-constant">FScore</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-identifier">header</span>, <span class="ruby-keyword">self</span>, <span class="ruby-identifier">unJoueur</span>, <span class="ruby-string">&quot;diff&quot;</span>)
           <span class="ruby-identifier">suivant</span>.<span class="ruby-identifier">ajouteMoi</span>
-          <span class="ruby-ivar">@window</span>.<span class="ruby-identifier">show_all</span> 
+          <span class="ruby-ivar">@window</span>.<span class="ruby-identifier">show_all</span>
     }
 
    <span class="ruby-ivar">@back</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {
            <span class="ruby-keyword">self</span>.<span class="ruby-identifier">supprimeMoi</span>
            <span class="ruby-identifier">suivant</span> = <span class="ruby-constant">FMenu</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-identifier">header</span>, <span class="ruby-keyword">self</span>, <span class="ruby-identifier">unJoueur</span>)
            <span class="ruby-identifier">suivant</span>.<span class="ruby-identifier">ajouteMoi</span>
-           <span class="ruby-ivar">@window</span>.<span class="ruby-identifier">show_all</span>          
+           <span class="ruby-ivar">@window</span>.<span class="ruby-identifier">show_all</span>
     }
 
     <span class="ruby-ivar">@box</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@boxBut</span>)
@@ -254,7 +263,7 @@
 
           
           <div class="method-source-code" id="actualiserTab-source">
-            <pre><span class="ruby-comment"># File Interface/fScore.rb, line 95</span>
+            <pre><span class="ruby-comment"># File Interface/fScore.rb, line 103</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">actualiserTab</span>(<span class="ruby-identifier">unJoueur</span>)
     <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> (<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-identifier">unJoueur</span>.<span class="ruby-identifier">recupererScoreJoueurs</span>().<span class="ruby-identifier">length</span>)
             <span class="ruby-ivar">@tabFacile</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">unJoueur</span>.<span class="ruby-identifier">recupererScoreJoueurs</span>()[<span class="ruby-identifier">i</span><span class="ruby-value">-1</span>][<span class="ruby-value">2</span>]).<span class="ruby-identifier">sort</span>

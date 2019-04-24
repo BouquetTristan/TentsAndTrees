@@ -3,9 +3,17 @@ require 'gtk3'
 require './Classes/Page.rb'
 require './BaseDeDonnees/FonctionsBDD.rb'
 
-
+#====== Fenetre score du jeu
 class FScore < Page
 
+
+  #Initialise la page
+  # @param monApp		//l'application
+  # @param header		//le titre de la page
+  # @param anciennePage		//Le lien de la dernière page
+  # @param unJoueur		//le joueur concerné
+  # @param tabScore   //tableau des scores
+  # @return void		//ne renvoie rien
      def initialize(monApp, header, anciennePage, unJoueur, tabScore)
 
      	@tabFacile = Array.new()
@@ -26,7 +34,7 @@ class FScore < Page
         @boxBut.add(@btnFac)
         @boxBut.add(@btnMoy)
         @boxBut.add(@btnDif)
-    		
+
         @tScore = Gtk::Table.new(4,1,false)
         @tScore.row_spacing=20
 
@@ -42,9 +50,9 @@ class FScore < Page
         	tabScore = @tabDiff
         end
 
-        for i in (1..unJoueur.recupererScoreJoueurs().length)        
+        for i in (1..unJoueur.recupererScoreJoueurs().length)
 			label = Gtk::Label.new('')
-			label.set_markup("<span foreground=\"#FFFFFF\" font-desc=\"Courier New bold 20\"> N° #{i} | Score: #{tabScore[i-1]} | Pseudo: #{unJoueur.recupererScoreJoueurs()[i-1][0]}</span>") 
+			label.set_markup("<span foreground=\"#FFFFFF\" font-desc=\"Courier New bold 20\"> N° #{i} | Score: #{tabScore[i-1]} | Pseudo: #{unJoueur.recupererScoreJoueurs()[i-1][0]}</span>")
 			@tScore.attach(label,0,1,i-1,i)
 		end
 
@@ -55,28 +63,28 @@ class FScore < Page
               self.supprimeMoi
               suivant = FScore.new(monApp, header, self, unJoueur, "facile")
               suivant.ajouteMoi
-              @window.show_all 
+              @window.show_all
         }
-        
+
         @btnMoy.signal_connect('clicked') {
               self.supprimeMoi
               suivant = FScore.new(monApp, header, self, unJoueur, "moyen")
               suivant.ajouteMoi
-              @window.show_all 
+              @window.show_all
         }
 
         @btnDif.signal_connect('clicked') {
               self.supprimeMoi
               suivant = FScore.new(monApp, header, self, unJoueur, "diff")
               suivant.ajouteMoi
-              @window.show_all 
+              @window.show_all
         }
 
        @back.signal_connect('clicked') {
                self.supprimeMoi
                suivant = FMenu.new(monApp, header, self, unJoueur)
                suivant.ajouteMoi
-               @window.show_all          
+               @window.show_all
         }
 
         @box.add(@boxBut)

@@ -3,9 +3,17 @@ require 'gtk3'
 require './Classes/Page.rb'
 require './Interface/fDidact.rb'
 
-
+#====== Fenetre du tuto du jeu
 class Ftuto < Page
 
+
+  #Initialise la page
+  # @param monApp		//l'application
+  # @param header		//le titre de la page
+  # @param anciennePage		//Le lien de la dernière page
+  # @param unJoueur		//le joueur concerné
+  # @param image    //les images de tutoriel à afficher
+  # @return void		//ne renvoie rien
      def initialize(monApp, header, anciennePage, unJoueur, image)
 
      	super(monApp, :vertical, header,  anciennePage, unJoueur)
@@ -24,17 +32,16 @@ class Ftuto < Page
                self.supprimeMoi
                suivant = FDidac.new(monApp, header, self, unJoueur)
                suivant.ajouteMoi
-               @window.show_all          
+               @window.show_all
         }
 
 
         @frame.attach(@gImage,0,1,0,1)
 
-        @pix = (GdkPixbuf::Pixbuf.new(:file=>"./Assets/ImgGame.jpg",:width=> monApp.width, :height=> monApp.height)) 
+        @pix = (GdkPixbuf::Pixbuf.new(:file=>"./Assets/ImgGame.jpg",:width=> monApp.width, :height=> monApp.height))
         @bg=(Gtk::Image.new(:pixbuf => @pix))
         @frame.attach(@bg,0,1,0,1)
 
         self.add(@frame)
     end
 end
-

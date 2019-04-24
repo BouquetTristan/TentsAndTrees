@@ -14,15 +14,25 @@ require './Classes/boutonNbTentesLigne.rb'
 require './Interface/fFin.rb'
 require './Classes/Score.rb'
 
+#====== Fenetre pour jouer1 du jeu
 class FPlay < Page
 
+	#Initialise la page
+  # @param monApp		//l'application
+  # @param header		//le titre de la page
+  # @param anciennePage		//Le lien de la dernière page
+  # @param unJoueur		//le joueur concerné
+	# @param difficulte		//la difficulté choisis
+	# @param grilleDeJeu		//Grille du jeu
+	# @param compet		//boolen indiquant si nous somme en mode compétiton ou non
+  # @return void		//ne renvoie rien
 	def initialize(monApp, header, anciennePage, unJoueur, difficulte, grilleDeJeu, compet)
 
 		super(monApp, :vertical, header,  anciennePage, unJoueur)
 
 		@nbAidesUtilises = 0
 
-		
+
 
 		@gHelp = Gtk::ButtonBox.new(:vertical)
 
@@ -38,20 +48,20 @@ class FPlay < Page
 		end
 
 		@chrono = Chrono.new
-		
+
 
 		thr=Thread.new do
 			sleep(2)
 			@chrono.cStart
-		
+
  		end
 
-				
-		
+
+
         @frame = Gtk::Table.new(1,1,false)
 
         @gChrono = Gtk::ButtonBox.new(:vertical)
-        @gChrono.add(@chrono.lChrono) 
+        @gChrono.add(@chrono.lChrono)
 
         @box = Gtk::ButtonBox.new(:horizontal)
 
@@ -71,7 +81,7 @@ class FPlay < Page
 			tabBout[j] = BoutonNbTentesColonne.new(grilleDeJeu, @boutonGrille, j, "./Assets/Printemps", unJoueur)
 			tabBout[j].bouton.set_label(grilleDeJeu.nbTentesLigne[j].to_s)
 			@grille.attach(tabBout[j].bouton, j+1,j+2, 0,1)
-			
+
 		end
 
 		tabBout.each { |l|
@@ -89,9 +99,9 @@ class FPlay < Page
 						if(difficulte == "Difficile")
 									unJoueur.modifierInformationsFinDePartie(@score.calculerScore((120-@chrono.chrono)), difficulte, @nbAidesUtilises)
 						end
-						
+
 					end
-					
+
 					@chrono.cFin
 					@chrono.cRaz
 					thr.kill
@@ -125,9 +135,9 @@ class FPlay < Page
 						if(difficulte == "Difficile")
 									unJoueur.modifierInformationsFinDePartie(@score.calculerScore((120-@chrono.chrono)), difficulte, @nbAidesUtilises)
 						end
-						
+
 					end
-					
+
 					@chrono.cFin
 					@chrono.cRaz
 					thr.kill
@@ -176,7 +186,7 @@ class FPlay < Page
 			        	grilleDeJeu.grilleJ[l.coordI][l.coordJ].jouerCase()
 						@boutonGrille[l.coordI][l.coordJ].chgEtat(grilleDeJeu.grilleJ[l.coordI][l.coordJ].etat)
 						grilleDeJeu.enregistrerFichier(unJoueur.pseudo, nil)
-						
+
 						if (grilleDeJeu.observateur())
 							@score = Score.creer(difficulte, @nbAidesUtilises)
 							if(compet)
@@ -189,9 +199,9 @@ class FPlay < Page
 								if(difficulte == "Difficile")
 											unJoueur.modifierInformationsFinDePartie(@score.calculerScore((120-@chrono.chrono)), difficulte, @nbAidesUtilises)
 								end
-								
+
 							end
-							
+
 							@chrono.cFin
 							@chrono.cRaz
 							thr.kill
@@ -233,7 +243,7 @@ class FPlay < Page
 			@b2 = BoutonAideTente.new("Aide Tente", true)
 			@b3 = BoutonAideVerif.new("Verification", true)
 		end
-		
+
 
 		@boxAide.add(@b1.bouton)
 		@boxAide.add(@b2.bouton)
@@ -256,9 +266,9 @@ class FPlay < Page
 				tempo = @nbFeuilles - @b1.prix
 				if(tempo >= 0)
 					@nbFeuilles = tempo
-				
+
 					@profil.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 15\"> #{@nbFeuilles}</span>")
-					
+
 					@aide = @b1.aide(grilleDeJeu, @lableAide, unJoueur, @boutonGrille)
 					@nbAidesUtilises+=1
 				else
@@ -287,9 +297,9 @@ class FPlay < Page
 				tempo = @nbFeuilles - @b2.prix
 				if(tempo >= 0)
 					@nbFeuilles = tempo
-				
+
 					@profil.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 15\"> #{@nbFeuilles}</span>")
-					
+
 					@aide = @b2.aide(grilleDeJeu, @lableAide, unJoueur, @boutonGrille)
 					@nbAidesUtilises+=1
 				else
@@ -318,9 +328,9 @@ class FPlay < Page
 				tempo = @nbFeuilles - @b3.prix
 				if(tempo >= 0)
 					@nbFeuilles = tempo
-				
+
 					@profil.set_markup("<span foreground=\"#FFFFFF\" font-desc=\"Courier New bold 15\"> #{@nbFeuilles}</span>")
-					
+
 					@aide = @b3.aide(grilleDeJeu, @lableAide, unJoueur, @boutonGrille)
 					@nbAidesUtilises+=1
 				else
@@ -330,9 +340,9 @@ class FPlay < Page
 				@aide = @b3.aide(grilleDeJeu, @lableAide, unJoueur, @boutonGrille)
 				@nbAidesUtilises+=1
 			end
-        }				
+        }
 
-		
+
 		@gHelp.add(@boxAide)
 
 		@bPause = Gtk::Button.new()
@@ -343,7 +353,7 @@ class FPlay < Page
 
 		@bPause.signal_connect('clicked') {
 			@chrono.cPause
-			
+
 			if(@chrono.pause)
 				@boutonGrille.each{|k|
 					k.each{|l|
@@ -363,7 +373,7 @@ class FPlay < Page
 						l.clic=true
 						l.bouton.set_opacity(1.0)
 					}
-				} 
+				}
 				@pause=(Gtk::Image.new(:file =>"./Assets/pause.png"))
 				@bPause.set_image(@pause)
 

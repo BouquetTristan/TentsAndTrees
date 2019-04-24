@@ -1,4 +1,4 @@
-
+#====== texte à afficher par champ donné
 class TexteAfficher
 
 

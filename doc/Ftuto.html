@@ -86,6 +86,8 @@
 
   <section class="description">
     
+<h6 id="class-Ftuto-label-Fenetre+du+tuto+du+jeu">Fenetre du tuto du jeu<span><a href="#class-Ftuto-label-Fenetre+du+tuto+du+jeu">&para;</a> <a href="#top">&uarr;</a></span></h6>
+
   </section>
 
   
@@ -118,7 +120,14 @@
 
         <div class="method-description">
           
-          
+          <p>Initialise la page</p>
+
+<pre>@param monApp               //l&#39;application
+@param header               //le titre de la page
+@param anciennePage         //Le lien de la dernière page
+@param unJoueur             //le joueur concerné
+@param image    //les images de tutoriel à afficher
+@return void                //ne renvoie rien</pre>
           
           
             <div class="method-calls-super">
@@ -129,7 +138,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File Interface/fTuto.rb, line 9</span>
+            <pre><span class="ruby-comment"># File Interface/fTuto.rb, line 17</span>
  <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-identifier">header</span>, <span class="ruby-identifier">anciennePage</span>, <span class="ruby-identifier">unJoueur</span>, <span class="ruby-identifier">image</span>)
 
     <span class="ruby-keyword">super</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-value">:vertical</span>, <span class="ruby-identifier">header</span>,  <span class="ruby-identifier">anciennePage</span>, <span class="ruby-identifier">unJoueur</span>)
@@ -148,13 +157,13 @@
            <span class="ruby-keyword">self</span>.<span class="ruby-identifier">supprimeMoi</span>
            <span class="ruby-identifier">suivant</span> = <span class="ruby-constant">FDidac</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-identifier">header</span>, <span class="ruby-keyword">self</span>, <span class="ruby-identifier">unJoueur</span>)
            <span class="ruby-identifier">suivant</span>.<span class="ruby-identifier">ajouteMoi</span>
-           <span class="ruby-ivar">@window</span>.<span class="ruby-identifier">show_all</span>          
+           <span class="ruby-ivar">@window</span>.<span class="ruby-identifier">show_all</span>
     }
 
 
     <span class="ruby-ivar">@frame</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-ivar">@gImage</span>,<span class="ruby-value">0</span>,<span class="ruby-value">1</span>,<span class="ruby-value">0</span>,<span class="ruby-value">1</span>)
 
-    <span class="ruby-ivar">@pix</span> = (<span class="ruby-constant">GdkPixbuf</span><span class="ruby-operator">::</span><span class="ruby-constant">Pixbuf</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span><span class="ruby-operator">=&gt;</span><span class="ruby-string">&quot;./Assets/ImgGame.jpg&quot;</span>,<span class="ruby-value">:width</span><span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">monApp</span>.<span class="ruby-identifier">width</span>, <span class="ruby-value">:height</span><span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">monApp</span>.<span class="ruby-identifier">height</span>)) 
+    <span class="ruby-ivar">@pix</span> = (<span class="ruby-constant">GdkPixbuf</span><span class="ruby-operator">::</span><span class="ruby-constant">Pixbuf</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span><span class="ruby-operator">=&gt;</span><span class="ruby-string">&quot;./Assets/ImgGame.jpg&quot;</span>,<span class="ruby-value">:width</span><span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">monApp</span>.<span class="ruby-identifier">width</span>, <span class="ruby-value">:height</span><span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">monApp</span>.<span class="ruby-identifier">height</span>))
     <span class="ruby-ivar">@bg</span>=(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:pixbuf</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-ivar">@pix</span>))
     <span class="ruby-ivar">@frame</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-ivar">@bg</span>,<span class="ruby-value">0</span>,<span class="ruby-value">1</span>,<span class="ruby-value">0</span>,<span class="ruby-value">1</span>)
 

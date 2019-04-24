@@ -86,6 +86,8 @@
 
   <section class="description">
     
+<h6 id="class-FSaison-label-Fenetre+de+saison+du+jeu">Fenetre de saison du jeu<span><a href="#class-FSaison-label-Fenetre+de+saison+du+jeu">&para;</a> <a href="#top">&uarr;</a></span></h6>
+
   </section>
 
   
@@ -118,7 +120,14 @@
 
         <div class="method-description">
           
-          
+          <p>Initialise la page</p>
+
+<pre>@param monApp               //l&#39;application
+@param header               //le titre de la page
+@param anciennePage         //Le lien de la dernière page
+@param unJoueur             //le joueur concerné
+@param uneSaison             //une des 4 saisons 
+@return void                //ne renvoie rien</pre>
           
           
             <div class="method-calls-super">
@@ -129,7 +138,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File Interface/fSaison.rb, line 6</span>
+            <pre><span class="ruby-comment"># File Interface/fSaison.rb, line 15</span>
       <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-identifier">header</span>, <span class="ruby-identifier">anciennePage</span>, <span class="ruby-identifier">unJoueur</span>, <span class="ruby-identifier">uneSaison</span>)
 
               <span class="ruby-keyword">super</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-value">:vertical</span>, <span class="ruby-identifier">header</span>,  <span class="ruby-identifier">anciennePage</span>, <span class="ruby-identifier">unJoueur</span>)

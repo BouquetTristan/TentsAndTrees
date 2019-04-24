@@ -15,8 +15,18 @@ require './Classes/boutonNbTentesLigne.rb'
 require './Interface/fFin.rb'
 require './Classes/Score.rb'
 
+#====== Fenetre jouer2 du jeu
 class FPlayA < Page
 
+
+	#Initialise la page
+  # @param monApp		//l'application
+  # @param header		//le titre de la page
+  # @param anciennePage		//Le lien de la dernière page
+  # @param unJoueur		//le joueur concerné
+	# @param uneSaison		//Une des 4 saisons
+	# @param nbGrille		//numéro de la grille
+  # @return void		//ne renvoie rien
 	def initialize(monApp, header, anciennePage, unJoueur, uneSaison, nbGrille)
 
 		super(monApp, :vertical, header,  anciennePage, unJoueur)
@@ -57,7 +67,7 @@ class FPlayA < Page
 
 		@chrono = ChronoInverse.new(tabGrille.at(3))
 		@gHelp.add(@boxFeuilles)
-		
+
 
 		thr=Thread.new{
 			#sleep(2)
@@ -65,19 +75,19 @@ class FPlayA < Page
 
 
 			if (@chrono.chrono <= 0)
-				
+
 				self.supprimeMoi
 	   	   		menu = FFin.new(monApp, @header, self, unJoueur, "perdu")
 	   		   	menu.ajouteMoi
 	  	 	   	@window.show_all
 	  	 	   	thr.kill
 	  	    end
- 		}			
-		
+ 		}
+
         @frame = Gtk::Table.new(1,1,false)
 
         @gChrono = Gtk::ButtonBox.new(:vertical)
-        @gChrono.add(@chrono.lChrono) 
+        @gChrono.add(@chrono.lChrono)
 
         @box = Gtk::ButtonBox.new(:horizontal)
 
@@ -99,7 +109,7 @@ class FPlayA < Page
 			tabBout[j] = BoutonNbTentesColonne.new(grilleDeJeu, @boutonGrille, j, "./Assets/#{uneSaison}", unJoueur)
 			tabBout[j].bouton.set_label(grilleDeJeu.nbTentesLigne[j].to_s)
 			@grille.attach(tabBout[j].bouton, j+1,j+2, 0,1)
-			
+
 		end
 
 		tabBout.each { |l|
@@ -178,7 +188,7 @@ class FPlayA < Page
 			        	grilleDeJeu.grilleJ[l.coordI][l.coordJ].jouerCase()
 						@boutonGrille[l.coordI][l.coordJ].chgEtat(grilleDeJeu.grilleJ[l.coordI][l.coordJ].etat)
 						grilleDeJeu.enregistrerFichier(unJoueur.pseudo, nil)
-						
+
 						if (grilleDeJeu.observateur())
 							unJoueur.finirLaPartie(@saison, tabGrille.at(0))
 							unJoueur.actualiser
@@ -215,7 +225,7 @@ class FPlayA < Page
 		@b1 = BoutonAideHerbe.new("Aide Herbe : 2 feuilles", true)
 		@b2 = BoutonAideTente.new("Aide Tente : 3 feuilles", true)
 		@b3 = BoutonAideVerif.new("Verification : 5 feuilles", true)
-		
+
 
 		@boxAide.add(@b1.bouton)
 		@boxAide.add(@b2.bouton)
@@ -237,9 +247,9 @@ class FPlayA < Page
 			end
 			if(tempo >= 0)
 				@nbFeuilles = tempo
-			
+
 				@profil.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 15\"> #{@nbFeuilles}</span>")
-				
+
 				@aide = @b1.aide(grilleDeJeu, @lableAide, unJoueur, @boutonGrille)
 				@nbAidesUtilises+=1
 			else
@@ -264,9 +274,9 @@ class FPlayA < Page
 			if(tempo >= 0)
 
 				@nbFeuilles = tempo
-			
+
 				@profil.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 15\"> #{@nbFeuilles}</span>")
-				
+
 				@aide = @b2.aide(grilleDeJeu, @lableAide, unJoueur, @boutonGrille)
 				@nbAidesUtilises+=1
 			else
@@ -290,14 +300,14 @@ class FPlayA < Page
 			end
 			if(tempo >= 0)
 				@nbFeuilles = tempo
-			
+
 				@profil.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 15\"> #{@nbFeuilles}</span>")
 				@aide = @b3.aide(grilleDeJeu, @lableAide, unJoueur, @boutonGrille)
 				@nbAidesUtilises+=1
 			else
 				@lableAide.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 11\">Vous ne pouvez plus utiliser cette aide</span>")
 			end
-        }				
+        }
 
 		@gHelp.add(@boxAide)
 
@@ -311,7 +321,7 @@ class FPlayA < Page
 
 		@bPause.signal_connect('clicked') {
 			@chrono.cPause
-			
+
 			if(@chrono.pause)
 				@boutonGrille.each{|k|
 					k.each{|l|
@@ -331,7 +341,7 @@ class FPlayA < Page
 						l.clic=true
 						l.bouton.set_opacity(1.0)
 					}
-				} 
+				}
 				@pause=(Gtk::Image.new(:file =>"./Assets/pause.png"))
 				@bPause.set_image(@pause)
 

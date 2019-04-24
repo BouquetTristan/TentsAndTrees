@@ -52,16 +52,6 @@
   </div>
 
   
-<div class="nav-section">
-  <h3>Table of Contents</h3>
-
-  <ul class="link-list" role="directory">
-    <li><a href="#class-FGM-label-3E+Menu+des+modes+de+jeu">&gt; Menu des modes de jeu</a>
-    <li><a href="#class-FGM-label-3E+C-27est+ici+qu-27est+regroup-C3-A9+les+composants+du+menu+des+modes+de+jeu">&gt; C&#39;est ici qu&#39;est regroupé les composants du menu des modes de jeu</a>
-    <li><a href="#class-FGM-label-3E+Ici+nous+gerons+ainsi+les+-C3-A9venements+li-C3-A9+aux+boutons-2C+qui+permet+d-27appeler+la+page+suivante+ou+bien+pr-C3-A9c-C3-A9dente+ainsi+que+la+construction+la+page.">&gt; Ici nous gerons ainsi les évenements lié aux boutons, qui permet d&#39;appeler la page suivante ou bien précédente ainsi que la construction la page.</a>
-  </ul>
-</div>
-
 
   <div id="class-metadata">
     
@@ -96,13 +86,7 @@
 
   <section class="description">
     
-<p>Fichier: fGameMode.rb Auteur: Marchand Killian Description:</p>
-
-<h1 id="class-FGM-label-3E+Menu+des+modes+de+jeu">&gt; Menu des modes de jeu<span><a href="#class-FGM-label-3E+Menu+des+modes+de+jeu">&para;</a> <a href="#top">&uarr;</a></span></h1>
-
-<h1 id="class-FGM-label-3E+C-27est+ici+qu-27est+regroup-C3-A9+les+composants+du+menu+des+modes+de+jeu">&gt; C&#39;est ici qu&#39;est regroupé les composants du menu des modes de jeu<span><a href="#class-FGM-label-3E+C-27est+ici+qu-27est+regroup-C3-A9+les+composants+du+menu+des+modes+de+jeu">&para;</a> <a href="#top">&uarr;</a></span></h1>
-
-<h1 id="class-FGM-label-3E+Ici+nous+gerons+ainsi+les+-C3-A9venements+li-C3-A9+aux+boutons-2C+qui+permet+d-27appeler+la+page+suivante+ou+bien+pr-C3-A9c-C3-A9dente+ainsi+que+la+construction+la+page.">&gt; Ici nous gerons ainsi les évenements lié aux boutons, qui permet d&#39;appeler la page suivante ou bien précédente ainsi que la construction la page.<span><a href="#class-FGM-label-3E+Ici+nous+gerons+ainsi+les+-C3-A9venements+li-C3-A9+aux+boutons-2C+qui+permet+d-27appeler+la+page+suivante+ou+bien+pr-C3-A9c-C3-A9dente+ainsi+que+la+construction+la+page.">&para;</a> <a href="#top">&uarr;</a></span></h1>
+<h1 id="class-FGM-label-Menu+des+modes+de+jeu">Menu des modes de jeu<span><a href="#class-FGM-label-Menu+des+modes+de+jeu">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
   </section>
 
@@ -136,7 +120,13 @@
 
         <div class="method-description">
           
-          
+          <p>Initialise la page</p>
+
+<pre>@param monApp                //l&#39;application
+@param header               //le titre de la page
+@param anciennePage         //Le lien de la dernière page
+@param unJoueur             //le joueur concerné
+@return void                 //ne renvoie rien</pre>
           
           
             <div class="method-calls-super">
@@ -147,7 +137,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File Interface/fGameMode.rb, line 18</span>
+            <pre><span class="ruby-comment"># File Interface/fGameMode.rb, line 26</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-identifier">header</span>, <span class="ruby-identifier">anciennePage</span>, <span class="ruby-identifier">unJoueur</span>)
 
         <span class="ruby-keyword">super</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-value">:vertical</span>, <span class="ruby-identifier">header</span>,  <span class="ruby-identifier">anciennePage</span>, <span class="ruby-identifier">unJoueur</span>)

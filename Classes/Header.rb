@@ -1,3 +1,5 @@
+
+#====== Entête de page (titre de chaque futur page)
 class Header < Gtk::HeaderBar
 
 

@@ -16,6 +16,8 @@ require 'digest'
 ##################
 ## Méthodes d'ouverture des bases de données
 
+
+
 def ouvrirBDDP()
 	return SQLite3::Database.new './BaseDeDonnees/profil.db'
 end
@@ -157,7 +159,7 @@ def creerModeAventure(unID)
 		ligne += nbGrilleParNiveau+1
 	#Ajout du mode aventure au compte du joueur
 	bddA.execute("INSERT INTO aventure (idAventure, idPrintemps, idEte, idAutomne, idHiver, idBonus) VALUES (#{unID}, #{niveau1}, #{niveau2}, #{niveau3}, #{niveau4}, #{niveau5})")
-	
+
 end
 
 def creerNiveauAventure(baseNiveau, uneLigne, nbGrilleParNiveau)
@@ -170,7 +172,7 @@ def creerNiveauAventure(baseNiveau, uneLigne, nbGrilleParNiveau)
 	niveauCourant = baseNiveau + informationAventure.shift.to_i
 	nomCourant = informationAventure.shift
 	coutCourant = informationAventure.shift.to_i
-	
+
 
 	bddN.execute("INSERT INTO niveau (idNiveau, nomNiveau, statut, cout) VALUES (#{niveauCourant}, '#{nomCourant}', 'Verouillé', #{coutCourant})")
 
@@ -216,7 +218,7 @@ def creerSucces(unID)
 
 	# Lecture de l'ensemble du fichier
 	ligneFichier = IO.readlines("./Ressources/Succes.txt")
-	ligneFichier.each { |ligne| 
+	ligneFichier.each { |ligne|
 		leSucces = ligne.split('><')
 
 		nomDuSucces = leSucces[0]
@@ -262,7 +264,7 @@ end
 
 ############
 
-## Méthodes de changement des informations 
+## Méthodes de changement des informations
 
 def motDePasseOublie(unPseudo, uneReponse, unMDP)
 # Change le mot de passe d'un profil si la réponse secrète est exacte
@@ -384,7 +386,7 @@ def payerNiveau(unID, unIDNiveau)
 	if difference >= 0 then
 		bddP.execute("UPDATE profil SET argent = #{difference} WHERE idJoueur = '#{unID}'")
 		return true
-	else 
+	else
 		return false
 	end
 end
@@ -406,7 +408,7 @@ def changerStatutGrille(unID, unNiveau, unIDGrille)
 	bddG = ouvrirBDDG()
 
 	unIDNiveau = unID*100 + unNiveau
-	
+
 	bddG.execute("UPDATE grille SET statut = 'Fait' WHERE idNiveau = #{unIDNiveau} AND idGrille = #{unIDGrille}")
 
 end
@@ -417,7 +419,7 @@ def recupererArgentGrille(unID, unNiveau, unIDGrille)
 	bddG = ouvrirBDDG()
 
 	unIDNiveau = unID*100 + unNiveau
-	
+
 	nbPoint = bddG.execute("SELECT pointGagnable FROM grille WHERE idNiveau = #{unIDNiveau} AND idGrille = #{unIDGrille}").shift.shift
 	argentDuJoueur = nbPoint + bddP.execute("SELECT argent FROM profil WHERE idJoueur = #{unID}").shift.shift
 	bddP.execute("UPDATE profil SET argent = #{argentDuJoueur} WHERE idJoueur = #{unID}")
@@ -584,7 +586,7 @@ def donnerInformationsGrille(unID, leNiveau, laGrille)
 
 	informationsGrille = Array.new()
 
-	
+
 	idNiveauBDD = unID*100 + leNiveau
 
 	nbGrilleParNiveau = bddG.execute("SELECT COUNT(idGrille) FROM grille WHERE idNiveau = #{idNiveauBDD}").shift.shift

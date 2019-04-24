@@ -2,8 +2,15 @@ require 'gtk3'
 require './Classes/TexteEntree'
 require './Classes/Page.rb'
 
+#====== Fenetre de modification de compte du jeu
 class FModifC < Page
 
+	#Initialise la page
+  # @param monApp		//l'application
+  # @param header		//le titre de la page
+  # @param anciennePage		//Le lien de la dernière page
+  # @param unJoueur		//le joueur concerné
+  # @return void		//ne renvoie rien
 	def initialize(monApp, header, anciennePage, unJoueur)
 
 		super(monApp, :vertical, header,  anciennePage, unJoueur)

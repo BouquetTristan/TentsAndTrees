@@ -2,8 +2,17 @@ require 'gtk3'
 
 require './Classes/Page.rb'
 
+#====== Fenetre de fin de partie du jeu
 class FFin < Page
 
+
+  #Initialise la page
+  # @param monApp		//l'application
+  # @param header		//le titre de la page
+  # @param anciennePage		//Le lien de la dernière page
+  # @param unJoueur		//le joueur concerné
+  # @param statue		//détermine si le joueur à gagné ou pas
+  # @return void		//ne renvoie rien
      def initialize(monApp, header, anciennePage, unJoueur, statue)
 
           super(monApp, :vertical, header,  anciennePage, unJoueur)
@@ -11,7 +20,7 @@ class FFin < Page
           @frame = Gtk::Table.new(1,1,false)
 
           if statue == "gagner"
-            
+
             @pix = (GdkPixbuf::Pixbuf.new(:file=>"./Assets/GameWin.png",:width=> 1400, :height=>859))
             @bg=(Gtk::Image.new(:pixbuf => @pix))
 
@@ -19,7 +28,7 @@ class FFin < Page
 
 
           if statue == "perdu"
-          
+
             @pix = (GdkPixbuf::Pixbuf.new(:file=>"./Assets/GameOver.png",:width=> 1400, :height=>859))
             @bg=(Gtk::Image.new(:pixbuf => @pix))
 

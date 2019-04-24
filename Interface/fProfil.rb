@@ -6,9 +6,16 @@ require './Classes/Page.rb'
 require './Interface/fModifierCompte.rb'
 
 
-
+#====== Fenetre de profil joueur du jeu
 class FProfil < Page
 
+
+	#Initialise la page
+  # @param monApp		//l'application
+  # @param header		//le titre de la page
+  # @param anciennePage		//Le lien de la dernière page
+  # @param unJoueur		//le joueur concerné
+  # @return void		//ne renvoie rien
 	def initialize(monApp, header, anciennePage, unJoueur)
 
 		super(monApp, :vertical, header,  anciennePage, unJoueur)
@@ -35,16 +42,16 @@ class FProfil < Page
 		@modif =Gtk::Button.new(:label => 'Modifier mes informations', :use_underline => nil, :stock_id => nil)
 		@desinscription =Gtk::Button.new(:label => 'Supprimer mon profil', :use_underline => nil, :stock_id => nil)
 		@deco = Gtk::Button.new(:label => 'Deconnexion', :use_underline => nil, :stock_id => nil)
-	
+
 
 		@gP.add(@pseudo.gTexteAfficher, :expand => true, :fill => false)
 		@gP.add(@scoreGlobal.gTexteAfficher, :expand => true, :fill => false)
 		@gP.add(@scoreFacile.gTexteAfficher, :expand => true, :fill => false)
 		@gP.add(@scoreMoyen.gTexteAfficher, :expand => true, :fill => false)
 		@gP.add(@scoreDifficile.gTexteAfficher, :expand => true, :fill => false)
-		@gP.add(@nbParties.gTexteAfficher, :expand => true, :fill => false)	
+		@gP.add(@nbParties.gTexteAfficher, :expand => true, :fill => false)
 
-		@gProfil.add(@gP)	
+		@gProfil.add(@gP)
 		@gProfil.add(@gProfil2)
 		@gProfil2.add(@modif, :expand => true, :fill => false)
 		@gProfil2.add(@desinscription, :expand => true, :fill => false)

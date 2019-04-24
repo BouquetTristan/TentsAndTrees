@@ -120,6 +120,8 @@
 
   <section class="description">
     
+<h6 id="class-Joueur-label-Stock+les+information+de+l-27utilisateur">Stock les information de l&#39;utilisateur<span><a href="#class-Joueur-label-Stock+les+information+de+l-27utilisateur">&para;</a> <a href="#top">&uarr;</a></span></h6>
+
   </section>
 
   
@@ -283,7 +285,7 @@
 
           
           <div class="method-source-code" id="creer-source">
-            <pre><span class="ruby-comment"># File BaseDeDonnees/Joueur.rb, line 12</span>
+            <pre><span class="ruby-comment"># File BaseDeDonnees/Joueur.rb, line 14</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Joueur</span>.<span class="ruby-identifier ruby-title">creer</span>(<span class="ruby-identifier">unPseudo</span>, <span class="ruby-identifier">unMDP</span>, <span class="ruby-identifier">uneRepSec</span>)
         <span class="ruby-identifier">new</span>(<span class="ruby-identifier">unPseudo</span>, <span class="ruby-identifier">unMDP</span>, <span class="ruby-identifier">uneRepSec</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -316,8 +318,10 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File BaseDeDonnees/Joueur.rb, line 16</span>
+            <pre><span class="ruby-comment"># File BaseDeDonnees/Joueur.rb, line 18</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">unPseudo</span>, <span class="ruby-identifier">unMDP</span>, <span class="ruby-identifier">uneRepSec</span>)
+<span class="ruby-comment"># On crée toutes les variables d&#39;instances</span>
+
         <span class="ruby-ivar">@id</span> = <span class="ruby-keyword">nil</span>
 
         <span class="ruby-ivar">@pseudo</span> = <span class="ruby-identifier">unPseudo</span>
@@ -376,8 +380,9 @@
 
           
           <div class="method-source-code" id="acheterNiveau-source">
-            <pre><span class="ruby-comment"># File BaseDeDonnees/Joueur.rb, line 150</span>
+            <pre><span class="ruby-comment"># File BaseDeDonnees/Joueur.rb, line 161</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">acheterNiveau</span>(<span class="ruby-identifier">unNumeroNiveau</span>)
+<span class="ruby-comment"># Méthode permettant de soustraire l&#39;argent du joueur pour acheter le niveau dont l&#39;indice est passé en paramètre</span>
         <span class="ruby-keyword">if</span> <span class="ruby-identifier">payerNiveau</span>(<span class="ruby-ivar">@id</span>, <span class="ruby-ivar">@niveaux</span>.<span class="ruby-identifier">at</span>(<span class="ruby-identifier">unNumeroNiveau</span>).<span class="ruby-identifier">at</span>(<span class="ruby-value">0</span>)) <span class="ruby-keyword">then</span>
                 <span class="ruby-identifier">deverouillerNiveau</span>(<span class="ruby-ivar">@niveaux</span>.<span class="ruby-identifier">at</span>(<span class="ruby-identifier">unNumeroNiveau</span>).<span class="ruby-identifier">at</span>(<span class="ruby-value">0</span>))
                 <span class="ruby-identifier">actualiser</span>()
@@ -415,8 +420,9 @@
 
           
           <div class="method-source-code" id="actualiser-source">
-            <pre><span class="ruby-comment"># File BaseDeDonnees/Joueur.rb, line 235</span>
+            <pre><span class="ruby-comment"># File BaseDeDonnees/Joueur.rb, line 254</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">actualiser</span>()
+<span class="ruby-comment"># Méthode permettant de récupérer toutes les informations du joueur et les place dans les variables d&#39;instances</span>
 
         <span class="ruby-ivar">@rep</span> = <span class="ruby-identifier">recupererInformation</span>(<span class="ruby-ivar">@id</span>, <span class="ruby-value">1</span>)
 
@@ -462,8 +468,9 @@
 
           
           <div class="method-source-code" id="afficherStatistiques-source">
-            <pre><span class="ruby-comment"># File BaseDeDonnees/Joueur.rb, line 121</span>
+            <pre><span class="ruby-comment"># File BaseDeDonnees/Joueur.rb, line 130</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">afficherStatistiques</span>()
+<span class="ruby-comment"># Méthode de test servant à afficher toutes les informations d&#39;un profil</span>
         <span class="ruby-keyword">if</span> <span class="ruby-ivar">@scoreGlobal</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">then</span>
                 <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Joueur : #{@pseudo}##{@id}\n&quot;</span>
                 <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot; Score \n&quot;</span>
@@ -480,10 +487,10 @@
                 <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot; Histoire \n&quot;</span>
                 <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span>(<span class="ruby-ivar">@niveaux</span>.<span class="ruby-identifier">length</span><span class="ruby-value">-1</span>)
                         <span class="ruby-identifier">nomNiveau</span> = <span class="ruby-ivar">@niveaux</span>.<span class="ruby-identifier">at</span>(<span class="ruby-identifier">i</span>).<span class="ruby-identifier">at</span>(<span class="ruby-value">1</span>)
-                        <span class="ruby-identifier">statutNiveau</span> = <span class="ruby-ivar">@niveaux</span>.<span class="ruby-identifier">at</span>(<span class="ruby-identifier">i</span>).<span class="ruby-identifier">at</span>(<span class="ruby-value">2</span>)  
+                        <span class="ruby-identifier">statutNiveau</span> = <span class="ruby-ivar">@niveaux</span>.<span class="ruby-identifier">at</span>(<span class="ruby-identifier">i</span>).<span class="ruby-identifier">at</span>(<span class="ruby-value">2</span>)
                         <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;  #{nomNiveau} : #{statutNiveau}\n&quot;</span>
                 <span class="ruby-keyword">end</span>
-                <span class="ruby-keyword">else</span>
+        <span class="ruby-keyword">else</span>
                 <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Erreur, aucune information présente. Veuillez vous identifiez avant\n&quot;</span>
         <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
@@ -516,8 +523,9 @@
 
           
           <div class="method-source-code" id="commencerAventure-source">
-            <pre><span class="ruby-comment"># File BaseDeDonnees/Joueur.rb, line 146</span>
+            <pre><span class="ruby-comment"># File BaseDeDonnees/Joueur.rb, line 156</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">commencerAventure</span>(<span class="ruby-identifier">unNiveau</span>, <span class="ruby-identifier">uneGrille</span>)
+<span class="ruby-comment"># Méthode qui permet d&#39;envoyer les informations de la grille du mode aventure avec le numéro du niveau et de la grille passés en paramètres</span>
         <span class="ruby-keyword">return</span> <span class="ruby-identifier">donnerInformationsGrille</span>(<span class="ruby-ivar">@id</span>, <span class="ruby-identifier">unNiveau</span>, <span class="ruby-identifier">uneGrille</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -549,19 +557,20 @@
 
           
           <div class="method-source-code" id="connecter-source">
-            <pre><span class="ruby-comment"># File BaseDeDonnees/Joueur.rb, line 71</span>
+            <pre><span class="ruby-comment"># File BaseDeDonnees/Joueur.rb, line 76</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">connecter</span>()
-        <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Connexion en cours....\n&quot;</span>
+<span class="ruby-comment"># On va voir si le joueur est présent dans les bases de données et on va aller les récupérer avec actualiser()</span>
+        <span class="ruby-comment">#puts &quot;Connexion en cours....\n&quot;</span>
         <span class="ruby-identifier">id</span> = <span class="ruby-identifier">connexion</span>(<span class="ruby-ivar">@pseudo</span>, <span class="ruby-ivar">@mdp</span>)
         <span class="ruby-keyword">if</span> <span class="ruby-identifier">id</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">then</span>
-                <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;   Authentification en cours....\n&quot;</span>
-                <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;   Récupération des informations....\n&quot;</span>
+                <span class="ruby-comment">#puts &quot;   Authentification en cours....\n&quot;</span>
+                <span class="ruby-comment">#puts &quot;   Récupération des informations....\n&quot;</span>
                         <span class="ruby-ivar">@id</span> = <span class="ruby-identifier">id</span>
                         <span class="ruby-identifier">actualiser</span>()
 
-                <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Connexion réussie\n&quot;</span>
+                <span class="ruby-comment">#puts &quot;Connexion réussie\n&quot;</span>
         <span class="ruby-keyword">else</span>
-                <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Connexion échouée\n&quot;</span>
+                <span class="ruby-comment">#puts &quot;Connexion échouée\n&quot;</span>
         <span class="ruby-keyword">end</span>
 
         <span class="ruby-keyword">return</span> <span class="ruby-identifier">id</span>
@@ -595,13 +604,14 @@
 
           
           <div class="method-source-code" id="desinscrire-source">
-            <pre><span class="ruby-comment"># File BaseDeDonnees/Joueur.rb, line 62</span>
+            <pre><span class="ruby-comment"># File BaseDeDonnees/Joueur.rb, line 66</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">desinscrire</span>()
-        <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Suppression de l&#39;utilisateur #{@pseudo}\n&quot;</span>
+<span class="ruby-comment"># On envoie les informations du nouveau joueur dans le fichier FonctionBDD.rb pour que le joueur soit supprimée</span>
+        <span class="ruby-comment">#puts &quot;Suppression de l&#39;utilisateur #{@pseudo}\n&quot;</span>
         <span class="ruby-keyword">if</span> <span class="ruby-identifier">supprimerUtilisateur</span>(<span class="ruby-ivar">@id</span>) <span class="ruby-operator">==</span> <span class="ruby-keyword">true</span> <span class="ruby-keyword">then</span>
-                <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;L&#39;utilisateur #{@pseudo} a bien été supprimé\n&quot;</span>
+                <span class="ruby-comment">#puts &quot;L&#39;utilisateur #{@pseudo} a bien été supprimé\n&quot;</span>
         <span class="ruby-keyword">else</span>
-                <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;L&#39;utilisateur #{@pseudo} n&#39;existe pas et n&#39;a pas pu être supprimé\n&quot;</span>
+                <span class="ruby-comment">#puts &quot;L&#39;utilisateur #{@pseudo} n&#39;existe pas et n&#39;a pas pu être supprimé\n&quot;</span>
         <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -633,15 +643,16 @@
 
           
           <div class="method-source-code" id="finirLaPartie-source">
-            <pre><span class="ruby-comment"># File BaseDeDonnees/Joueur.rb, line 164</span>
+            <pre><span class="ruby-comment"># File BaseDeDonnees/Joueur.rb, line 177</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">finirLaPartie</span>(<span class="ruby-identifier">unNiveau</span>, <span class="ruby-identifier">uneGrille</span>)
-<span class="ruby-comment">#Méthode qui modifie les bases de données après la fin de chaque partie du mode aventure</span>
+<span class="ruby-comment"># Méthode qui modifie les bases de données après la fin de chaque partie du mode aventure en ajoutant de l&#39;argent, en</span>
+<span class="ruby-comment"># changeant le statut de la grille et en augmentant le nombre d&#39;aide disponible si les conditions sont remplies</span>
         <span class="ruby-keyword">if</span> <span class="ruby-identifier">grillePasFaite</span>(<span class="ruby-ivar">@id</span>, <span class="ruby-identifier">unNiveau</span>, <span class="ruby-identifier">uneGrille</span>) <span class="ruby-keyword">then</span>
                 <span class="ruby-identifier">recupererArgentGrille</span>(<span class="ruby-ivar">@id</span>, <span class="ruby-identifier">unNiveau</span>, <span class="ruby-identifier">uneGrille</span>)
                 <span class="ruby-identifier">changerStatutGrille</span>(<span class="ruby-ivar">@id</span>, <span class="ruby-identifier">unNiveau</span>, <span class="ruby-identifier">uneGrille</span>)
 
                 <span class="ruby-keyword">if</span> <span class="ruby-identifier">niveauComplet</span>(<span class="ruby-ivar">@id</span>, <span class="ruby-identifier">unNiveau</span>, <span class="ruby-identifier">uneGrille</span>) <span class="ruby-keyword">then</span>
-                        <span class="ruby-identifier">augmentercreditAide</span>(<span class="ruby-ivar">@id</span>, <span class="ruby-value">4</span>) 
+                        <span class="ruby-identifier">augmentercreditAide</span>(<span class="ruby-ivar">@id</span>, <span class="ruby-value">4</span>)
                 <span class="ruby-keyword">end</span>
 
                 <span class="ruby-identifier">actualiser</span>()
@@ -680,16 +691,16 @@
 
           
           <div class="method-source-code" id="inscrire-source">
-            <pre><span class="ruby-comment"># File BaseDeDonnees/Joueur.rb, line 49</span>
+            <pre><span class="ruby-comment"># File BaseDeDonnees/Joueur.rb, line 53</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">inscrire</span>()
-
-        <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Ajout de l&#39;utilisateur #{@pseudo}\n&quot;</span>
+<span class="ruby-comment"># On envoie les informations du nouveau joueur dans le fichier FonctionBDD.rb pour que le joueur soit créé</span>
+        <span class="ruby-comment">#puts &quot;Ajout de l&#39;utilisateur #{@pseudo}\n&quot;</span>
         <span class="ruby-ivar">@id</span> = <span class="ruby-identifier">ajouterUtilisateur</span>( <span class="ruby-ivar">@pseudo</span>, <span class="ruby-ivar">@mdp</span>, <span class="ruby-ivar">@rep</span>)
         <span class="ruby-keyword">if</span>  <span class="ruby-ivar">@id</span> <span class="ruby-operator">!=</span> <span class="ruby-value">0</span> <span class="ruby-keyword">then</span>
                 <span class="ruby-identifier">connecter</span>()
-                <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;\n\n\nL&#39;utilisateur #{@pseudo} est bien enregistré\n\n\n&quot;</span>
+                <span class="ruby-comment">#puts &quot;\n\n\nL&#39;utilisateur #{@pseudo} est bien enregistré\n\n\n&quot;</span>
         <span class="ruby-keyword">else</span>
-                <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;\n\n\nLe pseudo #{@pseudo} est déjà enregistré\n\n\n&quot;</span>
+                <span class="ruby-comment">#puts &quot;\n\n\nLe pseudo #{@pseudo} est déjà enregistré\n\n\n&quot;</span>
         <span class="ruby-keyword">end</span>
         <span class="ruby-keyword">return</span> <span class="ruby-ivar">@id</span>
 <span class="ruby-keyword">end</span></pre>
@@ -722,8 +733,10 @@
 
           
           <div class="method-source-code" id="modifierInformationsFinDePartie-source">
-            <pre><span class="ruby-comment"># File BaseDeDonnees/Joueur.rb, line 183</span>
+            <pre><span class="ruby-comment"># File BaseDeDonnees/Joueur.rb, line 197</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">modifierInformationsFinDePartie</span>(<span class="ruby-identifier">unScore</span>, <span class="ruby-identifier">uneDifficulte</span>, <span class="ruby-identifier">creditAideUtilises</span>)
+<span class="ruby-comment"># Méthode qui modifie les bases de données après la fin de chaque partie du mode compétition en sauvegardant le nouveau score</span>
+<span class="ruby-comment"># s&#39;il est plus haut que celui sauvegardé. On incrémente les statistiques du joueur si les conditions sont remplies</span>
         <span class="ruby-keyword">if</span> <span class="ruby-identifier">uneDifficulte</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;Facile&quot;</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">unScore</span> <span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@scoreFacile</span> <span class="ruby-keyword">then</span>
                 <span class="ruby-ivar">@scoreFacile</span> = <span class="ruby-identifier">unScore</span>
                 <span class="ruby-identifier">augmenterScoreFacile</span>(<span class="ruby-ivar">@id</span>, <span class="ruby-ivar">@scoreFacile</span>)
@@ -746,7 +759,7 @@
         <span class="ruby-keyword">if</span> <span class="ruby-identifier">creditAideUtilises</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-keyword">then</span>
                 <span class="ruby-identifier">augmenterNbPartiesTermineesSansAides</span>(<span class="ruby-ivar">@id</span>)
         <span class="ruby-keyword">end</span>
-        
+
         <span class="ruby-ivar">@nbPartiesJouees</span> = <span class="ruby-identifier">recupererInformation</span>(<span class="ruby-ivar">@id</span>, <span class="ruby-value">6</span>)
         <span class="ruby-ivar">@nbPartiesFinitSansAides</span> = <span class="ruby-identifier">recupererInformation</span>(<span class="ruby-ivar">@id</span>, <span class="ruby-value">7</span>)
 
@@ -782,14 +795,15 @@
 
           
           <div class="method-source-code" id="motDePasseOublier-source">
-            <pre><span class="ruby-comment"># File BaseDeDonnees/Joueur.rb, line 88</span>
+            <pre><span class="ruby-comment"># File BaseDeDonnees/Joueur.rb, line 94</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">motDePasseOublier</span>(<span class="ruby-identifier">nouveauMDP</span>)
+<span class="ruby-comment"># On modifie le mot de passe si son pseudo et sa réponse secrète sont bien dans les bases de données et appartiennent au même profil</span>
         <span class="ruby-keyword">if</span> <span class="ruby-identifier">motDePasseOublie</span>(<span class="ruby-ivar">@pseudo</span>, <span class="ruby-ivar">@rep</span>, <span class="ruby-identifier">nouveauMDP</span>) <span class="ruby-operator">==</span> <span class="ruby-keyword">true</span> <span class="ruby-keyword">then</span>
                 <span class="ruby-ivar">@mdp</span> = <span class="ruby-identifier">nouveauMDP</span>
-                <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;   Le mot de passe a bien été modifié\n&quot;</span>
+                <span class="ruby-comment">#puts &quot;   Le mot de passe a bien été modifié\n&quot;</span>
                 <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span>
         <span class="ruby-keyword">else</span>
-                <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;   La réponse secrète est incorrecte\n&quot;</span>
+                <span class="ruby-comment">#puts &quot;   La réponse secrète est incorrecte\n&quot;</span>
                 <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
         <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
@@ -822,8 +836,9 @@
 
           
           <div class="method-source-code" id="niveauDeverouille-source">
-            <pre><span class="ruby-comment"># File BaseDeDonnees/Joueur.rb, line 160</span>
+            <pre><span class="ruby-comment"># File BaseDeDonnees/Joueur.rb, line 172</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">niveauDeverouille</span>(<span class="ruby-identifier">unNumeroNiveau</span>)
+<span class="ruby-comment"># Méthode permettant de changer le statut d&#39;un niveau pour le dévérouiller dont l&#39;indice est passé en paramètre</span>
         <span class="ruby-keyword">return</span> <span class="ruby-identifier">niveauDebloque</span>(<span class="ruby-ivar">@id</span>, <span class="ruby-identifier">unNumeroNiveau</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -855,14 +870,15 @@
 
           
           <div class="method-source-code" id="nouveauMotDePasse-source">
-            <pre><span class="ruby-comment"># File BaseDeDonnees/Joueur.rb, line 99</span>
+            <pre><span class="ruby-comment"># File BaseDeDonnees/Joueur.rb, line 106</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">nouveauMotDePasse</span>(<span class="ruby-identifier">nouveauMotDePasse</span>)
+<span class="ruby-comment"># On modifie le mot de passe du joueur</span>
         <span class="ruby-keyword">if</span> <span class="ruby-identifier">changerMotDePasse</span>(<span class="ruby-ivar">@id</span>, <span class="ruby-identifier">nouveauMotDePasse</span>) <span class="ruby-operator">==</span> <span class="ruby-keyword">true</span> <span class="ruby-keyword">then</span>
                 <span class="ruby-ivar">@mdp</span> = <span class="ruby-identifier">nouveauMotDePasse</span>
-                <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;   Le mot de passe a bien été modifié\n&quot;</span>
+                <span class="ruby-comment">#puts &quot;   Le mot de passe a bien été modifié\n&quot;</span>
                 <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span>
         <span class="ruby-keyword">else</span>
-                <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;   Le nouveau mot de passe ne peut pas être le même\n&quot;</span>
+                <span class="ruby-comment">#puts &quot;   Le nouveau mot de passe ne peut pas être le même\n&quot;</span>
                 <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
         <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
@@ -895,14 +911,15 @@
 
           
           <div class="method-source-code" id="nouveauPseudo-source">
-            <pre><span class="ruby-comment"># File BaseDeDonnees/Joueur.rb, line 110</span>
+            <pre><span class="ruby-comment"># File BaseDeDonnees/Joueur.rb, line 118</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">nouveauPseudo</span>(<span class="ruby-identifier">nouveauPseudo</span>)
+<span class="ruby-comment"># On modifie le pseudo du joueur</span>
         <span class="ruby-keyword">if</span> <span class="ruby-identifier">changerPseudo</span>(<span class="ruby-ivar">@id</span>, <span class="ruby-identifier">nouveauPseudo</span>) <span class="ruby-operator">==</span> <span class="ruby-keyword">true</span> <span class="ruby-keyword">then</span>
                 <span class="ruby-ivar">@pseudo</span> = <span class="ruby-identifier">nouveauPseudo</span>
-                <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;   Le pseudo a bien été modifié\n&quot;</span>
+                <span class="ruby-comment">#puts &quot;   Le pseudo a bien été modifié\n&quot;</span>
                 <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span>
         <span class="ruby-keyword">else</span>
-                <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;   Le nouveau pseudo ne peut pas être le même\n&quot;</span>
+                <span class="ruby-comment">#puts &quot;   Le nouveau pseudo ne peut pas être le même\n&quot;</span>
                 <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
         <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
@@ -935,8 +952,9 @@
 
           
           <div class="method-source-code" id="recupererScoreJoueurs-source">
-            <pre><span class="ruby-comment"># File BaseDeDonnees/Joueur.rb, line 230</span>
+            <pre><span class="ruby-comment"># File BaseDeDonnees/Joueur.rb, line 248</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">recupererScoreJoueurs</span>()
+<span class="ruby-comment"># Méthode permettant de voir le score de tous les autres joueurs</span>
         <span class="ruby-keyword">return</span> <span class="ruby-identifier">scoreDeTousLesJoueurs</span>()
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -968,8 +986,9 @@
 
           
           <div class="method-source-code" id="recupererSucces-source">
-            <pre><span class="ruby-comment"># File BaseDeDonnees/Joueur.rb, line 226</span>
+            <pre><span class="ruby-comment"># File BaseDeDonnees/Joueur.rb, line 243</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">recupererSucces</span>()
+<span class="ruby-comment"># Méthode permettant de voir tous les succès et ceux validé par le joueur</span>
         <span class="ruby-keyword">return</span> <span class="ruby-identifier">voirSucces</span>(<span class="ruby-ivar">@id</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -1001,8 +1020,9 @@
 
           
           <div class="method-source-code" id="verifierSucces-source">
-            <pre><span class="ruby-comment"># File BaseDeDonnees/Joueur.rb, line 216</span>
+            <pre><span class="ruby-comment"># File BaseDeDonnees/Joueur.rb, line 232</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">verifierSucces</span>()
+<span class="ruby-comment"># Méthode permettant de voir si un succès peut être validé</span>
         <span class="ruby-identifier">dernierSucces</span> = <span class="ruby-identifier">dernierSucces</span>()
 
         (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-identifier">dernierSucces</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>

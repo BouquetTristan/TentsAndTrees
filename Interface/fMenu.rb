@@ -7,9 +7,15 @@ require './Interface/fGameMode.rb'
 require './Interface/fScore.rb'
 require './Classes/App.rb'
 
-
+#====== Fenetre de menu du jeu
 class FMenu < Page
 
+  #Initialise la page
+  # @param monApp		//l'application
+  # @param header		//le titre de la page
+  # @param anciennePage		//Le lien de la dernière page
+  # @param unJoueur		//le joueur concerné
+  # @return void		//ne renvoie rien
      def initialize(monApp, header, anciennePage, unJoueur)
 
      	super(monApp, :vertical, header,  anciennePage, unJoueur)
@@ -17,8 +23,8 @@ class FMenu < Page
         @frame = Gtk::Table.new(1,1,false)
     		@gMenu = Gtk::ButtonBox.new(:vertical)
 
-		
-        
+
+
     		@profil = Gtk::Button.new()
         @profil.set_relief(:none)
 
@@ -26,7 +32,7 @@ class FMenu < Page
         @profil.set_image(@imgP)
         focus_hadjustment=(:start)
 	@gMenu.add(@profil, :expand => true, :fill => false)
-  
+
 
     		@play = Gtk::Button.new(:label => 'Jouer', :use_underline => nil, :stock_id => nil)
         @play.set_relief(:none)
@@ -55,13 +61,13 @@ class FMenu < Page
               self.supprimeMoi
               suivant = FDidac.new(monApp, header, self, unJoueur)
               suivant.ajouteMoi
-              @window.show_all  
+              @window.show_all
         }
         @score.signal_connect('clicked') {
               self.supprimeMoi
               suivant = FScore.new(monApp, header, self, unJoueur, "facile")
               suivant.ajouteMoi
-              @window.show_all 
+              @window.show_all
         }
 
         @frame.attach(@gMenu,0,1,0,1)

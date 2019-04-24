@@ -5,9 +5,10 @@
 # L'objet Joueur dispose de plusieurs méthode qui permettent d'envoyer les nouvelles informations de l'utilisateur après avoir agit dans le jeu
 # La classe opère à des traitements de l'information avant de les envoyer aux bases de données
 
+
 require './BaseDeDonnees/FonctionsBDD.rb'
 
-
+#====== Stock les information de l'utilisateur
 class Joueur
 
 	def Joueur.creer(unPseudo, unMDP, uneRepSec)
@@ -103,7 +104,7 @@ class Joueur
 	end
 
 	def nouveauMotDePasse(nouveauMotDePasse)
-	# On modifie le mot de passe du joueur 
+	# On modifie le mot de passe du joueur
 		if changerMotDePasse(@id, nouveauMotDePasse) == true then
 			@mdp = nouveauMotDePasse
 			#puts "   Le mot de passe a bien été modifié\n"
@@ -144,7 +145,7 @@ class Joueur
 			puts " Histoire \n"
 			for i in 0..(@niveaux.length-1)
 				nomNiveau = @niveaux.at(i).at(1)
-				statutNiveau = @niveaux.at(i).at(2)  
+				statutNiveau = @niveaux.at(i).at(2)
 				puts "  #{nomNiveau} : #{statutNiveau}\n"
 			end
 		else
@@ -174,14 +175,14 @@ class Joueur
 	end
 
 	def finirLaPartie(unNiveau, uneGrille)
-	# Méthode qui modifie les bases de données après la fin de chaque partie du mode aventure en ajoutant de l'argent, en 
+	# Méthode qui modifie les bases de données après la fin de chaque partie du mode aventure en ajoutant de l'argent, en
 	# changeant le statut de la grille et en augmentant le nombre d'aide disponible si les conditions sont remplies
 		if grillePasFaite(@id, unNiveau, uneGrille) then
 			recupererArgentGrille(@id, unNiveau, uneGrille)
 			changerStatutGrille(@id, unNiveau, uneGrille)
 
 			if niveauComplet(@id, unNiveau, uneGrille) then
-				augmentercreditAide(@id, 4)	
+				augmentercreditAide(@id, 4)
 			end
 
 			actualiser()
@@ -218,7 +219,7 @@ class Joueur
 		if creditAideUtilises == 0 then
 			augmenterNbPartiesTermineesSansAides(@id)
 		end
-		
+
 		@nbPartiesJouees = recupererInformation(@id, 6)
 		@nbPartiesFinitSansAides = recupererInformation(@id, 7)
 

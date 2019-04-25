@@ -6,6 +6,7 @@ require './Classes/Page.rb'
 require './BaseDeDonnees/Joueur.rb'
 
 require './Interface/fMenu.rb'
+#require './Interface/fOption.rb'
 require './Interface/fCreationCompte.rb'
 require './Interface/fMdpOublie.rb'
 require './Classes/App.rb'

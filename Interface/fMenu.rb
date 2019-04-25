@@ -5,6 +5,7 @@ require './Classes/Page.rb'
 require './Interface/fProfil.rb'
 require './Interface/fGameMode.rb'
 require './Interface/fScore.rb'
+require './Interface/fOption.rb'
 require './Classes/App.rb'
 
 #====== Fenetre de menu du jeu
@@ -21,26 +22,37 @@ class FMenu < Page
      	super(monApp, :vertical, header,  anciennePage, unJoueur)
 
         @frame = Gtk::Table.new(1,1,false)
-    		@gMenu = Gtk::ButtonBox.new(:vertical)
+    	@gMenu = Gtk::ButtonBox.new(:vertical)
+    	@gMenu2 = Gtk::ButtonBox.new(:horizontal)
+
+    	@option = Gtk::Button.new()
+        @option.set_relief(:none)
+
+        @imgO=(Gtk::Image.new(:file =>"./Assets/option.png"))
+        @option.set_image(@imgO)
+        focus_hadjustment=(:start)
+		@gMenu2.add(@option, :expand => true, :fill => false)
 
 
-
-    		@profil = Gtk::Button.new()
+    	@profil = Gtk::Button.new()
         @profil.set_relief(:none)
 
         @imgP=(Gtk::Image.new(:file =>"./Assets/profil.png"))
         @profil.set_image(@imgP)
         focus_hadjustment=(:start)
-	@gMenu.add(@profil, :expand => true, :fill => false)
+		@gMenu2.add(@profil, :expand => true, :fill => false)
 
 
     		@play = Gtk::Button.new(:label => 'Jouer', :use_underline => nil, :stock_id => nil)
-        @play.set_relief(:none)
+        	@play.set_relief(:none)
     		@didac = Gtk::Button.new(:label => 'Didacticiel', :use_underline => nil, :stock_id => nil)
-        @didac.set_relief(:none)
+        	@didac.set_relief(:none)
     		@score = Gtk::Button.new(:label => 'Classement', :use_underline => nil, :stock_id => nil)
-        @score.set_relief(:none)
+        	@score.set_relief(:none)
 
+
+
+    		@gMenu.add(@gMenu2)
     		@gMenu.add(@play, :expand => true, :fill => false)
     		@gMenu.add(@didac, :expand => true, :fill => false)
     		@gMenu.add(@score, :expand => true, :fill => false)
@@ -50,6 +62,12 @@ class FMenu < Page
                suivant = FProfil.new(monApp, header, self, unJoueur)
                suivant.ajouteMoi
                @window.show_all
+        }
+        @option.signal_connect('clicked') {
+             self.supprimeMoi
+             suivant = FOption.new(monApp, header, self, unJoueur)
+             suivant.ajouteMoi
+             @window.show_all
         }
         @play.signal_connect('clicked') {
                self.supprimeMoi

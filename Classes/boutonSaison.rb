@@ -18,6 +18,7 @@ class BoutonSaison
 
 
 	#Initialise le bouton représentant l'accès aux saisons
+	# @param monApp		//Prend l'application
 	# @param uneSaison		//Chaine de caracère représentant une des 4 saison (été/hiver/automne/pintemps)
 	# @param cliquable		//Booléen pou définir si le bouton sera cliquable ou non
 	# @return void			//ne renvoie rien
@@ -48,7 +49,7 @@ class BoutonSaison
 	end
 
 	#Actualise l'image de la case
-	# @param void		//ne prend aucun paramètre
+	# @param monApp		//Prend l'application
 	# @return void			//ne renvoie rien
 	def actualiserImg(monApp)
 		if (@cliquable)
@@ -60,7 +61,7 @@ class BoutonSaison
 
 
 	#Débloque un bouton en le rendant cliquable pour un joueur donné
-	# @param unJoueur		//Joueur ayant débloqué le bouton
+	# @param monApp		//Prend l'application
 	# @return void			//ne renvoie rien
 	def debloquer(monApp)
 #		puts @saison

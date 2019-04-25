@@ -250,7 +250,7 @@ class FPlayA < Page
 
 				@profil.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 15\"> #{@nbFeuilles}</span>")
 
-				@aide = @b1.aide(grilleDeJeu, @lableAide, unJoueur, @boutonGrille)
+				@aide = @b1.aide(monApp, grilleDeJeu, @lableAide, unJoueur, @boutonGrille)
 				@nbAidesUtilises+=1
 			else
 				@lableAide.set_markup("<span foreground=\"#FFFFFF\" font-desc=\"Courier New bold 11\">Vous ne pouvez plus utiliser cette aide</span>")
@@ -277,7 +277,7 @@ class FPlayA < Page
 
 				@profil.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 15\"> #{@nbFeuilles}</span>")
 
-				@aide = @b2.aide(grilleDeJeu, @lableAide, unJoueur, @boutonGrille)
+				@aide = @b2.aide(monApp, grilleDeJeu, @lableAide, unJoueur, @boutonGrille)
 				@nbAidesUtilises+=1
 			else
 				@lableAide.set_markup("<span foreground=\"#FFFFFF\" font-desc=\"Courier New bold 11\">Vous ne pouvez plus utiliser cette aide</span>")
@@ -302,7 +302,7 @@ class FPlayA < Page
 				@nbFeuilles = tempo
 
 				@profil.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 15\"> #{@nbFeuilles}</span>")
-				@aide = @b3.aide(grilleDeJeu, @lableAide, unJoueur, @boutonGrille)
+				@aide = @b3.aide(monApp, grilleDeJeu, @lableAide, unJoueur, @boutonGrille)
 				@nbAidesUtilises+=1
 			else
 				@lableAide.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 11\">Vous ne pouvez plus utiliser cette aide</span>")

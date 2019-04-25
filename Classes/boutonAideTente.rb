@@ -37,25 +37,25 @@ class BoutonAideTente < BoutonAide
 	# @param unLabel     //La position d'affichage
 	# @param unJoueur    //Pour sauvegarder le joueur et ne pas le perdre en cas de changement de page
 	# @return nil  	//si aucune aide ne trouve de solution
-	def aide(uneGrille, unLabel, unJoueur, interfaceGrille)
+	def aide(monApp, uneGrille, unLabel, unJoueur, interfaceGrille)
 		if(@cliquable == true)
 			aide1 = Aide.arbreTentePlacer(uneGrille)
 			aide2 = Aide.lignePlacerTentes(uneGrille)
 			aide3 = Aide.colonnePlacerTentes(uneGrille)
 			if(aide1 != nil)
 				unLabel.set_markup("<span foreground=\"#E30E0B\" font-desc=\"Courier New bold 11\">Il ne reste qu'une \npossibilité pour la tente de\nl'arbre en surbrillance</span>")
-				interfaceGrille[aide1.i][aide1.j].indiquerAide(uneGrille.grilleJ[aide1.i][aide1.j].etat)
+				interfaceGrille[aide1.i][aide1.j].indiquerAide(monApp, uneGrille.grilleJ[aide1.i][aide1.j].etat)
 				return aide1
 			elsif(aide2 != nil)
 				unLabel.set_markup("<span foreground=\"#E30E0B\" font-desc=\"Courier New bold 11\">On peut placer toutes \nles tentes sur la ligne\nen surbrillance</span>")
 				for i in (0..uneGrille.taille-1)
-					interfaceGrille[i][aide2].indiquerAide(uneGrille.grilleJ[i][aide2].etat)
+					interfaceGrille[i][aide2].indiquerAide(monApp, uneGrille.grilleJ[i][aide2].etat)
 				end
 				return aide2
 			elsif(aide3 != nil)
 				unLabel.set_markup("<span foreground=\"#E30E0B\" font-desc=\"Courier New bold 11\">On peut placer toutes \nles tentes sur la colonne\n en surbrillance</span>")
 				for i in (0..uneGrille.taille-1)
-					interfaceGrille[aide3][i].indiquerAide(uneGrille.grilleJ[aide3][i].etat)
+					interfaceGrille[aide3][i].indiquerAide(monApp, uneGrille.grilleJ[aide3][i].etat)
 				end
 				return aide3
 			else

@@ -32,12 +32,12 @@ class BoutonAideVerif < BoutonAide
 	# @param interfaceGrille //Permet d'accéder à l'affichage de la grille dans le jeu
 	# @return aide 	//Case conscenrée par l'aide si elle existe
 	# @return nil  	//si aucune aide ne trouve de solution
-	def aide(uneGrille, unLabel, unJoueur, interfaceGrille)
+	def aide(monApp, uneGrille, unLabel, unJoueur, interfaceGrille)
 		if(@cliquable == true)
 			aide = Aide.erreur(uneGrille)
 			if(aide != nil)
 				unLabel.set_markup("<span foreground=\"#E30E0B\" font-desc=\"Courier New bold 11\">Erreur sur la case \n en surbrillance</span>")
-				interfaceGrille[aide.i][aide.j].indiquerAide(uneGrille.grilleJ[aide.i][aide.j].etat)
+				interfaceGrille[aide.i][aide.j].indiquerAide(monApp, uneGrille.grilleJ[aide.i][aide.j].etat)
 				return aide
 			else
 				unLabel.set_markup("<span foreground=\"#E30E0B\" font-desc=\"Courier New bold 11\">Aucune erreur \nsur la grille actuelle</span>")

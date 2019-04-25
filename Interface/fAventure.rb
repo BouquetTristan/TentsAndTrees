@@ -45,6 +45,7 @@ class FAventure < Page
 		@ete = BoutonSaison.new(monApp, "Ete", unJoueur)
 		@autom = BoutonSaison.new(monApp, "Automne", unJoueur)
 		@hiver = BoutonSaison.new(monApp, "Hiver", unJoueur)
+		@bonus = BoutonSaison.new(monApp, "Bonus",unJoueur)
 
 		@print.actualiserImg(monApp)
 		@ete.actualiserImg(monApp)
@@ -59,6 +60,10 @@ class FAventure < Page
 		@aventMenu.add(@level)
 		@level.spacing=monApp.width/15
 
+		if (@bonus.bonusVisible)
+			@aventMenu.add(@bonus.bouton, :expand => true, :fill => false)
+		end
+
 		@header.btnMenu.signal_connect('clicked') {
 		        self.supprimeMoi
 		        menu = FMenu.new(monApp, @header, self, unJoueur)
@@ -67,24 +72,37 @@ class FAventure < Page
 		    }
 
 		@print.bouton.signal_connect('clicked') {
-			@print.debloquer(monApp)
+			if (@print.cliquable == false)
+				@print.debloquer(monApp)
+			end
+#			puts unJoueur.niveaux.at(4).at(0)
 			@print.lancer(monApp, @header, self)
 		}
 
 
 		@ete.bouton.signal_connect('clicked') {
-			@ete.debloquer(monApp)
+			if (@ete.cliquable == false)
+				@ete.debloquer(monApp)
+			end
 			@ete.lancer(monApp, @header, self)
 		}
 
 		@autom.bouton.signal_connect('clicked') {
-			@autom.debloquer(monApp)
+			if (@autom.cliquable == false)
+				@autom.debloquer(monApp)
+			end
 			@autom.lancer(monApp, @header, self)
 		}
 
 		@hiver.bouton.signal_connect('clicked') {
-			@hiver.debloquer(monApp)
+			if (@hiver.cliquable == false)
+				@hiver.debloquer(monApp)
+			end
 			@hiver.lancer(monApp, @header, self)
+		}
+
+		@bonus.bouton.signal_connect('clicked') {
+			@bonus.lancer(monApp, @header, self)
 		}
 
 		@frame.attach(@aventMenu,0,1,0,1)

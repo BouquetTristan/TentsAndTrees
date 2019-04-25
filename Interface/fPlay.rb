@@ -157,9 +157,9 @@ class FPlay < Page
 			temp=[]
 			for j in (0..taille-1)
 					vEtat = grilleDeJeu.grilleJ[i][j].etat
-					temp[j] = BoutonGrille.new
+					temp[j] = BoutonGrille.new(monApp,"./Assets/Printemps")
 					temp[j].mCoord(i,j)
-					temp[j].chgEtat(vEtat)
+					temp[j].chgEtat(monApp, vEtat)
 					@grille.attach(temp[j].bouton, i+1, i+2, j+1,j+2)
 			end
 			@boutonGrille[i] = temp
@@ -172,11 +172,11 @@ class FPlay < Page
 					l.bouton.signal_connect("clicked"){
 						if @aide != nil
 							if @aide.instance_of? Case
-								@boutonGrille[@aide.i][@aide.j].chgEtat(grilleDeJeu.grilleJ[@aide.i][@aide.j].etat)
+								@boutonGrille[@aide.i][@aide.j].chgEtat(monApp, grilleDeJeu.grilleJ[@aide.i][@aide.j].etat)
 							else
 								for i in (0..taille-1)
-									@boutonGrille[@aide][i].chgEtat(grilleDeJeu.grilleJ[@aide][i].etat)
-									@boutonGrille[i][@aide].chgEtat(grilleDeJeu.grilleJ[i][@aide].etat)
+									@boutonGrille[@aide][i].chgEtat(monApp, grilleDeJeu.grilleJ[@aide][i].etat)
+									@boutonGrille[i][@aide].chgEtat(monApp, grilleDeJeu.grilleJ[i][@aide].etat)
 								end
 							end
 							@lableAide.set_markup('')
@@ -184,7 +184,7 @@ class FPlay < Page
 							@aide = nil
 						end
 			        	grilleDeJeu.grilleJ[l.coordI][l.coordJ].jouerCase()
-						@boutonGrille[l.coordI][l.coordJ].chgEtat(grilleDeJeu.grilleJ[l.coordI][l.coordJ].etat)
+						@boutonGrille[l.coordI][l.coordJ].chgEtat(monApp, grilleDeJeu.grilleJ[l.coordI][l.coordJ].etat)
 						grilleDeJeu.enregistrerFichier(unJoueur.pseudo, nil)
 
 						if (grilleDeJeu.observateur())
@@ -252,11 +252,11 @@ class FPlay < Page
 		@b1.bouton.signal_connect('clicked'){
 			if @aide != nil
 				if @aide.instance_of? Case
-					@boutonGrille[@aide.i][@aide.j].chgEtat(grilleDeJeu.grilleJ[@aide.i][@aide.j].etat)
+					@boutonGrille[@aide.i][@aide.j].chgEtat(monApp, grilleDeJeu.grilleJ[@aide.i][@aide.j].etat)
 				else
 					for i in (0..taille-1)
-						@boutonGrille[@aide][i].chgEtat(grilleDeJeu.grilleJ[@aide][i].etat)
-						@boutonGrille[i][@aide].chgEtat(grilleDeJeu.grilleJ[i][@aide].etat)
+						@boutonGrille[@aide][i].chgEtat(monApp, grilleDeJeu.grilleJ[@aide][i].etat)
+						@boutonGrille[i][@aide].chgEtat(monApp, grilleDeJeu.grilleJ[i][@aide].etat)
 					end
 				end
 
@@ -283,11 +283,11 @@ class FPlay < Page
 		@b2.bouton.signal_connect('clicked') {
 			if @aide != nil
 				if @aide.instance_of? Case
-					@boutonGrille[@aide.i][@aide.j].chgEtat(grilleDeJeu.grilleJ[@aide.i][@aide.j].etat)
+					@boutonGrille[@aide.i][@aide.j].chgEtat(monApp, grilleDeJeu.grilleJ[@aide.i][@aide.j].etat)
 				else
 					for i in (0..taille-1)
-						@boutonGrille[@aide][i].chgEtat(grilleDeJeu.grilleJ[@aide][i].etat)
-						@boutonGrille[i][@aide].chgEtat(grilleDeJeu.grilleJ[i][@aide].etat)
+						@boutonGrille[@aide][i].chgEtat(monApp, grilleDeJeu.grilleJ[@aide][i].etat)
+						@boutonGrille[i][@aide].chgEtat(monApp, grilleDeJeu.grilleJ[i][@aide].etat)
 					end
 				end
 
@@ -314,11 +314,11 @@ class FPlay < Page
 		@b3.bouton.signal_connect('clicked') {
 			if @aide != nil
 				if @aide.instance_of? Case
-					@boutonGrille[@aide.i][@aide.j].chgEtat(grilleDeJeu.grilleJ[@aide.i][@aide.j].etat)
+					@boutonGrille[@aide.i][@aide.j].chgEtat(monApp, grilleDeJeu.grilleJ[@aide.i][@aide.j].etat)
 				else
 					for i in (0..taille-1)
-						@boutonGrille[@aide][i].chgEtat(grilleDeJeu.grilleJ[@aide][i].etat)
-						@boutonGrille[i][@aide].chgEtat(grilleDeJeu.grilleJ[i][@aide].etat)
+						@boutonGrille[@aide][i].chgEtat(monApp, grilleDeJeu.grilleJ[@aide][i].etat)
+						@boutonGrille[i][@aide].chgEtat(monApp, grilleDeJeu.grilleJ[i][@aide].etat)
 					end
 				end
 
@@ -367,6 +367,8 @@ class FPlay < Page
 				@b1.cliquable = false
 				@b2.cliquable = false
 				@b3.cliquable = false
+
+				
 			else
 				@boutonGrille.each{|k|
 					k.each{|l|

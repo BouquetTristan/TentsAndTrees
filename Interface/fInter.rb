@@ -44,9 +44,9 @@ class FInter < Page
 			temp=[]
 			for j in (0..taille-1)
 					vEtat = grilleDeJeu.grilleJ[i][j].etat
-					temp[j] = BoutonGrille.new
+					temp[j] = BoutonGrille.new(monApp,"./Assets/Printemps")
 					temp[j].mCoord(i,j)
-					temp[j].chgEtat(vEtat)
+					temp[j].chgEtat(monApp, vEtat)
 					@grille.attach(temp[j].bouton, i+1, i+2, j+1,j+2)
 			end
 			@boutonGrille[i] = temp

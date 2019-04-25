@@ -33,11 +33,12 @@ class BoutonNbTentesLigne < BoutonNbTentes
 	#Change l'image du bouton en fonction de l'état
 	# @param etat 		//un chiffre représentant l'état d'une case
 	# @return void		//ne renvoie rien
-	def chgEtat()
-		if @clic
+	def chgEtat(monApp, etatC)
+		if !etatC
 			for i in (0..@grilleDeJeu.taille-1)
 				if (@grilleDeJeu.grilleJ[i][@indice].etat != 1 && @grilleDeJeu.grilleJ[i][@indice].etat != 2)
-					@boutonGrille[i][@indice].bouton.set_image(Gtk::Image.new(:file =>"#{@chemin}/herbe.png", :size => :dialog))
+					@pix = (GdkPixbuf::Pixbuf.new(:file =>"#{@chemin}/herbe.png",:width=> monApp.width/25, :height=> monApp.height/25))
+					@boutonGrille[i][@indice].bouton.set_image(Gtk::Image.new(:pixbuf => @pix))
 					focus_hadjustment=(:start)
 					@grilleDeJeu.grilleJ[i][@indice].etat = 3
 					@grilleDeJeu.enregistrerFichier(@joueur.pseudo, nil)

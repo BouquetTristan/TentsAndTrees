@@ -86,7 +86,7 @@ class FPlay < Page
 
 		tabBout.each { |l|
 			l.bouton.signal_connect("clicked"){
-				l.chgEtat
+				l.chgEtat(monApp, @chrono.pause)
 				if (grilleDeJeu.observateur())
 					@score = Score.creer(difficulte, @nbAidesUtilises)
 					if(compet)
@@ -122,7 +122,7 @@ class FPlay < Page
 
 		tabBout.each { |l|
 			l.bouton.signal_connect("clicked"){
-				l.chgEtat
+				l.chgEtat(monApp, @chrono.pause)
 				if (grilleDeJeu.observateur())
 					@score = Score.creer(difficulte, @nbAidesUtilises)
 					if(compet)
@@ -367,7 +367,7 @@ class FPlay < Page
 				@b1.cliquable = false
 				@b2.cliquable = false
 				@b3.cliquable = false
-
+				
 				
 			else
 				@boutonGrille.each{|k|
@@ -382,6 +382,7 @@ class FPlay < Page
 				@b1.cliquable = true
 				@b2.cliquable = true
 				@b3.cliquable = true
+
 			end
         }
 

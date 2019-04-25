@@ -41,15 +41,15 @@ class FAventure < Page
     	@level = Gtk::ButtonBox.new(:horizontal)
     	@level.layout = :spread
 
-		@print = BoutonSaison.new("Printemps", unJoueur)
-		@ete = BoutonSaison.new("Ete", unJoueur)
-		@autom = BoutonSaison.new("Automne", unJoueur)
-		@hiver = BoutonSaison.new("Hiver", unJoueur)
+		@print = BoutonSaison.new(monApp, "Printemps", unJoueur)
+		@ete = BoutonSaison.new(monApp, "Ete", unJoueur)
+		@autom = BoutonSaison.new(monApp, "Automne", unJoueur)
+		@hiver = BoutonSaison.new(monApp, "Hiver", unJoueur)
 
-		@print.actualiserImg
-		@ete.actualiserImg
-		@autom.actualiserImg
-		@hiver.actualiserImg
+		@print.actualiserImg(monApp)
+		@ete.actualiserImg(monApp)
+		@autom.actualiserImg(monApp)
+		@hiver.actualiserImg(monApp)
 
 		@level.add(@print.bouton, :expand => true, :fill => false)
 		@level.add(@ete.bouton, :expand => true, :fill => false)
@@ -57,7 +57,7 @@ class FAventure < Page
 		@level.add(@hiver.bouton, :expand => true, :fill => false)
 
 		@aventMenu.add(@level)
-		@level.spacing=115
+		@level.spacing=monApp.width/15
 
 		@header.btnMenu.signal_connect('clicked') {
 		        self.supprimeMoi
@@ -67,31 +67,25 @@ class FAventure < Page
 		    }
 
 		@print.bouton.signal_connect('clicked') {
-			@print.debloquer()
+			@print.debloquer(monApp)
 			@print.lancer(monApp, @header, self)
 		}
 
 
 		@ete.bouton.signal_connect('clicked') {
-			@ete.debloquer()
+			@ete.debloquer(monApp)
 			@ete.lancer(monApp, @header, self)
 		}
 
 		@autom.bouton.signal_connect('clicked') {
-			@autom.debloquer()
+			@autom.debloquer(monApp)
 			@autom.lancer(monApp, @header, self)
 		}
 
 		@hiver.bouton.signal_connect('clicked') {
-			@hiver.debloquer()
+			@hiver.debloquer(monApp)
 			@hiver.lancer(monApp, @header, self)
 		}
-
-		@bonus.bouton.signal_connect('clicked') {
-			@bonus.debloquer()
-			@bonus.lancer(monApp, @header, self)
-		}
-
 
 		@frame.attach(@aventMenu,0,1,0,1)
 

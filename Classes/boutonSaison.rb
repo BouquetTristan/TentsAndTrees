@@ -21,7 +21,7 @@ class BoutonSaison
 	# @param uneSaison		//Chaine de caracère représentant une des 4 saison (été/hiver/automne/pintemps)
 	# @param cliquable		//Booléen pou définir si le bouton sera cliquable ou non
 	# @return void			//ne renvoie rien
-	def initialize(uneSaison, unJoueur)
+	def initialize(monApp, uneSaison, unJoueur)
 		@bouton = Gtk::Button.new()
         focus_hadjustment=(:start)
 
@@ -39,7 +39,8 @@ class BoutonSaison
 			when "Hiver" then
 				@numSaison = 3
    		end
-		@img=(Gtk::Image.new(:file =>"./Assets/Vignette#{@saison}V.png"))
+   		@pix = (GdkPixbuf::Pixbuf.new(:file=>"./Assets/Vignette#{@saison}V.png",:width=> monApp.width/5, :height=> monApp.height/5))
+        @img=(Gtk::Image.new(:pixbuf => @pix))
         @bouton.set_image(@img)
 
         @cliquable = @joueur.niveauDeverouille(@numSaison)
@@ -49,9 +50,10 @@ class BoutonSaison
 	#Actualise l'image de la case
 	# @param void		//ne prend aucun paramètre
 	# @return void			//ne renvoie rien
-	def actualiserImg()
+	def actualiserImg(monApp)
 		if (@cliquable)
-			@img=(Gtk::Image.new(:file =>"./Assets/Vignette#{@saison}.png"))
+			@pix = (GdkPixbuf::Pixbuf.new(:file=>"./Assets/Vignette#{@saison}.png",:width=> monApp.width/5, :height=> monApp.height/5))
+        	@img=(Gtk::Image.new(:pixbuf => @pix))
 	        @bouton.set_image(@img)
 	    end
 	end
@@ -60,7 +62,7 @@ class BoutonSaison
 	#Débloque un bouton en le rendant cliquable pour un joueur donné
 	# @param unJoueur		//Joueur ayant débloqué le bouton
 	# @return void			//ne renvoie rien
-	def debloquer()
+	def debloquer(monApp)
 #		puts @saison
 #		puts @joueur.niveauDeverouille(@numSaison)
 #		puts "cliquable : #{@cliquable}"
@@ -69,7 +71,8 @@ class BoutonSaison
 			@cliquable = @joueur.acheterNiveau(@numSaison)
 		end
 		if (@cliquable)
-			@img=(Gtk::Image.new(:file =>"./Assets/Vignette#{@saison}.png"))
+			@pix = (GdkPixbuf::Pixbuf.new(:file=>"./Assets/Vignette#{@saison}.png",:width=> monApp.width/5, :height=> monApp.height/5))
+        	@img=(Gtk::Image.new(:pixbuf => @pix))
         	@bouton.set_image(@img)
         end
 	end

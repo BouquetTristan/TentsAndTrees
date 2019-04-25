@@ -114,7 +114,7 @@ class FPlayA < Page
 
 		@tabBout.each { |l|
 			l.bouton.signal_connect("clicked"){
-				l.chgEtat
+				l.chgEtat(monApp, @chrono.pause)
 				if (grilleDeJeu.observateur())
 					unJoueur.finirLaPartie(@saison, tabGrille.at(0))
 					unJoueur.actualiser
@@ -137,7 +137,7 @@ class FPlayA < Page
 
 		@tabBout.each { |l|
 			l.bouton.signal_connect("clicked"){
-				l.chgEtat
+				l.chgEtat(monApp, @chrono.pause)
 				if (grilleDeJeu.observateur())
 					unJoueur.finirLaPartie(@saison, tabGrille.at(0))
 					unJoueur.actualiser

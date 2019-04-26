@@ -12,6 +12,11 @@ Pour suivre l'avancement du projet, c'est ici -> https://trello.com/b/JAVYpZdL/t
 
 ## Description du jeu
 
+### Comment lancer le jeu
+Mettez vous dans le répertoire Tents&Trees (Projet_L3). 
+Pour lancer le jeu vous devez exécuter la commande "bundle" dans un terminal.
+Une fois cette première étape effectuer, vous devez executer la commande "rake" dans ce même terminal. 
+
 ### Règles
 Des arbres et des tentes est un jeu où le joueur doit compléter une grille en plaçant des tentes et de l'herbe. Les arbres sont présents de base sur la grille et le joueur doit assigner à chaque arbre une tente. La tente doit se trouver sur une case adjacente mais pas en diagonale. Enfin, le joueur doit respecter le nombre de tente que doit comporter les lignes et les colonnes de la grille.<br/>
 

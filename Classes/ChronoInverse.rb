@@ -76,7 +76,7 @@ class ChronoInverse
 	end
 
 	#retire n secondes au chrono
-	# @param void 		//le nombre de scondes à retirer
+	# @param n 		//le nombre de scondes à retirer
 	# @return void		//ne renvoie rien
 	def cRetire(n)
 		@chrono-=n

@@ -173,7 +173,7 @@
 
         <span class="ruby-ivar">@boxFeuilles</span>=<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">ButtonBox</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:horizontal</span>)
                         <span class="ruby-ivar">@boxFeuilles</span>.<span class="ruby-identifier">spacing</span>=<span class="ruby-value">1</span>
-                        <span class="ruby-ivar">@img</span> =(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span> <span class="ruby-operator">=&gt;</span><span class="ruby-string">&quot;./Assets/feuille.png&quot;</span>))
+                        <span class="ruby-ivar">@img</span> =(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span> <span class="ruby-operator">=&gt;</span><span class="ruby-string">&quot;./Assets/Menu/feuille.png&quot;</span>))
                         <span class="ruby-ivar">@profil</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>().<span class="ruby-identifier">set_markup</span>(<span class="ruby-node">&quot;&lt;span foreground=\&quot;#EF2929\&quot; font-desc=\&quot;Courier New bold 15\&quot;&gt; #{@nbFeuilles}&lt;/span&gt;&quot;</span>)
                         <span class="ruby-ivar">@boxFeuilles</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@img</span>)
                         <span class="ruby-ivar">@boxFeuilles</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@profil</span>, <span class="ruby-value">:expand</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:fill</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">false</span>)
@@ -425,7 +425,7 @@
 
                 <span class="ruby-ivar">@bPause</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>()
                 <span class="ruby-ivar">@bPause</span>.<span class="ruby-identifier">set_relief</span>(<span class="ruby-value">:none</span>)
-                <span class="ruby-ivar">@pause</span>=(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span> <span class="ruby-operator">=&gt;</span><span class="ruby-string">&quot;./Assets/pause.png&quot;</span>))
+                <span class="ruby-ivar">@pause</span>=(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span> <span class="ruby-operator">=&gt;</span><span class="ruby-string">&quot;./Assets/Menu/pause.png&quot;</span>))
                 <span class="ruby-ivar">@bPause</span>.<span class="ruby-identifier">set_image</span>(<span class="ruby-ivar">@pause</span>)
                 <span class="ruby-ivar">@gChrono</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@bPause</span>)
 
@@ -440,7 +440,7 @@
                                                 <span class="ruby-identifier">l</span>.<span class="ruby-identifier">clic</span>=<span class="ruby-keyword">false</span>
                                         }
                                 }
-                                <span class="ruby-ivar">@pause</span>=(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span> <span class="ruby-operator">=&gt;</span><span class="ruby-string">&quot;./Assets/Play.png&quot;</span>))
+                                <span class="ruby-ivar">@pause</span>=(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span> <span class="ruby-operator">=&gt;</span><span class="ruby-string">&quot;./Assets/Menu/Play.png&quot;</span>))
                                 <span class="ruby-ivar">@bPause</span>.<span class="ruby-identifier">set_image</span>(<span class="ruby-ivar">@pause</span>)
 
                                 <span class="ruby-ivar">@b1</span>.<span class="ruby-identifier">cliquable</span> = <span class="ruby-keyword">false</span>
@@ -457,7 +457,7 @@
                                                 <span class="ruby-identifier">l</span>.<span class="ruby-identifier">clic</span>=<span class="ruby-keyword">true</span>
                                         }
                                 }
-                                <span class="ruby-ivar">@pause</span>=(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span> <span class="ruby-operator">=&gt;</span><span class="ruby-string">&quot;./Assets/pause.png&quot;</span>))
+                                <span class="ruby-ivar">@pause</span>=(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span> <span class="ruby-operator">=&gt;</span><span class="ruby-string">&quot;./Assets/Menu/pause.png&quot;</span>))
                                 <span class="ruby-ivar">@bPause</span>.<span class="ruby-identifier">set_image</span>(<span class="ruby-ivar">@pause</span>)
 
                                 <span class="ruby-ivar">@b1</span>.<span class="ruby-identifier">cliquable</span> = <span class="ruby-keyword">true</span>
@@ -478,7 +478,7 @@
 
                 <span class="ruby-ivar">@frame</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-ivar">@box</span>,<span class="ruby-value">0</span>,<span class="ruby-value">1</span>,<span class="ruby-value">0</span>,<span class="ruby-value">1</span>)
 
-                <span class="ruby-ivar">@pix</span> = (<span class="ruby-constant">GdkPixbuf</span><span class="ruby-operator">::</span><span class="ruby-constant">Pixbuf</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span><span class="ruby-operator">=&gt;</span><span class="ruby-string">&quot;./Assets/ImgGameA.png&quot;</span>,<span class="ruby-value">:width</span><span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">monApp</span>.<span class="ruby-identifier">width</span>, <span class="ruby-value">:height</span><span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">monApp</span>.<span class="ruby-identifier">height</span>))
+                <span class="ruby-ivar">@pix</span> = (<span class="ruby-constant">GdkPixbuf</span><span class="ruby-operator">::</span><span class="ruby-constant">Pixbuf</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span><span class="ruby-operator">=&gt;</span><span class="ruby-string">&quot;./Assets/Menu/ImgGameA.png&quot;</span>,<span class="ruby-value">:width</span><span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">monApp</span>.<span class="ruby-identifier">width</span>, <span class="ruby-value">:height</span><span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">monApp</span>.<span class="ruby-identifier">height</span>))
         <span class="ruby-ivar">@bg</span>=(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:pixbuf</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-ivar">@pix</span>))
         <span class="ruby-ivar">@frame</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-ivar">@bg</span>,<span class="ruby-value">0</span>,<span class="ruby-value">1</span>,<span class="ruby-value">0</span>,<span class="ruby-value">1</span>)
 

@@ -47,9 +47,9 @@ class FPlayA < Page
    		end
 
         tabGrille = unJoueur.commencerAventure(@saison, nbGrille)
-        puts tabGrille.at(0)
-        puts tabGrille.at(1)
-        puts tabGrille.at(2)
+        #puts tabGrille.at(0)
+        #puts tabGrille.at(1)
+        #puts tabGrille.at(2)
 
         @nbFeuilles = unJoueur.creditAide
 

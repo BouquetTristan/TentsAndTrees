@@ -363,7 +363,6 @@ class FPlay < Page
 				@boutonGrille.each{|k|
 					k.each{|l|
 						l.clic=false
-						l.bouton.set_opacity(0.0)
 					}
 				}
 				@pause=(Gtk::Image.new(:file =>"./Assets/Play.png"))
@@ -372,13 +371,17 @@ class FPlay < Page
 				@b1.cliquable = false
 				@b2.cliquable = false
 				@b3.cliquable = false
+
+
+				@grille.each{|k|
+						k.set_opacity(0.0)
+				}
 				
 				
 			else
 				@boutonGrille.each{|k|
 					k.each{|l|
 						l.clic=true
-						l.bouton.set_opacity(1.0)
 					}
 				}
 				@pause=(Gtk::Image.new(:file =>"./Assets/pause.png"))
@@ -387,6 +390,11 @@ class FPlay < Page
 				@b1.cliquable = true
 				@b2.cliquable = true
 				@b3.cliquable = true
+
+
+				@grille.each{|k|
+						k.set_opacity(1.0)
+				}
 
 			end
         }

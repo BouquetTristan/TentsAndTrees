@@ -54,6 +54,9 @@ class BoutonSaison
         		@bouton.set_image(@img)
 			when "Bonus"
 				@numSaison = 4
+				@pix = (GdkPixbuf::Pixbuf.new(:file=>"./Assets/Bonus.png",:width=> monApp.width/2, :height=> monApp.height))
+        		@img=(Gtk::Image.new(:pixbuf => @pix))
+        		@bouton.set_image(@img)
    		end
    		
 

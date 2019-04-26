@@ -42,10 +42,15 @@ class FAventure < Page
     	@level.layout = :spread
 
 		@print = BoutonSaison.new(monApp, "Printemps", unJoueur)
+		@print.bouton.set_relief(:none)
 		@ete = BoutonSaison.new(monApp, "Ete", unJoueur)
+		@ete.bouton.set_relief(:none)
 		@autom = BoutonSaison.new(monApp, "Automne", unJoueur)
+		@autom.bouton.set_relief(:none)
 		@hiver = BoutonSaison.new(monApp, "Hiver", unJoueur)
+		@hiver.bouton.set_relief(:none)
 		@bonus = BoutonSaison.new(monApp, "Bonus",unJoueur)
+		@bonus.bouton.set_relief(:none)
 
 		@print.actualiserImg(monApp)
 		@ete.actualiserImg(monApp)

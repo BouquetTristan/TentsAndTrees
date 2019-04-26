@@ -242,14 +242,16 @@
           
           <p>Change l&#39;image du bouton en fonction de l&#39;état</p>
 
-<pre>@param etat          //un chiffre représentant l&#39;état d&#39;une case
+<pre>@param monApp                //l&#39;application
+@param etatC                 //un chiffre représentant l&#39;état d&#39;une case
+@param chrono                //le chronomètre
 @return void         //ne renvoie rien</pre>
           
           
 
           
           <div class="method-source-code" id="chgEtat-source">
-            <pre><span class="ruby-comment"># File Classes/boutonNbTentesColonne.rb, line 37</span>
+            <pre><span class="ruby-comment"># File Classes/boutonNbTentesColonne.rb, line 39</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">chgEtat</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-identifier">etatC</span>, <span class="ruby-identifier">chrono</span>)
         <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">etatC</span>
                 <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-ivar">@grilleDeJeu</span>.<span class="ruby-identifier">taille</span><span class="ruby-value">-1</span>)

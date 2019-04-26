@@ -32,7 +32,9 @@ class BoutonNbTentesLigne < BoutonNbTentes
 	end
 
 	#Change l'image du bouton en fonction de l'état
-	# @param etat 		//un chiffre représentant l'état d'une case
+	# @param monApp		//l'application
+	# @param etatC 		//un chiffre représentant l'état d'une case
+	# @param chrono		//le chronomètre
 	# @return void		//ne renvoie rien
 	def chgEtat(monApp, etatC, chrono)
 		if !etatC

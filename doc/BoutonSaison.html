@@ -150,8 +150,8 @@
         <h1 id="attribute-i-cliquable-label-Variable+d-27instance">Variable d&#39;instance<span><a href="#attribute-i-cliquable-label-Variable+d-27instance">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
 <pre>@bouton                      : Le bouton
-@coordI, @coordJ             : Coordonée du bouton
-@img                         : mémorise l&#39;image associé au bouon
+@coordI, @coordJ             : Coordonées du bouton
+@img                         : mémorise l&#39;image associé au bouton
 @numSaison                   : enregistre le numéro relatif à la saison
 @@prix                       : prix de l&#39;aide en feuille</pre>
         
@@ -228,7 +228,7 @@
                         <span class="ruby-ivar">@img</span>=(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:pixbuf</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-ivar">@pix</span>))
                         <span class="ruby-ivar">@bouton</span>.<span class="ruby-identifier">set_image</span>(<span class="ruby-ivar">@img</span>)
                 <span class="ruby-keyword">end</span>
-                
+
 
         <span class="ruby-ivar">@cliquable</span> = <span class="ruby-ivar">@joueur</span>.<span class="ruby-identifier">niveauDeverouille</span>(<span class="ruby-ivar">@numSaison</span>)
         <span class="ruby-ivar">@bonusVisible</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">debloquerBonus</span>()
@@ -324,7 +324,7 @@
                         <span class="ruby-ivar">@pix</span> = (<span class="ruby-constant">GdkPixbuf</span><span class="ruby-operator">::</span><span class="ruby-constant">Pixbuf</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span><span class="ruby-operator">=&gt;</span><span class="ruby-node">&quot;./Assets/Vignette#{@saison}.png&quot;</span>,<span class="ruby-value">:width</span><span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">monApp</span>.<span class="ruby-identifier">width</span><span class="ruby-operator">/</span><span class="ruby-value">5</span>, <span class="ruby-value">:height</span><span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">monApp</span>.<span class="ruby-identifier">height</span><span class="ruby-operator">/</span><span class="ruby-value">5</span>))
                 <span class="ruby-ivar">@img</span>=(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:pixbuf</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-ivar">@pix</span>))
                 <span class="ruby-ivar">@bouton</span>.<span class="ruby-identifier">set_image</span>(<span class="ruby-ivar">@img</span>)
-                <span class="ruby-keyword">end</span>      
+                <span class="ruby-keyword">end</span>
         <span class="ruby-keyword">end</span></pre>
           </div>
           

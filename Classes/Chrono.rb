@@ -1,6 +1,6 @@
 require 'gtk3'
 
-#====== La classe chrono représente un chronomètre conçu pour être utilisé en thread ( en parallèle du programme princpal pour chronomètrer une partie)
+#====== La classe chrono représente un chronomètre conçu pour être utilisé en thread ( en parallèle du programme princpal pour chronométrer une partie)
 
 class Chrono
 

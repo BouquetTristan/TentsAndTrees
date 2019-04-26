@@ -118,7 +118,7 @@ class Grille
 
 
 
-	#Enregistre la grille dans un fichier en transformant les informations concernant l'état des case en char
+	#Enregistre la grille dans un fichier en transformant les informations concernant l'état des cases en char
 	# @param nomJoueur	//Le nom du joueur
 	# @param chrono		//le temps du chrono en cours
 	# @return void		//ne renvoie rien
@@ -209,7 +209,7 @@ class Grille
   end
 
 
-  #Parcours horizonta par case de la grille
+  #Parcours horizontal par case de la grille
   # @param void		//ne prend aucun paramètre
   # @return void	//ne renvoie rien
   def parcourirH ()
@@ -251,7 +251,7 @@ class Grille
   end
 
 
-	#Observateur pour savoir si l'utilisateur a gagner
+	#Observateur pour savoir si l'utilisateur a gagné
 	# @param void		//ne prend aucun paramètre
 	# @return true		//si l'utilisateur à gagné
 	# @return false	//si l'utilisateur n'a pas gagné

@@ -1,12 +1,12 @@
 require 'gtk3'
 
-#====== La classe BoutonGrilleA caractéise la grille de jeu représenter à l'aide de bouton en guise de case sur l'interface
+#====== La classe BoutonGrilleA caractérise la grille de jeu représentée à l'aide de boutons en guise de cases sur l'interface
 
 class BoutonGrille
 
 	#=Variable d'instance
 	# @bouton		: Le bouton
-	# @coordI, @coordJ	: Coordonnée du bouton
+	# @coordI, @coordJ	: Coordonnées du bouton
 
 	attr_reader :coordJ
 	attr_reader :coordI
@@ -37,7 +37,7 @@ class BoutonGrille
 		@coordJ = j
 	end
 
-	#Attribut une valeur au bouton (label)
+	#Attribue une valeur au bouton (label)
 	# @param valeur		//une valeur à afficher
 	# @return void		//ne renvoie rien
 	def mBouton(valeur)
@@ -76,7 +76,7 @@ class BoutonGrille
 		end
 	end
 
-	#Va checher l'image modifier avec un encadré rouge pour indiquer une erreur 
+	#Va chercher l'image modifiée avec un encadré rouge pour indiquer une erreur 
 	# @param etat 		//un chiffre représentant l'état d'une case
 	# @return void		//ne renvoie rien
 	def indiquerAide(monApp, etat)

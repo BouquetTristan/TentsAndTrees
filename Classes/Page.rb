@@ -9,7 +9,7 @@ class Page < Gtk::Box
 
   #Initialise la page
 	# @param monApp		//l'application
-	# @param sens    //orientation de le page (vertical/horizontal)
+	# @param sens     //orientation de la page (vertical/horizontal)
   # @param unHeader		//le titre de la page
   # @param anciennePage		//Le lien de la dernière page
   # @param unJoueur		//le joueur concerné

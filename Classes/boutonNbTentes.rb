@@ -1,12 +1,12 @@
 require 'gtk3'
 
-#====== La classe BoutonNbTentes représentes les bouton sur le côté de la grille de jeu pour remplire une ligne/colonne d'herbe
+#====== La classe BoutonNbTentes représente les boutons sur le côté de la grille de jeu pour remplir une ligne/colonne d'herbe
 
 class BoutonNbTentes
 
 	#=Variable d'instance
 	# @bouton		: Le bouton
-	# @coordI, @coordJ	: Coordonnée du bouton
+	# @coordI, @coordJ	: Coordonnées du bouton
 
 
 	attr_accessor :clic

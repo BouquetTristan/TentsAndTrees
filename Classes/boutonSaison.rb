@@ -8,8 +8,8 @@ class BoutonSaison
 
 	#=Variable d'instance
 	# @bouton			: Le bouton
-	# @coordI, @coordJ		: Coordonée du bouton
-	# @img				: mémorise l'image associé au bouon
+	# @coordI, @coordJ		: Coordonées du bouton
+	# @img				: mémorise l'image associé au bouton
 	# @numSaison			: enregistre le numéro relatif à la saison
 	# @@prix 			: prix de l'aide en feuille
 
@@ -58,7 +58,7 @@ class BoutonSaison
         		@img=(Gtk::Image.new(:pixbuf => @pix))
         		@bouton.set_image(@img)
    		end
-   		
+
 
         @cliquable = @joueur.niveauDeverouille(@numSaison)
         @bonusVisible = self.debloquerBonus()
@@ -100,7 +100,7 @@ class BoutonSaison
 			@pix = (GdkPixbuf::Pixbuf.new(:file=>"./Assets/Vignettes/Vignette#{@saison}.png",:width=> monApp.width/5, :height=> monApp.height/5))
         	@img=(Gtk::Image.new(:pixbuf => @pix))
         	@bouton.set_image(@img)
-		end      
+		end
 	end
 
 	#Lance le mode aventure de la saison concerné

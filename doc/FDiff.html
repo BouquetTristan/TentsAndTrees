@@ -215,12 +215,16 @@
                 <span class="ruby-ivar">@window</span>.<span class="ruby-identifier">show_all</span>
         }
         <span class="ruby-ivar">@charger</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {
-                <span class="ruby-keyword">self</span>.<span class="ruby-identifier">supprimeMoi</span>
                 <span class="ruby-identifier">grilleDeJeu</span> = <span class="ruby-constant">Grille</span>.<span class="ruby-identifier">charger</span>(<span class="ruby-identifier">unJoueur</span>.<span class="ruby-identifier">pseudo</span>)
-                <span class="ruby-identifier">diff</span> = <span class="ruby-identifier">grilleDeJeu</span>.<span class="ruby-identifier">difficulte</span>
-                <span class="ruby-identifier">suivant</span>=<span class="ruby-constant">FPlay</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-identifier">header</span>, <span class="ruby-keyword">self</span>, <span class="ruby-identifier">unJoueur</span>, <span class="ruby-identifier">diff</span>, <span class="ruby-identifier">grilleDeJeu</span> ,<span class="ruby-identifier">comp</span>)
-                <span class="ruby-identifier">suivant</span>.<span class="ruby-identifier">ajouteMoi</span>
-                <span class="ruby-ivar">@window</span>.<span class="ruby-identifier">show_all</span>
+                
+                <span class="ruby-keyword">if</span> (<span class="ruby-identifier">grilleDeJeu</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>)
+
+                        <span class="ruby-identifier">diff</span> = <span class="ruby-identifier">grilleDeJeu</span>.<span class="ruby-identifier">difficulte</span>
+                        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">supprimeMoi</span>
+                        <span class="ruby-identifier">suivant</span>=<span class="ruby-constant">FPlay</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-identifier">header</span>, <span class="ruby-keyword">self</span>, <span class="ruby-identifier">unJoueur</span>, <span class="ruby-identifier">diff</span>, <span class="ruby-identifier">grilleDeJeu</span> ,<span class="ruby-identifier">comp</span>)
+                        <span class="ruby-identifier">suivant</span>.<span class="ruby-identifier">ajouteMoi</span>
+                        <span class="ruby-ivar">@window</span>.<span class="ruby-identifier">show_all</span>
+                <span class="ruby-keyword">end</span>
         }
         <span class="ruby-ivar">@frame</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-ivar">@boutons</span>,<span class="ruby-value">0</span>,<span class="ruby-value">1</span>,<span class="ruby-value">0</span>,<span class="ruby-value">1</span>)
 

@@ -100,12 +100,16 @@ class FDiff < Page
 			@window.show_all
 		}
 		@charger.signal_connect('clicked') {
-			self.supprimeMoi
 			grilleDeJeu = Grille.charger(unJoueur.pseudo)
-			diff = grilleDeJeu.difficulte
-			suivant=FPlay.new(monApp, header, self, unJoueur, diff, grilleDeJeu ,comp)
-			suivant.ajouteMoi
-			@window.show_all
+			
+			if (grilleDeJeu != nil)
+
+				diff = grilleDeJeu.difficulte
+				self.supprimeMoi
+				suivant=FPlay.new(monApp, header, self, unJoueur, diff, grilleDeJeu ,comp)
+				suivant.ajouteMoi
+				@window.show_all
+			end
 		}
 		@frame.attach(@boutons,0,1,0,1)
 

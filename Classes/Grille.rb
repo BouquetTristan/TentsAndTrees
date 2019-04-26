@@ -22,6 +22,7 @@ class Grille
 	attr_reader :grilleF
 	attr_reader :nbTentesLigne
 	attr_reader :nbTentesColonne
+	attr_reader :chrono
 
 	attr_writer :grilleJ
 
@@ -31,8 +32,8 @@ class Grille
 	# @param diff		//difficulté de grille
 	# @param num		//numéro de grille
 	# @return void		//ne renvoie rien
-	def Grille.creer(diff, num)
-		new(diff, num)
+	def Grille.creer(diff, num, temps)
+		new(diff, num, temps)
 	end
 
 
@@ -41,7 +42,7 @@ class Grille
 	# @param diff		//difficulté de grille
 	# @return void		//ne renvoie rien
 	def Grille.creerD(diff)
-		Grille.creer(diff, rand(diff.include?("Difficile") ? 300:400))
+		Grille.creer(diff, rand(diff.include?("Difficile") ? 300:400), 0)
 	end
 
 	private_class_method:new
@@ -52,7 +53,7 @@ class Grille
 	# @param diff		//difficulté de grille
 	# @param num		//numéro de grille
 	# @return void		//ne renvoie rien
-  	def initialize (diff, num)
+  	def initialize (diff, num, temps)
     	@difficulte, @numero = diff, num
 
 		#Récupération de la grille à partir du fichier
@@ -94,6 +95,7 @@ class Grille
 			@grilleJ<<ligneCasesJ
 			i += 1
 	 	end
+	 	@chrono = temps
 	end
 
 
@@ -118,11 +120,10 @@ class Grille
 
 	#Enregistre la grille dans un fichier en transformant les informations concernant l'état des case en char
 	# @param nomJoueur	//Le nom du joueur
-	# @param mode		//Le mode de jeu dans lequel la grille est jouée
 	# @return void		//ne renvoie rien
-  	def enregistrerFichier(nomJoueur, mode)
+  	def enregistrerFichier(nomJoueur, chrono)
     		ligne = []
-		ligne<<@numero<<@difficulte<<nomJoueur
+		ligne<<@numero<<@difficulte<<chrono<<nomJoueur
 
 		for i in 0..(@taille-1)
 			ligneGrille = ""
@@ -147,7 +148,7 @@ class Grille
 
 		ligne = ligne.join(';')
 
-		fichier =File.open("./Ressources/Sauvegarde#{mode}.txt", File::CREAT|File::RDWR)
+		fichier =File.open("./Ressources/Sauvegarde.txt", File::CREAT|File::RDWR)
 		fichier.each_line do |l|
 			if l.include?(nomJoueur) then
 				break
@@ -162,14 +163,13 @@ class Grille
 
   #Charge une grille sauvegardée lors d'une partie
   # @param nomJoueur	//Le nom du joueur
-  # @param mode		//Le mode de jeu dans lequel la grille est jouée
   # @return grille	//retourn la grille voulue si elle existe
-  def Grille.charger (nomJoueur, mode)
+  def Grille.charger (nomJoueur)
 
 	lFich = ""
 	trouve = false
 
-	fichier =File.open("./Ressources/Sauvegarde#{mode}.txt", "r")
+	fichier =File.open("./Ressources/Sauvegarde.txt", "r")
 		fichier.each_line do |l|
 			if l.include?(nomJoueur) then
 				lFich = l
@@ -184,9 +184,10 @@ class Grille
 	  	grilleFich = lFich.split(';')
 		num = grilleFich.shift
 		diff = grilleFich.shift
+		temps = grilleFich.shift.to_i
 		grilleFich.shift
 
-		grille = Grille.creer(diff, num.to_i)
+		grille = Grille.creer(diff, num.to_i, temps)
 	  	grille.grilleJ = []
 
 	  	i = 0

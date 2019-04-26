@@ -25,15 +25,15 @@ class BoutonNbTentesLigne < BoutonNbTentes
 	# @param chemin		//Le chemin d'accès du dossier contenant les différentes images
 	# @param unJoueur		//Le joueur concerné
 	# @return void			//ne renvoie rien
-	def initialize(uneGrille, grilleInterface, indice, chemin, unJoueur)
-		super(uneGrille, grilleInterface, indice, chemin, unJoueur)
+	def initialize(uneGrille, grilleInterface, indice, chemin, unJoueur, classique)
+		super(uneGrille, grilleInterface, indice, chemin, unJoueur, classique)
 #		puts "@indice interne #{@indice}"
 	end
 
 	#Change l'image du bouton en fonction de l'état
 	# @param etat 		//un chiffre représentant l'état d'une case
 	# @return void		//ne renvoie rien
-	def chgEtat(monApp, etatC)
+	def chgEtat(monApp, etatC, chrono)
 		if !etatC
 			for i in (0..@grilleDeJeu.taille-1)
 				if (@grilleDeJeu.grilleJ[i][@indice].etat != 1 && @grilleDeJeu.grilleJ[i][@indice].etat != 2)
@@ -41,7 +41,9 @@ class BoutonNbTentesLigne < BoutonNbTentes
 					@boutonGrille[i][@indice].bouton.set_image(Gtk::Image.new(:pixbuf => @pix))
 					focus_hadjustment=(:start)
 					@grilleDeJeu.grilleJ[i][@indice].etat = 3
-					@grilleDeJeu.enregistrerFichier(@joueur.pseudo, nil)
+					if(@classique == true)
+						@grilleDeJeu.enregistrerFichier(@joueur.pseudo, chrono)
+					end
 				end
 			end
 		end

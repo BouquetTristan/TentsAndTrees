@@ -47,7 +47,7 @@ class FPlay < Page
 				@gHelp.add(@boxFeuilles)
 		end
 
-		@chrono = Chrono.new
+		@chrono = Chrono.new(grilleDeJeu.chrono)
 
 
 		thr=Thread.new do
@@ -78,7 +78,7 @@ class FPlay < Page
 		tabBout=[]
 
 		for j in (0..taille-1)
-			tabBout[j] = BoutonNbTentesColonne.new(grilleDeJeu, @boutonGrille, j, "./Assets/Printemps", unJoueur)
+			tabBout[j] = BoutonNbTentesColonne.new(grilleDeJeu, @boutonGrille, j, "./Assets/Printemps", unJoueur, (!compet))
 			tabBout[j].bouton.set_label(grilleDeJeu.nbTentesLigne[j].to_s)
 			@grille.attach(tabBout[j].bouton, j+1,j+2, 0,1)
 
@@ -86,7 +86,7 @@ class FPlay < Page
 
 		tabBout.each { |l|
 			l.bouton.signal_connect("clicked"){
-				l.chgEtat(monApp, @chrono.pause)
+				l.chgEtat(monApp, @chrono.pause, @chrono.chrono)
 				if (grilleDeJeu.observateur())
 					@score = Score.creer(difficulte, @nbAidesUtilises)
 					if(compet)
@@ -115,14 +115,14 @@ class FPlay < Page
 		}
 
 		for i in (0..taille-1)
-			tabBout[i] = BoutonNbTentesLigne.new(grilleDeJeu, @boutonGrille, i, "./Assets/Printemps", unJoueur)
+			tabBout[i] = BoutonNbTentesLigne.new(grilleDeJeu, @boutonGrille, i, "./Assets/Printemps", unJoueur, (!compet))
 			tabBout[i].bouton.set_label(grilleDeJeu.nbTentesColonne[i].to_s)
 			@grille.attach(tabBout[i].bouton,0,1, i+1,i+2)
 		end
 
 		tabBout.each { |l|
 			l.bouton.signal_connect("clicked"){
-				l.chgEtat(monApp, @chrono.pause)
+				l.chgEtat(monApp, @chrono.pause, @chrono.chrono)
 				if (grilleDeJeu.observateur())
 					@score = Score.creer(difficulte, @nbAidesUtilises)
 					if(compet)
@@ -185,7 +185,9 @@ class FPlay < Page
 						end
 			        	grilleDeJeu.grilleJ[l.coordI][l.coordJ].jouerCase()
 						@boutonGrille[l.coordI][l.coordJ].chgEtat(monApp, grilleDeJeu.grilleJ[l.coordI][l.coordJ].etat)
-						grilleDeJeu.enregistrerFichier(unJoueur.pseudo, nil)
+						if(compet == false)
+							grilleDeJeu.enregistrerFichier(unJoueur.pseudo, @chrono.chrono)
+						end
 
 						if (grilleDeJeu.observateur())
 							@score = Score.creer(difficulte, @nbAidesUtilises)
@@ -220,6 +222,9 @@ class FPlay < Page
 		@header.btnMenu.signal_connect('clicked') {
 			# @chrono.cFin
 			# @chrono.cRaz
+			if(compet == false)
+				grilleDeJeu.enregistrerFichier(unJoueur.pseudo, @chrono.chrono)
+			end
 	        self.supprimeMoi
 	        menu = FMenu.new(monApp, @header, self, unJoueur)
 	        menu.ajouteMoi

@@ -91,7 +91,7 @@ class FPlayA < Page
 
         @box = Gtk::ButtonBox.new(:horizontal)
 
-	   grilleDeJeu = Grille.creer(tabGrille.at(1), tabGrille.at(2))
+	   grilleDeJeu = Grille.creer(tabGrille.at(1), tabGrille.at(2), @chrono.chrono)
 
 	   taille = grilleDeJeu.taille()
 
@@ -106,7 +106,7 @@ class FPlayA < Page
 		@tabBout=[]
 
 		for j in (0..taille-1)
-			@tabBout[j] = BoutonNbTentesColonne.new(grilleDeJeu, @boutonGrille, j, "./Assets/#{uneSaison}", unJoueur)
+			@tabBout[j] = BoutonNbTentesColonne.new(grilleDeJeu, @boutonGrille, j, "./Assets/#{uneSaison}", unJoueur, false)
 			@tabBout[j].bouton.set_label(grilleDeJeu.nbTentesLigne[j].to_s)
 			@grille.attach(@tabBout[j].bouton, j+1,j+2, 0,1)
 
@@ -114,7 +114,7 @@ class FPlayA < Page
 
 		@tabBout.each { |l|
 			l.bouton.signal_connect("clicked"){
-				l.chgEtat(monApp, @chrono.pause)
+				l.chgEtat(monApp, @chrono.pause, @chrono.chrono)
 				if (grilleDeJeu.observateur())
 					unJoueur.finirLaPartie(@saison, tabGrille.at(0))
 					unJoueur.actualiser
@@ -130,14 +130,14 @@ class FPlayA < Page
 		}
 
 		for i in (0..taille-1)
-			@tabBout[i] = BoutonNbTentesLigne.new(grilleDeJeu, @boutonGrille, i, "./Assets/#{uneSaison}", unJoueur)
+			@tabBout[i] = BoutonNbTentesLigne.new(grilleDeJeu, @boutonGrille, i, "./Assets/#{uneSaison}", unJoueur, false)
 			@tabBout[i].bouton.set_label(grilleDeJeu.nbTentesColonne[i].to_s)
 			@grille.attach(@tabBout[i].bouton,0,1, i+1,i+2)
 		end
 
 		@tabBout.each { |l|
 			l.bouton.signal_connect("clicked"){
-				l.chgEtat(monApp, @chrono.pause)
+				l.chgEtat(monApp, @chrono.pause, @chrono.chrono)
 				if (grilleDeJeu.observateur())
 					unJoueur.finirLaPartie(@saison, tabGrille.at(0))
 					unJoueur.actualiser
@@ -187,7 +187,6 @@ class FPlayA < Page
 						end
 			        	grilleDeJeu.grilleJ[l.coordI][l.coordJ].jouerCase()
 						@boutonGrille[l.coordI][l.coordJ].chgEtat(monApp, grilleDeJeu.grilleJ[l.coordI][l.coordJ].etat)
-						grilleDeJeu.enregistrerFichier(unJoueur.pseudo, nil)
 
 						if (grilleDeJeu.observateur())
 							unJoueur.finirLaPartie(@saison, tabGrille.at(0))

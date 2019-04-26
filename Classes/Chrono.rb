@@ -22,10 +22,11 @@ class Chrono
 	#initialise les variables à 0 et a false
 	# @param void		//ne prend aucun paramètre
 	# @return void		//ne renvoie rien
-	def initialize()
+	def initialize(base)
 		@start=false
 		@pause=false
-		@chrono=0
+		@chrono=base
+		@base = base
 		@fin=false
 		@lChrono=Gtk::Label.new("")
 	end
@@ -38,7 +39,7 @@ class Chrono
 
 			while @fin != true
 						if @start==false
-							@chrono=0
+							@chrono=@base
 							@start=true
 							@lChrono.set_markup(("<span foreground=\"#FFFFFF\" font-desc=\"Courier New bold 20\">"+@chrono.to_s+"</span>\n"))
 						end

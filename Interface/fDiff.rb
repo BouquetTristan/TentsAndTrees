@@ -30,8 +30,10 @@ class FDiff < Page
 
 		@frame = Gtk::Table.new(1,1,false)
 
-		@butons = Gtk::ButtonBox.new(:horizontal)
-    	@butons.layout = :spread
+		# @boutons = Gtk::ButtonBox.new(:vertical)
+
+		@boutons = Gtk::ButtonBox.new(:horizontal)
+    	@boutons.layout = :spread
 
 		@easy = Gtk::Button.new(:label => 'Facile', :use_underline => nil, :stock_id => nil)
 		@easy.set_relief(:none)
@@ -39,11 +41,20 @@ class FDiff < Page
 		@medium.set_relief(:none)
 		@hard = Gtk::Button.new(:label => 'Difficile', :use_underline => nil, :stock_id => nil)
 		@hard.set_relief(:none)
+		@charger = Gtk::Button.new(:label => 'Charger la dernière partie', :use_underline => nil, :stock_id => nil)
+		@charger.set_relief(:none)
 
 
-		@butons.add(@easy, :expand => true, :fill => false)
-		@butons.add(@medium, :expand => true, :fill => false)
-		@butons.add(@hard, :expand => true, :fill => false)
+		@boutons.add(@easy, :expand => true, :fill => false)
+		@boutons.add(@medium, :expand => true, :fill => false)
+		@boutons.add(@hard, :expand => true, :fill => false)
+		@boutons.spacing = 100
+
+		# @boutons.add(@boutons, :expand => true, :fill => false)
+
+		if (comp == false)
+			@boutons.add(@charger, :expand => true, :fill => false)
+		end
 
 		@header.btnMenu.signal_connect('clicked') {
 	        self.supprimeMoi
@@ -88,7 +99,15 @@ class FDiff < Page
 			suivant.ajouteMoi
 			@window.show_all
 		}
-		@frame.attach(@butons,0,1,0,1)
+		@charger.signal_connect('clicked') {
+			self.supprimeMoi
+			grilleDeJeu = Grille.charger(unJoueur.pseudo)
+			diff = grilleDeJeu.difficulte
+			suivant=FPlay.new(monApp, header, self, unJoueur, diff, grilleDeJeu ,comp)
+			suivant.ajouteMoi
+			@window.show_all
+		}
+		@frame.attach(@boutons,0,1,0,1)
 
 		@pix = (GdkPixbuf::Pixbuf.new(:file=>"./Assets/ImgGame.jpg",:width=> monApp.width, :height=> monApp.height))
         @bg=(Gtk::Image.new(:pixbuf => @pix))

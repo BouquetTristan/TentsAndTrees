@@ -20,6 +20,7 @@ class BoutonNbTentes
 	# @param indice		//indice ligne/colonne
 	# @param chemin		//Le chemin d'accès du dossier contenant les différentes images
 	# @param unJoueur		//Le joueur concerné
+	# @param classique		//booléen mode classique ou non
 	# @return void			//ne renvoie rien
 	def initialize(uneGrille, grilleInterface, indice, chemin, unJoueur, classique)
 		@bouton = Gtk::Button.new

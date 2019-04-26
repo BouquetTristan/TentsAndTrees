@@ -138,71 +138,71 @@
           
           <div class="method-source-code" id="new-source">
             <pre><span class="ruby-comment"># File Interface/fModifierCompte.rb, line 14</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-identifier">header</span>, <span class="ruby-identifier">anciennePage</span>, <span class="ruby-identifier">unJoueur</span>)
+        <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-identifier">header</span>, <span class="ruby-identifier">anciennePage</span>, <span class="ruby-identifier">unJoueur</span>)
 
-        <span class="ruby-keyword">super</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-value">:vertical</span>, <span class="ruby-identifier">header</span>,  <span class="ruby-identifier">anciennePage</span>, <span class="ruby-identifier">unJoueur</span>)
+                <span class="ruby-keyword">super</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-value">:vertical</span>, <span class="ruby-identifier">header</span>,  <span class="ruby-identifier">anciennePage</span>, <span class="ruby-identifier">unJoueur</span>)
 
-        <span class="ruby-ivar">@frame</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Table</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">1</span>,<span class="ruby-value">1</span>,<span class="ruby-keyword">false</span>)
+                <span class="ruby-ivar">@frame</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Table</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">1</span>,<span class="ruby-value">1</span>,<span class="ruby-keyword">false</span>)
 
-        <span class="ruby-ivar">@gModifC</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">ButtonBox</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:vertical</span>)
-  <span class="ruby-ivar">@gModifC</span>.<span class="ruby-identifier">spacing</span> = <span class="ruby-value">30</span>
+                <span class="ruby-ivar">@gModifC</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">ButtonBox</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:vertical</span>)
+          <span class="ruby-ivar">@gModifC</span>.<span class="ruby-identifier">spacing</span> = <span class="ruby-value">30</span>
 
-  <span class="ruby-ivar">@pseudo</span> = <span class="ruby-constant">TexteEntree</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-string">&#39;Pseudo : &#39;</span>, <span class="ruby-keyword">false</span>)
-  <span class="ruby-ivar">@mdp</span> = <span class="ruby-constant">TexteEntree</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-string">&#39;Mot de passe : &#39;</span>, <span class="ruby-keyword">true</span>)
-  <span class="ruby-ivar">@mdp</span>.<span class="ruby-identifier">entree</span>.<span class="ruby-identifier">visibility</span> = <span class="ruby-keyword">false</span>
-  <span class="ruby-ivar">@valider</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:label</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&#39;Valider les modifications&#39;</span>, <span class="ruby-value">:use_underline</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">nil</span>, <span class="ruby-value">:stock_id</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">nil</span>)
-  <span class="ruby-ivar">@valider</span>.<span class="ruby-identifier">set_relief</span>(<span class="ruby-value">:none</span>)
+          <span class="ruby-ivar">@pseudo</span> = <span class="ruby-constant">TexteEntree</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-string">&#39;Pseudo : &#39;</span>, <span class="ruby-keyword">false</span>)
+          <span class="ruby-ivar">@mdp</span> = <span class="ruby-constant">TexteEntree</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-string">&#39;Mot de passe : &#39;</span>, <span class="ruby-keyword">true</span>)
+          <span class="ruby-ivar">@mdp</span>.<span class="ruby-identifier">entree</span>.<span class="ruby-identifier">visibility</span> = <span class="ruby-keyword">false</span>
+          <span class="ruby-ivar">@valider</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:label</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&#39;Valider les modifications&#39;</span>, <span class="ruby-value">:use_underline</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">nil</span>, <span class="ruby-value">:stock_id</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">nil</span>)
+          <span class="ruby-ivar">@valider</span>.<span class="ruby-identifier">set_relief</span>(<span class="ruby-value">:none</span>)
 
-  <span class="ruby-ivar">@gModifC</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@pseudo</span>.<span class="ruby-identifier">gTexteEntree</span>, <span class="ruby-value">:expand</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:fill</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">false</span>)
-  <span class="ruby-ivar">@gModifC</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@mdp</span>.<span class="ruby-identifier">gTexteEntree</span>, <span class="ruby-value">:expand</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:fill</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">false</span>)
-  <span class="ruby-ivar">@gModifC</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@valider</span>, <span class="ruby-value">:expand</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:fill</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">false</span>)
-
-
-
-        <span class="ruby-ivar">@valider</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {
+          <span class="ruby-ivar">@gModifC</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@pseudo</span>.<span class="ruby-identifier">gTexteEntree</span>, <span class="ruby-value">:expand</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:fill</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">false</span>)
+          <span class="ruby-ivar">@gModifC</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@mdp</span>.<span class="ruby-identifier">gTexteEntree</span>, <span class="ruby-value">:expand</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:fill</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">false</span>)
+          <span class="ruby-ivar">@gModifC</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@valider</span>, <span class="ruby-value">:expand</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:fill</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">false</span>)
 
 
 
-                <span class="ruby-identifier">puts</span>(<span class="ruby-string">&quot;OK nouveau joueur\n&quot;</span>)
-                <span class="ruby-keyword">if</span> (<span class="ruby-ivar">@pseudo</span>.<span class="ruby-identifier">entree</span>.<span class="ruby-identifier">text</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;&#39;</span>)
-                        <span class="ruby-keyword">if</span> (<span class="ruby-ivar">@mdp</span>.<span class="ruby-identifier">entree</span>.<span class="ruby-identifier">text</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;&#39;</span>)
-                                <span class="ruby-ivar">@mdp</span>.<span class="ruby-identifier">erreur</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-string">&quot;&lt;span foreground=\&quot;#EF2929\&quot; font-desc=\&quot;Courier New bold 10\&quot;&gt;Erreur entrer un pseudo et un mot de passe&lt;/span&gt;\n&quot;</span>)
-                        <span class="ruby-keyword">elsif</span> (<span class="ruby-identifier">unJoueur</span>.<span class="ruby-identifier">nouveauMotDePasse</span>(<span class="ruby-ivar">@mdp</span>.<span class="ruby-identifier">entree</span>.<span class="ruby-identifier">text</span>) <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span>)
-                                <span class="ruby-ivar">@mdp</span>.<span class="ruby-identifier">erreur</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-string">&quot;&lt;span foreground=\&quot;#EF2929\&quot; font-desc=\&quot;Courier New bold 10\&quot;&gt;Erreur entrer un mot de passe différent&lt;/span&gt;\n&quot;</span>)
+                <span class="ruby-ivar">@valider</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {
+
+
+
+<span class="ruby-comment">#                       puts(&quot;OK nouveau joueur\n&quot;)</span>
+                        <span class="ruby-keyword">if</span> (<span class="ruby-ivar">@pseudo</span>.<span class="ruby-identifier">entree</span>.<span class="ruby-identifier">text</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;&#39;</span>)
+                                <span class="ruby-keyword">if</span> (<span class="ruby-ivar">@mdp</span>.<span class="ruby-identifier">entree</span>.<span class="ruby-identifier">text</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;&#39;</span>)
+                                        <span class="ruby-ivar">@mdp</span>.<span class="ruby-identifier">erreur</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-string">&quot;&lt;span foreground=\&quot;#EF2929\&quot; font-desc=\&quot;Courier New bold 10\&quot;&gt;Erreur entrer un pseudo et un mot de passe&lt;/span&gt;\n&quot;</span>)
+                                <span class="ruby-keyword">elsif</span> (<span class="ruby-identifier">unJoueur</span>.<span class="ruby-identifier">nouveauMotDePasse</span>(<span class="ruby-ivar">@mdp</span>.<span class="ruby-identifier">entree</span>.<span class="ruby-identifier">text</span>) <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span>)
+                                        <span class="ruby-ivar">@mdp</span>.<span class="ruby-identifier">erreur</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-string">&quot;&lt;span foreground=\&quot;#EF2929\&quot; font-desc=\&quot;Courier New bold 10\&quot;&gt;Erreur entrer un mot de passe différent&lt;/span&gt;\n&quot;</span>)
+                                <span class="ruby-keyword">end</span>
+
+                        <span class="ruby-keyword">elsif</span> (<span class="ruby-identifier">unJoueur</span>.<span class="ruby-identifier">nouveauPseudo</span>(<span class="ruby-ivar">@pseudo</span>.<span class="ruby-identifier">entree</span>.<span class="ruby-identifier">text</span>))
+
+                                <span class="ruby-keyword">if</span> (<span class="ruby-ivar">@mdp</span>.<span class="ruby-identifier">entree</span>.<span class="ruby-identifier">text</span> <span class="ruby-operator">!=</span> <span class="ruby-string">&#39;&#39;</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">unJoueur</span>.<span class="ruby-identifier">nouveauMotDePasse</span>(<span class="ruby-ivar">@mdp</span>.<span class="ruby-identifier">entree</span>.<span class="ruby-identifier">text</span>) <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span>)
+                                        <span class="ruby-ivar">@mdp</span>.<span class="ruby-identifier">erreur</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-string">&quot;&lt;span foreground=\&quot;#EF2929\&quot; font-desc=\&quot;Courier New bold 10\&quot;&gt;Erreur entrer un mot de passe différent&lt;/span&gt;\n&quot;</span>)
+                                <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">else</span>
+                                <span class="ruby-ivar">@mdp</span>.<span class="ruby-identifier">erreur</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-string">&quot;&lt;span foreground=\&quot;#EF2929\&quot; font-desc=\&quot;Courier New bold 10\&quot;&gt;Erreur ce pseudo est déjà utilisé ou est déjà votre pseudo actuel&lt;/span&gt;\n&quot;</span>)
                         <span class="ruby-keyword">end</span>
 
-                <span class="ruby-keyword">elsif</span> (<span class="ruby-identifier">unJoueur</span>.<span class="ruby-identifier">nouveauPseudo</span>(<span class="ruby-ivar">@pseudo</span>.<span class="ruby-identifier">entree</span>.<span class="ruby-identifier">text</span>))
+                        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">supprimeMoi</span>
+                <span class="ruby-identifier">menu</span> = <span class="ruby-constant">FProfil</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-ivar">@header</span>, <span class="ruby-keyword">self</span>, <span class="ruby-identifier">unJoueur</span>)
+                <span class="ruby-identifier">menu</span>.<span class="ruby-identifier">ajouteMoi</span>
+                <span class="ruby-ivar">@window</span>.<span class="ruby-identifier">show_all</span>
+                }
 
-                        <span class="ruby-keyword">if</span> (<span class="ruby-ivar">@mdp</span>.<span class="ruby-identifier">entree</span>.<span class="ruby-identifier">text</span> <span class="ruby-operator">!=</span> <span class="ruby-string">&#39;&#39;</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">unJoueur</span>.<span class="ruby-identifier">nouveauMotDePasse</span>(<span class="ruby-ivar">@mdp</span>.<span class="ruby-identifier">entree</span>.<span class="ruby-identifier">text</span>) <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span>)
-                                <span class="ruby-ivar">@mdp</span>.<span class="ruby-identifier">erreur</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-string">&quot;&lt;span foreground=\&quot;#EF2929\&quot; font-desc=\&quot;Courier New bold 10\&quot;&gt;Erreur entrer un mot de passe différent&lt;/span&gt;\n&quot;</span>)
-                        <span class="ruby-keyword">end</span>
-                <span class="ruby-keyword">else</span>
-                        <span class="ruby-ivar">@mdp</span>.<span class="ruby-identifier">erreur</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-string">&quot;&lt;span foreground=\&quot;#EF2929\&quot; font-desc=\&quot;Courier New bold 10\&quot;&gt;Erreur ce pseudo est déjà utilisé ou est déjà votre pseudo actuel&lt;/span&gt;\n&quot;</span>)
-                <span class="ruby-keyword">end</span>
 
+                <span class="ruby-ivar">@header</span>.<span class="ruby-identifier">btnMenu</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {
                 <span class="ruby-keyword">self</span>.<span class="ruby-identifier">supprimeMoi</span>
-        <span class="ruby-identifier">menu</span> = <span class="ruby-constant">FProfil</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-ivar">@header</span>, <span class="ruby-keyword">self</span>, <span class="ruby-identifier">unJoueur</span>)
-        <span class="ruby-identifier">menu</span>.<span class="ruby-identifier">ajouteMoi</span>
-        <span class="ruby-ivar">@window</span>.<span class="ruby-identifier">show_all</span>
-        }
+                <span class="ruby-identifier">menu</span> = <span class="ruby-constant">FMenu</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-ivar">@header</span>, <span class="ruby-keyword">self</span>, <span class="ruby-identifier">unJoueur</span>)
+                <span class="ruby-identifier">menu</span>.<span class="ruby-identifier">ajouteMoi</span>
+                <span class="ruby-ivar">@window</span>.<span class="ruby-identifier">show_all</span>
+            }
 
+            <span class="ruby-ivar">@frame</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-ivar">@gModifC</span>,<span class="ruby-value">0</span>,<span class="ruby-value">1</span>,<span class="ruby-value">0</span>,<span class="ruby-value">1</span>)
 
-        <span class="ruby-ivar">@header</span>.<span class="ruby-identifier">btnMenu</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {
-        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">supprimeMoi</span>
-        <span class="ruby-identifier">menu</span> = <span class="ruby-constant">FMenu</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-ivar">@header</span>, <span class="ruby-keyword">self</span>, <span class="ruby-identifier">unJoueur</span>)
-        <span class="ruby-identifier">menu</span>.<span class="ruby-identifier">ajouteMoi</span>
-        <span class="ruby-ivar">@window</span>.<span class="ruby-identifier">show_all</span>
-    }
+                <span class="ruby-ivar">@pix</span> = (<span class="ruby-constant">GdkPixbuf</span><span class="ruby-operator">::</span><span class="ruby-constant">Pixbuf</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span><span class="ruby-operator">=&gt;</span><span class="ruby-string">&quot;./Assets/ImgGame.jpg&quot;</span>,<span class="ruby-value">:width</span><span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">monApp</span>.<span class="ruby-identifier">width</span>, <span class="ruby-value">:height</span><span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">monApp</span>.<span class="ruby-identifier">height</span>))
+        <span class="ruby-ivar">@bg</span>=(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:pixbuf</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-ivar">@pix</span>))
+        <span class="ruby-ivar">@frame</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-ivar">@bg</span>,<span class="ruby-value">0</span>,<span class="ruby-value">1</span>,<span class="ruby-value">0</span>,<span class="ruby-value">1</span>)
 
-    <span class="ruby-ivar">@frame</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-ivar">@gModifC</span>,<span class="ruby-value">0</span>,<span class="ruby-value">1</span>,<span class="ruby-value">0</span>,<span class="ruby-value">1</span>)
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@frame</span>)
 
-        <span class="ruby-ivar">@pix</span> = (<span class="ruby-constant">GdkPixbuf</span><span class="ruby-operator">::</span><span class="ruby-constant">Pixbuf</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span><span class="ruby-operator">=&gt;</span><span class="ruby-string">&quot;./Assets/ImgGame.jpg&quot;</span>,<span class="ruby-value">:width</span><span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">monApp</span>.<span class="ruby-identifier">width</span>, <span class="ruby-value">:height</span><span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">monApp</span>.<span class="ruby-identifier">height</span>))
-<span class="ruby-ivar">@bg</span>=(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:pixbuf</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-ivar">@pix</span>))
-<span class="ruby-ivar">@frame</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-ivar">@bg</span>,<span class="ruby-value">0</span>,<span class="ruby-value">1</span>,<span class="ruby-value">0</span>,<span class="ruby-value">1</span>)
-
-<span class="ruby-keyword">self</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@frame</span>)
-
-<span class="ruby-keyword">end</span></pre>
+        <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>

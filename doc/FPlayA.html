@@ -140,344 +140,350 @@
           
           <div class="method-source-code" id="new-source">
             <pre><span class="ruby-comment"># File Interface/fPlayA.rb, line 30</span>
-    <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-identifier">header</span>, <span class="ruby-identifier">anciennePage</span>, <span class="ruby-identifier">unJoueur</span>, <span class="ruby-identifier">uneSaison</span>, <span class="ruby-identifier">nbGrille</span>)
+        <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-identifier">header</span>, <span class="ruby-identifier">anciennePage</span>, <span class="ruby-identifier">unJoueur</span>, <span class="ruby-identifier">uneSaison</span>, <span class="ruby-identifier">nbGrille</span>)
 
-            <span class="ruby-keyword">super</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-value">:vertical</span>, <span class="ruby-identifier">header</span>,  <span class="ruby-identifier">anciennePage</span>, <span class="ruby-identifier">unJoueur</span>)
+                <span class="ruby-keyword">super</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-value">:vertical</span>, <span class="ruby-identifier">header</span>,  <span class="ruby-identifier">anciennePage</span>, <span class="ruby-identifier">unJoueur</span>)
 
-            <span class="ruby-ivar">@nbAidesUtilises</span> = <span class="ruby-value">0</span>
+                <span class="ruby-ivar">@nbAidesUtilises</span> = <span class="ruby-value">0</span>
 
-    <span class="ruby-keyword">case</span> <span class="ruby-identifier">uneSaison</span>
-                    <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;Printemps&quot;</span> <span class="ruby-keyword">then</span>
-                            <span class="ruby-ivar">@saison</span> = <span class="ruby-value">1</span>
-                    <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;Ete&quot;</span> <span class="ruby-keyword">then</span>
-                            <span class="ruby-ivar">@saison</span> = <span class="ruby-value">2</span>
-                    <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;Automne&quot;</span> <span class="ruby-keyword">then</span>
-                            <span class="ruby-ivar">@saison</span> = <span class="ruby-value">3</span>
-                    <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;Hiver&quot;</span> <span class="ruby-keyword">then</span>
-                            <span class="ruby-ivar">@saison</span> = <span class="ruby-value">4</span>
-                    <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;Bonus&quot;</span>
-                            <span class="ruby-ivar">@saison</span> = <span class="ruby-value">5</span>
-            <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">case</span> <span class="ruby-identifier">uneSaison</span>
+                        <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;Printemps&quot;</span> <span class="ruby-keyword">then</span>
+                                <span class="ruby-ivar">@saison</span> = <span class="ruby-value">1</span>
+                        <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;Ete&quot;</span> <span class="ruby-keyword">then</span>
+                                <span class="ruby-ivar">@saison</span> = <span class="ruby-value">2</span>
+                        <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;Automne&quot;</span> <span class="ruby-keyword">then</span>
+                                <span class="ruby-ivar">@saison</span> = <span class="ruby-value">3</span>
+                        <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;Hiver&quot;</span> <span class="ruby-keyword">then</span>
+                                <span class="ruby-ivar">@saison</span> = <span class="ruby-value">4</span>
+                        <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;Bonus&quot;</span>
+                                <span class="ruby-ivar">@saison</span> = <span class="ruby-value">5</span>
+                <span class="ruby-keyword">end</span>
 
-    <span class="ruby-identifier">tabGrille</span> = <span class="ruby-identifier">unJoueur</span>.<span class="ruby-identifier">commencerAventure</span>(<span class="ruby-ivar">@saison</span>, <span class="ruby-identifier">nbGrille</span>)
-    <span class="ruby-identifier">puts</span> <span class="ruby-identifier">tabGrille</span>.<span class="ruby-identifier">at</span>(<span class="ruby-value">0</span>)
-    <span class="ruby-identifier">puts</span> <span class="ruby-identifier">tabGrille</span>.<span class="ruby-identifier">at</span>(<span class="ruby-value">1</span>)
-    <span class="ruby-identifier">puts</span> <span class="ruby-identifier">tabGrille</span>.<span class="ruby-identifier">at</span>(<span class="ruby-value">2</span>)
+        <span class="ruby-identifier">tabGrille</span> = <span class="ruby-identifier">unJoueur</span>.<span class="ruby-identifier">commencerAventure</span>(<span class="ruby-ivar">@saison</span>, <span class="ruby-identifier">nbGrille</span>)
+        <span class="ruby-identifier">puts</span> <span class="ruby-identifier">tabGrille</span>.<span class="ruby-identifier">at</span>(<span class="ruby-value">0</span>)
+        <span class="ruby-identifier">puts</span> <span class="ruby-identifier">tabGrille</span>.<span class="ruby-identifier">at</span>(<span class="ruby-value">1</span>)
+        <span class="ruby-identifier">puts</span> <span class="ruby-identifier">tabGrille</span>.<span class="ruby-identifier">at</span>(<span class="ruby-value">2</span>)
 
-    <span class="ruby-ivar">@nbFeuilles</span> = <span class="ruby-identifier">unJoueur</span>.<span class="ruby-identifier">creditAide</span>
+        <span class="ruby-ivar">@nbFeuilles</span> = <span class="ruby-identifier">unJoueur</span>.<span class="ruby-identifier">creditAide</span>
 
-    <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;feuilles : #{unJoueur.creditAide}&quot;</span>
-
-
-    <span class="ruby-ivar">@gHelp</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">ButtonBox</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:vertical</span>)
-
-    <span class="ruby-ivar">@boxFeuilles</span>=<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">ButtonBox</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:horizontal</span>)
-                    <span class="ruby-ivar">@boxFeuilles</span>.<span class="ruby-identifier">spacing</span>=<span class="ruby-value">1</span>
-                    <span class="ruby-ivar">@img</span> =(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span> <span class="ruby-operator">=&gt;</span><span class="ruby-string">&quot;./Assets/feuille.png&quot;</span>))
-                    <span class="ruby-ivar">@profil</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>().<span class="ruby-identifier">set_markup</span>(<span class="ruby-node">&quot;&lt;span foreground=\&quot;#EF2929\&quot; font-desc=\&quot;Courier New bold 15\&quot;&gt; #{@nbFeuilles}&lt;/span&gt;&quot;</span>)
-                    <span class="ruby-ivar">@boxFeuilles</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@img</span>)
-                    <span class="ruby-ivar">@boxFeuilles</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@profil</span>, <span class="ruby-value">:expand</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:fill</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">false</span>)
-
-            <span class="ruby-ivar">@chrono</span> = <span class="ruby-constant">ChronoInverse</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">tabGrille</span>.<span class="ruby-identifier">at</span>(<span class="ruby-value">3</span>))
-            <span class="ruby-ivar">@gHelp</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@boxFeuilles</span>)
+<span class="ruby-comment">#        puts &quot;feuilles : #{unJoueur.creditAide}&quot;</span>
 
 
-            <span class="ruby-identifier">thr</span>=<span class="ruby-constant">Thread</span>.<span class="ruby-identifier">new</span>{
-                    <span class="ruby-comment">#sleep(2)</span>
-                    <span class="ruby-ivar">@chrono</span>.<span class="ruby-identifier">cStart</span>
+        <span class="ruby-ivar">@gHelp</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">ButtonBox</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:vertical</span>)
+
+        <span class="ruby-ivar">@boxFeuilles</span>=<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">ButtonBox</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:horizontal</span>)
+                        <span class="ruby-ivar">@boxFeuilles</span>.<span class="ruby-identifier">spacing</span>=<span class="ruby-value">1</span>
+                        <span class="ruby-ivar">@img</span> =(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span> <span class="ruby-operator">=&gt;</span><span class="ruby-string">&quot;./Assets/feuille.png&quot;</span>))
+                        <span class="ruby-ivar">@profil</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>().<span class="ruby-identifier">set_markup</span>(<span class="ruby-node">&quot;&lt;span foreground=\&quot;#EF2929\&quot; font-desc=\&quot;Courier New bold 15\&quot;&gt; #{@nbFeuilles}&lt;/span&gt;&quot;</span>)
+                        <span class="ruby-ivar">@boxFeuilles</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@img</span>)
+                        <span class="ruby-ivar">@boxFeuilles</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@profil</span>, <span class="ruby-value">:expand</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:fill</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">false</span>)
+
+                <span class="ruby-ivar">@chrono</span> = <span class="ruby-constant">ChronoInverse</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">tabGrille</span>.<span class="ruby-identifier">at</span>(<span class="ruby-value">3</span>))
+                <span class="ruby-ivar">@gHelp</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@boxFeuilles</span>)
 
 
-                    <span class="ruby-keyword">if</span> (<span class="ruby-ivar">@chrono</span>.<span class="ruby-identifier">chrono</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-value">0</span>)
-
-                            <span class="ruby-keyword">self</span>.<span class="ruby-identifier">supprimeMoi</span>
-                              <span class="ruby-identifier">menu</span> = <span class="ruby-constant">FFin</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-ivar">@header</span>, <span class="ruby-keyword">self</span>, <span class="ruby-identifier">unJoueur</span>, <span class="ruby-string">&quot;perdu&quot;</span>)
-                             <span class="ruby-identifier">menu</span>.<span class="ruby-identifier">ajouteMoi</span>
-                         <span class="ruby-ivar">@window</span>.<span class="ruby-identifier">show_all</span>
-                         <span class="ruby-identifier">thr</span>.<span class="ruby-identifier">kill</span>
-               <span class="ruby-keyword">end</span>
-            }
-
-    <span class="ruby-ivar">@frame</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Table</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">1</span>,<span class="ruby-value">1</span>,<span class="ruby-keyword">false</span>)
-
-    <span class="ruby-ivar">@gChrono</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">ButtonBox</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:vertical</span>)
-    <span class="ruby-ivar">@gChrono</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@chrono</span>.<span class="ruby-identifier">lChrono</span>)
-
-    <span class="ruby-ivar">@box</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">ButtonBox</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:horizontal</span>)
-
-       <span class="ruby-identifier">grilleDeJeu</span> = <span class="ruby-constant">Grille</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-identifier">tabGrille</span>.<span class="ruby-identifier">at</span>(<span class="ruby-value">1</span>), <span class="ruby-identifier">tabGrille</span>.<span class="ruby-identifier">at</span>(<span class="ruby-value">2</span>))
-
-       <span class="ruby-identifier">taille</span> = <span class="ruby-identifier">grilleDeJeu</span>.<span class="ruby-identifier">taille</span>()
-
-    <span class="ruby-ivar">@grille</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Table</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">taille</span>, <span class="ruby-identifier">taille</span>, <span class="ruby-keyword">false</span>)
+                <span class="ruby-identifier">thr</span>=<span class="ruby-constant">Thread</span>.<span class="ruby-identifier">new</span>{
+                        <span class="ruby-comment">#sleep(2)</span>
+                        <span class="ruby-ivar">@chrono</span>.<span class="ruby-identifier">cStart</span>
 
 
+                        <span class="ruby-keyword">if</span> (<span class="ruby-ivar">@chrono</span>.<span class="ruby-identifier">chrono</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-value">0</span>)
 
-            <span class="ruby-ivar">@boutonGrille</span> = [[]]
-
-    <span class="ruby-comment"># Mise en place des indicateurs de la grille de jeu</span>
-
-            <span class="ruby-identifier">tabBout</span>=[]
-
-            <span class="ruby-keyword">for</span> <span class="ruby-identifier">j</span> <span class="ruby-keyword">in</span> (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-identifier">taille</span><span class="ruby-value">-1</span>)
-                    <span class="ruby-identifier">tabBout</span>[<span class="ruby-identifier">j</span>] = <span class="ruby-constant">BoutonNbTentesColonne</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">grilleDeJeu</span>, <span class="ruby-ivar">@boutonGrille</span>, <span class="ruby-identifier">j</span>, <span class="ruby-node">&quot;./Assets/#{uneSaison}&quot;</span>, <span class="ruby-identifier">unJoueur</span>)
-                    <span class="ruby-identifier">tabBout</span>[<span class="ruby-identifier">j</span>].<span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">set_label</span>(<span class="ruby-identifier">grilleDeJeu</span>.<span class="ruby-identifier">nbTentesLigne</span>[<span class="ruby-identifier">j</span>].<span class="ruby-identifier">to_s</span>)
-                    <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-identifier">tabBout</span>[<span class="ruby-identifier">j</span>].<span class="ruby-identifier">bouton</span>, <span class="ruby-identifier">j</span><span class="ruby-value">+1</span>,<span class="ruby-identifier">j</span><span class="ruby-value">+2</span>, <span class="ruby-value">0</span>,<span class="ruby-value">1</span>)
-
-            <span class="ruby-keyword">end</span>
-
-            <span class="ruby-identifier">tabBout</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">l</span><span class="ruby-operator">|</span>
-                    <span class="ruby-identifier">l</span>.<span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&quot;clicked&quot;</span>){
-                            <span class="ruby-identifier">l</span>.<span class="ruby-identifier">chgEtat</span>
-                            <span class="ruby-keyword">if</span> (<span class="ruby-identifier">grilleDeJeu</span>.<span class="ruby-identifier">observateur</span>())
-                                    <span class="ruby-identifier">unJoueur</span>.<span class="ruby-identifier">finirLaPartie</span>(<span class="ruby-ivar">@saison</span>, <span class="ruby-identifier">tabGrille</span>.<span class="ruby-identifier">at</span>(<span class="ruby-value">0</span>))
-                                    <span class="ruby-identifier">unJoueur</span>.<span class="ruby-identifier">actualiser</span>
-                                    <span class="ruby-ivar">@chrono</span>.<span class="ruby-identifier">cRaz</span>
-                                    <span class="ruby-identifier">sleep</span>(<span class="ruby-value">1</span>)
-                                    <span class="ruby-identifier">thr</span>.<span class="ruby-identifier">kill</span>
-                                    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">supprimeMoi</span>
-                             <span class="ruby-identifier">menu</span> = <span class="ruby-constant">FFin</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-ivar">@header</span>, <span class="ruby-keyword">self</span>, <span class="ruby-identifier">unJoueur</span>, <span class="ruby-string">&quot;gagner&quot;</span>)
-                             <span class="ruby-identifier">menu</span>.<span class="ruby-identifier">ajouteMoi</span>
+                                <span class="ruby-keyword">self</span>.<span class="ruby-identifier">supprimeMoi</span>
+                                  <span class="ruby-identifier">menu</span> = <span class="ruby-constant">FFin</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-ivar">@header</span>, <span class="ruby-keyword">self</span>, <span class="ruby-identifier">unJoueur</span>, <span class="ruby-string">&quot;perdu&quot;</span>)
+                                 <span class="ruby-identifier">menu</span>.<span class="ruby-identifier">ajouteMoi</span>
                              <span class="ruby-ivar">@window</span>.<span class="ruby-identifier">show_all</span>
-                            <span class="ruby-keyword">end</span>
-                    }
-            }
+                             <span class="ruby-identifier">thr</span>.<span class="ruby-identifier">kill</span>
+                   <span class="ruby-keyword">end</span>
+                }
 
-            <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-identifier">taille</span><span class="ruby-value">-1</span>)
-                    <span class="ruby-identifier">tabBout</span>[<span class="ruby-identifier">i</span>] = <span class="ruby-constant">BoutonNbTentesLigne</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">grilleDeJeu</span>, <span class="ruby-ivar">@boutonGrille</span>, <span class="ruby-identifier">i</span>, <span class="ruby-node">&quot;./Assets/#{uneSaison}&quot;</span>, <span class="ruby-identifier">unJoueur</span>)
-                    <span class="ruby-identifier">tabBout</span>[<span class="ruby-identifier">i</span>].<span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">set_label</span>(<span class="ruby-identifier">grilleDeJeu</span>.<span class="ruby-identifier">nbTentesColonne</span>[<span class="ruby-identifier">i</span>].<span class="ruby-identifier">to_s</span>)
-                    <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-identifier">tabBout</span>[<span class="ruby-identifier">i</span>].<span class="ruby-identifier">bouton</span>,<span class="ruby-value">0</span>,<span class="ruby-value">1</span>, <span class="ruby-identifier">i</span><span class="ruby-value">+1</span>,<span class="ruby-identifier">i</span><span class="ruby-value">+2</span>)
-            <span class="ruby-keyword">end</span>
+        <span class="ruby-ivar">@frame</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Table</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">1</span>,<span class="ruby-value">1</span>,<span class="ruby-keyword">false</span>)
 
-            <span class="ruby-identifier">tabBout</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">l</span><span class="ruby-operator">|</span>
-                    <span class="ruby-identifier">l</span>.<span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&quot;clicked&quot;</span>){
-                            <span class="ruby-identifier">l</span>.<span class="ruby-identifier">chgEtat</span>
-                            <span class="ruby-keyword">if</span> (<span class="ruby-identifier">grilleDeJeu</span>.<span class="ruby-identifier">observateur</span>())
-                                    <span class="ruby-identifier">unJoueur</span>.<span class="ruby-identifier">finirLaPartie</span>(<span class="ruby-ivar">@saison</span>, <span class="ruby-identifier">tabGrille</span>.<span class="ruby-identifier">at</span>(<span class="ruby-value">0</span>))
-                                    <span class="ruby-identifier">unJoueur</span>.<span class="ruby-identifier">actualiser</span>
-                                    <span class="ruby-ivar">@chrono</span>.<span class="ruby-identifier">cRaz</span>
-                                    <span class="ruby-identifier">thr</span>.<span class="ruby-identifier">kill</span>
-                                    <span class="ruby-identifier">sleep</span>(<span class="ruby-value">1</span>)
-                                    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">supprimeMoi</span>
-                             <span class="ruby-identifier">menu</span> = <span class="ruby-constant">FFin</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-ivar">@header</span>, <span class="ruby-keyword">self</span>, <span class="ruby-identifier">unJoueur</span>, <span class="ruby-string">&quot;gagner&quot;</span>)
-                             <span class="ruby-identifier">menu</span>.<span class="ruby-identifier">ajouteMoi</span>
-                             <span class="ruby-ivar">@window</span>.<span class="ruby-identifier">show_all</span>
-                            <span class="ruby-keyword">end</span>
-                    }
-            }
+        <span class="ruby-ivar">@gChrono</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">ButtonBox</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:vertical</span>)
+        <span class="ruby-ivar">@gChrono</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@chrono</span>.<span class="ruby-identifier">lChrono</span>)
 
-    <span class="ruby-comment"># Création de la grille de jeu.</span>
-    <span class="ruby-comment"># Mise en place d&#39;une matrice composant tous les boutons</span>
+        <span class="ruby-ivar">@box</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">ButtonBox</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:horizontal</span>)
 
-            <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-identifier">taille</span><span class="ruby-value">-1</span>)
-                    <span class="ruby-identifier">temp</span>=[]
-                    <span class="ruby-keyword">for</span> <span class="ruby-identifier">j</span> <span class="ruby-keyword">in</span> (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-identifier">taille</span><span class="ruby-value">-1</span>)
-                                    <span class="ruby-identifier">vEtat</span> = <span class="ruby-identifier">grilleDeJeu</span>.<span class="ruby-identifier">grilleJ</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">etat</span>
-                                    <span class="ruby-identifier">temp</span>[<span class="ruby-identifier">j</span>] = <span class="ruby-constant">BoutonGrilleA</span>.<span class="ruby-identifier">new</span>(<span class="ruby-node">&quot;./Assets/#{uneSaison}&quot;</span>)
-                                    <span class="ruby-identifier">temp</span>[<span class="ruby-identifier">j</span>].<span class="ruby-identifier">mCoord</span>(<span class="ruby-identifier">i</span>,<span class="ruby-identifier">j</span>)
-                                    <span class="ruby-identifier">temp</span>[<span class="ruby-identifier">j</span>].<span class="ruby-identifier">chgEtat</span>(<span class="ruby-identifier">vEtat</span>)
-                                    <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-identifier">temp</span>[<span class="ruby-identifier">j</span>].<span class="ruby-identifier">bouton</span>, <span class="ruby-identifier">i</span><span class="ruby-value">+1</span>, <span class="ruby-identifier">i</span><span class="ruby-value">+2</span>, <span class="ruby-identifier">j</span><span class="ruby-value">+1</span>,<span class="ruby-identifier">j</span><span class="ruby-value">+2</span>)
-                    <span class="ruby-keyword">end</span>
-                    <span class="ruby-ivar">@boutonGrille</span>[<span class="ruby-identifier">i</span>] = <span class="ruby-identifier">temp</span>
-            <span class="ruby-keyword">end</span>
+           <span class="ruby-identifier">grilleDeJeu</span> = <span class="ruby-constant">Grille</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-identifier">tabGrille</span>.<span class="ruby-identifier">at</span>(<span class="ruby-value">1</span>), <span class="ruby-identifier">tabGrille</span>.<span class="ruby-identifier">at</span>(<span class="ruby-value">2</span>), <span class="ruby-ivar">@chrono</span>.<span class="ruby-identifier">chrono</span>)
 
-    <span class="ruby-comment"># Appel de l&#39;evenement bouton &quot;cliqué&quot;, et modification du bouton cliqué</span>
-            <span class="ruby-keyword">if</span>(<span class="ruby-operator">!</span><span class="ruby-ivar">@chrono</span>.<span class="ruby-identifier">pause</span>)
-                    <span class="ruby-ivar">@boutonGrille</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span>
-                            <span class="ruby-identifier">k</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">l</span><span class="ruby-operator">|</span>
-                                    <span class="ruby-identifier">l</span>.<span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&quot;clicked&quot;</span>){
-                                            <span class="ruby-keyword">if</span> <span class="ruby-ivar">@aide</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                                                    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@aide</span>.<span class="ruby-identifier">instance_of?</span> <span class="ruby-constant">Case</span>
-                                                            <span class="ruby-ivar">@boutonGrille</span>[<span class="ruby-ivar">@aide</span>.<span class="ruby-identifier">i</span>][<span class="ruby-ivar">@aide</span>.<span class="ruby-identifier">j</span>].<span class="ruby-identifier">chgEtat</span>(<span class="ruby-identifier">grilleDeJeu</span>.<span class="ruby-identifier">grilleJ</span>[<span class="ruby-ivar">@aide</span>.<span class="ruby-identifier">i</span>][<span class="ruby-ivar">@aide</span>.<span class="ruby-identifier">j</span>].<span class="ruby-identifier">etat</span>)
-                                                    <span class="ruby-keyword">else</span>
-                                                            <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-identifier">taille</span><span class="ruby-value">-1</span>)
-                                                                    <span class="ruby-ivar">@boutonGrille</span>[<span class="ruby-ivar">@aide</span>][<span class="ruby-identifier">i</span>].<span class="ruby-identifier">chgEtat</span>(<span class="ruby-identifier">grilleDeJeu</span>.<span class="ruby-identifier">grilleJ</span>[<span class="ruby-ivar">@aide</span>][<span class="ruby-identifier">i</span>].<span class="ruby-identifier">etat</span>)
-                                                                    <span class="ruby-ivar">@boutonGrille</span>[<span class="ruby-identifier">i</span>][<span class="ruby-ivar">@aide</span>].<span class="ruby-identifier">chgEtat</span>(<span class="ruby-identifier">grilleDeJeu</span>.<span class="ruby-identifier">grilleJ</span>[<span class="ruby-identifier">i</span>][<span class="ruby-ivar">@aide</span>].<span class="ruby-identifier">etat</span>)
-                                                            <span class="ruby-keyword">end</span>
-                                                    <span class="ruby-keyword">end</span>
-                                                    <span class="ruby-ivar">@lableAide</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-string">&#39;&#39;</span>)
+           <span class="ruby-identifier">taille</span> = <span class="ruby-identifier">grilleDeJeu</span>.<span class="ruby-identifier">taille</span>()
 
-                                                    <span class="ruby-ivar">@aide</span> = <span class="ruby-keyword">nil</span>
-                                            <span class="ruby-keyword">end</span>
-                                 <span class="ruby-identifier">grilleDeJeu</span>.<span class="ruby-identifier">grilleJ</span>[<span class="ruby-identifier">l</span>.<span class="ruby-identifier">coordI</span>][<span class="ruby-identifier">l</span>.<span class="ruby-identifier">coordJ</span>].<span class="ruby-identifier">jouerCase</span>()
-                                            <span class="ruby-ivar">@boutonGrille</span>[<span class="ruby-identifier">l</span>.<span class="ruby-identifier">coordI</span>][<span class="ruby-identifier">l</span>.<span class="ruby-identifier">coordJ</span>].<span class="ruby-identifier">chgEtat</span>(<span class="ruby-identifier">grilleDeJeu</span>.<span class="ruby-identifier">grilleJ</span>[<span class="ruby-identifier">l</span>.<span class="ruby-identifier">coordI</span>][<span class="ruby-identifier">l</span>.<span class="ruby-identifier">coordJ</span>].<span class="ruby-identifier">etat</span>)
-                                            <span class="ruby-identifier">grilleDeJeu</span>.<span class="ruby-identifier">enregistrerFichier</span>(<span class="ruby-identifier">unJoueur</span>.<span class="ruby-identifier">pseudo</span>, <span class="ruby-keyword">nil</span>)
-
-                                            <span class="ruby-keyword">if</span> (<span class="ruby-identifier">grilleDeJeu</span>.<span class="ruby-identifier">observateur</span>())
-                                                    <span class="ruby-identifier">unJoueur</span>.<span class="ruby-identifier">finirLaPartie</span>(<span class="ruby-ivar">@saison</span>, <span class="ruby-identifier">tabGrille</span>.<span class="ruby-identifier">at</span>(<span class="ruby-value">0</span>))
-                                                    <span class="ruby-identifier">unJoueur</span>.<span class="ruby-identifier">actualiser</span>
-                                                    <span class="ruby-identifier">thr</span>.<span class="ruby-identifier">kill</span>
-                                                    <span class="ruby-identifier">sleep</span>(<span class="ruby-value">1</span>)
-                                                    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">supprimeMoi</span>
-                                         <span class="ruby-identifier">menu</span> = <span class="ruby-constant">FFin</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-ivar">@header</span>, <span class="ruby-keyword">self</span>, <span class="ruby-identifier">unJoueur</span>, <span class="ruby-string">&quot;gagner&quot;</span>)
-                                         <span class="ruby-identifier">menu</span>.<span class="ruby-identifier">ajouteMoi</span>
-                                         <span class="ruby-ivar">@window</span>.<span class="ruby-identifier">show_all</span>
-                                            <span class="ruby-keyword">end</span>
-
-                                    }
-                            }
-                    }
-            <span class="ruby-keyword">end</span>
-
-
-            <span class="ruby-ivar">@header</span>.<span class="ruby-identifier">btnMenu</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {
-                    <span class="ruby-comment"># @chrono.cFin</span>
-                    <span class="ruby-comment"># @chrono.cRaz</span>
-                    <span class="ruby-identifier">thr</span>.<span class="ruby-identifier">kill</span>
-            <span class="ruby-keyword">self</span>.<span class="ruby-identifier">supprimeMoi</span>
-            <span class="ruby-identifier">menu</span> = <span class="ruby-constant">FMenu</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-ivar">@header</span>, <span class="ruby-keyword">self</span>, <span class="ruby-identifier">unJoueur</span>)
-            <span class="ruby-identifier">menu</span>.<span class="ruby-identifier">ajouteMoi</span>
-            <span class="ruby-ivar">@window</span>.<span class="ruby-identifier">show_all</span>
-    }
-
-            <span class="ruby-ivar">@boxAide</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">ButtonBox</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:vertical</span>)
-
-            <span class="ruby-ivar">@lableAide</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>()
-
-            <span class="ruby-ivar">@boxAide</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@lableAide</span>)
-
-            <span class="ruby-ivar">@b1</span> = <span class="ruby-constant">BoutonAideHerbe</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Aide Herbe : 2 feuilles&quot;</span>, <span class="ruby-keyword">true</span>)
-            <span class="ruby-ivar">@b2</span> = <span class="ruby-constant">BoutonAideTente</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Aide Tente : 3 feuilles&quot;</span>, <span class="ruby-keyword">true</span>)
-            <span class="ruby-ivar">@b3</span> = <span class="ruby-constant">BoutonAideVerif</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Verification : 5 feuilles&quot;</span>, <span class="ruby-keyword">true</span>)
-
-
-            <span class="ruby-ivar">@boxAide</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@b1</span>.<span class="ruby-identifier">bouton</span>)
-            <span class="ruby-ivar">@boxAide</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@b2</span>.<span class="ruby-identifier">bouton</span>)
-            <span class="ruby-ivar">@boxAide</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@b3</span>.<span class="ruby-identifier">bouton</span>)
-
-            <span class="ruby-ivar">@b1</span>.<span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>){
-                    <span class="ruby-identifier">tempo</span> = <span class="ruby-ivar">@nbFeuilles</span> <span class="ruby-operator">-</span> <span class="ruby-ivar">@b1</span>.<span class="ruby-identifier">prix</span>
-                    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@aide</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                            <span class="ruby-keyword">if</span> <span class="ruby-ivar">@aide</span>.<span class="ruby-identifier">instance_of?</span> <span class="ruby-constant">Case</span>
-                                    <span class="ruby-ivar">@boutonGrille</span>[<span class="ruby-ivar">@aide</span>.<span class="ruby-identifier">i</span>][<span class="ruby-ivar">@aide</span>.<span class="ruby-identifier">j</span>].<span class="ruby-identifier">chgEtat</span>(<span class="ruby-identifier">grilleDeJeu</span>.<span class="ruby-identifier">grilleJ</span>[<span class="ruby-ivar">@aide</span>.<span class="ruby-identifier">i</span>][<span class="ruby-ivar">@aide</span>.<span class="ruby-identifier">j</span>].<span class="ruby-identifier">etat</span>)
-                            <span class="ruby-keyword">else</span>
-                                    <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-identifier">taille</span><span class="ruby-value">-1</span>)
-                                            <span class="ruby-ivar">@boutonGrille</span>[<span class="ruby-ivar">@aide</span>][<span class="ruby-identifier">i</span>].<span class="ruby-identifier">chgEtat</span>(<span class="ruby-identifier">grilleDeJeu</span>.<span class="ruby-identifier">grilleJ</span>[<span class="ruby-ivar">@aide</span>][<span class="ruby-identifier">i</span>].<span class="ruby-identifier">etat</span>)
-                                            <span class="ruby-ivar">@boutonGrille</span>[<span class="ruby-identifier">i</span>][<span class="ruby-ivar">@aide</span>].<span class="ruby-identifier">chgEtat</span>(<span class="ruby-identifier">grilleDeJeu</span>.<span class="ruby-identifier">grilleJ</span>[<span class="ruby-identifier">i</span>][<span class="ruby-ivar">@aide</span>].<span class="ruby-identifier">etat</span>)
-                                    <span class="ruby-keyword">end</span>
-                            <span class="ruby-keyword">end</span>
-
-                            <span class="ruby-ivar">@aide</span> = <span class="ruby-keyword">nil</span>
-                    <span class="ruby-keyword">end</span>
-                    <span class="ruby-keyword">if</span>(<span class="ruby-identifier">tempo</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span>)
-                            <span class="ruby-ivar">@nbFeuilles</span> = <span class="ruby-identifier">tempo</span>
-
-                            <span class="ruby-ivar">@profil</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-node">&quot;&lt;span foreground=\&quot;#EF2929\&quot; font-desc=\&quot;Courier New bold 15\&quot;&gt; #{@nbFeuilles}&lt;/span&gt;&quot;</span>)
-
-                            <span class="ruby-ivar">@aide</span> = <span class="ruby-ivar">@b1</span>.<span class="ruby-identifier">aide</span>(<span class="ruby-identifier">grilleDeJeu</span>, <span class="ruby-ivar">@lableAide</span>, <span class="ruby-identifier">unJoueur</span>, <span class="ruby-ivar">@boutonGrille</span>)
-                            <span class="ruby-ivar">@nbAidesUtilises</span><span class="ruby-operator">+=</span><span class="ruby-value">1</span>
-                    <span class="ruby-keyword">else</span>
-                            <span class="ruby-ivar">@lableAide</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-string">&quot;&lt;span foreground=\&quot;#FFFFFF\&quot; font-desc=\&quot;Courier New bold 11\&quot;&gt;Vous ne pouvez plus utiliser cette aide&lt;/span&gt;&quot;</span>)
-                    <span class="ruby-keyword">end</span>
-            }
-
-            <span class="ruby-ivar">@b2</span>.<span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {
-                    <span class="ruby-identifier">tempo</span> = <span class="ruby-ivar">@nbFeuilles</span> <span class="ruby-operator">-</span> <span class="ruby-ivar">@b2</span>.<span class="ruby-identifier">prix</span>
-                    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@aide</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                            <span class="ruby-keyword">if</span> <span class="ruby-ivar">@aide</span>.<span class="ruby-identifier">instance_of?</span> <span class="ruby-constant">Case</span>
-                                    <span class="ruby-ivar">@boutonGrille</span>[<span class="ruby-ivar">@aide</span>.<span class="ruby-identifier">i</span>][<span class="ruby-ivar">@aide</span>.<span class="ruby-identifier">j</span>].<span class="ruby-identifier">chgEtat</span>(<span class="ruby-identifier">grilleDeJeu</span>.<span class="ruby-identifier">grilleJ</span>[<span class="ruby-ivar">@aide</span>.<span class="ruby-identifier">i</span>][<span class="ruby-ivar">@aide</span>.<span class="ruby-identifier">j</span>].<span class="ruby-identifier">etat</span>)
-                            <span class="ruby-keyword">else</span>
-                                    <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-identifier">taille</span><span class="ruby-value">-1</span>)
-                                            <span class="ruby-ivar">@boutonGrille</span>[<span class="ruby-ivar">@aide</span>][<span class="ruby-identifier">i</span>].<span class="ruby-identifier">chgEtat</span>(<span class="ruby-identifier">grilleDeJeu</span>.<span class="ruby-identifier">grilleJ</span>[<span class="ruby-ivar">@aide</span>][<span class="ruby-identifier">i</span>].<span class="ruby-identifier">etat</span>)
-                                            <span class="ruby-ivar">@boutonGrille</span>[<span class="ruby-identifier">i</span>][<span class="ruby-ivar">@aide</span>].<span class="ruby-identifier">chgEtat</span>(<span class="ruby-identifier">grilleDeJeu</span>.<span class="ruby-identifier">grilleJ</span>[<span class="ruby-identifier">i</span>][<span class="ruby-ivar">@aide</span>].<span class="ruby-identifier">etat</span>)
-                                    <span class="ruby-keyword">end</span>
-                            <span class="ruby-keyword">end</span>
-
-                            <span class="ruby-ivar">@aide</span> = <span class="ruby-keyword">nil</span>
-                    <span class="ruby-keyword">end</span>
-                    <span class="ruby-keyword">if</span>(<span class="ruby-identifier">tempo</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span>)
-
-                            <span class="ruby-ivar">@nbFeuilles</span> = <span class="ruby-identifier">tempo</span>
-
-                            <span class="ruby-ivar">@profil</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-node">&quot;&lt;span foreground=\&quot;#EF2929\&quot; font-desc=\&quot;Courier New bold 15\&quot;&gt; #{@nbFeuilles}&lt;/span&gt;&quot;</span>)
-
-                            <span class="ruby-ivar">@aide</span> = <span class="ruby-ivar">@b2</span>.<span class="ruby-identifier">aide</span>(<span class="ruby-identifier">grilleDeJeu</span>, <span class="ruby-ivar">@lableAide</span>, <span class="ruby-identifier">unJoueur</span>, <span class="ruby-ivar">@boutonGrille</span>)
-                            <span class="ruby-ivar">@nbAidesUtilises</span><span class="ruby-operator">+=</span><span class="ruby-value">1</span>
-                    <span class="ruby-keyword">else</span>
-                            <span class="ruby-ivar">@lableAide</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-string">&quot;&lt;span foreground=\&quot;#FFFFFF\&quot; font-desc=\&quot;Courier New bold 11\&quot;&gt;Vous ne pouvez plus utiliser cette aide&lt;/span&gt;&quot;</span>)
-                    <span class="ruby-keyword">end</span>
-    }
-
-            <span class="ruby-ivar">@b3</span>.<span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {
-                    <span class="ruby-identifier">tempo</span> = <span class="ruby-ivar">@nbFeuilles</span> <span class="ruby-operator">-</span> <span class="ruby-ivar">@b3</span>.<span class="ruby-identifier">prix</span>
-                    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@aide</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
-                            <span class="ruby-keyword">if</span> <span class="ruby-ivar">@aide</span>.<span class="ruby-identifier">instance_of?</span> <span class="ruby-constant">Case</span>
-                                    <span class="ruby-ivar">@boutonGrille</span>[<span class="ruby-ivar">@aide</span>.<span class="ruby-identifier">i</span>][<span class="ruby-ivar">@aide</span>.<span class="ruby-identifier">j</span>].<span class="ruby-identifier">chgEtat</span>(<span class="ruby-identifier">grilleDeJeu</span>.<span class="ruby-identifier">grilleJ</span>[<span class="ruby-ivar">@aide</span>.<span class="ruby-identifier">i</span>][<span class="ruby-ivar">@aide</span>.<span class="ruby-identifier">j</span>].<span class="ruby-identifier">etat</span>)
-                            <span class="ruby-keyword">else</span>
-                                    <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-identifier">taille</span><span class="ruby-value">-1</span>)
-                                            <span class="ruby-ivar">@boutonGrille</span>[<span class="ruby-ivar">@aide</span>][<span class="ruby-identifier">i</span>].<span class="ruby-identifier">chgEtat</span>(<span class="ruby-identifier">grilleDeJeu</span>.<span class="ruby-identifier">grilleJ</span>[<span class="ruby-ivar">@aide</span>][<span class="ruby-identifier">i</span>].<span class="ruby-identifier">etat</span>)
-                                            <span class="ruby-ivar">@boutonGrille</span>[<span class="ruby-identifier">i</span>][<span class="ruby-ivar">@aide</span>].<span class="ruby-identifier">chgEtat</span>(<span class="ruby-identifier">grilleDeJeu</span>.<span class="ruby-identifier">grilleJ</span>[<span class="ruby-identifier">i</span>][<span class="ruby-ivar">@aide</span>].<span class="ruby-identifier">etat</span>)
-                                    <span class="ruby-keyword">end</span>
-                            <span class="ruby-keyword">end</span>
-
-                            <span class="ruby-ivar">@aide</span> = <span class="ruby-keyword">nil</span>
-                    <span class="ruby-keyword">end</span>
-                    <span class="ruby-keyword">if</span>(<span class="ruby-identifier">tempo</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span>)
-                            <span class="ruby-ivar">@nbFeuilles</span> = <span class="ruby-identifier">tempo</span>
-
-                            <span class="ruby-ivar">@profil</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-node">&quot;&lt;span foreground=\&quot;#EF2929\&quot; font-desc=\&quot;Courier New bold 15\&quot;&gt; #{@nbFeuilles}&lt;/span&gt;&quot;</span>)
-                            <span class="ruby-ivar">@aide</span> = <span class="ruby-ivar">@b3</span>.<span class="ruby-identifier">aide</span>(<span class="ruby-identifier">grilleDeJeu</span>, <span class="ruby-ivar">@lableAide</span>, <span class="ruby-identifier">unJoueur</span>, <span class="ruby-ivar">@boutonGrille</span>)
-                            <span class="ruby-ivar">@nbAidesUtilises</span><span class="ruby-operator">+=</span><span class="ruby-value">1</span>
-                    <span class="ruby-keyword">else</span>
-                            <span class="ruby-ivar">@lableAide</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-string">&quot;&lt;span foreground=\&quot;#EF2929\&quot; font-desc=\&quot;Courier New bold 11\&quot;&gt;Vous ne pouvez plus utiliser cette aide&lt;/span&gt;&quot;</span>)
-                    <span class="ruby-keyword">end</span>
-    }
-
-            <span class="ruby-ivar">@gHelp</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@boxAide</span>)
-
-            <span class="ruby-ivar">@bPause</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>()
-            <span class="ruby-ivar">@bPause</span>.<span class="ruby-identifier">set_relief</span>(<span class="ruby-value">:none</span>)
-            <span class="ruby-ivar">@pause</span>=(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span> <span class="ruby-operator">=&gt;</span><span class="ruby-string">&quot;./Assets/pause.png&quot;</span>))
-            <span class="ruby-ivar">@bPause</span>.<span class="ruby-identifier">set_image</span>(<span class="ruby-ivar">@pause</span>)
-            <span class="ruby-ivar">@gChrono</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@bPause</span>)
+        <span class="ruby-ivar">@grille</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Table</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">taille</span>, <span class="ruby-identifier">taille</span>, <span class="ruby-keyword">false</span>)
 
 
 
-            <span class="ruby-ivar">@bPause</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {
-                    <span class="ruby-ivar">@chrono</span>.<span class="ruby-identifier">cPause</span>
+                <span class="ruby-ivar">@boutonGrille</span> = [[]]
 
-                    <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@chrono</span>.<span class="ruby-identifier">pause</span>)
-                            <span class="ruby-ivar">@boutonGrille</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span>
-                                    <span class="ruby-identifier">k</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">l</span><span class="ruby-operator">|</span>
-                                            <span class="ruby-identifier">l</span>.<span class="ruby-identifier">clic</span>=<span class="ruby-keyword">false</span>
-                                            <span class="ruby-identifier">l</span>.<span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">set_opacity</span>(<span class="ruby-value">0.0</span>)
-                                    }
-                            }
-                            <span class="ruby-ivar">@pause</span>=(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span> <span class="ruby-operator">=&gt;</span><span class="ruby-string">&quot;./Assets/Play.png&quot;</span>))
-                            <span class="ruby-ivar">@bPause</span>.<span class="ruby-identifier">set_image</span>(<span class="ruby-ivar">@pause</span>)
+        <span class="ruby-comment"># Mise en place des indicateurs de la grille de jeu</span>
 
-                            <span class="ruby-ivar">@b1</span>.<span class="ruby-identifier">cliquable</span> = <span class="ruby-keyword">false</span>
-                            <span class="ruby-ivar">@b2</span>.<span class="ruby-identifier">cliquable</span> = <span class="ruby-keyword">false</span>
-                            <span class="ruby-ivar">@b3</span>.<span class="ruby-identifier">cliquable</span> = <span class="ruby-keyword">false</span>
-                    <span class="ruby-keyword">else</span>
-                            <span class="ruby-ivar">@boutonGrille</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span>
-                                    <span class="ruby-identifier">k</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">l</span><span class="ruby-operator">|</span>
-                                            <span class="ruby-identifier">l</span>.<span class="ruby-identifier">clic</span>=<span class="ruby-keyword">true</span>
-                                            <span class="ruby-identifier">l</span>.<span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">set_opacity</span>(<span class="ruby-value">1.0</span>)
-                                    }
-                            }
-                            <span class="ruby-ivar">@pause</span>=(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span> <span class="ruby-operator">=&gt;</span><span class="ruby-string">&quot;./Assets/pause.png&quot;</span>))
-                            <span class="ruby-ivar">@bPause</span>.<span class="ruby-identifier">set_image</span>(<span class="ruby-ivar">@pause</span>)
+                <span class="ruby-ivar">@tabBout</span>=[]
 
-                            <span class="ruby-ivar">@b1</span>.<span class="ruby-identifier">cliquable</span> = <span class="ruby-keyword">true</span>
-                            <span class="ruby-ivar">@b2</span>.<span class="ruby-identifier">cliquable</span> = <span class="ruby-keyword">true</span>
-                            <span class="ruby-ivar">@b3</span>.<span class="ruby-identifier">cliquable</span> = <span class="ruby-keyword">true</span>
-                    <span class="ruby-keyword">end</span>
-    }
+                <span class="ruby-keyword">for</span> <span class="ruby-identifier">j</span> <span class="ruby-keyword">in</span> (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-identifier">taille</span><span class="ruby-value">-1</span>)
+                        <span class="ruby-ivar">@tabBout</span>[<span class="ruby-identifier">j</span>] = <span class="ruby-constant">BoutonNbTentesColonne</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">grilleDeJeu</span>, <span class="ruby-ivar">@boutonGrille</span>, <span class="ruby-identifier">j</span>, <span class="ruby-node">&quot;./Assets/#{uneSaison}&quot;</span>, <span class="ruby-identifier">unJoueur</span>, <span class="ruby-keyword">false</span>)
+                        <span class="ruby-ivar">@tabBout</span>[<span class="ruby-identifier">j</span>].<span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">set_label</span>(<span class="ruby-identifier">grilleDeJeu</span>.<span class="ruby-identifier">nbTentesLigne</span>[<span class="ruby-identifier">j</span>].<span class="ruby-identifier">to_s</span>)
+                        <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-ivar">@tabBout</span>[<span class="ruby-identifier">j</span>].<span class="ruby-identifier">bouton</span>, <span class="ruby-identifier">j</span><span class="ruby-value">+1</span>,<span class="ruby-identifier">j</span><span class="ruby-value">+2</span>, <span class="ruby-value">0</span>,<span class="ruby-value">1</span>)
 
-            <span class="ruby-ivar">@gHelp</span>.<span class="ruby-identifier">spacing</span>=<span class="ruby-value">70</span>
+                <span class="ruby-keyword">end</span>
 
-            <span class="ruby-ivar">@box</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@gChrono</span>)
-            <span class="ruby-ivar">@box</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@grille</span>)
-            <span class="ruby-ivar">@box</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@gHelp</span>)
+                <span class="ruby-ivar">@tabBout</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">l</span><span class="ruby-operator">|</span>
+                        <span class="ruby-identifier">l</span>.<span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&quot;clicked&quot;</span>){
+                                <span class="ruby-identifier">l</span>.<span class="ruby-identifier">chgEtat</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-ivar">@chrono</span>.<span class="ruby-identifier">pause</span>, <span class="ruby-ivar">@chrono</span>.<span class="ruby-identifier">chrono</span>)
+                                <span class="ruby-keyword">if</span> (<span class="ruby-identifier">grilleDeJeu</span>.<span class="ruby-identifier">observateur</span>())
+                                        <span class="ruby-identifier">unJoueur</span>.<span class="ruby-identifier">finirLaPartie</span>(<span class="ruby-ivar">@saison</span>, <span class="ruby-identifier">tabGrille</span>.<span class="ruby-identifier">at</span>(<span class="ruby-value">0</span>))
+                                        <span class="ruby-identifier">unJoueur</span>.<span class="ruby-identifier">actualiser</span>
+                                        <span class="ruby-ivar">@chrono</span>.<span class="ruby-identifier">cRaz</span>
+                                        <span class="ruby-identifier">sleep</span>(<span class="ruby-value">1</span>)
+                                        <span class="ruby-identifier">thr</span>.<span class="ruby-identifier">kill</span>
+                                        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">supprimeMoi</span>
+                                 <span class="ruby-identifier">menu</span> = <span class="ruby-constant">FFin</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-ivar">@header</span>, <span class="ruby-keyword">self</span>, <span class="ruby-identifier">unJoueur</span>, <span class="ruby-string">&quot;gagner&quot;</span>)
+                                 <span class="ruby-identifier">menu</span>.<span class="ruby-identifier">ajouteMoi</span>
+                                 <span class="ruby-ivar">@window</span>.<span class="ruby-identifier">show_all</span>
+                                <span class="ruby-keyword">end</span>
+                        }
+                }
 
-            <span class="ruby-ivar">@frame</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-ivar">@box</span>,<span class="ruby-value">0</span>,<span class="ruby-value">1</span>,<span class="ruby-value">0</span>,<span class="ruby-value">1</span>)
+                <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-identifier">taille</span><span class="ruby-value">-1</span>)
+                        <span class="ruby-ivar">@tabBout</span>[<span class="ruby-identifier">i</span>] = <span class="ruby-constant">BoutonNbTentesLigne</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">grilleDeJeu</span>, <span class="ruby-ivar">@boutonGrille</span>, <span class="ruby-identifier">i</span>, <span class="ruby-node">&quot;./Assets/#{uneSaison}&quot;</span>, <span class="ruby-identifier">unJoueur</span>, <span class="ruby-keyword">false</span>)
+                        <span class="ruby-ivar">@tabBout</span>[<span class="ruby-identifier">i</span>].<span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">set_label</span>(<span class="ruby-identifier">grilleDeJeu</span>.<span class="ruby-identifier">nbTentesColonne</span>[<span class="ruby-identifier">i</span>].<span class="ruby-identifier">to_s</span>)
+                        <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-ivar">@tabBout</span>[<span class="ruby-identifier">i</span>].<span class="ruby-identifier">bouton</span>,<span class="ruby-value">0</span>,<span class="ruby-value">1</span>, <span class="ruby-identifier">i</span><span class="ruby-value">+1</span>,<span class="ruby-identifier">i</span><span class="ruby-value">+2</span>)
+                <span class="ruby-keyword">end</span>
 
-            <span class="ruby-ivar">@pix</span> = (<span class="ruby-constant">GdkPixbuf</span><span class="ruby-operator">::</span><span class="ruby-constant">Pixbuf</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span><span class="ruby-operator">=&gt;</span><span class="ruby-string">&quot;./Assets/ImgGameA.png&quot;</span>,<span class="ruby-value">:width</span><span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">monApp</span>.<span class="ruby-identifier">width</span>, <span class="ruby-value">:height</span><span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">monApp</span>.<span class="ruby-identifier">height</span>))
-    <span class="ruby-ivar">@bg</span>=(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:pixbuf</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-ivar">@pix</span>))
-    <span class="ruby-ivar">@frame</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-ivar">@bg</span>,<span class="ruby-value">0</span>,<span class="ruby-value">1</span>,<span class="ruby-value">0</span>,<span class="ruby-value">1</span>)
+                <span class="ruby-ivar">@tabBout</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">l</span><span class="ruby-operator">|</span>
+                        <span class="ruby-identifier">l</span>.<span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&quot;clicked&quot;</span>){
+                                <span class="ruby-identifier">l</span>.<span class="ruby-identifier">chgEtat</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-ivar">@chrono</span>.<span class="ruby-identifier">pause</span>, <span class="ruby-ivar">@chrono</span>.<span class="ruby-identifier">chrono</span>)
+                                <span class="ruby-keyword">if</span> (<span class="ruby-identifier">grilleDeJeu</span>.<span class="ruby-identifier">observateur</span>())
+                                        <span class="ruby-identifier">unJoueur</span>.<span class="ruby-identifier">finirLaPartie</span>(<span class="ruby-ivar">@saison</span>, <span class="ruby-identifier">tabGrille</span>.<span class="ruby-identifier">at</span>(<span class="ruby-value">0</span>))
+                                        <span class="ruby-identifier">unJoueur</span>.<span class="ruby-identifier">actualiser</span>
+                                        <span class="ruby-ivar">@chrono</span>.<span class="ruby-identifier">cRaz</span>
+                                        <span class="ruby-identifier">thr</span>.<span class="ruby-identifier">kill</span>
+                                        <span class="ruby-identifier">sleep</span>(<span class="ruby-value">1</span>)
+                                        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">supprimeMoi</span>
+                                 <span class="ruby-identifier">menu</span> = <span class="ruby-constant">FFin</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-ivar">@header</span>, <span class="ruby-keyword">self</span>, <span class="ruby-identifier">unJoueur</span>, <span class="ruby-string">&quot;gagner&quot;</span>)
+                                 <span class="ruby-identifier">menu</span>.<span class="ruby-identifier">ajouteMoi</span>
+                                 <span class="ruby-ivar">@window</span>.<span class="ruby-identifier">show_all</span>
+                                <span class="ruby-keyword">end</span>
+                        }
+                }
 
-    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@frame</span>)
-<span class="ruby-keyword">end</span></pre>
+        <span class="ruby-comment"># Création de la grille de jeu.</span>
+        <span class="ruby-comment"># Mise en place d&#39;une matrice composant tous les boutons</span>
+
+                <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-identifier">taille</span><span class="ruby-value">-1</span>)
+                        <span class="ruby-identifier">temp</span>=[]
+                        <span class="ruby-keyword">for</span> <span class="ruby-identifier">j</span> <span class="ruby-keyword">in</span> (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-identifier">taille</span><span class="ruby-value">-1</span>)
+                                        <span class="ruby-identifier">vEtat</span> = <span class="ruby-identifier">grilleDeJeu</span>.<span class="ruby-identifier">grilleJ</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>].<span class="ruby-identifier">etat</span>
+                                        <span class="ruby-identifier">temp</span>[<span class="ruby-identifier">j</span>] = <span class="ruby-constant">BoutonGrille</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-node">&quot;./Assets/#{uneSaison}&quot;</span>)
+                                        <span class="ruby-identifier">temp</span>[<span class="ruby-identifier">j</span>].<span class="ruby-identifier">mCoord</span>(<span class="ruby-identifier">i</span>,<span class="ruby-identifier">j</span>)
+                                        <span class="ruby-identifier">temp</span>[<span class="ruby-identifier">j</span>].<span class="ruby-identifier">chgEtat</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-identifier">vEtat</span>)
+                                        <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-identifier">temp</span>[<span class="ruby-identifier">j</span>].<span class="ruby-identifier">bouton</span>, <span class="ruby-identifier">i</span><span class="ruby-value">+1</span>, <span class="ruby-identifier">i</span><span class="ruby-value">+2</span>, <span class="ruby-identifier">j</span><span class="ruby-value">+1</span>,<span class="ruby-identifier">j</span><span class="ruby-value">+2</span>)
+                        <span class="ruby-keyword">end</span>
+                        <span class="ruby-ivar">@boutonGrille</span>[<span class="ruby-identifier">i</span>] = <span class="ruby-identifier">temp</span>
+                <span class="ruby-keyword">end</span>
+
+        <span class="ruby-comment"># Appel de l&#39;evenement bouton &quot;cliqué&quot;, et modification du bouton cliqué</span>
+                <span class="ruby-keyword">if</span>(<span class="ruby-operator">!</span><span class="ruby-ivar">@chrono</span>.<span class="ruby-identifier">pause</span>)
+                        <span class="ruby-ivar">@boutonGrille</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span>
+                                <span class="ruby-identifier">k</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">l</span><span class="ruby-operator">|</span>
+                                        <span class="ruby-identifier">l</span>.<span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&quot;clicked&quot;</span>){
+                                                <span class="ruby-keyword">if</span> <span class="ruby-ivar">@aide</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                                        <span class="ruby-keyword">if</span> <span class="ruby-ivar">@aide</span>.<span class="ruby-identifier">instance_of?</span> <span class="ruby-constant">Case</span>
+                                                                <span class="ruby-ivar">@boutonGrille</span>[<span class="ruby-ivar">@aide</span>.<span class="ruby-identifier">i</span>][<span class="ruby-ivar">@aide</span>.<span class="ruby-identifier">j</span>].<span class="ruby-identifier">chgEtat</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-identifier">grilleDeJeu</span>.<span class="ruby-identifier">grilleJ</span>[<span class="ruby-ivar">@aide</span>.<span class="ruby-identifier">i</span>][<span class="ruby-ivar">@aide</span>.<span class="ruby-identifier">j</span>].<span class="ruby-identifier">etat</span>)
+                                                        <span class="ruby-keyword">else</span>
+                                                                <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-identifier">taille</span><span class="ruby-value">-1</span>)
+                                                                        <span class="ruby-ivar">@boutonGrille</span>[<span class="ruby-ivar">@aide</span>][<span class="ruby-identifier">i</span>].<span class="ruby-identifier">chgEtat</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-identifier">grilleDeJeu</span>.<span class="ruby-identifier">grilleJ</span>[<span class="ruby-ivar">@aide</span>][<span class="ruby-identifier">i</span>].<span class="ruby-identifier">etat</span>)
+                                                                        <span class="ruby-ivar">@boutonGrille</span>[<span class="ruby-identifier">i</span>][<span class="ruby-ivar">@aide</span>].<span class="ruby-identifier">chgEtat</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-identifier">grilleDeJeu</span>.<span class="ruby-identifier">grilleJ</span>[<span class="ruby-identifier">i</span>][<span class="ruby-ivar">@aide</span>].<span class="ruby-identifier">etat</span>)
+                                                                <span class="ruby-keyword">end</span>
+                                                        <span class="ruby-keyword">end</span>
+                                                        <span class="ruby-ivar">@lableAide</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-string">&#39;&#39;</span>)
+
+                                                        <span class="ruby-ivar">@aide</span> = <span class="ruby-keyword">nil</span>
+                                                <span class="ruby-keyword">end</span>
+                                     <span class="ruby-identifier">grilleDeJeu</span>.<span class="ruby-identifier">grilleJ</span>[<span class="ruby-identifier">l</span>.<span class="ruby-identifier">coordI</span>][<span class="ruby-identifier">l</span>.<span class="ruby-identifier">coordJ</span>].<span class="ruby-identifier">jouerCase</span>()
+                                                <span class="ruby-ivar">@boutonGrille</span>[<span class="ruby-identifier">l</span>.<span class="ruby-identifier">coordI</span>][<span class="ruby-identifier">l</span>.<span class="ruby-identifier">coordJ</span>].<span class="ruby-identifier">chgEtat</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-identifier">grilleDeJeu</span>.<span class="ruby-identifier">grilleJ</span>[<span class="ruby-identifier">l</span>.<span class="ruby-identifier">coordI</span>][<span class="ruby-identifier">l</span>.<span class="ruby-identifier">coordJ</span>].<span class="ruby-identifier">etat</span>)
+
+                                                <span class="ruby-keyword">if</span> (<span class="ruby-identifier">grilleDeJeu</span>.<span class="ruby-identifier">observateur</span>())
+                                                        <span class="ruby-identifier">unJoueur</span>.<span class="ruby-identifier">finirLaPartie</span>(<span class="ruby-ivar">@saison</span>, <span class="ruby-identifier">tabGrille</span>.<span class="ruby-identifier">at</span>(<span class="ruby-value">0</span>))
+                                                        <span class="ruby-identifier">unJoueur</span>.<span class="ruby-identifier">actualiser</span>
+                                                        <span class="ruby-identifier">thr</span>.<span class="ruby-identifier">kill</span>
+                                                        <span class="ruby-identifier">sleep</span>(<span class="ruby-value">1</span>)
+                                                        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">supprimeMoi</span>
+                                             <span class="ruby-identifier">menu</span> = <span class="ruby-constant">FFin</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-ivar">@header</span>, <span class="ruby-keyword">self</span>, <span class="ruby-identifier">unJoueur</span>, <span class="ruby-string">&quot;gagner&quot;</span>)
+                                             <span class="ruby-identifier">menu</span>.<span class="ruby-identifier">ajouteMoi</span>
+                                             <span class="ruby-ivar">@window</span>.<span class="ruby-identifier">show_all</span>
+                                                <span class="ruby-keyword">end</span>
+
+                                        }
+                                }
+                        }
+                <span class="ruby-keyword">end</span>
+
+
+                <span class="ruby-ivar">@header</span>.<span class="ruby-identifier">btnMenu</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {
+                        <span class="ruby-comment"># @chrono.cFin</span>
+                        <span class="ruby-comment"># @chrono.cRaz</span>
+                        <span class="ruby-identifier">thr</span>.<span class="ruby-identifier">kill</span>
+                <span class="ruby-keyword">self</span>.<span class="ruby-identifier">supprimeMoi</span>
+                <span class="ruby-identifier">menu</span> = <span class="ruby-constant">FMenu</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-ivar">@header</span>, <span class="ruby-keyword">self</span>, <span class="ruby-identifier">unJoueur</span>)
+                <span class="ruby-identifier">menu</span>.<span class="ruby-identifier">ajouteMoi</span>
+                <span class="ruby-ivar">@window</span>.<span class="ruby-identifier">show_all</span>
+        }
+
+                <span class="ruby-ivar">@boxAide</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">ButtonBox</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:vertical</span>)
+
+                <span class="ruby-ivar">@lableAide</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>()
+
+                <span class="ruby-ivar">@boxAide</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@lableAide</span>)
+
+                <span class="ruby-ivar">@b1</span> = <span class="ruby-constant">BoutonAideHerbe</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Aide Herbe : 2 feuilles&quot;</span>, <span class="ruby-keyword">true</span>)
+                <span class="ruby-ivar">@b2</span> = <span class="ruby-constant">BoutonAideTente</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Aide Tente : 3 feuilles&quot;</span>, <span class="ruby-keyword">true</span>)
+                <span class="ruby-ivar">@b3</span> = <span class="ruby-constant">BoutonAideVerif</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Verification : 5 feuilles&quot;</span>, <span class="ruby-keyword">true</span>)
+
+
+                <span class="ruby-ivar">@boxAide</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@b1</span>.<span class="ruby-identifier">bouton</span>)
+                <span class="ruby-ivar">@boxAide</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@b2</span>.<span class="ruby-identifier">bouton</span>)
+                <span class="ruby-ivar">@boxAide</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@b3</span>.<span class="ruby-identifier">bouton</span>)
+
+                <span class="ruby-ivar">@b1</span>.<span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>){
+                        <span class="ruby-identifier">tempo</span> = <span class="ruby-ivar">@nbFeuilles</span> <span class="ruby-operator">-</span> <span class="ruby-ivar">@b1</span>.<span class="ruby-identifier">prix</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-ivar">@aide</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-keyword">if</span> <span class="ruby-ivar">@aide</span>.<span class="ruby-identifier">instance_of?</span> <span class="ruby-constant">Case</span>
+                                        <span class="ruby-ivar">@boutonGrille</span>[<span class="ruby-ivar">@aide</span>.<span class="ruby-identifier">i</span>][<span class="ruby-ivar">@aide</span>.<span class="ruby-identifier">j</span>].<span class="ruby-identifier">chgEtat</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-identifier">grilleDeJeu</span>.<span class="ruby-identifier">grilleJ</span>[<span class="ruby-ivar">@aide</span>.<span class="ruby-identifier">i</span>][<span class="ruby-ivar">@aide</span>.<span class="ruby-identifier">j</span>].<span class="ruby-identifier">etat</span>)
+                                <span class="ruby-keyword">else</span>
+                                        <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-identifier">taille</span><span class="ruby-value">-1</span>)
+                                                <span class="ruby-ivar">@boutonGrille</span>[<span class="ruby-ivar">@aide</span>][<span class="ruby-identifier">i</span>].<span class="ruby-identifier">chgEtat</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-identifier">grilleDeJeu</span>.<span class="ruby-identifier">grilleJ</span>[<span class="ruby-ivar">@aide</span>][<span class="ruby-identifier">i</span>].<span class="ruby-identifier">etat</span>)
+                                                <span class="ruby-ivar">@boutonGrille</span>[<span class="ruby-identifier">i</span>][<span class="ruby-ivar">@aide</span>].<span class="ruby-identifier">chgEtat</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-identifier">grilleDeJeu</span>.<span class="ruby-identifier">grilleJ</span>[<span class="ruby-identifier">i</span>][<span class="ruby-ivar">@aide</span>].<span class="ruby-identifier">etat</span>)
+                                        <span class="ruby-keyword">end</span>
+                                <span class="ruby-keyword">end</span>
+
+                                <span class="ruby-ivar">@aide</span> = <span class="ruby-keyword">nil</span>
+                        <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">if</span>(<span class="ruby-identifier">tempo</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span>)
+                                <span class="ruby-ivar">@nbFeuilles</span> = <span class="ruby-identifier">tempo</span>
+
+                                <span class="ruby-ivar">@profil</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-node">&quot;&lt;span foreground=\&quot;#EF2929\&quot; font-desc=\&quot;Courier New bold 15\&quot;&gt; #{@nbFeuilles}&lt;/span&gt;&quot;</span>)
+
+                                <span class="ruby-ivar">@aide</span> = <span class="ruby-ivar">@b1</span>.<span class="ruby-identifier">aide</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-identifier">grilleDeJeu</span>, <span class="ruby-ivar">@lableAide</span>, <span class="ruby-identifier">unJoueur</span>, <span class="ruby-ivar">@boutonGrille</span>)
+                                <span class="ruby-ivar">@nbAidesUtilises</span><span class="ruby-operator">+=</span><span class="ruby-value">1</span>
+                        <span class="ruby-keyword">else</span>
+                                <span class="ruby-ivar">@lableAide</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-string">&quot;&lt;span foreground=\&quot;#FFFFFF\&quot; font-desc=\&quot;Courier New bold 11\&quot;&gt;Vous ne pouvez plus utiliser cette aide&lt;/span&gt;&quot;</span>)
+                        <span class="ruby-keyword">end</span>
+                }
+
+                <span class="ruby-ivar">@b2</span>.<span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {
+                        <span class="ruby-identifier">tempo</span> = <span class="ruby-ivar">@nbFeuilles</span> <span class="ruby-operator">-</span> <span class="ruby-ivar">@b2</span>.<span class="ruby-identifier">prix</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-ivar">@aide</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-keyword">if</span> <span class="ruby-ivar">@aide</span>.<span class="ruby-identifier">instance_of?</span> <span class="ruby-constant">Case</span>
+                                        <span class="ruby-ivar">@boutonGrille</span>[<span class="ruby-ivar">@aide</span>.<span class="ruby-identifier">i</span>][<span class="ruby-ivar">@aide</span>.<span class="ruby-identifier">j</span>].<span class="ruby-identifier">chgEtat</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-identifier">grilleDeJeu</span>.<span class="ruby-identifier">grilleJ</span>[<span class="ruby-ivar">@aide</span>.<span class="ruby-identifier">i</span>][<span class="ruby-ivar">@aide</span>.<span class="ruby-identifier">j</span>].<span class="ruby-identifier">etat</span>)
+                                <span class="ruby-keyword">else</span>
+                                        <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-identifier">taille</span><span class="ruby-value">-1</span>)
+                                                <span class="ruby-ivar">@boutonGrille</span>[<span class="ruby-ivar">@aide</span>][<span class="ruby-identifier">i</span>].<span class="ruby-identifier">chgEtat</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-identifier">grilleDeJeu</span>.<span class="ruby-identifier">grilleJ</span>[<span class="ruby-ivar">@aide</span>][<span class="ruby-identifier">i</span>].<span class="ruby-identifier">etat</span>)
+                                                <span class="ruby-ivar">@boutonGrille</span>[<span class="ruby-identifier">i</span>][<span class="ruby-ivar">@aide</span>].<span class="ruby-identifier">chgEtat</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-identifier">grilleDeJeu</span>.<span class="ruby-identifier">grilleJ</span>[<span class="ruby-identifier">i</span>][<span class="ruby-ivar">@aide</span>].<span class="ruby-identifier">etat</span>)
+                                        <span class="ruby-keyword">end</span>
+                                <span class="ruby-keyword">end</span>
+
+                                <span class="ruby-ivar">@aide</span> = <span class="ruby-keyword">nil</span>
+                        <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">if</span>(<span class="ruby-identifier">tempo</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span>)
+
+                                <span class="ruby-ivar">@nbFeuilles</span> = <span class="ruby-identifier">tempo</span>
+
+                                <span class="ruby-ivar">@profil</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-node">&quot;&lt;span foreground=\&quot;#EF2929\&quot; font-desc=\&quot;Courier New bold 15\&quot;&gt; #{@nbFeuilles}&lt;/span&gt;&quot;</span>)
+
+                                <span class="ruby-ivar">@aide</span> = <span class="ruby-ivar">@b2</span>.<span class="ruby-identifier">aide</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-identifier">grilleDeJeu</span>, <span class="ruby-ivar">@lableAide</span>, <span class="ruby-identifier">unJoueur</span>, <span class="ruby-ivar">@boutonGrille</span>)
+                                <span class="ruby-ivar">@nbAidesUtilises</span><span class="ruby-operator">+=</span><span class="ruby-value">1</span>
+                        <span class="ruby-keyword">else</span>
+                                <span class="ruby-ivar">@lableAide</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-string">&quot;&lt;span foreground=\&quot;#FFFFFF\&quot; font-desc=\&quot;Courier New bold 11\&quot;&gt;Vous ne pouvez plus utiliser cette aide&lt;/span&gt;&quot;</span>)
+                        <span class="ruby-keyword">end</span>
+        }
+
+                <span class="ruby-ivar">@b3</span>.<span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {
+                        <span class="ruby-identifier">tempo</span> = <span class="ruby-ivar">@nbFeuilles</span> <span class="ruby-operator">-</span> <span class="ruby-ivar">@b3</span>.<span class="ruby-identifier">prix</span>
+                        <span class="ruby-keyword">if</span> <span class="ruby-ivar">@aide</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>
+                                <span class="ruby-keyword">if</span> <span class="ruby-ivar">@aide</span>.<span class="ruby-identifier">instance_of?</span> <span class="ruby-constant">Case</span>
+                                        <span class="ruby-ivar">@boutonGrille</span>[<span class="ruby-ivar">@aide</span>.<span class="ruby-identifier">i</span>][<span class="ruby-ivar">@aide</span>.<span class="ruby-identifier">j</span>].<span class="ruby-identifier">chgEtat</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-identifier">grilleDeJeu</span>.<span class="ruby-identifier">grilleJ</span>[<span class="ruby-ivar">@aide</span>.<span class="ruby-identifier">i</span>][<span class="ruby-ivar">@aide</span>.<span class="ruby-identifier">j</span>].<span class="ruby-identifier">etat</span>)
+                                <span class="ruby-keyword">else</span>
+                                        <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-identifier">taille</span><span class="ruby-value">-1</span>)
+                                                <span class="ruby-ivar">@boutonGrille</span>[<span class="ruby-ivar">@aide</span>][<span class="ruby-identifier">i</span>].<span class="ruby-identifier">chgEtat</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-identifier">grilleDeJeu</span>.<span class="ruby-identifier">grilleJ</span>[<span class="ruby-ivar">@aide</span>][<span class="ruby-identifier">i</span>].<span class="ruby-identifier">etat</span>)
+                                                <span class="ruby-ivar">@boutonGrille</span>[<span class="ruby-identifier">i</span>][<span class="ruby-ivar">@aide</span>].<span class="ruby-identifier">chgEtat</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-identifier">grilleDeJeu</span>.<span class="ruby-identifier">grilleJ</span>[<span class="ruby-identifier">i</span>][<span class="ruby-ivar">@aide</span>].<span class="ruby-identifier">etat</span>)
+                                        <span class="ruby-keyword">end</span>
+                                <span class="ruby-keyword">end</span>
+
+                                <span class="ruby-ivar">@aide</span> = <span class="ruby-keyword">nil</span>
+                        <span class="ruby-keyword">end</span>
+                        <span class="ruby-keyword">if</span>(<span class="ruby-identifier">tempo</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span>)
+                                <span class="ruby-ivar">@nbFeuilles</span> = <span class="ruby-identifier">tempo</span>
+
+                                <span class="ruby-ivar">@profil</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-node">&quot;&lt;span foreground=\&quot;#EF2929\&quot; font-desc=\&quot;Courier New bold 15\&quot;&gt; #{@nbFeuilles}&lt;/span&gt;&quot;</span>)
+                                <span class="ruby-ivar">@aide</span> = <span class="ruby-ivar">@b3</span>.<span class="ruby-identifier">aide</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-identifier">grilleDeJeu</span>, <span class="ruby-ivar">@lableAide</span>, <span class="ruby-identifier">unJoueur</span>, <span class="ruby-ivar">@boutonGrille</span>)
+                                <span class="ruby-ivar">@nbAidesUtilises</span><span class="ruby-operator">+=</span><span class="ruby-value">1</span>
+                        <span class="ruby-keyword">else</span>
+                                <span class="ruby-ivar">@lableAide</span>.<span class="ruby-identifier">set_markup</span>(<span class="ruby-string">&quot;&lt;span foreground=\&quot;#EF2929\&quot; font-desc=\&quot;Courier New bold 11\&quot;&gt;Vous ne pouvez plus utiliser cette aide&lt;/span&gt;&quot;</span>)
+                        <span class="ruby-keyword">end</span>
+        }
+
+                <span class="ruby-ivar">@gHelp</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@boxAide</span>)
+
+                <span class="ruby-ivar">@bPause</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>()
+                <span class="ruby-ivar">@bPause</span>.<span class="ruby-identifier">set_relief</span>(<span class="ruby-value">:none</span>)
+                <span class="ruby-ivar">@pause</span>=(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span> <span class="ruby-operator">=&gt;</span><span class="ruby-string">&quot;./Assets/pause.png&quot;</span>))
+                <span class="ruby-ivar">@bPause</span>.<span class="ruby-identifier">set_image</span>(<span class="ruby-ivar">@pause</span>)
+                <span class="ruby-ivar">@gChrono</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@bPause</span>)
+
+
+
+                <span class="ruby-ivar">@bPause</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {
+                        <span class="ruby-ivar">@chrono</span>.<span class="ruby-identifier">cPause</span>
+
+                        <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@chrono</span>.<span class="ruby-identifier">pause</span>)
+                                <span class="ruby-ivar">@boutonGrille</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span>
+                                        <span class="ruby-identifier">k</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">l</span><span class="ruby-operator">|</span>
+                                                <span class="ruby-identifier">l</span>.<span class="ruby-identifier">clic</span>=<span class="ruby-keyword">false</span>
+                                        }
+                                }
+                                <span class="ruby-ivar">@pause</span>=(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span> <span class="ruby-operator">=&gt;</span><span class="ruby-string">&quot;./Assets/Play.png&quot;</span>))
+                                <span class="ruby-ivar">@bPause</span>.<span class="ruby-identifier">set_image</span>(<span class="ruby-ivar">@pause</span>)
+
+                                <span class="ruby-ivar">@b1</span>.<span class="ruby-identifier">cliquable</span> = <span class="ruby-keyword">false</span>
+                                <span class="ruby-ivar">@b2</span>.<span class="ruby-identifier">cliquable</span> = <span class="ruby-keyword">false</span>
+                                <span class="ruby-ivar">@b3</span>.<span class="ruby-identifier">cliquable</span> = <span class="ruby-keyword">false</span>
+
+                                <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span>
+                                                <span class="ruby-identifier">k</span>.<span class="ruby-identifier">set_opacity</span>(<span class="ruby-value">0.0</span>)
+                                }
+
+                        <span class="ruby-keyword">else</span>
+                                <span class="ruby-ivar">@boutonGrille</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span>
+                                        <span class="ruby-identifier">k</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">l</span><span class="ruby-operator">|</span>
+                                                <span class="ruby-identifier">l</span>.<span class="ruby-identifier">clic</span>=<span class="ruby-keyword">true</span>
+                                        }
+                                }
+                                <span class="ruby-ivar">@pause</span>=(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span> <span class="ruby-operator">=&gt;</span><span class="ruby-string">&quot;./Assets/pause.png&quot;</span>))
+                                <span class="ruby-ivar">@bPause</span>.<span class="ruby-identifier">set_image</span>(<span class="ruby-ivar">@pause</span>)
+
+                                <span class="ruby-ivar">@b1</span>.<span class="ruby-identifier">cliquable</span> = <span class="ruby-keyword">true</span>
+                                <span class="ruby-ivar">@b2</span>.<span class="ruby-identifier">cliquable</span> = <span class="ruby-keyword">true</span>
+                                <span class="ruby-ivar">@b3</span>.<span class="ruby-identifier">cliquable</span> = <span class="ruby-keyword">true</span>
+
+                                <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span>
+                                                <span class="ruby-identifier">k</span>.<span class="ruby-identifier">set_opacity</span>(<span class="ruby-value">1.0</span>)
+                                }
+                        <span class="ruby-keyword">end</span>
+        }
+
+                <span class="ruby-ivar">@gHelp</span>.<span class="ruby-identifier">spacing</span>=<span class="ruby-value">70</span>
+
+                <span class="ruby-ivar">@box</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@gChrono</span>)
+                <span class="ruby-ivar">@box</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@grille</span>)
+                <span class="ruby-ivar">@box</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@gHelp</span>)
+
+                <span class="ruby-ivar">@frame</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-ivar">@box</span>,<span class="ruby-value">0</span>,<span class="ruby-value">1</span>,<span class="ruby-value">0</span>,<span class="ruby-value">1</span>)
+
+                <span class="ruby-ivar">@pix</span> = (<span class="ruby-constant">GdkPixbuf</span><span class="ruby-operator">::</span><span class="ruby-constant">Pixbuf</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span><span class="ruby-operator">=&gt;</span><span class="ruby-string">&quot;./Assets/ImgGameA.png&quot;</span>,<span class="ruby-value">:width</span><span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">monApp</span>.<span class="ruby-identifier">width</span>, <span class="ruby-value">:height</span><span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">monApp</span>.<span class="ruby-identifier">height</span>))
+        <span class="ruby-ivar">@bg</span>=(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:pixbuf</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-ivar">@pix</span>))
+        <span class="ruby-ivar">@frame</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-ivar">@bg</span>,<span class="ruby-value">0</span>,<span class="ruby-value">1</span>,<span class="ruby-value">0</span>,<span class="ruby-value">1</span>)
+
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@frame</span>)
+    <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>

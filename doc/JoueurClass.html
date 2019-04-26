@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>class BoutonNbTentes - RDoc Documentation</title>
+<title>class JoueurClass - RDoc Documentation</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "./";
@@ -79,14 +79,14 @@
   </div>
 </nav>
 
-<main role="main" aria-labelledby="class-BoutonNbTentes">
-  <h1 id="class-BoutonNbTentes" class="class">
-    class BoutonNbTentes
+<main role="main" aria-labelledby="class-JoueurClass">
+  <h1 id="class-JoueurClass" class="class">
+    class JoueurClass
   </h1>
 
   <section class="description">
     
-<h6 id="class-BoutonNbTentes-label-La+classe+BoutonNbTentes+repr-C3-A9sentes+les+bouton+sur+le+c-C3-B4t-C3-A9+de+la+grille+de+jeu+pour+remplire+une+ligne-2Fcolonne+d-27herbe">La classe <a href="BoutonNbTentes.html">BoutonNbTentes</a> représentes les bouton sur le côté de la grille de jeu pour remplire une ligne/colonne d&#39;herbe<span><a href="#class-BoutonNbTentes-label-La+classe+BoutonNbTentes+repr-C3-A9sentes+les+bouton+sur+le+c-C3-B4t-C3-A9+de+la+grille+de+jeu+pour+remplire+une+ligne-2Fcolonne+d-27herbe">&para;</a> <a href="#top">&uarr;</a></span></h6>
+<h6 id="class-JoueurClass-label-La+classe+JoueurClass+permet+de+creer+un+objet+pour+le+tableau+des+scores">La classe <a href="JoueurClass.html">JoueurClass</a> permet de creer un objet pour le tableau des scores<span><a href="#class-JoueurClass-label-La+classe+JoueurClass+permet+de+creer+un+objet+pour+le+tableau+des+scores">&para;</a> <a href="#top">&uarr;</a></span></h6>
 
   </section>
 
@@ -105,44 +105,34 @@
       </header>
 
       
-      <div id="attribute-i-bouton" class="method-detail">
+      <div id="attribute-i-nomJoueur" class="method-detail">
         <div class="method-heading attribute-method-heading">
-          <span class="method-name">bouton</span><span
+          <span class="method-name">nomJoueur</span><span
             class="attribute-access-type">[RW]</span>
         </div>
 
         <div class="method-description">
         
-        
-        
-        </div>
-      </div>
-      
-      <div id="attribute-i-chemin" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">chemin</span><span
-            class="attribute-access-type">[R]</span>
-        </div>
+        <h1 id="attribute-i-nomJoueur-label-Variable+d-27instance">Variable d&#39;instance<span><a href="#attribute-i-nomJoueur-label-Variable+d-27instance">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
-        <div class="method-description">
-        
-        
+<pre>@score               : Le score
+@nomJoueur   : nom du joueur</pre>
         
         </div>
       </div>
       
-      <div id="attribute-i-clic" class="method-detail">
+      <div id="attribute-i-score" class="method-detail">
         <div class="method-heading attribute-method-heading">
-          <span class="method-name">clic</span><span
+          <span class="method-name">score</span><span
             class="attribute-access-type">[RW]</span>
         </div>
 
         <div class="method-description">
         
-        <h1 id="attribute-i-clic-label-Variable+d-27instance">Variable d&#39;instance<span><a href="#attribute-i-clic-label-Variable+d-27instance">&para;</a> <a href="#top">&uarr;</a></span></h1>
+        <h1 id="attribute-i-score-label-Variable+d-27instance">Variable d&#39;instance<span><a href="#attribute-i-score-label-Variable+d-27instance">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
-<pre>@bouton              : Le bouton
-@coordI, @coordJ     : Coordonnée du bouton</pre>
+<pre>@score               : Le score
+@nomJoueur   : nom du joueur</pre>
         
         </div>
       </div>
@@ -161,7 +151,7 @@
         
         <div class="method-heading">
           <span class="method-name">new</span><span
-            class="method-args">(uneGrille, grilleInterface, indice, chemin, unJoueur, classique)</span>
+            class="method-args">(score, pseudo)</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -170,31 +160,19 @@
 
         <div class="method-description">
           
-          <p>Initialise le bouton</p>
+          <p>Initialize le bouton</p>
 
-<pre>@param uneGrille             //Grille de jeu
-@param grilleInterface       //affichage de grille de jeu
-@param indice                //indice ligne/colonne
-@param chemin                //Le chemin d&#39;accès du dossier contenant les différentes images
-@param unJoueur              //Le joueur concerné
-@param classique             //booléen mode classique ou non
-@return void                 //ne renvoie rien</pre>
+<pre>@param score    //Le score du joueur
+@param pseudo   //Le pseudo du joueur
+@return void         //ne renvoie rien</pre>
           
           
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File Classes/boutonNbTentes.rb, line 25</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">uneGrille</span>, <span class="ruby-identifier">grilleInterface</span>, <span class="ruby-identifier">indice</span>, <span class="ruby-identifier">chemin</span>, <span class="ruby-identifier">unJoueur</span>, <span class="ruby-identifier">classique</span>)
-        <span class="ruby-ivar">@bouton</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>
-        <span class="ruby-comment"># @bouton.set_relief(:none)</span>
-        <span class="ruby-ivar">@grilleDeJeu</span> = <span class="ruby-identifier">uneGrille</span>
-        <span class="ruby-ivar">@boutonGrille</span> = <span class="ruby-identifier">grilleInterface</span>
-        <span class="ruby-ivar">@indice</span> = <span class="ruby-identifier">indice</span>
-        <span class="ruby-ivar">@clic</span> = <span class="ruby-keyword">true</span>
-        <span class="ruby-ivar">@chemin</span> = <span class="ruby-identifier">chemin</span>
-        <span class="ruby-ivar">@joueur</span> = <span class="ruby-identifier">unJoueur</span>
-        <span class="ruby-ivar">@classique</span> = <span class="ruby-identifier">classique</span>
+            <pre><span class="ruby-comment"># File Classes/JoueurClass.rb, line 17</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">score</span>, <span class="ruby-identifier">pseudo</span>)
+        <span class="ruby-ivar">@score</span>, <span class="ruby-ivar">@nomJoueur</span> = <span class="ruby-identifier">score</span>, <span class="ruby-identifier">pseudo</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           

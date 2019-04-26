@@ -77,6 +77,8 @@
     
     <li ><a href="#method-i-debloquer">#debloquer</a>
     
+    <li ><a href="#method-i-debloquerBonus">#debloquerBonus</a>
+    
     <li ><a href="#method-i-lancer">#lancer</a>
     
   </ul>
@@ -110,6 +112,19 @@
         <h3>Attributes</h3>
       </header>
 
+      
+      <div id="attribute-i-bonusVisible" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">bonusVisible</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
       
       <div id="attribute-i-bouton" class="method-detail">
         <div class="method-heading attribute-method-heading">
@@ -157,7 +172,7 @@
         
         <div class="method-heading">
           <span class="method-name">new</span><span
-            class="method-args">(uneSaison, unJoueur)</span>
+            class="method-args">(monApp, uneSaison, unJoueur)</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -168,7 +183,8 @@
           
           <p>Initialise le bouton représentant l&#39;accès aux saisons</p>
 
-<pre>@param uneSaison             //Chaine de caracère représentant une des 4 saison (été/hiver/automne/pintemps)
+<pre>@param monApp                //Prend l&#39;application
+@param uneSaison             //Chaine de caracère représentant une des 4 saison (été/hiver/automne/pintemps)
 @param cliquable             //Booléen pou définir si le bouton sera cliquable ou non
 @return void                 //ne renvoie rien</pre>
           
@@ -176,31 +192,48 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File Classes/boutonSaison.rb, line 24</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">uneSaison</span>, <span class="ruby-identifier">unJoueur</span>)
-        <span class="ruby-ivar">@bouton</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>()
-<span class="ruby-identifier">focus_hadjustment</span>=(<span class="ruby-value">:start</span>)
+            <pre><span class="ruby-comment"># File Classes/boutonSaison.rb, line 26</span>
+        <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-identifier">uneSaison</span>, <span class="ruby-identifier">unJoueur</span>)
+                <span class="ruby-ivar">@bouton</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>()
+        <span class="ruby-identifier">focus_hadjustment</span>=(<span class="ruby-value">:start</span>)
 
-        <span class="ruby-ivar">@saison</span> = <span class="ruby-identifier">uneSaison</span>
-        <span class="ruby-ivar">@joueur</span> = <span class="ruby-identifier">unJoueur</span>
+                <span class="ruby-ivar">@saison</span> = <span class="ruby-identifier">uneSaison</span>
+                <span class="ruby-ivar">@joueur</span> = <span class="ruby-identifier">unJoueur</span>
 
-        <span class="ruby-keyword">case</span> <span class="ruby-ivar">@saison</span>
-                <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;Printemps&quot;</span> <span class="ruby-keyword">then</span>
-                        <span class="ruby-ivar">@numSaison</span> = <span class="ruby-value">0</span>
-                        <span class="ruby-ivar">@joueur</span>.<span class="ruby-identifier">acheterNiveau</span>(<span class="ruby-ivar">@numSaison</span>)
-                <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;Ete&quot;</span> <span class="ruby-keyword">then</span>
-                        <span class="ruby-ivar">@numSaison</span> = <span class="ruby-value">1</span>
-                <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;Automne&quot;</span> <span class="ruby-keyword">then</span>
-                        <span class="ruby-ivar">@numSaison</span> = <span class="ruby-value">2</span>
-                <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;Hiver&quot;</span> <span class="ruby-keyword">then</span>
-                        <span class="ruby-ivar">@numSaison</span> = <span class="ruby-value">3</span>
-        <span class="ruby-keyword">end</span>
-        <span class="ruby-ivar">@img</span>=(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span> <span class="ruby-operator">=&gt;</span><span class="ruby-node">&quot;./Assets/Vignette#{@saison}V.png&quot;</span>))
-<span class="ruby-ivar">@bouton</span>.<span class="ruby-identifier">set_image</span>(<span class="ruby-ivar">@img</span>)
+                <span class="ruby-keyword">case</span> <span class="ruby-ivar">@saison</span>
+                        <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;Printemps&quot;</span> <span class="ruby-keyword">then</span>
+                                <span class="ruby-ivar">@numSaison</span> = <span class="ruby-value">0</span>
+                                <span class="ruby-ivar">@joueur</span>.<span class="ruby-identifier">acheterNiveau</span>(<span class="ruby-ivar">@numSaison</span>)
+                                <span class="ruby-ivar">@pix</span> = (<span class="ruby-constant">GdkPixbuf</span><span class="ruby-operator">::</span><span class="ruby-constant">Pixbuf</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span><span class="ruby-operator">=&gt;</span><span class="ruby-node">&quot;./Assets/Vignette#{@saison}V.png&quot;</span>,<span class="ruby-value">:width</span><span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">monApp</span>.<span class="ruby-identifier">width</span><span class="ruby-operator">/</span><span class="ruby-value">5</span>, <span class="ruby-value">:height</span><span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">monApp</span>.<span class="ruby-identifier">height</span><span class="ruby-operator">/</span><span class="ruby-value">5</span>))
+                        <span class="ruby-ivar">@img</span>=(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:pixbuf</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-ivar">@pix</span>))
+                        <span class="ruby-ivar">@bouton</span>.<span class="ruby-identifier">set_image</span>(<span class="ruby-ivar">@img</span>)
+                        <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;Ete&quot;</span> <span class="ruby-keyword">then</span>
+                                <span class="ruby-ivar">@numSaison</span> = <span class="ruby-value">1</span>
+                                <span class="ruby-ivar">@pix</span> = (<span class="ruby-constant">GdkPixbuf</span><span class="ruby-operator">::</span><span class="ruby-constant">Pixbuf</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span><span class="ruby-operator">=&gt;</span><span class="ruby-node">&quot;./Assets/Vignette#{@saison}V.png&quot;</span>,<span class="ruby-value">:width</span><span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">monApp</span>.<span class="ruby-identifier">width</span><span class="ruby-operator">/</span><span class="ruby-value">5</span>, <span class="ruby-value">:height</span><span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">monApp</span>.<span class="ruby-identifier">height</span><span class="ruby-operator">/</span><span class="ruby-value">5</span>))
+                        <span class="ruby-ivar">@img</span>=(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:pixbuf</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-ivar">@pix</span>))
+                        <span class="ruby-ivar">@bouton</span>.<span class="ruby-identifier">set_image</span>(<span class="ruby-ivar">@img</span>)
+                        <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;Automne&quot;</span> <span class="ruby-keyword">then</span>
+                                <span class="ruby-ivar">@numSaison</span> = <span class="ruby-value">2</span>
+                                <span class="ruby-ivar">@pix</span> = (<span class="ruby-constant">GdkPixbuf</span><span class="ruby-operator">::</span><span class="ruby-constant">Pixbuf</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span><span class="ruby-operator">=&gt;</span><span class="ruby-node">&quot;./Assets/Vignette#{@saison}V.png&quot;</span>,<span class="ruby-value">:width</span><span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">monApp</span>.<span class="ruby-identifier">width</span><span class="ruby-operator">/</span><span class="ruby-value">5</span>, <span class="ruby-value">:height</span><span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">monApp</span>.<span class="ruby-identifier">height</span><span class="ruby-operator">/</span><span class="ruby-value">5</span>))
+                        <span class="ruby-ivar">@img</span>=(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:pixbuf</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-ivar">@pix</span>))
+                        <span class="ruby-ivar">@bouton</span>.<span class="ruby-identifier">set_image</span>(<span class="ruby-ivar">@img</span>)
+                        <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;Hiver&quot;</span> <span class="ruby-keyword">then</span>
+                                <span class="ruby-ivar">@numSaison</span> = <span class="ruby-value">3</span>
+                                <span class="ruby-ivar">@pix</span> = (<span class="ruby-constant">GdkPixbuf</span><span class="ruby-operator">::</span><span class="ruby-constant">Pixbuf</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span><span class="ruby-operator">=&gt;</span><span class="ruby-node">&quot;./Assets/Vignette#{@saison}V.png&quot;</span>,<span class="ruby-value">:width</span><span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">monApp</span>.<span class="ruby-identifier">width</span><span class="ruby-operator">/</span><span class="ruby-value">5</span>, <span class="ruby-value">:height</span><span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">monApp</span>.<span class="ruby-identifier">height</span><span class="ruby-operator">/</span><span class="ruby-value">5</span>))
+                        <span class="ruby-ivar">@img</span>=(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:pixbuf</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-ivar">@pix</span>))
+                        <span class="ruby-ivar">@bouton</span>.<span class="ruby-identifier">set_image</span>(<span class="ruby-ivar">@img</span>)
+                        <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;Bonus&quot;</span>
+                                <span class="ruby-ivar">@numSaison</span> = <span class="ruby-value">4</span>
+                                <span class="ruby-ivar">@pix</span> = (<span class="ruby-constant">GdkPixbuf</span><span class="ruby-operator">::</span><span class="ruby-constant">Pixbuf</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span><span class="ruby-operator">=&gt;</span><span class="ruby-string">&quot;./Assets/Bonus.png&quot;</span>,<span class="ruby-value">:width</span><span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">monApp</span>.<span class="ruby-identifier">width</span><span class="ruby-operator">/</span><span class="ruby-value">2</span>, <span class="ruby-value">:height</span><span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">monApp</span>.<span class="ruby-identifier">height</span>))
+                        <span class="ruby-ivar">@img</span>=(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:pixbuf</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-ivar">@pix</span>))
+                        <span class="ruby-ivar">@bouton</span>.<span class="ruby-identifier">set_image</span>(<span class="ruby-ivar">@img</span>)
+                <span class="ruby-keyword">end</span>
+                
 
-<span class="ruby-ivar">@cliquable</span> = <span class="ruby-ivar">@joueur</span>.<span class="ruby-identifier">niveauDeverouille</span>(<span class="ruby-ivar">@numSaison</span>)
-        <span class="ruby-identifier">puts</span> <span class="ruby-ivar">@saison</span>
-<span class="ruby-keyword">end</span></pre>
+        <span class="ruby-ivar">@cliquable</span> = <span class="ruby-ivar">@joueur</span>.<span class="ruby-identifier">niveauDeverouille</span>(<span class="ruby-ivar">@numSaison</span>)
+        <span class="ruby-ivar">@bonusVisible</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">debloquerBonus</span>()
+<span class="ruby-comment">#               puts @saison</span>
+        <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -223,7 +256,7 @@
         
         <div class="method-heading">
           <span class="method-name">actualiserImg</span><span
-            class="method-args">()</span>
+            class="method-args">(monApp)</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -234,17 +267,18 @@
           
           <p>Actualise l&#39;image de la case</p>
 
-<pre>@param void          //ne prend aucun paramètre
+<pre>@param monApp                //Prend l&#39;application
 @return void                 //ne renvoie rien</pre>
           
           
 
           
           <div class="method-source-code" id="actualiserImg-source">
-            <pre><span class="ruby-comment"># File Classes/boutonSaison.rb, line 52</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">actualiserImg</span>()
+            <pre><span class="ruby-comment"># File Classes/boutonSaison.rb, line 71</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">actualiserImg</span>(<span class="ruby-identifier">monApp</span>)
         <span class="ruby-keyword">if</span> (<span class="ruby-ivar">@cliquable</span>)
-                <span class="ruby-ivar">@img</span>=(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span> <span class="ruby-operator">=&gt;</span><span class="ruby-node">&quot;./Assets/Vignette#{@saison}.png&quot;</span>))
+                <span class="ruby-ivar">@pix</span> = (<span class="ruby-constant">GdkPixbuf</span><span class="ruby-operator">::</span><span class="ruby-constant">Pixbuf</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span><span class="ruby-operator">=&gt;</span><span class="ruby-node">&quot;./Assets/Vignette#{@saison}.png&quot;</span>,<span class="ruby-value">:width</span><span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">monApp</span>.<span class="ruby-identifier">width</span><span class="ruby-operator">/</span><span class="ruby-value">5</span>, <span class="ruby-value">:height</span><span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">monApp</span>.<span class="ruby-identifier">height</span><span class="ruby-operator">/</span><span class="ruby-value">5</span>))
+        <span class="ruby-ivar">@img</span>=(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:pixbuf</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-ivar">@pix</span>))
         <span class="ruby-ivar">@bouton</span>.<span class="ruby-identifier">set_image</span>(<span class="ruby-ivar">@img</span>)
     <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
@@ -262,7 +296,7 @@
         
         <div class="method-heading">
           <span class="method-name">debloquer</span><span
-            class="method-args">()</span>
+            class="method-args">(monApp)</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -273,27 +307,64 @@
           
           <p>Débloque un bouton en le rendant cliquable pour un joueur donné</p>
 
-<pre>@param unJoueur              //Joueur ayant débloqué le bouton
+<pre>@param monApp                //Prend l&#39;application
 @return void                 //ne renvoie rien</pre>
           
           
 
           
           <div class="method-source-code" id="debloquer-source">
-            <pre><span class="ruby-comment"># File Classes/boutonSaison.rb, line 63</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">debloquer</span>()
-        <span class="ruby-identifier">puts</span> <span class="ruby-ivar">@saison</span>
-        <span class="ruby-identifier">puts</span> <span class="ruby-ivar">@joueur</span>.<span class="ruby-identifier">niveauDeverouille</span>(<span class="ruby-ivar">@numSaison</span>)
-        <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;cliquable : #{@cliquable}&quot;</span>
-
-        <span class="ruby-keyword">if</span> (<span class="ruby-ivar">@cliquable</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span>)
+            <pre><span class="ruby-comment"># File Classes/boutonSaison.rb, line 94</span>
+        <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">debloquer</span>(<span class="ruby-identifier">monApp</span>)
+<span class="ruby-comment">#               puts @saison</span>
+<span class="ruby-comment">#               puts @joueur.niveauDeverouille(@numSaison)</span>
+<span class="ruby-comment">#               puts &quot;cliquable : #{@cliquable}&quot;</span>
                 <span class="ruby-ivar">@cliquable</span> = <span class="ruby-ivar">@joueur</span>.<span class="ruby-identifier">acheterNiveau</span>(<span class="ruby-ivar">@numSaison</span>)
-        <span class="ruby-keyword">end</span>
-        <span class="ruby-keyword">if</span> (<span class="ruby-ivar">@cliquable</span>)
-                <span class="ruby-ivar">@img</span>=(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span> <span class="ruby-operator">=&gt;</span><span class="ruby-node">&quot;./Assets/Vignette#{@saison}.png&quot;</span>))
-        <span class="ruby-ivar">@bouton</span>.<span class="ruby-identifier">set_image</span>(<span class="ruby-ivar">@img</span>)
-<span class="ruby-keyword">end</span>
-<span class="ruby-keyword">end</span></pre>
+                <span class="ruby-keyword">if</span> (<span class="ruby-ivar">@cliquable</span>)
+                        <span class="ruby-ivar">@pix</span> = (<span class="ruby-constant">GdkPixbuf</span><span class="ruby-operator">::</span><span class="ruby-constant">Pixbuf</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span><span class="ruby-operator">=&gt;</span><span class="ruby-node">&quot;./Assets/Vignette#{@saison}.png&quot;</span>,<span class="ruby-value">:width</span><span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">monApp</span>.<span class="ruby-identifier">width</span><span class="ruby-operator">/</span><span class="ruby-value">5</span>, <span class="ruby-value">:height</span><span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">monApp</span>.<span class="ruby-identifier">height</span><span class="ruby-operator">/</span><span class="ruby-value">5</span>))
+                <span class="ruby-ivar">@img</span>=(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:pixbuf</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-ivar">@pix</span>))
+                <span class="ruby-ivar">@bouton</span>.<span class="ruby-identifier">set_image</span>(<span class="ruby-ivar">@img</span>)
+                <span class="ruby-keyword">end</span>      
+        <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-debloquerBonus" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">debloquerBonus</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="debloquerBonus-source">
+            <pre><span class="ruby-comment"># File Classes/boutonSaison.rb, line 79</span>
+        <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">debloquerBonus</span>()
+                <span class="ruby-comment">#puts @joueur.niveaux.at(4)</span>
+                <span class="ruby-identifier">res</span> = <span class="ruby-keyword">true</span>
+                <span class="ruby-keyword">if</span> (<span class="ruby-ivar">@joueur</span>.<span class="ruby-identifier">niveauDeverouille</span>(<span class="ruby-value">4</span>) <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span>)
+                        <span class="ruby-identifier">res</span> = (<span class="ruby-ivar">@joueur</span>.<span class="ruby-identifier">niveauDeverouille</span>(<span class="ruby-value">0</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@joueur</span>.<span class="ruby-identifier">niveauDeverouille</span>(<span class="ruby-value">1</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@joueur</span>.<span class="ruby-identifier">niveauDeverouille</span>(<span class="ruby-value">2</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@joueur</span>.<span class="ruby-identifier">niveauDeverouille</span>(<span class="ruby-value">3</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@joueur</span>.<span class="ruby-identifier">acheterNiveau</span>(<span class="ruby-value">4</span>))
+                <span class="ruby-keyword">end</span>
+<span class="ruby-comment">#               puts &quot;LE resultat #{res} et le niveau bonus #{@joueur.niveauDeverouille(4)}&quot;</span>
+                <span class="ruby-keyword">return</span> <span class="ruby-identifier">res</span>
+        <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -329,7 +400,7 @@
 
           
           <div class="method-source-code" id="lancer-source">
-            <pre><span class="ruby-comment"># File Classes/boutonSaison.rb, line 83</span>
+            <pre><span class="ruby-comment"># File Classes/boutonSaison.rb, line 112</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">lancer</span>(<span class="ruby-identifier">uneApp</span>, <span class="ruby-identifier">unHeader</span>, <span class="ruby-identifier">unePrecedente</span>)
         <span class="ruby-keyword">if</span> (<span class="ruby-ivar">@cliquable</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">true</span>)
                 <span class="ruby-identifier">unePrecedente</span>.<span class="ruby-identifier">supprimeMoi</span>

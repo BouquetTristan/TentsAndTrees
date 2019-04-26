@@ -139,138 +139,138 @@
           
           <div class="method-source-code" id="new-source">
             <pre><span class="ruby-comment"># File Interface/fSaison.rb, line 15</span>
-      <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-identifier">header</span>, <span class="ruby-identifier">anciennePage</span>, <span class="ruby-identifier">unJoueur</span>, <span class="ruby-identifier">uneSaison</span>)
+        <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-identifier">header</span>, <span class="ruby-identifier">anciennePage</span>, <span class="ruby-identifier">unJoueur</span>, <span class="ruby-identifier">uneSaison</span>)
 
-              <span class="ruby-keyword">super</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-value">:vertical</span>, <span class="ruby-identifier">header</span>,  <span class="ruby-identifier">anciennePage</span>, <span class="ruby-identifier">unJoueur</span>)
+                <span class="ruby-keyword">super</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-value">:vertical</span>, <span class="ruby-identifier">header</span>,  <span class="ruby-identifier">anciennePage</span>, <span class="ruby-identifier">unJoueur</span>)
 
-              <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;FSaison début&quot;</span>
+<span class="ruby-comment">#               puts &quot;FSaison début&quot;</span>
 
-              <span class="ruby-ivar">@frame</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Table</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">1</span>,<span class="ruby-value">1</span>,<span class="ruby-keyword">false</span>)
+                <span class="ruby-ivar">@frame</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Table</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">1</span>,<span class="ruby-value">1</span>,<span class="ruby-keyword">false</span>)
 
-              <span class="ruby-ivar">@selecGrille</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">ButtonBox</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:vertical</span>)
-      <span class="ruby-ivar">@selecGrille</span>.<span class="ruby-identifier">layout</span> = <span class="ruby-value">:spread</span>
+                <span class="ruby-ivar">@selecGrille</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">ButtonBox</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:vertical</span>)
+        <span class="ruby-ivar">@selecGrille</span>.<span class="ruby-identifier">layout</span> = <span class="ruby-value">:spread</span>
 
-      <span class="ruby-ivar">@grilleBox1</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">ButtonBox</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:horizontal</span>)
-      <span class="ruby-ivar">@grilleBox1</span>.<span class="ruby-identifier">layout</span> = <span class="ruby-value">:spread</span>
+        <span class="ruby-ivar">@grilleBox1</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">ButtonBox</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:horizontal</span>)
+        <span class="ruby-ivar">@grilleBox1</span>.<span class="ruby-identifier">layout</span> = <span class="ruby-value">:spread</span>
 
-      <span class="ruby-ivar">@grilleBox2</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">ButtonBox</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:horizontal</span>)
-      <span class="ruby-ivar">@grilleBox2</span>.<span class="ruby-identifier">layout</span> = <span class="ruby-value">:spread</span>
+        <span class="ruby-ivar">@grilleBox2</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">ButtonBox</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:horizontal</span>)
+        <span class="ruby-ivar">@grilleBox2</span>.<span class="ruby-identifier">layout</span> = <span class="ruby-value">:spread</span>
 
-              <span class="ruby-ivar">@grille1</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:label</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&#39;1&#39;</span>, <span class="ruby-value">:use_underline</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">nil</span>, <span class="ruby-value">:stock_id</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">nil</span>)
-              <span class="ruby-ivar">@grille2</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:label</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&#39;2&#39;</span>, <span class="ruby-value">:use_underline</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">nil</span>, <span class="ruby-value">:stock_id</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">nil</span>)
-              <span class="ruby-ivar">@grille3</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:label</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&#39;3&#39;</span>, <span class="ruby-value">:use_underline</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">nil</span>, <span class="ruby-value">:stock_id</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">nil</span>)
-              <span class="ruby-ivar">@grille4</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:label</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&#39;4&#39;</span>, <span class="ruby-value">:use_underline</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">nil</span>, <span class="ruby-value">:stock_id</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">nil</span>)
-              <span class="ruby-ivar">@grille5</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:label</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&#39;5&#39;</span>, <span class="ruby-value">:use_underline</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">nil</span>, <span class="ruby-value">:stock_id</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">nil</span>)
-              <span class="ruby-ivar">@grille6</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:label</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&#39;6&#39;</span>, <span class="ruby-value">:use_underline</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">nil</span>, <span class="ruby-value">:stock_id</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">nil</span>)
-
-
-<span class="ruby-comment">#      # @print.set_markup(&quot;1&quot;)</span>
-<span class="ruby-comment">#       focus_hadjustment=(:start)</span>
-
-<span class="ruby-comment">#       @imgE=(Gtk::Image.new(:file =&gt;&quot;../Assets/VignetteEte.png&quot;))</span>
-<span class="ruby-comment">#       @ete.set_image(@imgE)</span>
-<span class="ruby-comment">#       focus_hadjustment=(:start)</span>
-
-<span class="ruby-comment">#       @imgA=(Gtk::Image.new(:file =&gt;&quot;../Assets/VignetteAutomne.png&quot;))</span>
-<span class="ruby-comment">#       @autom.set_image(@imgA)</span>
-<span class="ruby-comment">#       focus_hadjustment=(:start)</span>
-
-<span class="ruby-comment">#       @imgH=(Gtk::Image.new(:file =&gt;&quot;../Assets/VignetteHiver.png&quot;))</span>
-<span class="ruby-comment">#       @hiver.set_image(@imgH)</span>
-<span class="ruby-comment">#       focus_hadjustment=(:start)</span>
-
-              <span class="ruby-ivar">@grilleBox1</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@grille1</span>, <span class="ruby-value">:expand</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:fill</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">false</span>)
-              <span class="ruby-ivar">@grilleBox1</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@grille2</span>, <span class="ruby-value">:expand</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:fill</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">false</span>)
-              <span class="ruby-ivar">@grilleBox1</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@grille3</span>, <span class="ruby-value">:expand</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:fill</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">false</span>)
-              <span class="ruby-ivar">@grilleBox2</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@grille4</span>, <span class="ruby-value">:expand</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:fill</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">false</span>)
-              <span class="ruby-ivar">@grilleBox2</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@grille5</span>, <span class="ruby-value">:expand</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:fill</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">false</span>)
-              <span class="ruby-ivar">@grilleBox2</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@grille6</span>, <span class="ruby-value">:expand</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:fill</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">false</span>)
-
-              <span class="ruby-ivar">@selecGrille</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@grilleBox1</span>)
-              <span class="ruby-ivar">@selecGrille</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@grilleBox2</span>)
-              <span class="ruby-ivar">@grilleBox1</span>.<span class="ruby-identifier">spacing</span>=<span class="ruby-value">90</span>
-              <span class="ruby-ivar">@grilleBox2</span>.<span class="ruby-identifier">spacing</span>=<span class="ruby-value">90</span>
-
-              <span class="ruby-ivar">@header</span>.<span class="ruby-identifier">btnMenu</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {
-                      <span class="ruby-keyword">self</span>.<span class="ruby-identifier">supprimeMoi</span>
-                      <span class="ruby-identifier">menu</span> = <span class="ruby-constant">FMenu</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-ivar">@header</span>, <span class="ruby-keyword">self</span>, <span class="ruby-identifier">unJoueur</span>)
-                      <span class="ruby-identifier">menu</span>.<span class="ruby-identifier">ajouteMoi</span>
-                      <span class="ruby-ivar">@window</span>.<span class="ruby-identifier">show_all</span>
-                  }
-
-              <span class="ruby-ivar">@grille1</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {
-                      <span class="ruby-keyword">self</span>.<span class="ruby-identifier">supprimeMoi</span>
-                              <span class="ruby-identifier">menu</span> = <span class="ruby-constant">FPlayA</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-ivar">@header</span>, <span class="ruby-keyword">self</span>, <span class="ruby-identifier">unJoueur</span>, <span class="ruby-identifier">uneSaison</span>,<span class="ruby-value">1</span>)
-                              <span class="ruby-identifier">menu</span>.<span class="ruby-identifier">ajouteMoi</span>
-                      <span class="ruby-ivar">@window</span>.<span class="ruby-identifier">show_all</span>
-                  }
-
-              <span class="ruby-ivar">@grille2</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {
-                      <span class="ruby-keyword">self</span>.<span class="ruby-identifier">supprimeMoi</span>
-                              <span class="ruby-identifier">menu</span> = <span class="ruby-constant">FPlayA</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-ivar">@header</span>, <span class="ruby-keyword">self</span>, <span class="ruby-identifier">unJoueur</span>, <span class="ruby-identifier">uneSaison</span>,<span class="ruby-value">2</span>)
-                              <span class="ruby-identifier">menu</span>.<span class="ruby-identifier">ajouteMoi</span>
-                      <span class="ruby-ivar">@window</span>.<span class="ruby-identifier">show_all</span>
-                  }
-              <span class="ruby-ivar">@grille3</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {
-                      <span class="ruby-keyword">self</span>.<span class="ruby-identifier">supprimeMoi</span>
-                              <span class="ruby-identifier">menu</span> = <span class="ruby-constant">FPlayA</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-ivar">@header</span>, <span class="ruby-keyword">self</span>, <span class="ruby-identifier">unJoueur</span>, <span class="ruby-identifier">uneSaison</span>,<span class="ruby-value">3</span>)
-                              <span class="ruby-identifier">menu</span>.<span class="ruby-identifier">ajouteMoi</span>
-                      <span class="ruby-ivar">@window</span>.<span class="ruby-identifier">show_all</span>
-                  }
-              <span class="ruby-ivar">@grille4</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {
-                      <span class="ruby-keyword">self</span>.<span class="ruby-identifier">supprimeMoi</span>
-                              <span class="ruby-identifier">menu</span> = <span class="ruby-constant">FPlayA</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-ivar">@header</span>, <span class="ruby-keyword">self</span>, <span class="ruby-identifier">unJoueur</span>, <span class="ruby-identifier">uneSaison</span>,<span class="ruby-value">4</span>)
-                              <span class="ruby-identifier">menu</span>.<span class="ruby-identifier">ajouteMoi</span>
-                      <span class="ruby-ivar">@window</span>.<span class="ruby-identifier">show_all</span>
-                  }
-              <span class="ruby-ivar">@grille5</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {
-                      <span class="ruby-keyword">self</span>.<span class="ruby-identifier">supprimeMoi</span>
-                              <span class="ruby-identifier">menu</span> = <span class="ruby-constant">FPlayA</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-ivar">@header</span>, <span class="ruby-keyword">self</span>, <span class="ruby-identifier">unJoueur</span>, <span class="ruby-identifier">uneSaison</span>,<span class="ruby-value">5</span>)
-                              <span class="ruby-identifier">menu</span>.<span class="ruby-identifier">ajouteMoi</span>
-                      <span class="ruby-ivar">@window</span>.<span class="ruby-identifier">show_all</span>
-                  }
-              <span class="ruby-ivar">@grille6</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {
-                      <span class="ruby-keyword">self</span>.<span class="ruby-identifier">supprimeMoi</span>
-                              <span class="ruby-identifier">menu</span> = <span class="ruby-constant">FPlayA</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-ivar">@header</span>, <span class="ruby-keyword">self</span>, <span class="ruby-identifier">unJoueur</span>, <span class="ruby-identifier">uneSaison</span>,<span class="ruby-value">6</span>)
-                              <span class="ruby-identifier">menu</span>.<span class="ruby-identifier">ajouteMoi</span>
-                      <span class="ruby-ivar">@window</span>.<span class="ruby-identifier">show_all</span>
-                  }
+                <span class="ruby-ivar">@grille1</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:label</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&#39;1&#39;</span>, <span class="ruby-value">:use_underline</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">nil</span>, <span class="ruby-value">:stock_id</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">nil</span>)
+                <span class="ruby-ivar">@grille2</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:label</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&#39;2&#39;</span>, <span class="ruby-value">:use_underline</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">nil</span>, <span class="ruby-value">:stock_id</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">nil</span>)
+                <span class="ruby-ivar">@grille3</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:label</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&#39;3&#39;</span>, <span class="ruby-value">:use_underline</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">nil</span>, <span class="ruby-value">:stock_id</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">nil</span>)
+                <span class="ruby-ivar">@grille4</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:label</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&#39;4&#39;</span>, <span class="ruby-value">:use_underline</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">nil</span>, <span class="ruby-value">:stock_id</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">nil</span>)
+                <span class="ruby-ivar">@grille5</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:label</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&#39;5&#39;</span>, <span class="ruby-value">:use_underline</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">nil</span>, <span class="ruby-value">:stock_id</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">nil</span>)
+                <span class="ruby-ivar">@grille6</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:label</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&#39;6&#39;</span>, <span class="ruby-value">:use_underline</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">nil</span>, <span class="ruby-value">:stock_id</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">nil</span>)
 
 
-              <span class="ruby-comment"># if(bloqueE == true)</span>
-              <span class="ruby-comment">#     @ete.signal_connect(&#39;clicked&#39;) {</span>
-              <span class="ruby-comment">#             self.supprimeMoi</span>
-              <span class="ruby-comment">#             menu = FPlayA.new(@window, @header, self, unJoueur)</span>
-              <span class="ruby-comment">#             menu.ajouteMoi</span>
-              <span class="ruby-comment">#             @window.show_all</span>
-              <span class="ruby-comment">#         }</span>
-              <span class="ruby-comment"># end</span>
+  <span class="ruby-comment">#      # @print.set_markup(&quot;1&quot;)</span>
+  <span class="ruby-comment">#       focus_hadjustment=(:start)</span>
 
-              <span class="ruby-comment"># if(bloqueA == true)</span>
-              <span class="ruby-comment"># @autom.signal_connect(&#39;clicked&#39;) {</span>
-              <span class="ruby-comment">#         self.supprimeMoi</span>
-              <span class="ruby-comment">#         menu = FPlayA.new(@window, @header, self)</span>
-              <span class="ruby-comment">#         menu.ajouteMoi</span>
-              <span class="ruby-comment">#         @window.show_all</span>
-              <span class="ruby-comment">#     }</span>
-              <span class="ruby-comment"># end</span>
-              <span class="ruby-comment"># if(bloqueH == true)</span>
-              <span class="ruby-comment"># @hiver.signal_connect(&#39;clicked&#39;) {</span>
-              <span class="ruby-comment">#         self.supprimeMoi</span>
-              <span class="ruby-comment">#         menu = FPlayA.new(@window, @header, self)</span>
-              <span class="ruby-comment">#         menu.ajouteMoi</span>
-              <span class="ruby-comment">#         @window.show_all</span>
-              <span class="ruby-comment">#     }</span>
-              <span class="ruby-comment"># end</span>
+  <span class="ruby-comment">#       @imgE=(Gtk::Image.new(:file =&gt;&quot;../Assets/VignetteEte.png&quot;))</span>
+  <span class="ruby-comment">#       @ete.set_image(@imgE)</span>
+  <span class="ruby-comment">#       focus_hadjustment=(:start)</span>
 
-              <span class="ruby-ivar">@frame</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-ivar">@selecGrille</span>,<span class="ruby-value">0</span>,<span class="ruby-value">1</span>,<span class="ruby-value">0</span>,<span class="ruby-value">1</span>)
+  <span class="ruby-comment">#       @imgA=(Gtk::Image.new(:file =&gt;&quot;../Assets/VignetteAutomne.png&quot;))</span>
+  <span class="ruby-comment">#       @autom.set_image(@imgA)</span>
+  <span class="ruby-comment">#       focus_hadjustment=(:start)</span>
 
-              <span class="ruby-ivar">@pix</span> = (<span class="ruby-constant">GdkPixbuf</span><span class="ruby-operator">::</span><span class="ruby-constant">Pixbuf</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span><span class="ruby-operator">=&gt;</span><span class="ruby-string">&quot;./Assets/ImgGameA.png&quot;</span>,<span class="ruby-value">:width</span><span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">monApp</span>.<span class="ruby-identifier">width</span>, <span class="ruby-value">:height</span><span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">monApp</span>.<span class="ruby-identifier">height</span>))
-      <span class="ruby-ivar">@bg</span>=(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:pixbuf</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-ivar">@pix</span>))
-      <span class="ruby-ivar">@frame</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-ivar">@bg</span>,<span class="ruby-value">0</span>,<span class="ruby-value">1</span>,<span class="ruby-value">0</span>,<span class="ruby-value">1</span>)
+  <span class="ruby-comment">#       @imgH=(Gtk::Image.new(:file =&gt;&quot;../Assets/VignetteHiver.png&quot;))</span>
+  <span class="ruby-comment">#       @hiver.set_image(@imgH)</span>
+  <span class="ruby-comment">#       focus_hadjustment=(:start)</span>
 
-      <span class="ruby-keyword">self</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@frame</span>)
-      <span class="ruby-keyword">end</span></pre>
+                <span class="ruby-ivar">@grilleBox1</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@grille1</span>, <span class="ruby-value">:expand</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:fill</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">false</span>)
+                <span class="ruby-ivar">@grilleBox1</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@grille2</span>, <span class="ruby-value">:expand</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:fill</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">false</span>)
+                <span class="ruby-ivar">@grilleBox1</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@grille3</span>, <span class="ruby-value">:expand</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:fill</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">false</span>)
+                <span class="ruby-ivar">@grilleBox2</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@grille4</span>, <span class="ruby-value">:expand</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:fill</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">false</span>)
+                <span class="ruby-ivar">@grilleBox2</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@grille5</span>, <span class="ruby-value">:expand</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:fill</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">false</span>)
+                <span class="ruby-ivar">@grilleBox2</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@grille6</span>, <span class="ruby-value">:expand</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:fill</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">false</span>)
+
+                <span class="ruby-ivar">@selecGrille</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@grilleBox1</span>)
+                <span class="ruby-ivar">@selecGrille</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@grilleBox2</span>)
+                <span class="ruby-ivar">@grilleBox1</span>.<span class="ruby-identifier">spacing</span>=<span class="ruby-value">90</span>
+                <span class="ruby-ivar">@grilleBox2</span>.<span class="ruby-identifier">spacing</span>=<span class="ruby-value">90</span>
+
+                <span class="ruby-ivar">@header</span>.<span class="ruby-identifier">btnMenu</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {
+                        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">supprimeMoi</span>
+                        <span class="ruby-identifier">menu</span> = <span class="ruby-constant">FMenu</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-ivar">@header</span>, <span class="ruby-keyword">self</span>, <span class="ruby-identifier">unJoueur</span>)
+                        <span class="ruby-identifier">menu</span>.<span class="ruby-identifier">ajouteMoi</span>
+                        <span class="ruby-ivar">@window</span>.<span class="ruby-identifier">show_all</span>
+                    }
+
+                <span class="ruby-ivar">@grille1</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {
+                        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">supprimeMoi</span>
+                                <span class="ruby-identifier">menu</span> = <span class="ruby-constant">FPlayA</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-ivar">@header</span>, <span class="ruby-keyword">self</span>, <span class="ruby-identifier">unJoueur</span>, <span class="ruby-identifier">uneSaison</span>,<span class="ruby-value">1</span>)
+                                <span class="ruby-identifier">menu</span>.<span class="ruby-identifier">ajouteMoi</span>
+                        <span class="ruby-ivar">@window</span>.<span class="ruby-identifier">show_all</span>
+                    }
+
+                <span class="ruby-ivar">@grille2</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {
+                        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">supprimeMoi</span>
+                                <span class="ruby-identifier">menu</span> = <span class="ruby-constant">FPlayA</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-ivar">@header</span>, <span class="ruby-keyword">self</span>, <span class="ruby-identifier">unJoueur</span>, <span class="ruby-identifier">uneSaison</span>,<span class="ruby-value">2</span>)
+                                <span class="ruby-identifier">menu</span>.<span class="ruby-identifier">ajouteMoi</span>
+                        <span class="ruby-ivar">@window</span>.<span class="ruby-identifier">show_all</span>
+                    }
+                <span class="ruby-ivar">@grille3</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {
+                        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">supprimeMoi</span>
+                                <span class="ruby-identifier">menu</span> = <span class="ruby-constant">FPlayA</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-ivar">@header</span>, <span class="ruby-keyword">self</span>, <span class="ruby-identifier">unJoueur</span>, <span class="ruby-identifier">uneSaison</span>,<span class="ruby-value">3</span>)
+                                <span class="ruby-identifier">menu</span>.<span class="ruby-identifier">ajouteMoi</span>
+                        <span class="ruby-ivar">@window</span>.<span class="ruby-identifier">show_all</span>
+                    }
+                <span class="ruby-ivar">@grille4</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {
+                        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">supprimeMoi</span>
+                                <span class="ruby-identifier">menu</span> = <span class="ruby-constant">FPlayA</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-ivar">@header</span>, <span class="ruby-keyword">self</span>, <span class="ruby-identifier">unJoueur</span>, <span class="ruby-identifier">uneSaison</span>,<span class="ruby-value">4</span>)
+                                <span class="ruby-identifier">menu</span>.<span class="ruby-identifier">ajouteMoi</span>
+                        <span class="ruby-ivar">@window</span>.<span class="ruby-identifier">show_all</span>
+                    }
+                <span class="ruby-ivar">@grille5</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {
+                        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">supprimeMoi</span>
+                                <span class="ruby-identifier">menu</span> = <span class="ruby-constant">FPlayA</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-ivar">@header</span>, <span class="ruby-keyword">self</span>, <span class="ruby-identifier">unJoueur</span>, <span class="ruby-identifier">uneSaison</span>,<span class="ruby-value">5</span>)
+                                <span class="ruby-identifier">menu</span>.<span class="ruby-identifier">ajouteMoi</span>
+                        <span class="ruby-ivar">@window</span>.<span class="ruby-identifier">show_all</span>
+                    }
+                <span class="ruby-ivar">@grille6</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {
+                        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">supprimeMoi</span>
+                                <span class="ruby-identifier">menu</span> = <span class="ruby-constant">FPlayA</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-ivar">@header</span>, <span class="ruby-keyword">self</span>, <span class="ruby-identifier">unJoueur</span>, <span class="ruby-identifier">uneSaison</span>,<span class="ruby-value">6</span>)
+                                <span class="ruby-identifier">menu</span>.<span class="ruby-identifier">ajouteMoi</span>
+                        <span class="ruby-ivar">@window</span>.<span class="ruby-identifier">show_all</span>
+                    }
+
+
+                <span class="ruby-comment"># if(bloqueE == true)</span>
+                <span class="ruby-comment">#     @ete.signal_connect(&#39;clicked&#39;) {</span>
+                <span class="ruby-comment">#             self.supprimeMoi</span>
+                <span class="ruby-comment">#             menu = FPlayA.new(@window, @header, self, unJoueur)</span>
+                <span class="ruby-comment">#             menu.ajouteMoi</span>
+                <span class="ruby-comment">#             @window.show_all</span>
+                <span class="ruby-comment">#         }</span>
+                <span class="ruby-comment"># end</span>
+
+                <span class="ruby-comment"># if(bloqueA == true)</span>
+                <span class="ruby-comment"># @autom.signal_connect(&#39;clicked&#39;) {</span>
+                <span class="ruby-comment">#         self.supprimeMoi</span>
+                <span class="ruby-comment">#         menu = FPlayA.new(@window, @header, self)</span>
+                <span class="ruby-comment">#         menu.ajouteMoi</span>
+                <span class="ruby-comment">#         @window.show_all</span>
+                <span class="ruby-comment">#     }</span>
+                <span class="ruby-comment"># end</span>
+                <span class="ruby-comment"># if(bloqueH == true)</span>
+                <span class="ruby-comment"># @hiver.signal_connect(&#39;clicked&#39;) {</span>
+                <span class="ruby-comment">#         self.supprimeMoi</span>
+                <span class="ruby-comment">#         menu = FPlayA.new(@window, @header, self)</span>
+                <span class="ruby-comment">#         menu.ajouteMoi</span>
+                <span class="ruby-comment">#         @window.show_all</span>
+                <span class="ruby-comment">#     }</span>
+                <span class="ruby-comment"># end</span>
+
+                <span class="ruby-ivar">@frame</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-ivar">@selecGrille</span>,<span class="ruby-value">0</span>,<span class="ruby-value">1</span>,<span class="ruby-value">0</span>,<span class="ruby-value">1</span>)
+
+                <span class="ruby-ivar">@pix</span> = (<span class="ruby-constant">GdkPixbuf</span><span class="ruby-operator">::</span><span class="ruby-constant">Pixbuf</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span><span class="ruby-operator">=&gt;</span><span class="ruby-string">&quot;./Assets/ImgGameA.png&quot;</span>,<span class="ruby-value">:width</span><span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">monApp</span>.<span class="ruby-identifier">width</span>, <span class="ruby-value">:height</span><span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">monApp</span>.<span class="ruby-identifier">height</span>))
+        <span class="ruby-ivar">@bg</span>=(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:pixbuf</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-ivar">@pix</span>))
+        <span class="ruby-ivar">@frame</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-ivar">@bg</span>,<span class="ruby-value">0</span>,<span class="ruby-value">1</span>,<span class="ruby-value">0</span>,<span class="ruby-value">1</span>)
+
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@frame</span>)
+        <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>

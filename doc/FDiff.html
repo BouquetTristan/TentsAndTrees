@@ -145,8 +145,10 @@
 
         <span class="ruby-ivar">@frame</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Table</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">1</span>,<span class="ruby-value">1</span>,<span class="ruby-keyword">false</span>)
 
-        <span class="ruby-ivar">@butons</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">ButtonBox</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:horizontal</span>)
-<span class="ruby-ivar">@butons</span>.<span class="ruby-identifier">layout</span> = <span class="ruby-value">:spread</span>
+        <span class="ruby-comment"># @boutons = Gtk::ButtonBox.new(:vertical)</span>
+
+        <span class="ruby-ivar">@boutons</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">ButtonBox</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:horizontal</span>)
+<span class="ruby-ivar">@boutons</span>.<span class="ruby-identifier">layout</span> = <span class="ruby-value">:spread</span>
 
         <span class="ruby-ivar">@easy</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:label</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&#39;Facile&#39;</span>, <span class="ruby-value">:use_underline</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">nil</span>, <span class="ruby-value">:stock_id</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">nil</span>)
         <span class="ruby-ivar">@easy</span>.<span class="ruby-identifier">set_relief</span>(<span class="ruby-value">:none</span>)
@@ -154,11 +156,20 @@
         <span class="ruby-ivar">@medium</span>.<span class="ruby-identifier">set_relief</span>(<span class="ruby-value">:none</span>)
         <span class="ruby-ivar">@hard</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:label</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&#39;Difficile&#39;</span>, <span class="ruby-value">:use_underline</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">nil</span>, <span class="ruby-value">:stock_id</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">nil</span>)
         <span class="ruby-ivar">@hard</span>.<span class="ruby-identifier">set_relief</span>(<span class="ruby-value">:none</span>)
+        <span class="ruby-ivar">@charger</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:label</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&#39;Charger la dernière partie&#39;</span>, <span class="ruby-value">:use_underline</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">nil</span>, <span class="ruby-value">:stock_id</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">nil</span>)
+        <span class="ruby-ivar">@charger</span>.<span class="ruby-identifier">set_relief</span>(<span class="ruby-value">:none</span>)
 
 
-        <span class="ruby-ivar">@butons</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@easy</span>, <span class="ruby-value">:expand</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:fill</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">false</span>)
-        <span class="ruby-ivar">@butons</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@medium</span>, <span class="ruby-value">:expand</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:fill</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">false</span>)
-        <span class="ruby-ivar">@butons</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@hard</span>, <span class="ruby-value">:expand</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:fill</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">false</span>)
+        <span class="ruby-ivar">@boutons</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@easy</span>, <span class="ruby-value">:expand</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:fill</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">false</span>)
+        <span class="ruby-ivar">@boutons</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@medium</span>, <span class="ruby-value">:expand</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:fill</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">false</span>)
+        <span class="ruby-ivar">@boutons</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@hard</span>, <span class="ruby-value">:expand</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:fill</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">false</span>)
+        <span class="ruby-ivar">@boutons</span>.<span class="ruby-identifier">spacing</span> = <span class="ruby-value">100</span>
+
+        <span class="ruby-comment"># @boutons.add(@boutons, :expand =&gt; true, :fill =&gt; false)</span>
+
+        <span class="ruby-keyword">if</span> (<span class="ruby-identifier">comp</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span>)
+                <span class="ruby-ivar">@boutons</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@charger</span>, <span class="ruby-value">:expand</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:fill</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-keyword">false</span>)
+        <span class="ruby-keyword">end</span>
 
         <span class="ruby-ivar">@header</span>.<span class="ruby-identifier">btnMenu</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {
         <span class="ruby-keyword">self</span>.<span class="ruby-identifier">supprimeMoi</span>
@@ -203,7 +214,15 @@
                 <span class="ruby-identifier">suivant</span>.<span class="ruby-identifier">ajouteMoi</span>
                 <span class="ruby-ivar">@window</span>.<span class="ruby-identifier">show_all</span>
         }
-        <span class="ruby-ivar">@frame</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-ivar">@butons</span>,<span class="ruby-value">0</span>,<span class="ruby-value">1</span>,<span class="ruby-value">0</span>,<span class="ruby-value">1</span>)
+        <span class="ruby-ivar">@charger</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {
+                <span class="ruby-keyword">self</span>.<span class="ruby-identifier">supprimeMoi</span>
+                <span class="ruby-identifier">grilleDeJeu</span> = <span class="ruby-constant">Grille</span>.<span class="ruby-identifier">charger</span>(<span class="ruby-identifier">unJoueur</span>.<span class="ruby-identifier">pseudo</span>)
+                <span class="ruby-identifier">diff</span> = <span class="ruby-identifier">grilleDeJeu</span>.<span class="ruby-identifier">difficulte</span>
+                <span class="ruby-identifier">suivant</span>=<span class="ruby-constant">FPlay</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-identifier">header</span>, <span class="ruby-keyword">self</span>, <span class="ruby-identifier">unJoueur</span>, <span class="ruby-identifier">diff</span>, <span class="ruby-identifier">grilleDeJeu</span> ,<span class="ruby-identifier">comp</span>)
+                <span class="ruby-identifier">suivant</span>.<span class="ruby-identifier">ajouteMoi</span>
+                <span class="ruby-ivar">@window</span>.<span class="ruby-identifier">show_all</span>
+        }
+        <span class="ruby-ivar">@frame</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-ivar">@boutons</span>,<span class="ruby-value">0</span>,<span class="ruby-value">1</span>,<span class="ruby-value">0</span>,<span class="ruby-value">1</span>)
 
         <span class="ruby-ivar">@pix</span> = (<span class="ruby-constant">GdkPixbuf</span><span class="ruby-operator">::</span><span class="ruby-constant">Pixbuf</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span><span class="ruby-operator">=&gt;</span><span class="ruby-string">&quot;./Assets/ImgGame.jpg&quot;</span>,<span class="ruby-value">:width</span><span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">monApp</span>.<span class="ruby-identifier">width</span>, <span class="ruby-value">:height</span><span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">monApp</span>.<span class="ruby-identifier">height</span>))
 <span class="ruby-ivar">@bg</span>=(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:pixbuf</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-ivar">@pix</span>))

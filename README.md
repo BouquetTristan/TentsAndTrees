@@ -14,8 +14,7 @@ Pour suivre l'avancement du projet, c'est ici -> https://trello.com/b/JAVYpZdL/t
 
 ### Comment lancer le jeu
 Mettez vous dans le répertoire TentsAndTrees. </br>
-Pour lancer le jeu vous devez exécuter la commande "bundle" dans un terminal (mise à jour et installation des gems utilisées). </br>
-Une fois cette première étape effectué, vous devez executer la commande "rake" dans ce même terminal. </br>
+Pour lancer le jeu vous devez exécuter la commande "bash ./TentsAndTrees.sh" dans un terminal (mise à jour, installation des gems utilisées et lancement du jeu). </br>
 
 ### Règles
 Des arbres et des tentes est un jeu où le joueur doit compléter une grille en plaçant des tentes et de l'herbe. Les arbres sont présents de base sur la grille et le joueur doit assigner à chaque arbre une tente. La tente doit se trouver sur une case adjacente mais pas en diagonale. Enfin, le joueur doit respecter le nombre de tente que doit comporter les lignes et les colonnes de la grille.<br/>

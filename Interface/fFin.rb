@@ -21,7 +21,7 @@ class FFin < Page
 
           if statue == "gagner"
 
-            @pix = (GdkPixbuf::Pixbuf.new(:file=>"./Assets/GameWin.png",:width=> monApp.width, :height=> monApp.height))
+            @pix = (GdkPixbuf::Pixbuf.new(:file=>"./Assets/Menu/GameWin.png",:width=> monApp.width, :height=> monApp.height))
             @bg=(Gtk::Image.new(:pixbuf => @pix))
 
       	  end
@@ -29,7 +29,7 @@ class FFin < Page
 
           if statue == "perdu"
 
-            @pix = (GdkPixbuf::Pixbuf.new(:file=>"./Assets/GameOver.png",:width=> monApp.width, :height=> monApp.height))
+            @pix = (GdkPixbuf::Pixbuf.new(:file=>"./Assets/Menu/GameOver.png",:width=> monApp.width, :height=> monApp.height))
             @bg=(Gtk::Image.new(:pixbuf => @pix))
 
       	  end

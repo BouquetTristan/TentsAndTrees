@@ -28,7 +28,7 @@ class FMenu < Page
     	@option = Gtk::Button.new()
         @option.set_relief(:none)
 
-        @imgO=(Gtk::Image.new(:file =>"./Assets/option.png"))
+        @imgO=(Gtk::Image.new(:file =>"./Assets/Menu/option.png"))
         @option.set_image(@imgO)
         focus_hadjustment=(:start)
 		@gMenu2.add(@option, :expand => true, :fill => false)
@@ -37,7 +37,7 @@ class FMenu < Page
     	@profil = Gtk::Button.new()
         @profil.set_relief(:none)
 
-        @imgP=(Gtk::Image.new(:file =>"./Assets/profil.png"))
+        @imgP=(Gtk::Image.new(:file =>"./Assets/Menu/profil.png"))
         @profil.set_image(@imgP)
         focus_hadjustment=(:start)
 		@gMenu2.add(@profil, :expand => true, :fill => false)
@@ -90,7 +90,7 @@ class FMenu < Page
 
         @frame.attach(@gMenu,0,1,0,1)
 
-        @pix = (GdkPixbuf::Pixbuf.new(:file=>"./Assets/ImgGame.jpg",:width=> monApp.width, :height=> monApp.height))
+        @pix = (GdkPixbuf::Pixbuf.new(:file=>"./Assets/Menu/ImgGame.jpg",:width=> monApp.width, :height=> monApp.height))
         @bg=(Gtk::Image.new(:pixbuf => @pix))
         @frame.attach(@bg,0,1,0,1)
 

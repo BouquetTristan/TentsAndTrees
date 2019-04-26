@@ -28,7 +28,7 @@ class FCreationCompte < Page
           @mdp = TexteEntree.creer('Mot de passe : ', true)
 	  @mdp.entree.visibility = false
           @question =  Gtk::Label.new('')
-          @question.set_markup("<span foreground=\"#FFFFFF\" font-desc=\"Courier New bold 15\">Quel est votre lieu de vacance favori ?</span>\n")
+          @question.set_markup("<span foreground=\"#FFFFFF\" font-desc=\"Courier New bold 15\">Quel est votre prof préféré ?</span>\n")
           @reponse = TexteEntree.creer('Reponse : ', true)
 	  @reponse.entree.visibility = false
           @connexion = Gtk::Button.new(:label => 'Connexion', :use_underline => nil, :stock_id => nil)
@@ -82,7 +82,7 @@ class FCreationCompte < Page
 
           @frame.attach(@gCC,0,1,0,1)
 
-          @pix = (GdkPixbuf::Pixbuf.new(:file=>"./Assets/ImgGame.jpg",:width=> monApp.width, :height=> monApp.height))
+          @pix = (GdkPixbuf::Pixbuf.new(:file=>"./Assets/Menu/ImgGame.jpg",:width=> monApp.width, :height=> monApp.height))
           @bg=(Gtk::Image.new(:pixbuf => @pix))
           @frame.attach(@bg,0,1,0,1)
           self.add(@frame)

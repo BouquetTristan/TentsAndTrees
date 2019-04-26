@@ -227,16 +227,18 @@
           <p>Définie la marche à suivre en cas d&#39;appel d&#39;aide sur le bouton
 herbe</p>
 
-<pre>@param uneGrille    //la grille de jeu
+<pre>@param monApp                //L&#39;application
+@param uneGrille    //la grille de jeu
 @param unLabel    //La position d&#39;affichage
 @param unJoueur    //POur sauvegarder le joueur et ne pas le perdre en cas de changement de page
+@param interfaceGrille //L&#39;interface de la grille
 @return nil          //si aucune aide ne trouve de solution</pre>
           
           
 
           
           <div class="method-source-code" id="aide-source">
-            <pre><span class="ruby-comment"># File Classes/boutonAideHerbe.rb, line 42</span>
+            <pre><span class="ruby-comment"># File Classes/boutonAideHerbe.rb, line 44</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">aide</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-identifier">uneGrille</span>, <span class="ruby-identifier">unLabel</span>, <span class="ruby-identifier">unJoueur</span>, <span class="ruby-identifier">interfaceGrille</span>)
         <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@cliquable</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">true</span>)
                 <span class="ruby-identifier">aide1</span> = <span class="ruby-constant">Aide</span>.<span class="ruby-identifier">ligneCompleterHerbes</span>(<span class="ruby-identifier">uneGrille</span>)

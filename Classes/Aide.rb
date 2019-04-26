@@ -277,8 +277,8 @@ class Aide
 
 	#Vérifie si une case n'est pas adjacente à un arbre
 	# @param grille	//La grille de jeu
-	# @return 		//La case qui doit être de l'herbe
-	# @return		//nil sinon
+	# @return uneCase	//La case qui doit être de l'herbe
+	# @return	nil // sinon
 	def Aide.caseEstDeLHerbe(grille)
 		grille.parcourirH { |uneCase|
 			if uneCase.etat == 0 then

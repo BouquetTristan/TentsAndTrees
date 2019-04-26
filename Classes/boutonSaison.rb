@@ -21,7 +21,7 @@ class BoutonSaison
 	#Initialise le bouton représentant l'accès aux saisons
 	# @param monApp		//Prend l'application
 	# @param uneSaison		//Chaine de caracère représentant une des 4 saison (été/hiver/automne/pintemps)
-	# @param cliquable		//Booléen pou définir si le bouton sera cliquable ou non
+	# @param unJoueur		//Le joueur
 	# @return void			//ne renvoie rien
 	def initialize(monApp, uneSaison, unJoueur)
 		@bouton = Gtk::Button.new()

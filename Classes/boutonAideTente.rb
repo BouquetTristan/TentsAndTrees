@@ -33,9 +33,11 @@ class BoutonAideTente < BoutonAide
 	end
 
 	#Définie la marche à suivre en cas d'appel d'aide sur le bouton tente
+	# @param monApp		//L'application
 	# @param uneGrille    //la grille de jeu
-	# @param unLabel     //La position d'affichage
-	# @param unJoueur    //Pour sauvegarder le joueur et ne pas le perdre en cas de changement de page
+	# @param unLabel    //La position d'affichage
+	# @param unJoueur    //POur sauvegarder le joueur et ne pas le perdre en cas de changement de page
+	# @param interfaceGrille //L'interface de la grille
 	# @return nil  	//si aucune aide ne trouve de solution
 	def aide(monApp, uneGrille, unLabel, unJoueur, interfaceGrille)
 		if(@cliquable == true)

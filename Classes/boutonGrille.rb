@@ -46,6 +46,7 @@ class BoutonGrille
 
 	#Change l'image du bouton en fonction de l'état
 	# @param etat 		//un chiffre représentant l'état d'une case
+	# @param monApp		//L'application
 	# @return void		//ne renvoie rien
 	def chgEtat(monApp, etat)
 		if @clic
@@ -76,8 +77,9 @@ class BoutonGrille
 		end
 	end
 
-	#Va chercher l'image modifiée avec un encadré rouge pour indiquer une erreur 
+	#Va chercher l'image modifiée avec un encadré rouge pour indiquer une erreur
 	# @param etat 		//un chiffre représentant l'état d'une case
+	# @param monApp		//L'application
 	# @return void		//ne renvoie rien
 	def indiquerAide(monApp, etat)
 		if etat == 0

@@ -1,5 +1,5 @@
 #!/bin/sh
-echo "Hello World"
+echo "Installation des gems en cours, veuillez patienter !"
 
   sudo gem install gtk3
   sudo gem install thread

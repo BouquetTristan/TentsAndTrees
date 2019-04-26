@@ -40,7 +40,7 @@ class FPlay < Page
 			@nbFeuilles = unJoueur.creditAide
 			@boxFeuilles=Gtk::ButtonBox.new(:horizontal)
 				@boxFeuilles.spacing=1
-				@img =(Gtk::Image.new(:file =>"./Assets/feuille.png"))
+				@img =(Gtk::Image.new(:file =>"./Assets/Menu/feuille.png"))
 				@profil = Gtk::Label.new().set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 15\"> #{@nbFeuilles.to_s}</span>")
 				@boxFeuilles.add(@img)
 				@boxFeuilles.add(@profil, :expand => true, :fill => false)

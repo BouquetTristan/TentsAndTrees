@@ -1,7 +1,7 @@
 require 'gtk3'
 require './Classes/boutonAide.rb'
 
-#====== La classe BoutonAideVerif hérite de la classe BoutonAide et va chercher une erreur sur le grille de jeu complété par le joueur
+#====== La classe BoutonAideVerif hérite de la classe BoutonAide et va chercher une erreur sur la grille de jeu complété par le joueur
 
 class BoutonAideVerif < BoutonAide
 

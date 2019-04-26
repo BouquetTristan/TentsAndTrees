@@ -1,5 +1,5 @@
 
-#====== La classe JoueurClass permet de creer un objet pour le tableau des scores
+#====== La classe JoueurClass permet de créer un objet pour le tableau des scores
 
 class JoueurClass
 

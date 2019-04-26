@@ -1,13 +1,13 @@
 require 'gtk3'
 require './Classes/boutonAide.rb'
 
-#====== La classe BouonAideHerbe hérite de la classe BoutonAide et répésente une aide spécifique aux herbes
+#====== La classe BouonAideHerbe hérite de la classe BoutonAide et représente une aide spécifique aux herbes
 
 class BoutonAideHerbe < BoutonAide
 
 	#=Variable d'instance
 	# @bouton		: Le bouton
-	# @coordI, @coordJ	: Coordonnée du bouton
+	# @coordI, @coordJ	: Coordonnées du bouton
 	# @cliquable		: booléen
 	# @@prix		: prix de l'aide en feuille
 
@@ -25,7 +25,7 @@ class BoutonAideHerbe < BoutonAide
 		return @@prix
 	end
 
-	#Initialize le bouton
+	#Initialise le bouton
 	# @param uneValeur    //Le nom du label
 	# @param cliquable    //Booléen
 	# @return void  	//ne renvoie rien

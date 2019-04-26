@@ -1,4 +1,4 @@
-#====== une case est definit par sa position dans la grille de jeu et son etat
+#====== une case est definie par sa position dans la grille de jeu et son état
 
 class Case
 
@@ -18,7 +18,7 @@ class Case
   private_class_method:new
 
 
-#methode de classe pour creer des objets case
+#méthode de classe pour créer des objets case
 # @param x     //Coordonnée x d'une case
 # @param y     //Coordonnée y d'une case
 # @param etat   //Une lettre symbolisant un état
@@ -49,7 +49,7 @@ class Case
   end
 
 
-#correspond au changement d'etat dans une case au moment ou on joue la case  0->3 / 1->0 / 2->2 /3->1
+#correspond au changement d'etat dans une case au moment où on joue la case  0->3 / 1->0 / 2->2 /3->1
 # @param void    //Ne prend aucun paramètre
 # @return void     //modifie l'état de la case en fonction de son état actuel
   def jouerCase()
@@ -65,7 +65,7 @@ class Case
   end
 
 
-  #Cette méthode est destiné à la programmation, elle consiste à forcer l'état d'une case
+  #Cette méthode est destinée à la programmation, elle consiste à forcer l'état d'une case
   # @param etat    //Prend en paramètre un état
   # @return void     //Ne renvoie rien
   def changerEtat(etat)

@@ -1,4 +1,4 @@
-#====== message d'erreur par champ donnée
+#====== message d'erreur par champ donné
 
 
 

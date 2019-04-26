@@ -1,6 +1,6 @@
 require 'gtk3'
 
-#====== La classe chronoInverse représente un compte à rebours conçu pour être utilisé en thread ( en parallèle du programme princpal pour chronomètrer une partie)
+#====== La classe chronoInverse représente un compte à rebours conçu pour être utilisé en thread ( en parallèle du programme princpal pour chronométrer une partie)
 
 class ChronoInverse
 	#= Variables d'instance
@@ -16,7 +16,7 @@ class ChronoInverse
 	attr_accessor :lChrono
 
 
-	#initialise les variables à 0 et a false et mémorise le temps initial dans la variable @initialize
+	#initialise les variables à 0 et à false et mémorise le temps initial dans la variable @initialize
 	# @param temps		//Prend un temps de départ en paramètre
 	# @return void		//ne renvoie rien
 	def initialize(temps)
@@ -75,7 +75,7 @@ class ChronoInverse
 		@pause=false
 	end
 
-	#retire n seconde au chrono
+	#retire n secondes au chrono
 	# @param void 		//le nombre de scondes à retirer
 	# @return void		//ne renvoie rien
 	def cRetire(n)

@@ -1,4 +1,4 @@
-#====== La Classe Score définie les critère de calcul du score en fonction de la grille etc
+#====== La Classe Score définie les critères de calcul du score en fonction de la grille etc
 
 class Score
 
@@ -40,8 +40,8 @@ class Score
 		@nbFeuilles = nbF
 	end
 
-	
-	
+
+
 	#Calcule le score en fonction de la difficulté, du temps restant et du nombre de feuilles restantes
 	# @param tempsRestant		//Le temps restant à la fin de la partie
 	# @return score			//Le score calculé
@@ -49,7 +49,7 @@ class Score
 		return @scoreInitial + tempsRestant.to_i + @nbFeuilles*10
 	end
 
-	
+
 	#Renvoie le tableau des scores trié
 
 	#Tri les scores par ordre décroissant
@@ -60,5 +60,3 @@ class Score
 	end
 
 end
-
-	

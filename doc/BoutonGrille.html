@@ -94,7 +94,7 @@
 
   <section class="description">
     
-<h6 id="class-BoutonGrille-label-La+classe+BoutonGrille+caract-C3-A9ise+la+grille+de+jeu+repr-C3-A9senter+-C3-A0+l-27aide+de+bouton+en+guise+de+case+sur+l-27interface">La classe <a href="BoutonGrille.html">BoutonGrille</a> caractéise la grille de jeu représenter à l&#39;aide de bouton en guise de case sur l&#39;interface<span><a href="#class-BoutonGrille-label-La+classe+BoutonGrille+caract-C3-A9ise+la+grille+de+jeu+repr-C3-A9senter+-C3-A0+l-27aide+de+bouton+en+guise+de+case+sur+l-27interface">&para;</a> <a href="#top">&uarr;</a></span></h6>
+<h6 id="class-BoutonGrille-label-La+classe+BoutonGrilleA+caract-C3-A9ise+la+grille+de+jeu+repr-C3-A9senter+-C3-A0+l-27aide+de+bouton+en+guise+de+case+sur+l-27interface">La classe BoutonGrilleA caractéise la grille de jeu représenter à l&#39;aide de bouton en guise de case sur l&#39;interface<span><a href="#class-BoutonGrille-label-La+classe+BoutonGrilleA+caract-C3-A9ise+la+grille+de+jeu+repr-C3-A9senter+-C3-A0+l-27aide+de+bouton+en+guise+de+case+sur+l-27interface">&para;</a> <a href="#top">&uarr;</a></span></h6>
 
   </section>
 
@@ -117,6 +117,19 @@
         <div class="method-heading attribute-method-heading">
           <span class="method-name">bouton</span><span
             class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-chemin" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">chemin</span><span
+            class="attribute-access-type">[R]</span>
         </div>
 
         <div class="method-description">
@@ -182,7 +195,7 @@
         
         <div class="method-heading">
           <span class="method-name">new</span><span
-            class="method-args">()</span>
+            class="method-args">(monApp, chemin)</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -193,18 +206,20 @@
           
           <p>Initialise le bouton (case)</p>
 
-<pre>@param void          //ne prend aucun paramètre
+<pre>@param chemin                //Le chemin d&#39;accès du dossier contenant les différentes images
+@param monApp                //Application
 @return void         //ne renvoie rien</pre>
           
           
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File Classes/boutonGrille.rb, line 23</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>()
+            <pre><span class="ruby-comment"># File Classes/boutonGrille.rb, line 24</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-identifier">chemin</span>)
         <span class="ruby-ivar">@bouton</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>
         <span class="ruby-ivar">@bouton</span>.<span class="ruby-identifier">set_relief</span>(<span class="ruby-value">:none</span>)
         <span class="ruby-ivar">@clic</span> = <span class="ruby-keyword">true</span>
+        <span class="ruby-ivar">@chemin</span> = <span class="ruby-identifier">chemin</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -228,7 +243,7 @@
         
         <div class="method-heading">
           <span class="method-name">chgEtat</span><span
-            class="method-args">(etat)</span>
+            class="method-args">(monApp, etat)</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -237,36 +252,39 @@
 
         <div class="method-description">
           
-          <p>Change l&#39;état du bouton (case) pour adopter l&#39;image correspondante</p>
+          <p>Change l&#39;image du bouton en fonction de l&#39;état</p>
 
-<pre>@param etat          //Etat du bouton (case)
+<pre>@param etat          //un chiffre représentant l&#39;état d&#39;une case
 @return void         //ne renvoie rien</pre>
           
           
 
           
           <div class="method-source-code" id="chgEtat-source">
-            <pre><span class="ruby-comment"># File Classes/boutonGrille.rb, line 48</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">chgEtat</span>(<span class="ruby-identifier">etat</span>)
-
-        <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@clic</span>)
+            <pre><span class="ruby-comment"># File Classes/boutonGrille.rb, line 50</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">chgEtat</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-identifier">etat</span>)
+        <span class="ruby-keyword">if</span> <span class="ruby-ivar">@clic</span>
                 <span class="ruby-keyword">if</span> <span class="ruby-identifier">etat</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
-                        <span class="ruby-ivar">@image</span>=(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span> <span class="ruby-operator">=&gt;</span><span class="ruby-string">&quot;./Assets/Printemps/terre.png&quot;</span>, <span class="ruby-value">:size</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-value">:dialog</span>))
+                        <span class="ruby-ivar">@pix</span> = (<span class="ruby-constant">GdkPixbuf</span><span class="ruby-operator">::</span><span class="ruby-constant">Pixbuf</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span> <span class="ruby-operator">=&gt;</span><span class="ruby-node">&quot;#{@chemin}/terre.png&quot;</span>,<span class="ruby-value">:width</span><span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">monApp</span>.<span class="ruby-identifier">width</span><span class="ruby-operator">/</span><span class="ruby-value">25</span>, <span class="ruby-value">:height</span><span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">monApp</span>.<span class="ruby-identifier">height</span><span class="ruby-operator">/</span><span class="ruby-value">25</span>))
+                        <span class="ruby-ivar">@image</span> = (<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:pixbuf</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-ivar">@pix</span>))
                         <span class="ruby-ivar">@bouton</span>.<span class="ruby-identifier">set_image</span>(<span class="ruby-ivar">@image</span>)
                         <span class="ruby-identifier">focus_hadjustment</span>=(<span class="ruby-value">:start</span>)
                 <span class="ruby-keyword">end</span>
                 <span class="ruby-keyword">if</span> <span class="ruby-identifier">etat</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
-                        <span class="ruby-ivar">@image</span>=(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span> <span class="ruby-operator">=&gt;</span><span class="ruby-string">&quot;./Assets/Printemps/tente.png&quot;</span>, <span class="ruby-value">:size</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-value">:dialog</span>))
+                        <span class="ruby-ivar">@pix</span> = (<span class="ruby-constant">GdkPixbuf</span><span class="ruby-operator">::</span><span class="ruby-constant">Pixbuf</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span> <span class="ruby-operator">=&gt;</span><span class="ruby-node">&quot;#{@chemin}/tente.png&quot;</span>,<span class="ruby-value">:width</span><span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">monApp</span>.<span class="ruby-identifier">width</span><span class="ruby-operator">/</span><span class="ruby-value">25</span>, <span class="ruby-value">:height</span><span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">monApp</span>.<span class="ruby-identifier">height</span><span class="ruby-operator">/</span><span class="ruby-value">25</span>))
+                        <span class="ruby-ivar">@image</span>=(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:pixbuf</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-ivar">@pix</span>))
                         <span class="ruby-ivar">@bouton</span>.<span class="ruby-identifier">set_image</span>(<span class="ruby-ivar">@image</span>)
                         <span class="ruby-identifier">focus_hadjustment</span>=(<span class="ruby-value">:start</span>)
                 <span class="ruby-keyword">end</span>
                 <span class="ruby-keyword">if</span> <span class="ruby-identifier">etat</span> <span class="ruby-operator">==</span> <span class="ruby-value">2</span>
-                        <span class="ruby-ivar">@image</span>=(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span> <span class="ruby-operator">=&gt;</span><span class="ruby-string">&quot;./Assets/Printemps/arbre.png&quot;</span>,<span class="ruby-value">:size</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-value">:dialog</span>))
+                        <span class="ruby-ivar">@pix</span> = (<span class="ruby-constant">GdkPixbuf</span><span class="ruby-operator">::</span><span class="ruby-constant">Pixbuf</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span> <span class="ruby-operator">=&gt;</span><span class="ruby-node">&quot;#{@chemin}/arbre.png&quot;</span>,<span class="ruby-value">:width</span><span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">monApp</span>.<span class="ruby-identifier">width</span><span class="ruby-operator">/</span><span class="ruby-value">25</span>, <span class="ruby-value">:height</span><span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">monApp</span>.<span class="ruby-identifier">height</span><span class="ruby-operator">/</span><span class="ruby-value">25</span>))
+                        <span class="ruby-ivar">@image</span>=(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:pixbuf</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-ivar">@pix</span>))
                         <span class="ruby-ivar">@bouton</span>.<span class="ruby-identifier">set_image</span>(<span class="ruby-ivar">@image</span>)
                         <span class="ruby-identifier">focus_hadjustment</span>=(<span class="ruby-value">:start</span>)
                 <span class="ruby-keyword">end</span>
                 <span class="ruby-keyword">if</span> <span class="ruby-identifier">etat</span> <span class="ruby-operator">==</span> <span class="ruby-value">3</span>
-                        <span class="ruby-ivar">@image</span>=(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span> <span class="ruby-operator">=&gt;</span><span class="ruby-string">&quot;./Assets/Printemps/herbe.png&quot;</span>,<span class="ruby-value">:size</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-value">:dialog</span>))
+                        <span class="ruby-ivar">@pix</span> = (<span class="ruby-constant">GdkPixbuf</span><span class="ruby-operator">::</span><span class="ruby-constant">Pixbuf</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span> <span class="ruby-operator">=&gt;</span><span class="ruby-node">&quot;#{@chemin}/herbe.png&quot;</span>,<span class="ruby-value">:width</span><span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">monApp</span>.<span class="ruby-identifier">width</span><span class="ruby-operator">/</span><span class="ruby-value">25</span>, <span class="ruby-value">:height</span><span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">monApp</span>.<span class="ruby-identifier">height</span><span class="ruby-operator">/</span><span class="ruby-value">25</span>))
+                        <span class="ruby-ivar">@image</span>=(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:pixbuf</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-ivar">@pix</span>))
                         <span class="ruby-ivar">@bouton</span>.<span class="ruby-identifier">set_image</span>(<span class="ruby-ivar">@image</span>)
                         <span class="ruby-identifier">focus_hadjustment</span>=(<span class="ruby-value">:start</span>)
                 <span class="ruby-keyword">end</span>
@@ -286,7 +304,7 @@
         
         <div class="method-heading">
           <span class="method-name">indiquerAide</span><span
-            class="method-args">(etat)</span>
+            class="method-args">(monApp, etat)</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -305,25 +323,29 @@ erreur</p>
 
           
           <div class="method-source-code" id="indiquerAide-source">
-            <pre><span class="ruby-comment"># File Classes/boutonGrille.rb, line 77</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">indiquerAide</span>(<span class="ruby-identifier">etat</span>)
+            <pre><span class="ruby-comment"># File Classes/boutonGrille.rb, line 82</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">indiquerAide</span>(<span class="ruby-identifier">monApp</span>, <span class="ruby-identifier">etat</span>)
         <span class="ruby-keyword">if</span> <span class="ruby-identifier">etat</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
-                <span class="ruby-ivar">@image</span>=(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span> <span class="ruby-operator">=&gt;</span><span class="ruby-string">&quot;./Assets/Printemps/terreS.png&quot;</span>, <span class="ruby-value">:size</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-value">:dialog</span>))
+                <span class="ruby-ivar">@pix</span> = (<span class="ruby-constant">GdkPixbuf</span><span class="ruby-operator">::</span><span class="ruby-constant">Pixbuf</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span> <span class="ruby-operator">=&gt;</span><span class="ruby-node">&quot;#{@chemin}/terreS.png&quot;</span>,<span class="ruby-value">:width</span><span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">monApp</span>.<span class="ruby-identifier">width</span><span class="ruby-operator">/</span><span class="ruby-value">25</span>, <span class="ruby-value">:height</span><span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">monApp</span>.<span class="ruby-identifier">height</span><span class="ruby-operator">/</span><span class="ruby-value">25</span>))
+                <span class="ruby-ivar">@image</span> = (<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:pixbuf</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-ivar">@pix</span>))
                 <span class="ruby-ivar">@bouton</span>.<span class="ruby-identifier">set_image</span>(<span class="ruby-ivar">@image</span>)
                 <span class="ruby-identifier">focus_hadjustment</span>=(<span class="ruby-value">:start</span>)
         <span class="ruby-keyword">end</span>
         <span class="ruby-keyword">if</span> <span class="ruby-identifier">etat</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
-                <span class="ruby-ivar">@image</span>=(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span> <span class="ruby-operator">=&gt;</span><span class="ruby-string">&quot;./Assets/Printemps/tenteS.png&quot;</span>, <span class="ruby-value">:size</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-value">:dialog</span>))
+                <span class="ruby-ivar">@pix</span> = (<span class="ruby-constant">GdkPixbuf</span><span class="ruby-operator">::</span><span class="ruby-constant">Pixbuf</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span> <span class="ruby-operator">=&gt;</span><span class="ruby-node">&quot;#{@chemin}/tenteS.png&quot;</span>,<span class="ruby-value">:width</span><span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">monApp</span>.<span class="ruby-identifier">width</span><span class="ruby-operator">/</span><span class="ruby-value">25</span>, <span class="ruby-value">:height</span><span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">monApp</span>.<span class="ruby-identifier">height</span><span class="ruby-operator">/</span><span class="ruby-value">25</span>))
+                <span class="ruby-ivar">@image</span>=(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:pixbuf</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-ivar">@pix</span>))
                 <span class="ruby-ivar">@bouton</span>.<span class="ruby-identifier">set_image</span>(<span class="ruby-ivar">@image</span>)
                 <span class="ruby-identifier">focus_hadjustment</span>=(<span class="ruby-value">:start</span>)
         <span class="ruby-keyword">end</span>
         <span class="ruby-keyword">if</span> <span class="ruby-identifier">etat</span> <span class="ruby-operator">==</span> <span class="ruby-value">2</span>
-                <span class="ruby-ivar">@image</span>=(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span> <span class="ruby-operator">=&gt;</span><span class="ruby-string">&quot;./Assets/Printemps/arbreS.png&quot;</span>,<span class="ruby-value">:size</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-value">:dialog</span>))
+                <span class="ruby-ivar">@pix</span> = (<span class="ruby-constant">GdkPixbuf</span><span class="ruby-operator">::</span><span class="ruby-constant">Pixbuf</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span> <span class="ruby-operator">=&gt;</span><span class="ruby-node">&quot;#{@chemin}/arbreS.png&quot;</span>,<span class="ruby-value">:width</span><span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">monApp</span>.<span class="ruby-identifier">width</span><span class="ruby-operator">/</span><span class="ruby-value">25</span>, <span class="ruby-value">:height</span><span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">monApp</span>.<span class="ruby-identifier">height</span><span class="ruby-operator">/</span><span class="ruby-value">25</span>))
+                <span class="ruby-ivar">@image</span>=(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:pixbuf</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-ivar">@pix</span>))
                 <span class="ruby-ivar">@bouton</span>.<span class="ruby-identifier">set_image</span>(<span class="ruby-ivar">@image</span>)
                 <span class="ruby-identifier">focus_hadjustment</span>=(<span class="ruby-value">:start</span>)
         <span class="ruby-keyword">end</span>
         <span class="ruby-keyword">if</span> <span class="ruby-identifier">etat</span> <span class="ruby-operator">==</span> <span class="ruby-value">3</span>
-                <span class="ruby-ivar">@image</span>=(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span> <span class="ruby-operator">=&gt;</span><span class="ruby-string">&quot;./Assets/Printemps/herbeS.png&quot;</span>,<span class="ruby-value">:size</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-value">:dialog</span>))
+                <span class="ruby-ivar">@pix</span> = (<span class="ruby-constant">GdkPixbuf</span><span class="ruby-operator">::</span><span class="ruby-constant">Pixbuf</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span> <span class="ruby-operator">=&gt;</span><span class="ruby-node">&quot;#{@chemin}/herbeS.png&quot;</span>,<span class="ruby-value">:width</span><span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">monApp</span>.<span class="ruby-identifier">width</span><span class="ruby-operator">/</span><span class="ruby-value">25</span>, <span class="ruby-value">:height</span><span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">monApp</span>.<span class="ruby-identifier">height</span><span class="ruby-operator">/</span><span class="ruby-value">25</span>))
+                <span class="ruby-ivar">@image</span>=(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:pixbuf</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-ivar">@pix</span>))
                 <span class="ruby-ivar">@bouton</span>.<span class="ruby-identifier">set_image</span>(<span class="ruby-ivar">@image</span>)
                 <span class="ruby-identifier">focus_hadjustment</span>=(<span class="ruby-value">:start</span>)
         <span class="ruby-keyword">end</span>
@@ -360,7 +382,7 @@ erreur</p>
 
           
           <div class="method-source-code" id="mBouton-source">
-            <pre><span class="ruby-comment"># File Classes/boutonGrille.rb, line 41</span>
+            <pre><span class="ruby-comment"># File Classes/boutonGrille.rb, line 43</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">mBouton</span>(<span class="ruby-identifier">valeur</span>)
         <span class="ruby-ivar">@box</span>.<span class="ruby-identifier">set_label</span>(<span class="ruby-identifier">valeur</span>.<span class="ruby-identifier">to_s</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -397,7 +419,7 @@ erreur</p>
 
           
           <div class="method-source-code" id="mCoord-source">
-            <pre><span class="ruby-comment"># File Classes/boutonGrille.rb, line 33</span>
+            <pre><span class="ruby-comment"># File Classes/boutonGrille.rb, line 35</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">mCoord</span>(<span class="ruby-identifier">i</span>,<span class="ruby-identifier">j</span>)
         <span class="ruby-ivar">@coordI</span> = <span class="ruby-identifier">i</span>
         <span class="ruby-ivar">@coordJ</span> = <span class="ruby-identifier">j</span>

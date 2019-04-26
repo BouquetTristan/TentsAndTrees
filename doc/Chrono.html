@@ -189,7 +189,7 @@
         
         <div class="method-heading">
           <span class="method-name">new</span><span
-            class="method-args">()</span>
+            class="method-args">(base)</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -208,10 +208,11 @@
           
           <div class="method-source-code" id="new-source">
             <pre><span class="ruby-comment"># File Classes/Chrono.rb, line 25</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>()
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">base</span>)
         <span class="ruby-ivar">@start</span>=<span class="ruby-keyword">false</span>
         <span class="ruby-ivar">@pause</span>=<span class="ruby-keyword">false</span>
-        <span class="ruby-ivar">@chrono</span>=<span class="ruby-value">0</span>
+        <span class="ruby-ivar">@chrono</span>=<span class="ruby-identifier">base</span>
+        <span class="ruby-ivar">@base</span> = <span class="ruby-identifier">base</span>
         <span class="ruby-ivar">@fin</span>=<span class="ruby-keyword">false</span>
         <span class="ruby-ivar">@lChrono</span>=<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;&quot;</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -255,7 +256,7 @@
 
           
           <div class="method-source-code" id="cAjout-source">
-            <pre><span class="ruby-comment"># File Classes/Chrono.rb, line 76</span>
+            <pre><span class="ruby-comment"># File Classes/Chrono.rb, line 77</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">cAjout</span>(<span class="ruby-identifier">n</span>)
         <span class="ruby-ivar">@chrono</span><span class="ruby-operator">+=</span><span class="ruby-identifier">n</span>
 <span class="ruby-keyword">end</span></pre>
@@ -292,7 +293,7 @@ chrono</p>
 
           
           <div class="method-source-code" id="cFin-source">
-            <pre><span class="ruby-comment"># File Classes/Chrono.rb, line 83</span>
+            <pre><span class="ruby-comment"># File Classes/Chrono.rb, line 84</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">cFin</span>()
         <span class="ruby-ivar">@fin</span>=<span class="ruby-keyword">true</span>
 <span class="ruby-keyword">end</span></pre>
@@ -329,7 +330,7 @@ chrono en pause ou le faisant repartir</p>
 
           
           <div class="method-source-code" id="cPause-source">
-            <pre><span class="ruby-comment"># File Classes/Chrono.rb, line 57</span>
+            <pre><span class="ruby-comment"># File Classes/Chrono.rb, line 58</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">cPause</span>()
         <span class="ruby-keyword">if</span> <span class="ruby-ivar">@pause</span><span class="ruby-operator">==</span><span class="ruby-keyword">true</span>
                 <span class="ruby-ivar">@pause</span>=<span class="ruby-keyword">false</span>
@@ -369,7 +370,7 @@ chrono en pause ou le faisant repartir</p>
 
           
           <div class="method-source-code" id="cRaz-source">
-            <pre><span class="ruby-comment"># File Classes/Chrono.rb, line 68</span>
+            <pre><span class="ruby-comment"># File Classes/Chrono.rb, line 69</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">cRaz</span>()
         <span class="ruby-ivar">@pause</span>=<span class="ruby-keyword">false</span>
         <span class="ruby-ivar">@start</span>=<span class="ruby-keyword">false</span>
@@ -406,12 +407,12 @@ chrono en pause ou le faisant repartir</p>
 
           
           <div class="method-source-code" id="cStart-source">
-            <pre><span class="ruby-comment"># File Classes/Chrono.rb, line 37</span>
+            <pre><span class="ruby-comment"># File Classes/Chrono.rb, line 38</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">cStart</span>
 
                 <span class="ruby-keyword">while</span> <span class="ruby-ivar">@fin</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">true</span>
                                         <span class="ruby-keyword">if</span> <span class="ruby-ivar">@start</span><span class="ruby-operator">==</span><span class="ruby-keyword">false</span>
-                                                <span class="ruby-ivar">@chrono</span>=<span class="ruby-value">0</span>
+                                                <span class="ruby-ivar">@chrono</span>=<span class="ruby-ivar">@base</span>
                                                 <span class="ruby-ivar">@start</span>=<span class="ruby-keyword">true</span>
                                                 <span class="ruby-ivar">@lChrono</span>.<span class="ruby-identifier">set_markup</span>((<span class="ruby-string">&quot;&lt;span foreground=\&quot;#FFFFFF\&quot; font-desc=\&quot;Courier New bold 20\&quot;&gt;&quot;</span><span class="ruby-operator">+</span><span class="ruby-ivar">@chrono</span>.<span class="ruby-identifier">to_s</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;&lt;/span&gt;\n&quot;</span>))
                                         <span class="ruby-keyword">end</span>
@@ -455,7 +456,7 @@ chrono en pause ou le faisant repartir</p>
 
           
           <div class="method-source-code" id="to_s-source">
-            <pre><span class="ruby-comment"># File Classes/Chrono.rb, line 90</span>
+            <pre><span class="ruby-comment"># File Classes/Chrono.rb, line 91</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s</span>
 
                 <span class="ruby-identifier">heures</span> = <span class="ruby-ivar">@chrono</span><span class="ruby-operator">/</span><span class="ruby-value">3600</span>

@@ -123,6 +123,19 @@
       </header>
 
       
+      <div id="attribute-i-chrono" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">chrono</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
       <div id="attribute-i-difficulte" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">difficulte</span><span
@@ -236,7 +249,7 @@
         
         <div class="method-heading">
           <span class="method-name">charger</span><span
-            class="method-args">(nomJoueur, mode)</span>
+            class="method-args">(nomJoueur)</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -248,20 +261,19 @@
           <p>Charge une grille sauvegardée lors d&#39;une partie</p>
 
 <pre>@param nomJoueur    //Le nom du joueur
-@param mode         //Le mode de jeu dans lequel la grille est jouée
 @return grille      //retourn la grille voulue si elle existe</pre>
           
           
 
           
           <div class="method-source-code" id="charger-source">
-            <pre><span class="ruby-comment"># File Classes/Grille.rb, line 167</span>
-<span class="ruby-keyword">def</span> <span class="ruby-constant">Grille</span>.<span class="ruby-identifier ruby-title">charger</span> (<span class="ruby-identifier">nomJoueur</span>, <span class="ruby-identifier">mode</span>)
+            <pre><span class="ruby-comment"># File Classes/Grille.rb, line 168</span>
+<span class="ruby-keyword">def</span> <span class="ruby-constant">Grille</span>.<span class="ruby-identifier ruby-title">charger</span> (<span class="ruby-identifier">nomJoueur</span>)
 
       <span class="ruby-identifier">lFich</span> = <span class="ruby-string">&quot;&quot;</span>
       <span class="ruby-identifier">trouve</span> = <span class="ruby-keyword">false</span>
 
-      <span class="ruby-identifier">fichier</span> =<span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-node">&quot;./Ressources/Sauvegarde#{mode}.txt&quot;</span>, <span class="ruby-string">&quot;r&quot;</span>)
+      <span class="ruby-identifier">fichier</span> =<span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-string">&quot;./Ressources/Sauvegarde.txt&quot;</span>, <span class="ruby-string">&quot;r&quot;</span>)
               <span class="ruby-identifier">fichier</span>.<span class="ruby-identifier">each_line</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">l</span><span class="ruby-operator">|</span>
                       <span class="ruby-keyword">if</span> <span class="ruby-identifier">l</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">nomJoueur</span>) <span class="ruby-keyword">then</span>
                               <span class="ruby-identifier">lFich</span> = <span class="ruby-identifier">l</span>
@@ -276,9 +288,10 @@
              <span class="ruby-identifier">grilleFich</span> = <span class="ruby-identifier">lFich</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&#39;;&#39;</span>)
               <span class="ruby-identifier">num</span> = <span class="ruby-identifier">grilleFich</span>.<span class="ruby-identifier">shift</span>
               <span class="ruby-identifier">diff</span> = <span class="ruby-identifier">grilleFich</span>.<span class="ruby-identifier">shift</span>
+              <span class="ruby-identifier">temps</span> = <span class="ruby-identifier">grilleFich</span>.<span class="ruby-identifier">shift</span>.<span class="ruby-identifier">to_i</span>
               <span class="ruby-identifier">grilleFich</span>.<span class="ruby-identifier">shift</span>
 
-              <span class="ruby-identifier">grille</span> = <span class="ruby-constant">Grille</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-identifier">diff</span>, <span class="ruby-identifier">num</span>.<span class="ruby-identifier">to_i</span>)
+              <span class="ruby-identifier">grille</span> = <span class="ruby-constant">Grille</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-identifier">diff</span>, <span class="ruby-identifier">num</span>.<span class="ruby-identifier">to_i</span>, <span class="ruby-identifier">temps</span>)
              <span class="ruby-identifier">grille</span>.<span class="ruby-identifier">grilleJ</span> = []
 
              <span class="ruby-identifier">i</span> = <span class="ruby-value">0</span>
@@ -311,7 +324,7 @@
         
         <div class="method-heading">
           <span class="method-name">creer</span><span
-            class="method-args">(diff, num)</span>
+            class="method-args">(diff, num, temps)</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -330,9 +343,9 @@
 
           
           <div class="method-source-code" id="creer-source">
-            <pre><span class="ruby-comment"># File Classes/Grille.rb, line 34</span>
-<span class="ruby-keyword">def</span> <span class="ruby-constant">Grille</span>.<span class="ruby-identifier ruby-title">creer</span>(<span class="ruby-identifier">diff</span>, <span class="ruby-identifier">num</span>)
-        <span class="ruby-identifier">new</span>(<span class="ruby-identifier">diff</span>, <span class="ruby-identifier">num</span>)
+            <pre><span class="ruby-comment"># File Classes/Grille.rb, line 35</span>
+<span class="ruby-keyword">def</span> <span class="ruby-constant">Grille</span>.<span class="ruby-identifier ruby-title">creer</span>(<span class="ruby-identifier">diff</span>, <span class="ruby-identifier">num</span>, <span class="ruby-identifier">temps</span>)
+        <span class="ruby-identifier">new</span>(<span class="ruby-identifier">diff</span>, <span class="ruby-identifier">num</span>, <span class="ruby-identifier">temps</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -366,9 +379,9 @@
 
           
           <div class="method-source-code" id="creerD-source">
-            <pre><span class="ruby-comment"># File Classes/Grille.rb, line 43</span>
+            <pre><span class="ruby-comment"># File Classes/Grille.rb, line 44</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Grille</span>.<span class="ruby-identifier ruby-title">creerD</span>(<span class="ruby-identifier">diff</span>)
-        <span class="ruby-constant">Grille</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-identifier">diff</span>, <span class="ruby-identifier">rand</span>(<span class="ruby-identifier">diff</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">&quot;Difficile&quot;</span>) <span class="ruby-operator">?</span> <span class="ruby-value">300</span><span class="ruby-operator">:</span><span class="ruby-value">400</span>))
+        <span class="ruby-constant">Grille</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-identifier">diff</span>, <span class="ruby-identifier">rand</span>(<span class="ruby-identifier">diff</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">&quot;Difficile&quot;</span>) <span class="ruby-operator">?</span> <span class="ruby-value">300</span><span class="ruby-operator">:</span><span class="ruby-value">400</span>), <span class="ruby-value">0</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -384,7 +397,7 @@
         
         <div class="method-heading">
           <span class="method-name">new</span><span
-            class="method-args">(diff, num)</span>
+            class="method-args">(diff, num, temps)</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -403,8 +416,8 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File Classes/Grille.rb, line 55</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span> (<span class="ruby-identifier">diff</span>, <span class="ruby-identifier">num</span>)
+            <pre><span class="ruby-comment"># File Classes/Grille.rb, line 56</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span> (<span class="ruby-identifier">diff</span>, <span class="ruby-identifier">num</span>, <span class="ruby-identifier">temps</span>)
 <span class="ruby-ivar">@difficulte</span>, <span class="ruby-ivar">@numero</span> = <span class="ruby-identifier">diff</span>, <span class="ruby-identifier">num</span>
 
         <span class="ruby-comment">#Récupération de la grille à partir du fichier</span>
@@ -446,6 +459,7 @@
                 <span class="ruby-ivar">@grilleJ</span><span class="ruby-operator">&lt;&lt;</span><span class="ruby-identifier">ligneCasesJ</span>
                 <span class="ruby-identifier">i</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
        <span class="ruby-keyword">end</span>
+       <span class="ruby-ivar">@chrono</span> = <span class="ruby-identifier">temps</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -487,7 +501,7 @@
 
           
           <div class="method-source-code" id="afficherGrille-source">
-            <pre><span class="ruby-comment"># File Classes/Grille.rb, line 106</span>
+            <pre><span class="ruby-comment"># File Classes/Grille.rb, line 108</span>
 <span class="ruby-keyword">def</span>  <span class="ruby-identifier ruby-title">afficherGrille</span> (<span class="ruby-identifier">grille</span>)
         <span class="ruby-identifier">grille</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">ligne</span><span class="ruby-operator">|</span>
                  <span class="ruby-identifier">print</span> <span class="ruby-string">&quot;\n&quot;</span>
@@ -511,7 +525,7 @@
         
         <div class="method-heading">
           <span class="method-name">enregistrerFichier</span><span
-            class="method-args">(nomJoueur, mode)</span>
+            class="method-args">(nomJoueur, chrono)</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -524,17 +538,17 @@
 concernant l&#39;état des case en char</p>
 
 <pre>@param nomJoueur     //Le nom du joueur
-@param mode          //Le mode de jeu dans lequel la grille est jouée
+@param chrono                //le temps du chrono en cours
 @return void         //ne renvoie rien</pre>
           
           
 
           
           <div class="method-source-code" id="enregistrerFichier-source">
-            <pre><span class="ruby-comment"># File Classes/Grille.rb, line 123</span>
-      <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">enregistrerFichier</span>(<span class="ruby-identifier">nomJoueur</span>, <span class="ruby-identifier">mode</span>)
+            <pre><span class="ruby-comment"># File Classes/Grille.rb, line 125</span>
+      <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">enregistrerFichier</span>(<span class="ruby-identifier">nomJoueur</span>, <span class="ruby-identifier">chrono</span>)
               <span class="ruby-identifier">ligne</span> = []
-              <span class="ruby-identifier">ligne</span><span class="ruby-operator">&lt;&lt;</span><span class="ruby-ivar">@numero</span><span class="ruby-operator">&lt;&lt;</span><span class="ruby-ivar">@difficulte</span><span class="ruby-operator">&lt;&lt;</span><span class="ruby-identifier">nomJoueur</span>
+              <span class="ruby-identifier">ligne</span><span class="ruby-operator">&lt;&lt;</span><span class="ruby-ivar">@numero</span><span class="ruby-operator">&lt;&lt;</span><span class="ruby-ivar">@difficulte</span><span class="ruby-operator">&lt;&lt;</span><span class="ruby-identifier">chrono</span><span class="ruby-operator">&lt;&lt;</span><span class="ruby-identifier">nomJoueur</span>
 
               <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span>(<span class="ruby-ivar">@taille</span><span class="ruby-value">-1</span>)
                       <span class="ruby-identifier">ligneGrille</span> = <span class="ruby-string">&quot;&quot;</span>
@@ -559,7 +573,7 @@ concernant l&#39;état des case en char</p>
 
               <span class="ruby-identifier">ligne</span> = <span class="ruby-identifier">ligne</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">&#39;;&#39;</span>)
 
-              <span class="ruby-identifier">fichier</span> =<span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-node">&quot;./Ressources/Sauvegarde#{mode}.txt&quot;</span>, <span class="ruby-constant">File</span><span class="ruby-operator">::</span><span class="ruby-constant">CREAT</span><span class="ruby-operator">|</span><span class="ruby-constant">File</span><span class="ruby-operator">::</span><span class="ruby-constant">RDWR</span>)
+              <span class="ruby-identifier">fichier</span> =<span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-string">&quot;./Ressources/Sauvegarde.txt&quot;</span>, <span class="ruby-constant">File</span><span class="ruby-operator">::</span><span class="ruby-constant">CREAT</span><span class="ruby-operator">|</span><span class="ruby-constant">File</span><span class="ruby-operator">::</span><span class="ruby-constant">RDWR</span>)
               <span class="ruby-identifier">fichier</span>.<span class="ruby-identifier">each_line</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">l</span><span class="ruby-operator">|</span>
                       <span class="ruby-keyword">if</span> <span class="ruby-identifier">l</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">nomJoueur</span>) <span class="ruby-keyword">then</span>
                               <span class="ruby-keyword">break</span>
@@ -602,7 +616,7 @@ concernant l&#39;état des case en char</p>
 
           
           <div class="method-source-code" id="observateur-source">
-            <pre><span class="ruby-comment"># File Classes/Grille.rb, line 256</span>
+            <pre><span class="ruby-comment"># File Classes/Grille.rb, line 258</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">observateur</span>()
 
   <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">..</span>(<span class="ruby-identifier">taille</span><span class="ruby-value">-1</span>)
@@ -648,7 +662,7 @@ concernant l&#39;état des case en char</p>
 
           
           <div class="method-source-code" id="parcourirC-source">
-            <pre><span class="ruby-comment"># File Classes/Grille.rb, line 235</span>
+            <pre><span class="ruby-comment"># File Classes/Grille.rb, line 237</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">parcourirC</span> ()
       <span class="ruby-identifier">grilleTournee</span> = []
 
@@ -696,7 +710,7 @@ concernant l&#39;état des case en char</p>
 
           
           <div class="method-source-code" id="parcourirH-source">
-            <pre><span class="ruby-comment"># File Classes/Grille.rb, line 213</span>
+            <pre><span class="ruby-comment"># File Classes/Grille.rb, line 215</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">parcourirH</span> ()
       <span class="ruby-keyword">self</span>.<span class="ruby-identifier">parcourirL</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">ligne</span><span class="ruby-operator">|</span>
               <span class="ruby-identifier">ligne</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">uneCase</span><span class="ruby-operator">|</span>
@@ -736,7 +750,7 @@ concernant l&#39;état des case en char</p>
 
           
           <div class="method-source-code" id="parcourirL-source">
-            <pre><span class="ruby-comment"># File Classes/Grille.rb, line 225</span>
+            <pre><span class="ruby-comment"># File Classes/Grille.rb, line 227</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">parcourirL</span> ()
       <span class="ruby-ivar">@grilleJ</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">ligne</span><span class="ruby-operator">|</span>
                       <span class="ruby-keyword">yield</span> <span class="ruby-identifier">ligne</span>

@@ -8,15 +8,47 @@
 
 require './BaseDeDonnees/FonctionsBDD.rb'
 
-#====== Stock les information de l'utilisateur
+#====== Stock les informations de l'utilisateur
 class Joueur
 
+	#=Variable d'instance
+  # @pseudo     		: pseudo du joueur
+  # @scoreGlobal   		 : Score global du joueur
+  # @scoreFacile		: Score des grilles facile du joueur
+  # @scoreMoyen			: Score des grilles moyen du joueur
+  # @scoreDifficile		: Score des grilles diffcile du joueur
+  # @nbPartiesJouees		: Nombre de parties jouée
+  # @creditAide			: Nombre de crédit d'aide que le joueur possède
+	# @argent			: Argent pour dévérouiller niveaux aventure
+	# @niveaux			: Niveau aventure
+
+
+	attr_reader :scoreFacile
+	attr_reader :scoreMoyen
+	attr_reader :pseudo
+	attr_reader :creditAide
+	attr_reader :scoreGlobal
+	attr_reader :niveaux
+	attr_reader :nbPartiesJouees
+	attr_reader :argent
+	attr_reader :scoreDifficile
+
+
+	#crée un joueur
+	# @param unPseudo		//Pseudo choisi par le joueur
+	# @param unMDP		//mot de passe
+	# @param uneRepSec		//réponse secrète
+	# @return void			//ne renvoie rien
 	def Joueur.creer(unPseudo, unMDP, uneRepSec)
 		new(unPseudo, unMDP, uneRepSec)
 	end
 
+	#initialise un joueur
+	# @param unPseudo		//Pseudo choisi par le joueur
+	# @param unMDP		//mot de passe
+	# @param uneRepSec		//réponse secrète
+	# @return void			//ne renvoie rien
 	def initialize(unPseudo, unMDP, uneRepSec)
-	# On crée toutes les variables d'instances
 
 		@id = nil
 
@@ -40,19 +72,13 @@ class Joueur
 
 	end
 
-	attr_reader :pseudo
-	attr_reader :scoreGlobal
-	attr_reader :scoreFacile
-	attr_reader :scoreMoyen
-	attr_reader :scoreDifficile
-	attr_reader :nbPartiesJouees
-	attr_reader :creditAide
-	attr_reader :argent
-	attr_reader :niveaux
 
+
+
+	#On envoie les informations du nouveau joueur dans le fichier FonctionBDD.rb pour que le joueur soit créé
+	# @param void		//aucun paramètre
+	# @return id			//renvoie un id utilisateur
 	def inscrire()
-	# On envoie les informations du nouveau joueur dans le fichier FonctionBDD.rb pour que le joueur soit créé
-		#puts "Ajout de l'utilisateur #{@pseudo}\n"
 		@id = ajouterUtilisateur( @pseudo, @mdp, @rep)
 		if  @id != 0 then
 			connecter()
@@ -63,8 +89,10 @@ class Joueur
 		return @id
 	end
 
+	#On envoie les informations du nouveau joueur dans le fichier FonctionBDD.rb pour que le joueur soit supprimée
+	# @param void		//aucun paramètre
+	# @return void			//ne renvoie rien
 	def desinscrire()
-	# On envoie les informations du nouveau joueur dans le fichier FonctionBDD.rb pour que le joueur soit supprimée
 		#puts "Suppression de l'utilisateur #{@pseudo}\n"
 		if supprimerUtilisateur(@id) == true then
 			#puts "L'utilisateur #{@pseudo} a bien été supprimé\n"
@@ -73,8 +101,10 @@ class Joueur
 		end
 	end
 
+	#On va voir si le joueur est présent dans les bases de données et on va aller les récupérer avec actualiser()
+	# @param void		//aucun paramètre
+	# @return id			//renvoie l'id de l'utilisateur
 	def connecter()
-	# On va voir si le joueur est présent dans les bases de données et on va aller les récupérer avec actualiser()
 		#puts "Connexion en cours....\n"
 		id = connexion(@pseudo, @mdp)
 		if id != nil then
@@ -91,8 +121,11 @@ class Joueur
 		return id
 	end
 
+	#On modifie le mot de passe si son pseudo et sa réponse secrète sont bien dans les bases de données et appartiennent au même profil
+	# @param nouveauMDP		//Le nouveau mot de passe choisi par l'utilisateur
+	# @return true		//si le mot de passe à bien été modifié
+	# @return false		//si la réponse secrète est incorrecte et que le mdp n'a pas pu être modifié
 	def motDePasseOublier(nouveauMDP)
-	# On modifie le mot de passe si son pseudo et sa réponse secrète sont bien dans les bases de données et appartiennent au même profil
 		if motDePasseOublie(@pseudo, @rep, nouveauMDP) == true then
 			@mdp = nouveauMDP
 			#puts "   Le mot de passe a bien été modifié\n"
@@ -103,8 +136,11 @@ class Joueur
 		end
 	end
 
+	#On modifie le mot de passe du joueur
+	# @param nouveauMotDePasse		//Le nouveau mot de passe choisi par l'utilisateur
+	# @return true		//si le mot de passe à bien été modifié
+	# @return false		//si le mot de passe est identique à l'ancien donc échec
 	def nouveauMotDePasse(nouveauMotDePasse)
-	# On modifie le mot de passe du joueur
 		if changerMotDePasse(@id, nouveauMotDePasse) == true then
 			@mdp = nouveauMotDePasse
 			#puts "   Le mot de passe a bien été modifié\n"
@@ -115,8 +151,11 @@ class Joueur
 		end
 	end
 
+	#On modifie le pseudo du joueur
+	# @param nouveauPseudo		//Le nouveau pseudo choisi par l'utilisateur
+	# @return true		//si le pseudo à bien été modifié
+	# @return false		//si le pseudo est identique à l'ancien donc échec
 	def nouveauPseudo(nouveauPseudo)
-	# On modifie le pseudo du joueur
 		if changerPseudo(@id, nouveauPseudo) == true then
 			@pseudo = nouveauPseudo
 			#puts "   Le pseudo a bien été modifié\n"
@@ -127,8 +166,11 @@ class Joueur
 		end
 	end
 
+
+	#Méthode de test servant à afficher toutes les informations d'un profil
+	# @param void		//aucun paramètre
+	# @return void		//ne renvoie rien
 	def afficherStatistiques()
-	# Méthode de test servant à afficher toutes les informations d'un profil
 		if @scoreGlobal != nil then
 #			puts "Joueur : #{@pseudo}##{@id}\n"
 #			puts " Score \n"
@@ -153,13 +195,21 @@ class Joueur
 		end
 	end
 
+
+	#Méthode qui permet d'envoyer les informations de la grille du mode aventure avec le numéro du niveau et de la grille passés en paramètres
+	# @param unNiveau		//Le niveau concerné du mode aventure
+	# @param uneGrille		//grille concerné
+	# @return information		//information relative à la grille
 	def commencerAventure(unNiveau, uneGrille)
-	# Méthode qui permet d'envoyer les informations de la grille du mode aventure avec le numéro du niveau et de la grille passés en paramètres
 		return donnerInformationsGrille(@id, unNiveau, uneGrille)
 	end
 
+
+	#Méthode permettant de soustraire l'argent du joueur pour acheter le niveau dont l'indice est passé en paramètre
+	# @param unNumeroNiveau	//Le niveau concerné du mode aventure
+	# @return true	//si l'utilisateur à assé d'argent pour dévérouillé
+	# @return false		//si l'utilisateur n'a pas assé d'argent
 	def acheterNiveau(unNumeroNiveau)
-	# Méthode permettant de soustraire l'argent du joueur pour acheter le niveau dont l'indice est passé en paramètre
 		if payerNiveau(@id, @niveaux.at(unNumeroNiveau).at(0)) then
 			deverouillerNiveau(@niveaux.at(unNumeroNiveau).at(0))
 			actualiser()
@@ -169,14 +219,21 @@ class Joueur
 		end
 	end
 
+
+	#Méthode permettant de changer le statut d'un niveau pour le dévérouiller dont l'indice est passé en paramètre
+	# @param unNumeroNiveau		//Le niveau concerné du mode aventure
+	# @return niveauDebloque		//retourn le niveau dévérouillé
 	def niveauDeverouille(unNumeroNiveau)
-	# Méthode permettant de changer le statut d'un niveau pour le dévérouiller dont l'indice est passé en paramètre
 		return niveauDebloque(@id, unNumeroNiveau)
 	end
 
+
+	#Méthode qui modifie les bases de données après la fin de chaque partie du mode aventure en ajoutant de l'argent, en changeant le statut de la grille et en augmentant le nombre d'aide disponible si les conditions sont remplies
+	# @param unNiveau	//Le niveau concerné du mode aventure
+	# @param uneGrille	//la grille concerné
+	# @return true		//si la partie est fini
+	# @return false		//sinon
 	def finirLaPartie(unNiveau, uneGrille)
-	# Méthode qui modifie les bases de données après la fin de chaque partie du mode aventure en ajoutant de l'argent, en
-	# changeant le statut de la grille et en augmentant le nombre d'aide disponible si les conditions sont remplies
 		if grillePasFaite(@id, unNiveau, uneGrille) then
 			recupererArgentGrille(@id, unNiveau, uneGrille)
 			changerStatutGrille(@id, unNiveau, uneGrille)
@@ -194,9 +251,13 @@ class Joueur
 	end
 
 
+	#Méthode qui modifie les bases de données après la fin de chaque partie du mode compétition en sauvegardant le nouveau score
+	#s'il est plus haut que celui sauvegardé. On incrémente les statistiques du joueur si les conditions sont remplies
+	# @param unScore		//Le score du joueur
+	# @param uneDifficulte		//la difficulté de la grille
+	# @param creditAideUtilises		//le nombre d'aide utilisé
+	# @return void		//ne renvoie rien
 	def modifierInformationsFinDePartie(unScore, uneDifficulte, creditAideUtilises)
-	# Méthode qui modifie les bases de données après la fin de chaque partie du mode compétition en sauvegardant le nouveau score
-	# s'il est plus haut que celui sauvegardé. On incrémente les statistiques du joueur si les conditions sont remplies
 		if uneDifficulte == "Facile" && unScore > @scoreFacile then
 			@scoreFacile = unScore
 			augmenterScoreFacile(@id, @scoreFacile)
@@ -228,9 +289,10 @@ class Joueur
 	end
 
 
-
+	#Méthode permettant de voir si un succès peut être validé
+	# @param void		//ne prend aucun paramètre
+	# @return void		//ne renvoie rien
 	def verifierSucces()
-	# Méthode permettant de voir si un succès peut être validé
 		dernierSucces = dernierSucces()
 
 		(0..dernierSucces).each do |i|
@@ -240,19 +302,24 @@ class Joueur
 		end
 	end
 
+	#Méthode permettant de voir tous les succès et ceux validé par le joueur
+	# @param void		//ne prend aucun paramètre
+	# @return matrice		//tableau de succès
 	def recupererSucces()
-	# Méthode permettant de voir tous les succès et ceux validé par le joueur
 		return voirSucces(@id)
 	end
 
+	#Méthode permettant de voir le score de tous les autres joueurs
+	# @param void		//ne prend aucun paramètre
+	# @return matrice		//tableau des scores
 	def recupererScoreJoueurs()
-	# Méthode permettant de voir le score de tous les autres joueurs
 		return scoreDeTousLesJoueurs()
 	end
 
-
+	#Méthode permettant de récupérer toutes les informations du joueur et les place dans les variables d'instances
+	# @param void		//ne prend aucun paramètre
+	# @return void		//ne renvoie rien
 	def actualiser()
-	# Méthode permettant de récupérer toutes les informations du joueur et les place dans les variables d'instances
 
 		@rep = recupererInformation(@id, 1)
 

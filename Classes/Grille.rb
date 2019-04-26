@@ -120,6 +120,7 @@ class Grille
 
 	#Enregistre la grille dans un fichier en transformant les informations concernant l'état des case en char
 	# @param nomJoueur	//Le nom du joueur
+	# @param chrono		//le temps du chrono en cours
 	# @return void		//ne renvoie rien
   	def enregistrerFichier(nomJoueur, chrono)
     		ligne = []

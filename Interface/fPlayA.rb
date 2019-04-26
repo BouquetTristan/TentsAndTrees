@@ -60,7 +60,7 @@ class FPlayA < Page
 
     	@boxFeuilles=Gtk::ButtonBox.new(:horizontal)
 			@boxFeuilles.spacing=1
-			@img =(Gtk::Image.new(:file =>"./Assets/feuille.png"))
+			@img =(Gtk::Image.new(:file =>"./Assets/Menu/feuille.png"))
 			@profil = Gtk::Label.new().set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 15\"> #{@nbFeuilles}</span>")
 			@boxFeuilles.add(@img)
 			@boxFeuilles.add(@profil, :expand => true, :fill => false)
@@ -312,7 +312,7 @@ class FPlayA < Page
 
 		@bPause = Gtk::Button.new()
 		@bPause.set_relief(:none)
-		@pause=(Gtk::Image.new(:file =>"./Assets/pause.png"))
+		@pause=(Gtk::Image.new(:file =>"./Assets/Menu/pause.png"))
 		@bPause.set_image(@pause)
 		@gChrono.add(@bPause)
 
@@ -327,7 +327,7 @@ class FPlayA < Page
 						l.clic=false
 					}
 				}
-				@pause=(Gtk::Image.new(:file =>"./Assets/Play.png"))
+				@pause=(Gtk::Image.new(:file =>"./Assets/Menu/Play.png"))
 				@bPause.set_image(@pause)
 
 				@b1.cliquable = false
@@ -344,7 +344,7 @@ class FPlayA < Page
 						l.clic=true
 					}
 				}
-				@pause=(Gtk::Image.new(:file =>"./Assets/pause.png"))
+				@pause=(Gtk::Image.new(:file =>"./Assets/Menu/pause.png"))
 				@bPause.set_image(@pause)
 
 				@b1.cliquable = true
@@ -365,7 +365,7 @@ class FPlayA < Page
 
 		@frame.attach(@box,0,1,0,1)
 
-		@pix = (GdkPixbuf::Pixbuf.new(:file=>"./Assets/ImgGameA.png",:width=> monApp.width, :height=> monApp.height))
+		@pix = (GdkPixbuf::Pixbuf.new(:file=>"./Assets/Menu/ImgGameA.png",:width=> monApp.width, :height=> monApp.height))
         @bg=(Gtk::Image.new(:pixbuf => @pix))
         @frame.attach(@bg,0,1,0,1)
 

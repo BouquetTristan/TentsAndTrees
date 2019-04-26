@@ -92,7 +92,7 @@ class FInter < Page
 			@window.show_all
 		}
 
- 		@pix = (GdkPixbuf::Pixbuf.new(:file=>"./Assets/ImgGame.jpg",:width=> monApp.width, :height=> monApp.height))
+ 		@pix = (GdkPixbuf::Pixbuf.new(:file=>"./Assets/Menu/ImgGame.jpg",:width=> monApp.width, :height=> monApp.height))
         @bg=(Gtk::Image.new(:pixbuf => @pix))
         @frame.attach(@bg,0,1,0,1)
 

@@ -28,7 +28,7 @@ class FAventure < Page
 
     			@boxArgent=Gtk::ButtonBox.new(:horizontal)
     				@boxArgent.spacing=1
-    				@img =(Gtk::Image.new(:file =>"./Assets/billet.png"))
+    				@img =(Gtk::Image.new(:file =>"./Assets/Menu/billet.png"))
     				@profil = Gtk::Label.new().set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 15\"> #{unJoueur.argent}</span>")
     				@boxArgent.add(@img)
     				@boxArgent.add(@profil, :expand => true, :fill => false)
@@ -112,7 +112,7 @@ class FAventure < Page
 
 		@frame.attach(@aventMenu,0,1,0,1)
 
-		@pix = (GdkPixbuf::Pixbuf.new(:file=>"./Assets/ImgGameA.png",:width=> monApp.width, :height=> monApp.height))
+		@pix = (GdkPixbuf::Pixbuf.new(:file=>"./Assets/Menu/ImgGameA.png",:width=> monApp.width, :height=> monApp.height))
         @bg=(Gtk::Image.new(:pixbuf => @pix))
         @frame.attach(@bg,0,1,0,1)
 

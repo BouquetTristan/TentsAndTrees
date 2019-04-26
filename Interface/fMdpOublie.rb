@@ -27,7 +27,7 @@ class FMdpOublie < Page
         @newMdp = TexteEntree.creer('Nouveau mot de passe : ', true)
 	@newMdp.entree.visibility = false
         @question =  Gtk::Label.new('')
-        @question.set_markup("<span foreground=\"#FFFFFF\" font-desc=\"Courier New bold 15\">Quel est votre lieu de vacances favori ?</span>\n")
+        @question.set_markup("<span foreground=\"#FFFFFF\" font-desc=\"Courier New bold 15\">Quel est votre prof préféré ?</span>\n")
         @reponse = TexteEntree.creer('Reponse secrète : ', true)
 	@reponse.entree.visibility = false
         @connexion = Gtk::Button.new(:label => 'Connexion', :use_underline => nil, :stock_id => nil)
@@ -86,7 +86,7 @@ class FMdpOublie < Page
 
         @frame.attach(@gMdpOublie,0,1,0,1)
 
-        @pix = (GdkPixbuf::Pixbuf.new(:file=>"./Assets/ImgGame.jpg",:width=> monApp.width, :height=> monApp.height))
+        @pix = (GdkPixbuf::Pixbuf.new(:file=>"./Assets/Menu/ImgGame.jpg",:width=> monApp.width, :height=> monApp.height))
         @bg=(Gtk::Image.new(:pixbuf => @pix))
         @frame.attach(@bg,0,1,0,1)
 

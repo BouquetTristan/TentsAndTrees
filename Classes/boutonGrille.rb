@@ -50,25 +50,25 @@ class BoutonGrille
 	def chgEtat(monApp, etat)
 		if @clic
 			if etat == 0
-				@pix = (GdkPixbuf::Pixbuf.new(:file =>"#{@chemin}/terre.png",:width=> monApp.width/25, :height=> monApp.height/25))
+				@pix = (GdkPixbuf::Pixbuf.new(:file =>"#{@chemin}/terre.png",:width=> monApp.width/22, :height=> monApp.height/22))
 				@image = (Gtk::Image.new(:pixbuf => @pix))
 				@bouton.set_image(@image)
 				focus_hadjustment=(:start)
 			end
 			if etat == 1
-				@pix = (GdkPixbuf::Pixbuf.new(:file =>"#{@chemin}/tente.png",:width=> monApp.width/25, :height=> monApp.height/25))
+				@pix = (GdkPixbuf::Pixbuf.new(:file =>"#{@chemin}/tente.png",:width=> monApp.width/22, :height=> monApp.height/22))
 				@image=(Gtk::Image.new(:pixbuf => @pix))
 				@bouton.set_image(@image)
 				focus_hadjustment=(:start)
 			end
 			if etat == 2
-				@pix = (GdkPixbuf::Pixbuf.new(:file =>"#{@chemin}/arbre.png",:width=> monApp.width/25, :height=> monApp.height/25))
+				@pix = (GdkPixbuf::Pixbuf.new(:file =>"#{@chemin}/arbre.png",:width=> monApp.width/22, :height=> monApp.height/22))
 				@image=(Gtk::Image.new(:pixbuf => @pix))
 				@bouton.set_image(@image)
 				focus_hadjustment=(:start)
 			end
 			if etat == 3
-				@pix = (GdkPixbuf::Pixbuf.new(:file =>"#{@chemin}/herbe.png",:width=> monApp.width/25, :height=> monApp.height/25))
+				@pix = (GdkPixbuf::Pixbuf.new(:file =>"#{@chemin}/herbe.png",:width=> monApp.width/22, :height=> monApp.height/22))
 				@image=(Gtk::Image.new(:pixbuf => @pix))
 				@bouton.set_image(@image)
 				focus_hadjustment=(:start)
@@ -81,25 +81,25 @@ class BoutonGrille
 	# @return void		//ne renvoie rien
 	def indiquerAide(monApp, etat)
 		if etat == 0
-			@pix = (GdkPixbuf::Pixbuf.new(:file =>"#{@chemin}/terreS.png",:width=> monApp.width/25, :height=> monApp.height/25))
+			@pix = (GdkPixbuf::Pixbuf.new(:file =>"#{@chemin}/terreS.png",:width=> monApp.width/22, :height=> monApp.height/22))
 			@image = (Gtk::Image.new(:pixbuf => @pix))
 			@bouton.set_image(@image)
 			focus_hadjustment=(:start)
 		end
 		if etat == 1
-			@pix = (GdkPixbuf::Pixbuf.new(:file =>"#{@chemin}/tenteS.png",:width=> monApp.width/25, :height=> monApp.height/25))
+			@pix = (GdkPixbuf::Pixbuf.new(:file =>"#{@chemin}/tenteS.png",:width=> monApp.width/22, :height=> monApp.height/22))
 			@image=(Gtk::Image.new(:pixbuf => @pix))
 			@bouton.set_image(@image)
 			focus_hadjustment=(:start)
 		end
 		if etat == 2
-			@pix = (GdkPixbuf::Pixbuf.new(:file =>"#{@chemin}/arbreS.png",:width=> monApp.width/25, :height=> monApp.height/25))
+			@pix = (GdkPixbuf::Pixbuf.new(:file =>"#{@chemin}/arbreS.png",:width=> monApp.width/22, :height=> monApp.height/22))
 			@image=(Gtk::Image.new(:pixbuf => @pix))
 			@bouton.set_image(@image)
 			focus_hadjustment=(:start)
 		end
 		if etat == 3
-			@pix = (GdkPixbuf::Pixbuf.new(:file =>"#{@chemin}/herbeS.png",:width=> monApp.width/25, :height=> monApp.height/25))
+			@pix = (GdkPixbuf::Pixbuf.new(:file =>"#{@chemin}/herbeS.png",:width=> monApp.width/22, :height=> monApp.height/22))
 			@image=(Gtk::Image.new(:pixbuf => @pix))
 			@bouton.set_image(@image)
 			focus_hadjustment=(:start)

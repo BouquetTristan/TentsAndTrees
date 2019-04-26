@@ -34,27 +34,27 @@ class BoutonSaison
 			when "Printemps" then
 				@numSaison = 0
 				@joueur.acheterNiveau(@numSaison)
-				@pix = (GdkPixbuf::Pixbuf.new(:file=>"./Assets/Vignette#{@saison}V.png",:width=> monApp.width/5, :height=> monApp.height/5))
+				@pix = (GdkPixbuf::Pixbuf.new(:file=>"./Assets/Vignettes/Vignette#{@saison}V.png",:width=> monApp.width/5, :height=> monApp.height/5))
         		@img=(Gtk::Image.new(:pixbuf => @pix))
         		@bouton.set_image(@img)
 			when "Ete" then
 				@numSaison = 1
-				@pix = (GdkPixbuf::Pixbuf.new(:file=>"./Assets/Vignette#{@saison}V.png",:width=> monApp.width/5, :height=> monApp.height/5))
+				@pix = (GdkPixbuf::Pixbuf.new(:file=>"./Assets/Vignettes/Vignette#{@saison}V.png",:width=> monApp.width/5, :height=> monApp.height/5))
         		@img=(Gtk::Image.new(:pixbuf => @pix))
         		@bouton.set_image(@img)
 			when "Automne" then
 				@numSaison = 2
-				@pix = (GdkPixbuf::Pixbuf.new(:file=>"./Assets/Vignette#{@saison}V.png",:width=> monApp.width/5, :height=> monApp.height/5))
+				@pix = (GdkPixbuf::Pixbuf.new(:file=>"./Assets/Vignettes/Vignette#{@saison}V.png",:width=> monApp.width/5, :height=> monApp.height/5))
         		@img=(Gtk::Image.new(:pixbuf => @pix))
         		@bouton.set_image(@img)
 			when "Hiver" then
 				@numSaison = 3
-				@pix = (GdkPixbuf::Pixbuf.new(:file=>"./Assets/Vignette#{@saison}V.png",:width=> monApp.width/5, :height=> monApp.height/5))
+				@pix = (GdkPixbuf::Pixbuf.new(:file=>"./Assets/Vignettes/Vignette#{@saison}V.png",:width=> monApp.width/5, :height=> monApp.height/5))
         		@img=(Gtk::Image.new(:pixbuf => @pix))
         		@bouton.set_image(@img)
 			when "Bonus"
 				@numSaison = 4
-				@pix = (GdkPixbuf::Pixbuf.new(:file=>"./Assets/Bonus.png",:width=> monApp.width/2, :height=> monApp.height))
+				@pix = (GdkPixbuf::Pixbuf.new(:file=>"./Assets/Vignettes/Bonus.png",:width=> monApp.width/2, :height=> monApp.height))
         		@img=(Gtk::Image.new(:pixbuf => @pix))
         		@bouton.set_image(@img)
    		end
@@ -70,7 +70,7 @@ class BoutonSaison
 	# @return void			//ne renvoie rien
 	def actualiserImg(monApp)
 		if (@cliquable)
-			@pix = (GdkPixbuf::Pixbuf.new(:file=>"./Assets/Vignette#{@saison}.png",:width=> monApp.width/5, :height=> monApp.height/5))
+			@pix = (GdkPixbuf::Pixbuf.new(:file=>"./Assets/Vignettes/Vignette#{@saison}.png",:width=> monApp.width/5, :height=> monApp.height/5))
         	@img=(Gtk::Image.new(:pixbuf => @pix))
 	        @bouton.set_image(@img)
 	    end
@@ -97,7 +97,7 @@ class BoutonSaison
 #		puts "cliquable : #{@cliquable}"
 		@cliquable = @joueur.acheterNiveau(@numSaison)
 		if (@cliquable)
-			@pix = (GdkPixbuf::Pixbuf.new(:file=>"./Assets/Vignette#{@saison}.png",:width=> monApp.width/5, :height=> monApp.height/5))
+			@pix = (GdkPixbuf::Pixbuf.new(:file=>"./Assets/Vignettes/Vignette#{@saison}.png",:width=> monApp.width/5, :height=> monApp.height/5))
         	@img=(Gtk::Image.new(:pixbuf => @pix))
         	@bouton.set_image(@img)
 		end

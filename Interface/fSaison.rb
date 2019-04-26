@@ -138,7 +138,7 @@ class FSaison < Page
 
 		@frame.attach(@selecGrille,0,1,0,1)
 
-		@pix = (GdkPixbuf::Pixbuf.new(:file=>"./Assets/ImgGameA.png",:width=> monApp.width, :height=> monApp.height))
+		@pix = (GdkPixbuf::Pixbuf.new(:file=>"./Assets/Menu/ImgGameA.png",:width=> monApp.width, :height=> monApp.height))
         @bg=(Gtk::Image.new(:pixbuf => @pix))
         @frame.attach(@bg,0,1,0,1)
 

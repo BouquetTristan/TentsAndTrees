@@ -24,7 +24,7 @@ class Header < Gtk::HeaderBar
     @titre = Gtk::Label.new("")
     @titre.set_markup("<span foreground=\"#EF2929\" font-desc=\"Courier New bold 20\">Tents and Trees</span>")
     @btnMenu = Gtk::Button.new(:label => 'Menu', :use_underline => nil, :stock_id => nil)
-    @image=(Gtk::Image.new(:file =>"./Assets/logo.png",:size => :dialog))
+    @image=(Gtk::Image.new(:file =>"./Assets/Menu/logo.png",:size => :dialog))
     @btnDel = Gtk::Button.new(:label => 'Quitter', :use_underline => nil, :stock_id => nil)
     #@imDel=(Gtk::Image.new(:file =>"./image/logo.png",:size => :dialog))
 
